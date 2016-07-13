@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/eula_relative_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:id="@+id/activity_customer_linear_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:padding="15dip" >
+
+        <EditText
+            android:id="@+id/activity_product_edittext_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/description_back_shape"
+            android:hint="@string/app_sales_order_search_product"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/Ivory3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_customer_linear_count"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_customer_linear_search"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:padding="15dip" >
+
+        <EditText
+            android:id="@+id/activity_product_edittext_jumlah"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:background="@drawable/description_back_shape"
+            android:hint="@string/app_sales_order_jumlah"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/Ivory3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_customer_linear_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_customer_linear_count"
+        android:orientation="horizontal"
+        android:padding="15dip" >
+
+        <TextView
+            android:id="@+id/activity_sales_order_title_kode_product"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_sales_order_title_kode_product"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_sales_order_title_nama_product"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="@string/app_sales_order_title_nama_product"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_sales_order_title_harga_product"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_sales_order_title_harga_product"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/activity_sales_order_title_action"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_sales_order_title_action"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividerHeaderBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_customer_linear_title"
+        android:background="#414141" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/dividerHeaderBottom"
+        android:background="@color/white"
+        android:divider="@color/listview_divider"
+        android:dividerHeight="0.8dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false" />
+
+</RelativeLayout>
