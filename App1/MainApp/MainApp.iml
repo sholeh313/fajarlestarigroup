@@ -16,7 +16,7 @@
     <orderEntry type="library" name="google-play-services" level="project" />
     <orderEntry type="library" name="libs1" level="project" />
     <orderEntry type="library" name="libs" level="project" />
-    <orderEntry type="library" name="android-support-v7-appcompat" level="project" />
+    <orderEntry type="library" name="android-support-v7-appcompat1" level="project" />
     <orderEntry type="module" module-name="android-support-v7-appcompat" />
     <orderEntry type="module" module-name="google-play-services_lib" />
   </component>
