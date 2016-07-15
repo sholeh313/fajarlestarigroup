@@ -1211,7 +1211,7 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String nama_lengkap, final String no_telp,
                                           final String id_wilayah, final String foto_1, final String foto_2,
                                           final String foto_3, final String id_type_customer,
-                                          final String date, final String id_staff, final String no_ktp,
+                                          final String date, final String no_ktp,
                                           final String tanggal_lahir, final String nama_bank, final String no_rekening,
                                           final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
@@ -1259,7 +1259,7 @@ public class CustomerActivity extends ActionBarActivity implements
                     : ""));
             entity.addPart("id_type_customer", new StringBody(id_type_customer));
             entity.addPart("date", new StringBody(date));
-            entity.addPart("id_staff", new StringBody(id_staff));
+            //entity.addPart("id_staff", new StringBody(id_staff));
             entity.addPart("no_ktp", new StringBody(no_ktp));
             entity.addPart("tanggal_lahir", new StringBody(tanggal_lahir));
             entity.addPart("nama_bank", new StringBody(nama_bank));
@@ -1403,7 +1403,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		@Override
 		protected String doInBackground(String... params) {
             String upload_url = CONFIG.CONFIG_APP_URL_PUBLIC
-                    + CONFIG.CONFIG_APP_URL_UPLOAD_CUSTOMER_PROSPECT ;
+                    + CONFIG.CONFIG_APP_URL_UPLOAD_CUSTOMER ;
 
             List<Customer> dataUpload = databaseHandler
                     .getAllCustomerActiveAndUpdateByUser();
@@ -1424,7 +1424,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getFoto_3(),
                         String.valueOf(customer.getId_type_customer()),
                         customer.getDate(),
-                        String.valueOf(customer.getId_staff()),
+                        //String.valueOf(customer.getId_staff()),
                         customer.getNo_ktp(),
                         customer.getTanggal_lahir(),
                         customer.getNama_bank(),

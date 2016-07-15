@@ -10,51 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="652055ad-328c-4357-982f-1a66b58f737d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/MainApp/MainApp.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/google/android/gms/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/google/android/gms/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadContentCustomer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadContentCustomer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$DownloadDataCustomer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/android-support-v7-appcompat/android/support/v7/appcompat/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/android-support-v7-appcompat/android/support/v7/appcompat/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/google-play-services_lib/com/google/android/gms/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/google-play-services_lib/com/google/android/gms/BuildConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
     </list>
     <ignored path="App1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="452" column="51" selection-start-line="452" selection-start-column="51" selection-end-line="452" selection-end-column="51" />
+              <caret line="718" column="34" selection-start-line="718" selection-start-column="34" selection-end-line="718" selection-end-column="34" />
               <folding>
                 <element signature="e#21972#22192#0" expanded="true" />
               </folding>
@@ -91,54 +52,10 @@
       <file leaf-file-name="CustomerActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3320965">
-              <caret line="1408" column="43" selection-start-line="1408" selection-start-column="43" selection-end-line="1408" selection-end-column="43" />
+            <state vertical-scroll-proportion="1.1354359">
+              <caret line="1245" column="26" selection-start-line="1245" selection-start-column="12" selection-end-line="1245" selection-end-column="26" />
               <folding>
-                <element signature="e#3274#3306#0" expanded="true" />
-                <element signature="e#4983#5055#0" expanded="true" />
-                <element signature="e#5086#5173#0" expanded="true" />
-                <element signature="e#5971#6070#0" expanded="true" />
-                <element signature="e#18204#18292#0" expanded="true" />
-                <element signature="e#18495#18623#0" expanded="true" />
-                <element signature="e#19043#19140#0" expanded="true" />
-                <element signature="e#19654#19751#0" expanded="true" />
-                <element signature="e#19850#19948#0" expanded="true" />
-                <element signature="e#20052#20148#0" expanded="true" />
-                <element signature="e#20740#20871#0" expanded="true" />
-                <element signature="e#20945#21044#0" expanded="true" />
-                <element signature="e#21473#21561#0" expanded="true" />
-                <element signature="e#22307#22395#0" expanded="true" />
-                <element signature="e#35328#35427#0" expanded="true" />
-                <element signature="e#38198#38297#0" expanded="true" />
-                <element signature="e#40837#40909#0" expanded="true" />
-                <element signature="e#40940#41044#0" expanded="true" />
-                <element signature="e#44794#44882#0" expanded="true" />
-                <element signature="e#45622#45721#0" expanded="true" />
-                <element signature="e#45983#46118#0" expanded="true" />
-                <element signature="e#46237#46366#0" expanded="true" />
-                <element signature="e#55786#55881#0" expanded="true" />
-                <element signature="e#55954#56258#0" expanded="true" />
-                <element signature="e#56084#56212#0" expanded="true" />
-                <element signature="e#56257#56258#0" expanded="true" />
-                <element signature="e#59990#60120#0" expanded="true" />
-                <element signature="e#60139#60222#0" expanded="true" />
-                <element signature="e#60221#60222#0" expanded="true" />
-                <element signature="e#60502#60632#0" expanded="true" />
-                <element signature="e#60780#60914#0" expanded="true" />
-                <element signature="e#60981#61116#0" expanded="true" />
-                <element signature="e#61577#61665#0" expanded="true" />
-                <element signature="e#61673#61958#0" expanded="true" />
-                <element signature="e#61957#61958#0" expanded="true" />
-                <element signature="e#62220#62230#0" expanded="true" />
-                <element signature="e#63714#63965#0" expanded="true" />
-                <element signature="e#63964#63965#0" expanded="true" />
-                <element signature="e#65894#65983#0" expanded="true" />
-                <element signature="e#66167#66252#0" expanded="true" />
-                <element signature="e#66260#66474#0" expanded="true" />
-                <element signature="e#66473#66474#0" expanded="true" />
-                <element signature="e#66506#66590#0" expanded="true" />
-                <element signature="e#66598#66838#0" expanded="true" />
-                <element signature="e#66837#66838#0" expanded="true" />
+                <element signature="e#62192#62202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,6 +78,26 @@
                 <element signature="e#31828#31911#0" expanded="true" />
                 <element signature="e#31910#31911#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CONFIG.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="91" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1909" column="32" selection-start-line="1909" selection-start-column="32" selection-end-line="1909" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -226,7 +163,9 @@
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" />
         <option value="$PROJECT_DIR$/MainApp/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" />
       </list>
     </option>
   </component>
@@ -280,6 +219,68 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/mahkota_company/android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/mahkota_company/android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="customer">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -293,7 +294,7 @@
     <property name="ExportedModule" value="MainApp" />
     <property name="ExportedApkPath" value="C:\Users\USER\Documents\GitHub\AppMobile\App1\MainApp\MainApp.apk" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
-    <property name="device.picker.selection" value="127.0.0.1:22515" />
+    <property name="device.picker.selection" value="R7L6R15A06000261" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -624,36 +625,42 @@
       <option name="project" value="LOCAL" />
       <updated>1468555717803</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="revisi : Rubah detail customer menjadi detail yang bisa diedit dan disimpan.">
+      <created>1468555749772</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1468555749772</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25838926" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18910742" sideWeight="0.5067114" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18910742" sideWeight="0.5067114" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18910742" sideWeight="0.49328858" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23827533" sideWeight="0.49328858" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -673,7 +680,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="Rubah detail customer menjadi detail yang bisa diedit dan disimpan." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rubah detail customer menjadi detail yang bisa diedit dan disimpan." />
+    <MESSAGE value="revisi : Rubah detail customer menjadi detail yang bisa diedit dan disimpan." />
+    <option name="LAST_COMMIT_MESSAGE" value="revisi : Rubah detail customer menjadi detail yang bisa diedit dan disimpan." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -713,6 +721,24 @@
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>1179</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>1208</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>1237</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
           <line>1312</line>
@@ -726,7 +752,7 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -746,51 +772,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3274#3306#0" expanded="true" />
-            <element signature="e#4983#5055#0" expanded="true" />
-            <element signature="e#5086#5173#0" expanded="true" />
-            <element signature="e#5971#6070#0" expanded="true" />
-            <element signature="e#18204#18292#0" expanded="true" />
-            <element signature="e#18495#18623#0" expanded="true" />
-            <element signature="e#19043#19140#0" expanded="true" />
-            <element signature="e#19654#19751#0" expanded="true" />
-            <element signature="e#19850#19948#0" expanded="true" />
-            <element signature="e#20052#20148#0" expanded="true" />
-            <element signature="e#20740#20871#0" expanded="true" />
-            <element signature="e#20945#21044#0" expanded="true" />
-            <element signature="e#21473#21561#0" expanded="true" />
-            <element signature="e#22307#22395#0" expanded="true" />
-            <element signature="e#35328#35427#0" expanded="true" />
-            <element signature="e#38198#38297#0" expanded="true" />
-            <element signature="e#40837#40909#0" expanded="true" />
-            <element signature="e#40940#41044#0" expanded="true" />
-            <element signature="e#44794#44882#0" expanded="true" />
-            <element signature="e#45622#45721#0" expanded="true" />
-            <element signature="e#45983#46118#0" expanded="true" />
-            <element signature="e#46237#46366#0" expanded="true" />
-            <element signature="e#55786#55881#0" expanded="true" />
-            <element signature="e#55954#56258#0" expanded="true" />
-            <element signature="e#56084#56212#0" expanded="true" />
-            <element signature="e#56257#56258#0" expanded="true" />
-            <element signature="e#59990#60120#0" expanded="true" />
-            <element signature="e#60139#60222#0" expanded="true" />
-            <element signature="e#60221#60222#0" expanded="true" />
-            <element signature="e#60502#60632#0" expanded="true" />
-            <element signature="e#60780#60914#0" expanded="true" />
-            <element signature="e#60981#61116#0" expanded="true" />
-            <element signature="e#61577#61665#0" expanded="true" />
-            <element signature="e#61673#61958#0" expanded="true" />
-            <element signature="e#61957#61958#0" expanded="true" />
-            <element signature="e#62220#62230#0" expanded="true" />
-            <element signature="e#63714#63965#0" expanded="true" />
-            <element signature="e#63964#63965#0" expanded="true" />
-            <element signature="e#65894#65983#0" expanded="true" />
-            <element signature="e#66167#66252#0" expanded="true" />
-            <element signature="e#66260#66474#0" expanded="true" />
-            <element signature="e#66473#66474#0" expanded="true" />
-            <element signature="e#66506#66590#0" expanded="true" />
-            <element signature="e#66598#66838#0" expanded="true" />
-            <element signature="e#66837#66838#0" expanded="true" />
+            <element signature="e#62192#62202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -881,51 +863,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1479" column="41" selection-start-line="1479" selection-start-column="41" selection-end-line="1479" selection-end-column="41" />
           <folding>
-            <element signature="e#3274#3306#0" expanded="true" />
-            <element signature="e#4983#5055#0" expanded="true" />
-            <element signature="e#5086#5173#0" expanded="true" />
-            <element signature="e#5971#6070#0" expanded="true" />
-            <element signature="e#18204#18292#0" expanded="true" />
-            <element signature="e#18495#18623#0" expanded="true" />
-            <element signature="e#19043#19140#0" expanded="true" />
-            <element signature="e#19654#19751#0" expanded="true" />
-            <element signature="e#19850#19948#0" expanded="true" />
-            <element signature="e#20052#20148#0" expanded="true" />
-            <element signature="e#20740#20871#0" expanded="true" />
-            <element signature="e#20945#21044#0" expanded="true" />
-            <element signature="e#21473#21561#0" expanded="true" />
-            <element signature="e#22307#22395#0" expanded="true" />
-            <element signature="e#35328#35427#0" expanded="true" />
-            <element signature="e#38198#38297#0" expanded="true" />
-            <element signature="e#40837#40909#0" expanded="true" />
-            <element signature="e#40940#41044#0" expanded="true" />
-            <element signature="e#44794#44882#0" expanded="true" />
-            <element signature="e#45622#45721#0" expanded="true" />
-            <element signature="e#45983#46118#0" expanded="true" />
-            <element signature="e#46237#46366#0" expanded="true" />
-            <element signature="e#55786#55881#0" expanded="true" />
-            <element signature="e#55954#56258#0" expanded="true" />
-            <element signature="e#56084#56212#0" expanded="true" />
-            <element signature="e#56257#56258#0" expanded="true" />
-            <element signature="e#59990#60120#0" expanded="true" />
-            <element signature="e#60139#60222#0" expanded="true" />
-            <element signature="e#60221#60222#0" expanded="true" />
-            <element signature="e#60502#60632#0" expanded="true" />
-            <element signature="e#60780#60914#0" expanded="true" />
-            <element signature="e#60981#61116#0" expanded="true" />
-            <element signature="e#61577#61665#0" expanded="true" />
-            <element signature="e#61673#61958#0" expanded="true" />
-            <element signature="e#61957#61958#0" expanded="true" />
-            <element signature="e#62220#62230#0" expanded="true" />
-            <element signature="e#63714#63965#0" expanded="true" />
-            <element signature="e#63964#63965#0" expanded="true" />
-            <element signature="e#65894#65983#0" expanded="true" />
-            <element signature="e#66167#66252#0" expanded="true" />
-            <element signature="e#66260#66474#0" expanded="true" />
-            <element signature="e#66473#66474#0" expanded="true" />
-            <element signature="e#66506#66590#0" expanded="true" />
-            <element signature="e#66598#66838#0" expanded="true" />
-            <element signature="e#66837#66838#0" expanded="true" />
+            <element signature="e#62192#62202#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -968,14 +906,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailCustomerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="144" column="42" selection-start-line="144" selection-start-column="42" selection-end-line="144" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/platforms/android-22/data/res/layout/simple_spinner_item.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1004,29 +934,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="414" column="38" selection-start-line="414" selection-start-column="38" selection-end-line="414" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/android/os/AsyncTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33450705">
           <caret line="352" column="30" selection-start-line="352" selection-start-column="30" selection-end-line="352" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="452" column="51" selection-start-line="452" selection-start-column="51" selection-end-line="452" selection-end-column="51" />
-          <folding>
-            <element signature="e#21972#22192#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1054,6 +966,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/recyclerview/libs/android-support-v4.jar!/android/support/v4/app/FragmentActivity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34935305">
+          <caret line="502" column="16" selection-start-line="502" selection-start-column="16" selection-end-line="502" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailCustomerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3320965">
+          <caret line="707" column="34" selection-start-line="707" selection-start-column="12" selection-end-line="707" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="414" column="38" selection-start-line="414" selection-start-column="38" selection-end-line="414" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="718" column="34" selection-start-line="718" selection-start-column="34" selection-end-line="718" selection-end-column="34" />
+          <folding>
+            <element signature="e#21972#22192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1909" column="32" selection-start-line="1909" selection-start-column="32" selection-end-line="1909" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1073,72 +1027,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5213358">
-          <caret line="1899" column="44" selection-start-line="1899" selection-start-column="44" selection-end-line="1899" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39260563">
-          <caret line="68" column="71" selection-start-line="68" selection-start-column="61" selection-end-line="68" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="91" selection-start-line="66" selection-start-column="91" selection-end-line="66" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3320965">
-          <caret line="1408" column="43" selection-start-line="1408" selection-start-column="43" selection-end-line="1408" selection-end-column="43" />
+        <state vertical-scroll-proportion="1.1354359">
+          <caret line="1245" column="26" selection-start-line="1245" selection-start-column="12" selection-end-line="1245" selection-end-column="26" />
           <folding>
-            <element signature="e#3274#3306#0" expanded="true" />
-            <element signature="e#4983#5055#0" expanded="true" />
-            <element signature="e#5086#5173#0" expanded="true" />
-            <element signature="e#5971#6070#0" expanded="true" />
-            <element signature="e#18204#18292#0" expanded="true" />
-            <element signature="e#18495#18623#0" expanded="true" />
-            <element signature="e#19043#19140#0" expanded="true" />
-            <element signature="e#19654#19751#0" expanded="true" />
-            <element signature="e#19850#19948#0" expanded="true" />
-            <element signature="e#20052#20148#0" expanded="true" />
-            <element signature="e#20740#20871#0" expanded="true" />
-            <element signature="e#20945#21044#0" expanded="true" />
-            <element signature="e#21473#21561#0" expanded="true" />
-            <element signature="e#22307#22395#0" expanded="true" />
-            <element signature="e#35328#35427#0" expanded="true" />
-            <element signature="e#38198#38297#0" expanded="true" />
-            <element signature="e#40837#40909#0" expanded="true" />
-            <element signature="e#40940#41044#0" expanded="true" />
-            <element signature="e#44794#44882#0" expanded="true" />
-            <element signature="e#45622#45721#0" expanded="true" />
-            <element signature="e#45983#46118#0" expanded="true" />
-            <element signature="e#46237#46366#0" expanded="true" />
-            <element signature="e#55786#55881#0" expanded="true" />
-            <element signature="e#55954#56258#0" expanded="true" />
-            <element signature="e#56084#56212#0" expanded="true" />
-            <element signature="e#56257#56258#0" expanded="true" />
-            <element signature="e#59990#60120#0" expanded="true" />
-            <element signature="e#60139#60222#0" expanded="true" />
-            <element signature="e#60221#60222#0" expanded="true" />
-            <element signature="e#60502#60632#0" expanded="true" />
-            <element signature="e#60780#60914#0" expanded="true" />
-            <element signature="e#60981#61116#0" expanded="true" />
-            <element signature="e#61577#61665#0" expanded="true" />
-            <element signature="e#61673#61958#0" expanded="true" />
-            <element signature="e#61957#61958#0" expanded="true" />
-            <element signature="e#62220#62230#0" expanded="true" />
-            <element signature="e#63714#63965#0" expanded="true" />
-            <element signature="e#63964#63965#0" expanded="true" />
-            <element signature="e#65894#65983#0" expanded="true" />
-            <element signature="e#66167#66252#0" expanded="true" />
-            <element signature="e#66260#66474#0" expanded="true" />
-            <element signature="e#66473#66474#0" expanded="true" />
-            <element signature="e#66506#66590#0" expanded="true" />
-            <element signature="e#66598#66838#0" expanded="true" />
-            <element signature="e#66837#66838#0" expanded="true" />
+            <element signature="e#62192#62202#0" expanded="true" />
           </folding>
         </state>
       </provider>
