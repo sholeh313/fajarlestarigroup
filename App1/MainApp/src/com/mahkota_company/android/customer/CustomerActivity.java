@@ -22,6 +22,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -1202,15 +1204,14 @@ public class CustomerActivity extends ActionBarActivity implements
 	public HttpResponse uploadCustomer(final String url, final String lats,
 									   final String longs, final String kode_customer,
 									   final String nama_lengkap, final String email,
-									   final String alamat, final String no_telp, final String id_wilayah//,
+									   final String alamat, final String no_telp, final String id_wilayah,
 									   //final String foto_1, final String foto_2, final String foto_3,
-									   //final String id_type_customer, final String date, final String id_staff,
-									 //  final String no_ktp, final String tanggal_lahir, final String nama_bank,
-									 //  final String no_rekening, final String atas_nama, final String npwp,
-									 //  final String nama_pasar, final String cluster, final String telp,
-									 //  final String fax, final String omset, final String cara_pembayaran,
-									 //  final String plafon_kredit, final String term_kredit, final String nama_istri,
-									 //  final String nama_anak1, final String nama_anak2, final String nama_anak3
+									   final String id_type_customer, final String no_ktp, final String tanggal_lahir,
+									   final String nama_bank, final String no_rekening, final String atas_nama, final String npwp,
+									   final String nama_pasar, final String cluster, final String telp,
+									   final String fax, final String omset, final String cara_pembayaran,
+									   final String plafon_kredit, final String term_kredit, final String nama_istri,
+									   final String nama_anak1, final String nama_anak2, final String nama_anak3
 
 									   ) {
 		if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -1219,8 +1220,9 @@ public class CustomerActivity extends ActionBarActivity implements
 			StrictMode.setThreadPolicy(policy);
 		}
 
+
 		HttpResponse response;
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("lats", lats));
 		params.add(new BasicNameValuePair("longs", longs));
 		params.add(new BasicNameValuePair("kode_customer", kode_customer));
@@ -1233,10 +1235,8 @@ public class CustomerActivity extends ActionBarActivity implements
 		//params.add(new BasicNameValuePair("foto_1", foto_1));
 		//params.add(new BasicNameValuePair("foto_2", foto_2));
 		//params.add(new BasicNameValuePair("foto_3", foto_3));
-		/*
+
 		params.add(new BasicNameValuePair("id_type_customer", id_type_customer));
-		params.add(new BasicNameValuePair("date", date));
-		params.add(new BasicNameValuePair("id_staff", id_staff));
 		params.add(new BasicNameValuePair("no_ktp", no_ktp));
 		params.add(new BasicNameValuePair("tanggal_lahir", tanggal_lahir));
 		params.add(new BasicNameValuePair("nama_bank", nama_bank));
@@ -1255,7 +1255,9 @@ public class CustomerActivity extends ActionBarActivity implements
 		params.add(new BasicNameValuePair("nama_anak1", nama_anak1));
 		params.add(new BasicNameValuePair("nama_anak2", nama_anak2));
 		params.add(new BasicNameValuePair("nama_anak3", nama_anak3));
-		*/
+
+
+
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
 		try {
@@ -1268,6 +1270,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		}
 
 		return response;
+
 	}
 
 	public class UploadData extends AsyncTask<String, Integer, String> {
@@ -1299,8 +1302,34 @@ public class CustomerActivity extends ActionBarActivity implements
 			HttpResponse response = null;
 			for (Customer customer : dataUpload) {
 				response = uploadCustomer(upload_url,
-						customer.getLats(), customer.getLongs(), customer.getKode_customer(), customer.getNama_lengkap(),
-						customer.getEmail(),customer.getAlamat(),customer.getNo_telp(), String.valueOf(customer.getId_wilayah()));
+
+                        customer.getLats(),
+                        customer.getLongs(),
+                        customer.getKode_customer(),
+                        customer.getNama_lengkap(),
+						customer.getEmail(),
+                        customer.getAlamat(),
+                        customer.getNo_telp(),
+                        String.valueOf(customer.getId_wilayah()),
+						String.valueOf(customer.getId_type_customer()),
+                        customer.getNo_ktp(),
+                        customer.getTanggal_lahir(),
+						customer.getNama_bank(),
+                        customer.getNo_rekening(),
+                        customer.getAtas_nama(),
+                        customer.getNpwp(),
+						customer.getNama_pasar(),
+                        customer.getCluster(),
+                        customer.getTelp(),
+                        customer.getFax(),
+                        customer.getOmset(),
+						customer.getCara_pembayaran(),
+                        customer.getPlafon_kredit(),
+                        customer.getTerm_kredit(),
+                        customer.getNama_istri(),
+						customer.getNama_anak1(),
+                        customer.getNama_anak2(),
+                        customer.getNama_anak3());
 						//customer.getId_type_customer(),customer.getDate(),customer.getId_staff(),customer.getNo_ktp(),
 						//customer.getTanggal_lahir(),customer.getNama_bank()
 			}
@@ -1493,7 +1522,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	}
 
 	public void gotoDetailCustomer() {
-		Intent i = new Intent(this, DetailCustomerActivity.class);
+		Intent i = new Intent(this, DetailEditCustomer.class);
 		startActivity(i);
 		finish();
 	}

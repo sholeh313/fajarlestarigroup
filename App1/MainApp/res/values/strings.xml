@@ -78,7 +78,7 @@
     <string name="app_customer_term">Term Kredit</string>
 
     <string name="app_customer_kota_customer">Kota</string>
-    <string name="app_customer_wilayah_customer">Wilayah</string>
+    <string name="app_customer_wilayah_customer">Wilayah/Rayon</string>
     <string name="app_customer_type_customer">Type Customer</string>
 
     <string name="app_customer_telp_customer">No HP</string>
