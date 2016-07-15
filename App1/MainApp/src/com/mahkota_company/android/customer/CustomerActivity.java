@@ -15,15 +15,18 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -101,6 +104,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	private TextView tvKodeCustomer;
 	private TextView tvNamaCustomer;
 	private TextView tvNamaAlamat;
+    private String response;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -1201,6 +1205,111 @@ public class CustomerActivity extends ActionBarActivity implements
 		}
 	}
 
+    private String uploadCustomerProspect(final String url,
+                                          final String kode_customer, final String email,
+                                          final String alamat, final String lats, final String longs,
+                                          final String nama_lengkap, final String no_telp,
+                                          final String id_wilayah, final String foto_1, final String foto_2,
+                                          final String foto_3, final String id_type_customer,
+                                          final String date, final String id_staff, final String no_ktp,
+                                          final String tanggal_lahir, final String nama_bank, final String no_rekening,
+                                          final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
+                                          final String telp, final String fax, final String omset, final String cara_pembayaran,
+                                          final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
+                                          final String nama_anak2, final String nama_anak3) {
+
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost(url);
+        String responseString = null;
+        try {
+            if (android.os.Build.VERSION.SDK_INT > 9) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                        .permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+            }
+
+            MultipartEntity entity = new MultipartEntity();
+
+            File sourceFoto1 = new File(CONFIG.getFolderPath() + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_1);
+            if (sourceFoto1.exists() && foto_1 != null)
+                entity.addPart("image", new FileBody(sourceFoto1));
+            File sourceFoto2 = new File(CONFIG.getFolderPath() + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_2);
+            if (sourceFoto2.exists() && foto_2 != null)
+                entity.addPart("image2", new FileBody(sourceFoto2));
+            File sourceFoto3 = new File(CONFIG.getFolderPath() + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_3);
+            if (sourceFoto3.exists() && foto_3 != null)
+                entity.addPart("image3", new FileBody(sourceFoto3));
+
+            entity.addPart("kode_customer", new StringBody(kode_customer));
+            entity.addPart("email", new StringBody(email));
+            entity.addPart("alamat", new StringBody(alamat));
+            entity.addPart("lats", new StringBody(lats));
+            entity.addPart("longs", new StringBody(longs));
+            entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
+            entity.addPart("no_telp", new StringBody(no_telp));
+            entity.addPart("id_wilayah", new StringBody(id_wilayah));
+            entity.addPart("foto_1", new StringBody(foto_1 != null ? foto_1
+                    : ""));
+            entity.addPart("foto_2", new StringBody(foto_2 != null ? foto_2
+                    : ""));
+            entity.addPart("foto_3", new StringBody(foto_3 != null ? foto_3
+                    : ""));
+            entity.addPart("id_type_customer", new StringBody(id_type_customer));
+            entity.addPart("date", new StringBody(date));
+            entity.addPart("id_staff", new StringBody(id_staff));
+            entity.addPart("no_ktp", new StringBody(no_ktp));
+            entity.addPart("tanggal_lahir", new StringBody(tanggal_lahir));
+            entity.addPart("nama_bank", new StringBody(nama_bank));
+            entity.addPart("no_rekening", new StringBody(no_rekening));
+            entity.addPart("atas_nama", new StringBody(atas_nama));
+            entity.addPart("npwp", new StringBody(npwp));
+            entity.addPart("nama_pasar", new StringBody(nama_pasar));
+            entity.addPart("cluster", new StringBody(cluster));
+            entity.addPart("telp", new StringBody(telp));
+            entity.addPart("fax", new StringBody(fax));
+            entity.addPart("omset", new StringBody(omset));
+            entity.addPart("cara_pembayaran", new StringBody(cara_pembayaran));
+            entity.addPart("plafon_kredit", new StringBody(plafon_kredit));
+            entity.addPart("term_kredit", new StringBody(term_kredit));
+
+            entity.addPart("nama_istri", new StringBody(nama_istri != null ? nama_istri
+                    : ""));
+            entity.addPart("nama_anak1", new StringBody(nama_anak1 != null ? nama_anak1
+                    : ""));
+            entity.addPart("nama_anak2", new StringBody(nama_anak2 != null ? nama_anak2
+                    : ""));
+            entity.addPart("nama_anak3", new StringBody(nama_anak3 != null ? nama_anak3
+                    : ""));
+
+            httppost.setEntity(entity);
+
+            // Making server call
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity r_entity = response.getEntity();
+
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode == 200) {
+                // Server response
+                responseString = EntityUtils.toString(r_entity);
+            } else {
+                responseString = "Error occurred! Http Status Code: "
+                        + statusCode;
+            }
+
+        } catch (ClientProtocolException e) {
+            responseString = e.toString();
+        } catch (IOException e) {
+            responseString = e.toString();
+        }
+
+        return responseString;
+
+
+    }
+    /*
 	public HttpResponse uploadCustomer(final String url, final String lats,
 									   final String longs, final String kode_customer,
 									   final String nama_lengkap, final String email,
@@ -1211,9 +1320,7 @@ public class CustomerActivity extends ActionBarActivity implements
 									   final String nama_pasar, final String cluster, final String telp,
 									   final String fax, final String omset, final String cara_pembayaran,
 									   final String plafon_kredit, final String term_kredit, final String nama_istri,
-									   final String nama_anak1, final String nama_anak2, final String nama_anak3
-
-									   ) {
+									   final String nama_anak1, final String nama_anak2, final String nama_anak3) {
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 					.permitAll().build();
@@ -1272,6 +1379,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		return response;
 
 	}
+	*/
 
 	public class UploadData extends AsyncTask<String, Integer, String> {
 		@Override
@@ -1294,15 +1402,48 @@ public class CustomerActivity extends ActionBarActivity implements
 
 		@Override
 		protected String doInBackground(String... params) {
-			String upload_url = CONFIG.CONFIG_APP_URL_PUBLIC
-					+ CONFIG.CONFIG_APP_URL_UPLOAD_CUSTOMER;
+            String upload_url = CONFIG.CONFIG_APP_URL_PUBLIC
+                    + CONFIG.CONFIG_APP_URL_UPLOAD_CUSTOMER_PROSPECT ;
 
-			List<Customer> dataUpload = databaseHandler
-					.getAllCustomerActiveAndUpdateByUser();
-			HttpResponse response = null;
-			for (Customer customer : dataUpload) {
-				response = uploadCustomer(upload_url,
+            List<Customer> dataUpload = databaseHandler
+                    .getAllCustomerActiveAndUpdateByUser();
+            //HttpResponse response = null;
+            for (Customer customer : dataUpload) {
+                response = uploadCustomerProspect(upload_url,
 
+                        customer.getKode_customer(),
+                        customer.getEmail(),
+                        customer.getAlamat(),
+                        customer.getLats(),
+                        customer.getLongs(),
+                        customer.getNama_lengkap(),
+                        customer.getNo_telp(),
+                        String.valueOf(customer.getId_wilayah()),
+                        customer.getFoto_1(),
+                        customer.getFoto_2(),
+                        customer.getFoto_3(),
+                        String.valueOf(customer.getId_type_customer()),
+                        customer.getDate(),
+                        String.valueOf(customer.getId_staff()),
+                        customer.getNo_ktp(),
+                        customer.getTanggal_lahir(),
+                        customer.getNama_bank(),
+                        customer.getNo_rekening(),
+                        customer.getAtas_nama(),
+                        customer.getNpwp(),
+                        customer.getNama_pasar(),
+                        customer.getCluster(),
+                        customer.getTelp(),
+                        customer.getFax(),
+                        customer.getOmset(),
+                        customer.getCara_pembayaran(),
+                        customer.getPlafon_kredit(),
+                        customer.getTerm_kredit(),
+                        customer.getNama_istri(),
+                        customer.getNama_anak1(),
+                        customer.getNama_anak2(),
+                        customer.getNama_anak3());
+                        /*
                         customer.getLats(),
                         customer.getLongs(),
                         customer.getKode_customer(),
@@ -1332,35 +1473,8 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getNama_anak3());
 						//customer.getId_type_customer(),customer.getDate(),customer.getId_staff(),customer.getNo_ktp(),
 						//customer.getTanggal_lahir(),customer.getNama_bank()
-			}
-			int retCode = (response != null) ? response.getStatusLine()
-					.getStatusCode() : -1;
-			if (retCode != 200) {
-				message = act.getApplicationContext().getResources()
-						.getString(R.string.MSG_DLG_LABEL_URL_NOT_FOUND);
-				handler.post(new Runnable() {
-					public void run() {
-						showCustomDialog(message);
-					}
-				});
-			} else {
-				try {
-					response_data = EntityUtils.toString(response.getEntity());
-				} catch (ParseException e) {
-					message = e.toString();
-					handler.post(new Runnable() {
-						public void run() {
-							showCustomDialog(message);
-						}
-					});
-				} catch (IOException e) {
-					message = e.toString();
-					handler.post(new Runnable() {
-						public void run() {
-							showCustomDialog(message);
-						}
-					});
-				}
+						*/
+
 			}
 			return null;
 		}

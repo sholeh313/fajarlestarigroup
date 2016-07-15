@@ -692,7 +692,6 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 
 		return responseString;
 
-
 	}
 
 	public class UploadData extends AsyncTask<String, Integer, String> {
@@ -726,9 +725,9 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						customer.getKode_customer(),
 						customer.getEmail(),
 						customer.getAlamat(),
-						customer.getLats(),
+                        customer.getLats(),
 						customer.getLongs(),
-						customer.getNama_lengkap(),
+                        customer.getNama_lengkap(),
 						customer.getNo_telp(),
 						String.valueOf(customer.getId_wilayah()),
 						customer.getFoto_1(),
