@@ -451,7 +451,6 @@ public class DetailEditCustomer extends FragmentActivity {
                                         .getString(
                                                 R.string.MSG_DLG_LABEL_FAILED_GPS_DIALOG);
                                 showCustomDialog(msg);
-
                             } else {
                                 showConfirmationUpdateCustomerProspect();
                             }
@@ -722,6 +721,61 @@ public class DetailEditCustomer extends FragmentActivity {
     }
 
     protected void saveOnlyProfile() {
+        if (newImageName1 != null) {
+            Customer newCustomer = new Customer();
+            newCustomer.setId_customer(customer.getId_customer());
+            newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+            newCustomer.setBlokir(customer.getBlokir());
+            newCustomer.setDate(customer.getDate());
+            newCustomer.setEmail(etEmailCustomer.getText().toString());
+            newCustomer.setFoto_1(customer.getFoto_1());
+            newCustomer.setFoto_2(customer.getFoto_2());
+            newCustomer.setFoto_3(customer.getFoto_3());
+            newCustomer.setId_type_customer(idTypeCustomer);
+            newCustomer.setId_wilayah(customer.getId_wilayah());
+            newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+            newCustomer.setLats(String.valueOf(latitude));
+            newCustomer.setLongs(String.valueOf(longitude));
+            newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+            newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+            newCustomer.setStatus_update(customer.getStatus_update());
+            newCustomer.setId_staff(customer.getId_staff());
+            newCustomer.setNo_ktp(etno_ktp.getText().toString());
+            newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+            newCustomer.setNama_bank(etNama_bank.getText().toString());
+            newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+            newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+            newCustomer.setNpwp(etNpwp.getText().toString());
+            newCustomer.setStatus_update("2");
+            newCustomer.setFoto_1(newImageName1);
+            newCustomer.setFoto_2(newImageName2);
+            newCustomer.setFoto_3(newImageName3);
+
+            newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+            newCustomer.setCluster(etCluster.getText().toString());
+            newCustomer.setTelp(etTelp.getText().toString());
+            newCustomer.setFax(etFax.getText().toString());
+            newCustomer.setOmset(etOmset.getText().toString());
+            newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+            newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+            newCustomer.setNama_istri(etNama_istri.getText().toString());
+            newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+            newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+            newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+            newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+
+            databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+            String msg = getApplicationContext().getResources().getString(
+                    R.string.app_customer_prospect_update_success);
+            showCustomDialogSaveSuccess(msg);
+        }else {
+            String msg = getApplicationContext()
+                    .getResources()
+                    .getString(
+                            R.string.app_customer_prospect_save_failed_no_image);
+            showCustomDialog(msg);
+        }
+        /*
         Customer newCustomer = new Customer();
         newCustomer.setId_customer(customer.getId_customer());
         newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -763,25 +817,26 @@ public class DetailEditCustomer extends FragmentActivity {
         String msg = getApplicationContext().getResources().getString(
                 R.string.app_customer_prospect_update_success);
         showCustomDialogSaveSuccess(msg);
+        */
     }
 
     private void previewImageDialog() {
         if (customer != null) {
             List<File> mListImages = new ArrayList<File>();
             File dir = new File(CONFIG.getFolderPath() + "/"
-                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER + "/"
                     + customer.getFoto_1());
             if (dir.isFile()) {
                 mListImages.add(dir);
             }
             File dir2 = new File(CONFIG.getFolderPath() + "/"
-                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER + "/"
                     + customer.getFoto_2());
             if (dir2.isFile()) {
                 mListImages.add(dir2);
             }
             File dir3 = new File(CONFIG.getFolderPath() + "/"
-                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/"
+                    + CONFIG.CONFIG_APP_FOLDER_CUSTOMER + "/"
                     + customer.getFoto_3());
             if (dir3.isFile()) {
                 mListImages.add(dir3);

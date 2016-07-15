@@ -1205,7 +1205,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		}
 	}
 
-    private String uploadCustomerProspect(final String url,
+    private String uploadCustomer(final String url,
                                           final String kode_customer, final String email,
                                           final String alamat, final String lats, final String longs,
                                           final String nama_lengkap, final String no_telp,
@@ -1227,6 +1227,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         .permitAll().build();
                 StrictMode.setThreadPolicy(policy);
             }
+
 
             MultipartEntity entity = new MultipartEntity();
 
@@ -1309,77 +1310,6 @@ public class CustomerActivity extends ActionBarActivity implements
 
 
     }
-    /*
-	public HttpResponse uploadCustomer(final String url, final String lats,
-									   final String longs, final String kode_customer,
-									   final String nama_lengkap, final String email,
-									   final String alamat, final String no_telp, final String id_wilayah,
-									   //final String foto_1, final String foto_2, final String foto_3,
-									   final String id_type_customer, final String no_ktp, final String tanggal_lahir,
-									   final String nama_bank, final String no_rekening, final String atas_nama, final String npwp,
-									   final String nama_pasar, final String cluster, final String telp,
-									   final String fax, final String omset, final String cara_pembayaran,
-									   final String plafon_kredit, final String term_kredit, final String nama_istri,
-									   final String nama_anak1, final String nama_anak2, final String nama_anak3) {
-		if (android.os.Build.VERSION.SDK_INT > 9) {
-			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-					.permitAll().build();
-			StrictMode.setThreadPolicy(policy);
-		}
-
-
-		HttpResponse response;
-        List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("lats", lats));
-		params.add(new BasicNameValuePair("longs", longs));
-		params.add(new BasicNameValuePair("kode_customer", kode_customer));
-		params.add(new BasicNameValuePair("nama_lengkap", nama_lengkap));
-
-		params.add(new BasicNameValuePair("email",email ));
-		params.add(new BasicNameValuePair("alamat", alamat));
-		params.add(new BasicNameValuePair("no_telp", no_telp));
-		params.add(new BasicNameValuePair("id_wilayah", id_wilayah));
-		//params.add(new BasicNameValuePair("foto_1", foto_1));
-		//params.add(new BasicNameValuePair("foto_2", foto_2));
-		//params.add(new BasicNameValuePair("foto_3", foto_3));
-
-		params.add(new BasicNameValuePair("id_type_customer", id_type_customer));
-		params.add(new BasicNameValuePair("no_ktp", no_ktp));
-		params.add(new BasicNameValuePair("tanggal_lahir", tanggal_lahir));
-		params.add(new BasicNameValuePair("nama_bank", nama_bank));
-		params.add(new BasicNameValuePair("no_rekening", no_rekening));
-		params.add(new BasicNameValuePair("atas_nama", atas_nama));
-		params.add(new BasicNameValuePair("npwp", npwp));
-		params.add(new BasicNameValuePair("nama_pasar", nama_pasar));
-		params.add(new BasicNameValuePair("cluster", cluster));
-		params.add(new BasicNameValuePair("telp", telp));
-		params.add(new BasicNameValuePair("fax", fax));
-		params.add(new BasicNameValuePair("omset", omset));
-		params.add(new BasicNameValuePair("cara_pembayaran",  cara_pembayaran));
-		params.add(new BasicNameValuePair("plafon_kredit", plafon_kredit));
-		params.add(new BasicNameValuePair("term_kredit", term_kredit));
-		params.add(new BasicNameValuePair("nama_istri", nama_istri));
-		params.add(new BasicNameValuePair("nama_anak1", nama_anak1));
-		params.add(new BasicNameValuePair("nama_anak2", nama_anak2));
-		params.add(new BasicNameValuePair("nama_anak3", nama_anak3));
-
-
-
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost(url);
-		try {
-			httppost.setEntity(new UrlEncodedFormEntity(params));
-			response = httpclient.execute(httppost);
-		} catch (UnsupportedEncodingException e1) {
-			response = null;
-		} catch (IOException e) {
-			response = null;
-		}
-
-		return response;
-
-	}
-	*/
 
 	public class UploadData extends AsyncTask<String, Integer, String> {
 		@Override
@@ -1407,9 +1337,8 @@ public class CustomerActivity extends ActionBarActivity implements
 
             List<Customer> dataUpload = databaseHandler
                     .getAllCustomerActiveAndUpdateByUser();
-            //HttpResponse response = null;
             for (Customer customer : dataUpload) {
-                response = uploadCustomerProspect(upload_url,
+                response = uploadCustomer(upload_url,
 
                         customer.getKode_customer(),
                         customer.getEmail(),
@@ -1424,7 +1353,6 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getFoto_3(),
                         String.valueOf(customer.getId_type_customer()),
                         customer.getDate(),
-                        //String.valueOf(customer.getId_staff()),
                         customer.getNo_ktp(),
                         customer.getTanggal_lahir(),
                         customer.getNama_bank(),
@@ -1443,37 +1371,6 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getNama_anak1(),
                         customer.getNama_anak2(),
                         customer.getNama_anak3());
-                        /*
-                        customer.getLats(),
-                        customer.getLongs(),
-                        customer.getKode_customer(),
-                        customer.getNama_lengkap(),
-						customer.getEmail(),
-                        customer.getAlamat(),
-                        customer.getNo_telp(),
-                        String.valueOf(customer.getId_wilayah()),
-						String.valueOf(customer.getId_type_customer()),
-                        customer.getNo_ktp(),
-                        customer.getTanggal_lahir(),
-						customer.getNama_bank(),
-                        customer.getNo_rekening(),
-                        customer.getAtas_nama(),
-                        customer.getNpwp(),
-						customer.getNama_pasar(),
-                        customer.getCluster(),
-                        customer.getTelp(),
-                        customer.getFax(),
-                        customer.getOmset(),
-						customer.getCara_pembayaran(),
-                        customer.getPlafon_kredit(),
-                        customer.getTerm_kredit(),
-                        customer.getNama_istri(),
-						customer.getNama_anak1(),
-                        customer.getNama_anak2(),
-                        customer.getNama_anak3());
-						//customer.getId_type_customer(),customer.getDate(),customer.getId_staff(),customer.getNo_ktp(),
-						//customer.getTanggal_lahir(),customer.getNama_bank()
-						*/
 
 			}
 			return null;
@@ -1481,11 +1378,20 @@ public class CustomerActivity extends ActionBarActivity implements
 
 		@Override
 		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
+
+
+            super.onPostExecute(result);
 			if (response_data != null) {
 				initUploadCustomer();
 			} else {
-				final String msg = act
+                final String msg = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(
+                                R.string.app_customer_prospect_processing_upload_success);
+                CustomDialogUploadSuccess(msg);
+                /*
+                final String msg = act
 						.getApplicationContext()
 						.getResources()
 						.getString(
@@ -1495,49 +1401,50 @@ public class CustomerActivity extends ActionBarActivity implements
 						showCustomDialog(msg);
 					}
 				});
+				*/
 			}
 		}
 
 	}
 
 	public void initUploadCustomer() {
-		JSONObject oResponse;
-		try {
-			oResponse = new JSONObject(response_data);
-			String status = oResponse.isNull("error") ? "True" : oResponse
-					.getString("error");
-			if (response_data.isEmpty()) {
-				final String msg = act
-						.getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_customer_processing_upload_failed);
-				showCustomDialog(msg);
-			} else {
-				Log.d(LOG_TAG, "status=" + status);
-				if (status.equalsIgnoreCase("True")) {
-					final String msg = act
-							.getApplicationContext()
-							.getResources()
-							.getString(
-									R.string.app_customer_processing_upload_failed);
-					showCustomDialog(msg);
-				} else {
-					final String msg = act
-							.getApplicationContext()
-							.getResources()
-							.getString(
-									R.string.app_customer_processing_upload_success);
-					CustomDialogUploadSuccess(msg);
-				}
+        JSONObject oResponse;
+        try {
+            oResponse = new JSONObject(response_data);
+            String status = oResponse.isNull("error") ? "True" : oResponse
+                    .getString("error");
+            if (response_data.isEmpty()) {
+                final String msg = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(
+                                R.string.app_customer_prospect_processing_upload_failed);
+                showCustomDialog(msg);
+            } else {
+                Log.d(LOG_TAG, "status=" + status);
+                if (status.equalsIgnoreCase("True")) {
+                    final String msg = act
+                            .getApplicationContext()
+                            .getResources()
+                            .getString(
+                                    R.string.app_customer_prospect_processing_upload_failed);
+                    showCustomDialog(msg);
+                } else {
+                    final String msg = act
+                            .getApplicationContext()
+                            .getResources()
+                            .getString(
+                                    R.string.app_customer_prospect_processing_upload_success);
+                    CustomDialogUploadSuccess(msg);
+                }
 
-			}
+            }
 
-		} catch (JSONException e) {
-			final String message = e.toString();
-			showCustomDialog(message);
+        } catch (JSONException e) {
+            final String message = e.toString();
+            showCustomDialog(message);
 
-		}
+        }
 	}
 
 	public void CustomDialogUploadSuccess(String msg) {
