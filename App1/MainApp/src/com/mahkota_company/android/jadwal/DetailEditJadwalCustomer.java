@@ -1,21 +1,4 @@
-package com.mahkota_company.android.customer;
-
-import com.mahkota_company.android.database.Customer;
-import com.mahkota_company.android.database.DatabaseHandler;
-import com.mahkota_company.android.database.TypeCustomer;
-import com.mahkota_company.android.database.Wilayah;
-import com.mahkota_company.android.prospect.CustomerProspectActivity;
-import com.mahkota_company.android.prospect.CustomerProspectLocatorActivity;
-import com.mahkota_company.android.utils.CONFIG;
-import com.mahkota_company.android.utils.SpinnerAdapter;
-import com.mahkota_company.android.R;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+package com.mahkota_company.android.jadwal;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -39,9 +22,9 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -52,8 +35,26 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mahkota_company.android.R;
+import com.mahkota_company.android.customer.CustomerActivity;
+import com.mahkota_company.android.customer.CustomerLocatorActivity;
+import com.mahkota_company.android.database.Customer;
+import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.database.TypeCustomer;
+import com.mahkota_company.android.database.Wilayah;
+import com.mahkota_company.android.utils.CONFIG;
+import com.mahkota_company.android.utils.SpinnerAdapter;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 @SuppressWarnings("deprecation")
-public class DetailEditCustomer extends FragmentActivity {
+public class DetailEditJadwalCustomer extends FragmentActivity {
     private Context act;
     private ImageView menuBackButton;
     public static final int MEDIA_TYPE_IMAGE = 1;
@@ -66,9 +67,9 @@ public class DetailEditCustomer extends FragmentActivity {
     private ProgressDialog progressDialog;
     private Typeface typefaceSmall;
     private TextView tvKodeCustomer;
-    private EditText etNamaCustomer;
-    private EditText etEmailCustomer;
-    private EditText etAlamatCustomer;
+    private TextView etNamaCustomer;
+    private TextView etEmailCustomer;
+    private TextView etAlamatCustomer;
     private TextView tvWilayahCustomer;
     private Spinner spinnerTypeCustomer;
     private ArrayList<TypeCustomer> typeCustomerList;
@@ -78,27 +79,25 @@ public class DetailEditCustomer extends FragmentActivity {
     private TextView tvImage1Customer;
     private TextView tvImage2Customer;
     private TextView tvImage3Customer;
-    private EditText etTelpCustomer;
-    private EditText etno_ktp;
-    private EditText etTanggal_lahir;
-    private EditText etNama_bank;
-    private EditText etNo_rekenig;
-    private EditText etAtas_nama;
-    private EditText etNpwp;
-    private EditText etNama_pasar;
-    private EditText etCluster;
-    private EditText etTelp;
-    private EditText etFax;
-    private EditText etOmset;
-    private EditText etCara_pembayaran;
-    private EditText etPlafon_kredit;
-    private EditText etTerm_kredit;
-
-    private EditText etNama_istri;
-    private EditText etNama_anak1;
-    private EditText etNama_anak2;
-    private EditText etNama_anak3;
-
+    private TextView etTelpCustomer;
+    private TextView etno_ktp;
+    private TextView etTanggal_lahir;
+    private TextView etNama_bank;
+    private TextView etNo_rekenig;
+    private TextView etAtas_nama;
+    private TextView etNpwp;
+    private TextView etNama_pasar;
+    private TextView etCluster;
+    private TextView etTelp;
+    private TextView etFax;
+    private TextView etOmset;
+    private TextView etCara_pembayaran;
+    private TextView etPlafon_kredit;
+    private TextView etTerm_kredit;
+    private TextView etNama_istri;
+    private TextView etNama_anak1;
+    private TextView etNama_anak2;
+    private TextView etNama_anak3;
     private Customer customer;
     private TextView tvHeaderKodeCustomer;
     private TextView tvHeaderNamaCustomer;
@@ -118,7 +117,7 @@ public class DetailEditCustomer extends FragmentActivity {
     private Button mButtonCustomerDetailPreview;
     private Button mButtonCustomerDetailSave;
     private LocationManager locationManager;
-    private static final String LOG_TAG = DetailEditCustomer.class
+    private static final String LOG_TAG = DetailEditJadwalCustomer.class
             .getSimpleName();
     private Uri fileUri1, fileUri2, fileUri3;
     private double latitude; // latitude
@@ -134,7 +133,7 @@ public class DetailEditCustomer extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_customer_edit);
+        setContentView(R.layout.activity_detail_jadwal_customer_edit);
         act = this;
         databaseHandler = new DatabaseHandler(this);
         menuBackButton = (ImageView) findViewById(R.id.menuBackButton);
@@ -152,9 +151,10 @@ public class DetailEditCustomer extends FragmentActivity {
                 .getString(R.string.app_promosi_processing));
         progressDialog.setCancelable(true);
         progressDialog.setCanceledOnTouchOutside(false);
+
         tvKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_value_kode_customer);
-        etNamaCustomer = (EditText) findViewById(R.id.activity_customer_prospect_nama_customer_value);
-        etEmailCustomer = (EditText) findViewById(R.id.activity_customer_prospect_email_customer_value);
+        etNamaCustomer = (TextView) findViewById(R.id.activity_customer_prospect_nama_customer_value);
+        etEmailCustomer = (TextView) findViewById(R.id.activity_customer_prospect_email_customer_value);
         etAlamatCustomer = (EditText) findViewById(R.id.activity_customer_prospect_alamat_customer_value);
         tvWilayahCustomer = (TextView) findViewById(R.id.activity_customer_detail_value_wilayah_customer);
         spinnerTypeCustomer = (Spinner) findViewById(R.id.activity_customer_prospect_type_customer_value);
@@ -206,6 +206,19 @@ public class DetailEditCustomer extends FragmentActivity {
 
         typeCustomerList = new ArrayList<TypeCustomer>();
         typeCustomerStringList = new ArrayList<String>();
+
+        /*
+        tvHeaderImage1Customer.setVisibility(View.INVISIBLE);
+        tvHeaderImage2Customer.setVisibility(View.INVISIBLE);
+        tvHeaderImage3Customer.setVisibility(View.INVISIBLE);
+        tvImage1Customer.setVisibility(View.INVISIBLE);
+        tvImage2Customer.setVisibility(View.INVISIBLE);
+        tvImage3Customer.setVisibility(View.INVISIBLE);
+        mButtonCustomerDetailImage1.setVisibility(View.INVISIBLE);
+        mButtonCustomerDetailImage2.setVisibility(View.INVISIBLE);
+        mButtonCustomerDetailImage3.setVisibility(View.INVISIBLE);
+        */
+
         List<TypeCustomer> dataTypeCustomer = databaseHandler
                 .getAllTypeCustomer();
         for (TypeCustomer typeCustomer : dataTypeCustomer) {
@@ -591,7 +604,7 @@ public class DetailEditCustomer extends FragmentActivity {
         if (main_app_table_id != null) {
             saveAppDataCustomerIdCustomer(main_app_table_id);
             Intent intentActivity = new Intent(
-                    DetailEditCustomer.this,
+                    DetailEditJadwalCustomer.this,
                     CustomerLocatorActivity.class);
             startActivity(intentActivity);
             finish();
@@ -806,7 +819,7 @@ public class DetailEditCustomer extends FragmentActivity {
             }
             final Dialog imagesDialog = new Dialog(act);
             imagesDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            imagesDialog.setContentView(DetailEditCustomer.this
+            imagesDialog.setContentView(DetailEditJadwalCustomer.this
                     .getLayoutInflater().inflate(R.layout.activity_popup_image,
                             null));
 

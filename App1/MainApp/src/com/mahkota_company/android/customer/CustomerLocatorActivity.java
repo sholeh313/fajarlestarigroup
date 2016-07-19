@@ -191,7 +191,7 @@ public class CustomerLocatorActivity extends Activity implements
 		if (main_app_table_id != null) {
 			saveAppDataCustomerIdCustomer(main_app_table_id);
 			Intent i = new Intent(CustomerLocatorActivity.this,
-					DetailCustomerActivity.class);
+					DetailEditCustomer.class);
 			startActivity(i);
 			finish();
 		} else {

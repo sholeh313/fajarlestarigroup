@@ -175,6 +175,8 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 					}
 				});
 
+        mButtonCustomerDetailMaps.setVisibility(View.INVISIBLE);
+
 		tvKodeCustomer.setTypeface(typefaceSmall);
 		tvNamaCustomer.setTypeface(typefaceSmall);
 		tvEmailCustomer.setTypeface(typefaceSmall);
@@ -420,7 +422,7 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 							if (getMeter > 50) {
 								showCustomDialog(message);
 							} else {
-								final String date = "yyyy-MM-dd";
+                                final String date = "yyyy-MM-dd";
 								Calendar calendar = Calendar.getInstance();
 								SimpleDateFormat dateFormat = new SimpleDateFormat(
 										date);
@@ -434,7 +436,8 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 										+ ":" + zero(sec);
 								String datetime = dateOutput + " " + time;
 								Jadwal newJadwal = new Jadwal();
-								newJadwal.setId_jadwal(jadwal.getId_jadwal());
+                                newJadwal.setId_jadwal(jadwal.getId_jadwal());
+								newJadwal.setKode_jadwal(jadwal.getKode_jadwal());
 								newJadwal.setAlamat(jadwal.getAlamat());
 								newJadwal.setCheckin(datetime);
 								newJadwal.setCheckout(jadwal.getCheckout());
@@ -454,6 +457,7 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 										.getString(
 												R.string.app_jadwal_success_check_in);
 								showCustomDialogSaveSuccess(msg);
+
 							}
 						} else {
 							String msg = getApplicationContext()
@@ -494,8 +498,8 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 							Jadwal newJadwal = new Jadwal();
 							newJadwal.setId_jadwal(jadwal.getId_jadwal());
 							newJadwal.setAlamat(jadwal.getAlamat());
-							newJadwal.setCheckin(datetime);
-							newJadwal.setCheckout(jadwal.getCheckout());
+							newJadwal.setCheckin(jadwal.getCheckin());
+							newJadwal.setCheckout(datetime);
 							newJadwal.setDate(jadwal.getDate());
 							newJadwal.setId_wilayah(jadwal.getId_wilayah());
 							newJadwal.setKode_customer(jadwal

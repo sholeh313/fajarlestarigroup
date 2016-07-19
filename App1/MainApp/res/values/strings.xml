@@ -125,7 +125,10 @@
     <string name="app_customer_prospect_save_success">Customer Prospect berhasil di tambah !</string>
     <string name="app_customer_prospect_update_success">Customer Prospect berhasil di ubah !</string>
     <string name="app_customer_prospect_save_failed_no_image">Mohon mengambil foto customer prospect !</string>
+    <string name="app_customer_prospect_save_failed_no_image_old">Mohon mengambil foto lokasi customer</string>
+    <string name="app_customer_prospect_save_failed_no_image_new">Perbaharui gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_empty_box">Mohon mengisi seluruh data customer prospect !</string>
+    <string name="app_customer_prospect_save_failed_empty">Mohon mengisi data customer dengan benar</string>
     <!-- Photo Purchase -->
     <string name="app_photo_purchase_hint_photo_purchase">Tambah Photo Purchase</string>
     <string name="app_photo_purchase_hint_kode_customer">Kode Customer</string>
@@ -183,7 +186,7 @@
     <string name="app_sales_order_kode_promo">Kode Promo</string>
     <string name="app_sales_order_tidak_ada">Tidak Ada</string>
     <string name="app_sales_order_deskripsi">Deskripsi</string>
-    <string name="app_sales_order_failed_to_add">Maaf, seluruh data customer dari jadwal kunjungan sudah ada dalam list sales order anda !</string>
+    <string name="app_sales_order_failed_to_add">Anda belum melakukan check-in customer, silahkan check-in pada menu jadwal terlebih dahulu !</string>
     <string name="app_sales_order_no_data_jadwal">Mohon download data jadwal terlebih dahulu !</string>
     <string name="app_sales_order_no_data_product">Mohon download data product terlebih dahulu !</string>
     <string name="app_sales_order_search_product">Search Product</string>
@@ -260,6 +263,7 @@
     <string name="app_jadwal_success_check_out">Check out berhasil !</string>
     <string name="app_jadwal_failed_check_out">Anda sudah melakukan Check out !</string>
     <string name="app_jadwal_failed_check_out_need_check_in">Anda harus melakukan check in terlebih dahulu !</string>
+    <string name="failed_oder_check_in_first">Anda belum melakukan check in pada tempat customer terkait !</string>
     <string name="app_jadwal_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload jadwal</string>
     <string name="app_jadwal_processing_upload_failed_not_yet_check_out">Mohon periksa status check out anda pada beberapa customer untuk upload jadwal !</string>
     <string name="app_jadwal_processing_upload_failed">Proses upload jadwal gagal !</string>
@@ -275,14 +279,14 @@
     <string name="MSG_DLG_LABEL_CLOSE">Close</string>
     <string name="MSG_DLG_LABEL_DELETE_ITEM_SUCCESS">Item berhasil di hapus !</string>
     <string name="MSG_DLG_LABEL_NO">Tidak</string>
-    <string name="MSG_DLG_LABEL_NO_ONLY_DATA">Tidak, Hanya Ubah Data</string>
+    <string name="MSG_DLG_LABEL_NO_ONLY_DATA">Tidak, Hanya Ubah Profil</string>
     <string name="MSG_DLG_LABEL_YES">Ya</string>
     <string name="MSG_DLG_LABEL_EDIT">Edit</string>
     <string name="MSG_DLG_LABEL_DELETE">Hapus</string>
     <string name="MSG_DLG_LABEL_HAPUS">Ubah/Hapus</string>
     <string name="MSG_DLG_LABEL_NHAPUS">Batal</string>
-    <string name="MSG_DLG_LABEL_UPDATE_GPS_DIALOG">Apakah anda yakin ingin mengubah lokasi GPS ?</string>
-    <string name="MSG_DLG_LABEL_UPDATE_GPS_PROSPECT_DIALOG">Apakah anda ingin mengupdate lokasi GPS juga ?</string>
+    <string name="MSG_DLG_LABEL_UPDATE_GPS_DIALOG">Anda ingin mengupdate lokasi, profil dan gambar customer ?</string>
+    <string name="MSG_DLG_LABEL_UPDATE_GPS_PROSPECT_DIALOG">Anda ingin mengupdate lokasi customer prospect?</string>
     <string name="MSG_DLG_LABEL_FAILED_GPS_DIALOG">Koordinat GPS salah ! Mohon periksa koneksi GPS !</string>
     <string name="MSG_DLG_LABEL_EXIT_DIALOG">Apakah anda yakin keluar dari aplikasi ?</string>
     <string name="MSG_DLG_LABEL_TITLE_DIALOG">Keluar Aplikasi</string>

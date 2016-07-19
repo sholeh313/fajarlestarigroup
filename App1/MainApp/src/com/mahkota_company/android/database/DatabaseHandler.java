@@ -1473,7 +1473,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// Select All Query
 			String selectQuery = "SELECT  * FROM " + TABLE_JADWAL
 					+ " WHERE username ='" + username + "' AND "
-					+ KEY_JADWAL_CHECK_IN + "=''" + " GROUP BY "
+					+ "status_update =" + "2" + " GROUP BY "
 					+ KEY_JADWAL_KODE_CUSTOMER;
 
 			SQLiteDatabase db = this.getWritableDatabase();

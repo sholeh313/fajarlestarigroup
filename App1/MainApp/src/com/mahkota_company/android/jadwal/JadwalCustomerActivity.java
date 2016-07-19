@@ -2,6 +2,7 @@ package com.mahkota_company.android.jadwal;
 
 import java.util.ArrayList;
 
+import com.mahkota_company.android.customer.DetailEditCustomer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Jadwal;
 import com.mahkota_company.android.jadwal.JadwalActivity;

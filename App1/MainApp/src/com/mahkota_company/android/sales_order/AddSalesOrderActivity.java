@@ -78,6 +78,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 	public ArrayList<DetailSalesOrder> detailSalesOrderList = new ArrayList<DetailSalesOrder>();
 	private ListView listview;
 	private ListViewAdapter cAdapter;
+	private Jadwal jadwal;
+	private String status_update;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -267,14 +269,14 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				break;
 			case R.id.activity_sales_order_btn_save:
 				if (etDeskripsiSalesOrder.getText().toString().length() > 0) {
-					String timeStamp = new SimpleDateFormat("HHmmss",
-							Locale.getDefault()).format(new Date());
+                    String timeStamp = new SimpleDateFormat("HHmmss",
+					Locale.getDefault()).format(new Date());
 
-					final String date = "yyyyMMdd";
+                    final String date = "yyyyMMdd";
 					Calendar calendar = Calendar.getInstance();
 					SimpleDateFormat dateFormat = new SimpleDateFormat(date);
 					final String dateOutput = dateFormat.format(calendar
-							.getTime());
+                            .getTime());
 
 					int countData = databaseHandler.getCountSalesOrder();
 					countData = countData + 1;
@@ -282,9 +284,9 @@ public class AddSalesOrderActivity extends FragmentActivity {
 
 					SharedPreferences spPreferences = getSharedPrefereces();
 					String kodeBranch = spPreferences.getString(
-							CONFIG.SHARED_PREFERENCES_STAFF_KODE_BRANCH, null);
+                            CONFIG.SHARED_PREFERENCES_STAFF_KODE_BRANCH, null);
 					String username = spPreferences.getString(
-							CONFIG.SHARED_PREFERENCES_STAFF_USERNAME, null);
+                            CONFIG.SHARED_PREFERENCES_STAFF_USERNAME, null);
 					Branch branch = databaseHandler.getBranch(Integer
 							.parseInt(kodeBranch));
 					String nomerOrder = CONFIG.CONFIG_APP_KODE_SO_HEADER
@@ -307,12 +309,12 @@ public class AddSalesOrderActivity extends FragmentActivity {
 					int tempIndex = 0;
 					for (SalesOrder salesOrder : tempSales_order_list) {
 						tempIndex = salesOrder.getId_sales_order();
-					}
+						}
 					int index = 1;
 					for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
-						SalesOrder salesOrder = new SalesOrder();
-						salesOrder.setId_sales_order(tempIndex + index);
-						salesOrder.setAlamat(etAlamatCustomer.getText()
+                        SalesOrder salesOrder = new SalesOrder();
+					    salesOrder.setId_sales_order(tempIndex + index);
+					    salesOrder.setAlamat(etAlamatCustomer.getText()
 								.toString());
 						salesOrder.setDate_order(checkDate);
 						salesOrder.setDeskripsi(etDeskripsiSalesOrder.getText()
@@ -336,10 +338,10 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						salesOrder.setUsername(username);
 						databaseHandler.add_SalesOrder(salesOrder);
 						index += 1;
-					}
-					String msg = getApplicationContext().getResources()
-							.getString(R.string.app_sales_order_save_success);
-					showCustomDialogSaveSuccess(msg);
+						}
+						String msg = getApplicationContext().getResources()
+								.getString(R.string.app_sales_order_save_success);
+						showCustomDialogSaveSuccess(msg);
 
 				} else {
 
