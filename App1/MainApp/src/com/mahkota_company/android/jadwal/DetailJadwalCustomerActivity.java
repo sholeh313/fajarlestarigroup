@@ -577,65 +577,6 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 
 	}
 
-	protected void showConfirmationUpdateGps() {
-		String msg = getApplicationContext().getResources().getString(
-				R.string.MSG_DLG_LABEL_UPDATE_GPS_DIALOG);
-		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-				act);
-		alertDialogBuilder
-				.setMessage(msg)
-				.setCancelable(false)
-				.setNegativeButton(
-						getApplicationContext().getResources().getString(
-								R.string.MSG_DLG_LABEL_YES),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int id) {
-								updateGpsLocation();
-							}
-						})
-				.setPositiveButton(
-						getApplicationContext().getResources().getString(
-								R.string.MSG_DLG_LABEL_NO),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int id) {
-								AlertDialog alertDialog = alertDialogBuilder
-										.create();
-								alertDialog.dismiss();
-
-							}
-						});
-		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
-
-	}
-
-	protected void updateGpsLocation() {
-		Customer newCustomer = new Customer();
-		newCustomer.setId_customer(customer.getId_customer());
-		newCustomer.setAlamat(customer.getAlamat());
-		newCustomer.setBlokir(customer.getBlokir());
-		newCustomer.setDate(customer.getDate());
-		newCustomer.setEmail(customer.getEmail());
-		newCustomer.setFoto_1(customer.getFoto_1());
-		newCustomer.setFoto_2(customer.getFoto_2());
-		newCustomer.setFoto_3(customer.getFoto_3());
-		newCustomer.setId_type_customer(customer.getId_type_customer());
-		newCustomer.setId_wilayah(customer.getId_wilayah());
-		newCustomer.setKode_customer(customer.getKode_customer());
-		newCustomer.setLats(String.valueOf(latitude));
-		newCustomer.setLongs(String.valueOf(longitude));
-		newCustomer.setNama_lengkap(customer.getNama_lengkap());
-		newCustomer.setNo_telp(customer.getNo_telp());
-		newCustomer.setStatus_update("2");
-		newCustomer.setId_staff(customer.getId_staff());
-		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
-		String msg = getApplicationContext().getResources().getString(
-				R.string.app_customer_save_success);
-		showCustomDialogSaveSuccess(msg);
-	}
-
 	public class ImageAdapter extends BaseAdapter {
 		private Context context;
 		private int itemBackground;

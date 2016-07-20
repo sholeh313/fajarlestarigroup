@@ -8,6 +8,7 @@ import com.mahkota_company.android.database.Jadwal;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.utils.CONFIG;
 import com.mahkota_company.android.R;
+import com.mahkota_company.android.utils.GlobalApp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -388,6 +389,12 @@ public class JadwalCustomerActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
+					int countCustomer = databaseHandler.getCountCustomerWhereValidAndUpdate();
+					if (countCustomer != 0) {
+							String message = act.getApplicationContext().getResources()
+									.getString(R.string.app_customer_status_update_unuploaded);
+							showCustomDialog(message);
+					}else{
 					String kode_customer = String.valueOf(data.get(position)
 							.getKode_customer());
 					saveAppDataCustomerKodeCustomer(kode_customer);
@@ -395,6 +402,7 @@ public class JadwalCustomerActivity extends Activity {
 							.getId_jadwal());
 					saveAppDataCustomerIdJadwal(id_jadwal);
 					gotoDetailCustomer();
+					}
 				}
 			});
 			return row;

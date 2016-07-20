@@ -54,7 +54,7 @@ import java.util.List;
 import java.util.Locale;
 
 @SuppressWarnings("deprecation")
-public class DetailEditJadwalCustomer extends FragmentActivity {
+public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
     private Context act;
     private ImageView menuBackButton;
     public static final int MEDIA_TYPE_IMAGE = 1;
@@ -117,7 +117,7 @@ public class DetailEditJadwalCustomer extends FragmentActivity {
     private Button mButtonCustomerDetailPreview;
     private Button mButtonCustomerDetailSave;
     private LocationManager locationManager;
-    private static final String LOG_TAG = DetailEditJadwalCustomer.class
+    private static final String LOG_TAG = DetailEditJadwalCustomer_Unused.class
             .getSimpleName();
     private Uri fileUri1, fileUri2, fileUri3;
     private double latitude; // latitude
@@ -604,7 +604,7 @@ public class DetailEditJadwalCustomer extends FragmentActivity {
         if (main_app_table_id != null) {
             saveAppDataCustomerIdCustomer(main_app_table_id);
             Intent intentActivity = new Intent(
-                    DetailEditJadwalCustomer.this,
+                    DetailEditJadwalCustomer_Unused.this,
                     CustomerLocatorActivity.class);
             startActivity(intentActivity);
             finish();
@@ -819,7 +819,7 @@ public class DetailEditJadwalCustomer extends FragmentActivity {
             }
             final Dialog imagesDialog = new Dialog(act);
             imagesDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            imagesDialog.setContentView(DetailEditJadwalCustomer.this
+            imagesDialog.setContentView(DetailEditJadwalCustomer_Unused.this
                     .getLayoutInflater().inflate(R.layout.activity_popup_image,
                             null));
 

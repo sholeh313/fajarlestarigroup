@@ -442,7 +442,7 @@ public class DetailEditCustomer extends FragmentActivity {
                             String curLongitude = String.valueOf((int) longitude);
                             if (curLatitude.equalsIgnoreCase("0")
                                     || curLongitude.equalsIgnoreCase("0")) {
-                                saveGPSandProfile();
+                                //saveGPSandProfile();
                                 String msg = getApplicationContext()
                                        .getResources()
                                         .getString(
@@ -707,7 +707,7 @@ public class DetailEditCustomer extends FragmentActivity {
 
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
-                    R.string.app_customer_prospect_update_success);
+                    R.string.app_customer_update_success);
             showCustomDialogSaveSuccess(msg);
         } else{
             String msg = getApplicationContext()
@@ -778,7 +778,7 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
-                    R.string.app_customer_prospect_update_success);
+                    R.string.app_customer_update_success);
             showCustomDialogSaveSuccess(msg);
         }
     }

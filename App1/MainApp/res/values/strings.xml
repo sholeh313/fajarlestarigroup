@@ -53,6 +53,7 @@
     <string name="app_customer_processing_upload_failed">Proses upload customer gagal !</string>
     <string name="app_customer_processing_upload_success">Proses upload customer berhasil !</string>
     <string name="app_customer_processing_empty">Mohon periksa koneksi internet anda, untuk download customer</string>
+    <string name="app_customer_status_update_unuploaded">Upload pembaharuan data customer terlebih dahulu</string>
     <string name="app_customer_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload customer</string>
     <string name="app_customer_processing_upload_no_data">Tidak ada customer yang di perbarui oleh user !</string>
     <string name="app_customer_processing_download_content">Proses download content customer.</string>
@@ -124,6 +125,7 @@
     <string name="app_customer_prospect_hint_search_customer">Search Customer Prospect</string>
     <string name="app_customer_prospect_save_success">Customer Prospect berhasil di tambah !</string>
     <string name="app_customer_prospect_update_success">Customer Prospect berhasil di ubah !</string>
+    <string name="app_customer_update_success">Data Customer berhasil diperbarui, silahkan Upload perubahan ke server</string>
     <string name="app_customer_prospect_save_failed_no_image">Mohon mengambil foto customer prospect !</string>
     <string name="app_customer_prospect_save_failed_no_image_old">Mohon mengambil foto lokasi customer</string>
     <string name="app_customer_prospect_save_failed_no_image_new">Perbaharui gambar terlebih dahulu</string>

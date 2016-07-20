@@ -108,28 +108,15 @@
             android:theme="@style/AppTheme" >
         </activity>
         <activity
-            android:name="com.mahkota_company.android.jadwal.DetailEditJadwalCustomer"
+            android:name=".jadwal.DetailEditJadwalCustomer_Unused"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity
-            android:name="com.mahkota_company.android.promosi.DetailPromosiActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
+
         <activity
             android:name="com.mahkota_company.android.product.DetailProductActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name="com.mahkota_company.android.customer.DetailCustomerActivity"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -149,27 +136,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity
-            android:name="com.mahkota_company.android.photo_purchase.PhotoPurchaseActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name="com.mahkota_company.android.photo_purchase.DetailPhotoPurchaseActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name="com.mahkota_company.android.photo_purchase.AddPhotoPurchaseActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
+
+
         <activity
             android:name="com.mahkota_company.android.display_product.AddDisplayProductActivity"
             android:icon="@drawable/ic_launcher"
@@ -240,13 +208,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity
-            android:name="com.mahkota_company.android.sales_order.AddProductSalesOrderActivity"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" >
-        </activity>
+        
         <activity
             android:name="com.mahkota_company.android.sales_order.AddSalesOrderActivity"
             android:icon="@drawable/ic_launcher"
