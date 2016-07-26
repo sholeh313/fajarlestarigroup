@@ -39,6 +39,10 @@ public class Customer {
 	private String nama_anak1;
 	private String nama_anak2;
 	private String nama_anak3;
+	private String kode_pos;
+	private String id_depo;
+	private String isactive;
+	private String description;
 
 	public Customer() {
 
@@ -62,7 +66,9 @@ public class Customer {
 
 					String plafon_kredit, String term_kredit, String nama_istri,
 
-					String nama_anak1 ,String nama_anak2,String nama_anak3){
+					String nama_anak1 ,String nama_anak2,String nama_anak3, String kode_pos,
+
+					String id_depo, String isactive, String description){
 
 
 		this.id_customer = id_customer;
@@ -102,7 +108,10 @@ public class Customer {
 		this.nama_anak1 = nama_anak1;
 		this.nama_anak2 = nama_anak2;
 		this.nama_anak3 = nama_anak3;
-
+		this.kode_pos = kode_pos;
+		this.id_depo = id_depo;
+		this.isactive = isactive;
+		this.description = description;
 
 	}
 
@@ -376,6 +385,31 @@ public class Customer {
 		this.nama_anak3 = nama_anak3;
 	}
 
+	public String getKode_pos() {
+		return kode_pos;
+	}
+	public void setKode_pos(String  kode_pos) {
+		this.kode_pos = kode_pos;
+	}
 
+	public String getId_depo() {
+		return id_depo;
+	}
+	public void setId_depo(String  id_depo) {
+		this.id_depo = id_depo;
+	}
+
+	public String getIsactive() {
+		return isactive;
+	}
+	public void setIsactive(String  isactive) {
+		this.isactive = isactive;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String  description) {
+		this.description = description;
+	}
 
 }

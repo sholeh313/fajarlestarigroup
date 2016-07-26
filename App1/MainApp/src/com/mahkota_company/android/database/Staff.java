@@ -9,7 +9,7 @@ public class Staff {
 	private int level;
 	private String id_branch;
 	private String id_type_customer;
-	private int id_wilayah;
+	private int id_depo;
 
 	public Staff() {
 
@@ -17,7 +17,7 @@ public class Staff {
 
 	public Staff(int id_staff, String nama_lengkap, String username,
 			String notelp, String password, int level, String id_branch,
-			String id_type_customer, int id_wilayah) {
+			String id_type_customer, int id_depo) {
 		this.id_staff = id_staff;
 		this.nama_lengkap = nama_lengkap;
 		this.username = username;
@@ -26,7 +26,7 @@ public class Staff {
 		this.level = level;
 		this.id_branch = id_branch;
 		this.id_type_customer = id_type_customer;
-		this.id_wilayah = id_wilayah;
+		this.id_depo = id_depo;
 
 	}
 
@@ -94,11 +94,11 @@ public class Staff {
 		this.id_type_customer = id_type_customer;
 	}
 
-	public int getId_wilayah() {
-		return id_wilayah;
+	public int getId_depo() {
+		return id_depo;
 	}
 
-	public void setId_wilayah(int id_wilayah) {
-		this.id_wilayah = id_wilayah;
+	public void setId_depo(int id_depo) {
+		this.id_depo = id_depo;
 	}
 }

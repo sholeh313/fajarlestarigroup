@@ -656,7 +656,7 @@ public class LocatorActivity extends ActionBarActivity implements
 				String id_branch = staff_from_db.get(i).getId_branch();
 				String id_type_customer = staff_from_db.get(i)
 						.getId_type_customer();
-				int id_wilayah = staff_from_db.get(i).getId_wilayah();
+				int id_depo = staff_from_db.get(i).getId_depo();
 
 				StaffTemp staffTemp = new StaffTemp();
 				staffTemp.setId_staff(id_staff);
@@ -667,7 +667,7 @@ public class LocatorActivity extends ActionBarActivity implements
 				staffTemp.setLevel(level);
 				staffTemp.setId_branch(id_branch);
 				staffTemp.setId_type_customer(id_type_customer);
-				staffTemp.setId_wilayah(id_wilayah);
+				staffTemp.setId_depo(id_depo);
 				if (staffTemp.getLevel() > 2)
 					staffList.add(staffTemp);
 			}

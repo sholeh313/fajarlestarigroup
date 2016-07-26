@@ -44,7 +44,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_STAFF_LEVEL = "level";
 	private static final String KEY_STAFF_ID_BRANCH = "id_branch";
 	private static final String KEY_STAFF_TYPE_CUSTOMER = "id_type_customer";
-	private static final String KEY_STAFF_ID_WILAYAH = "id_wilayah";
+	private static final String KEY_STAFF_ID_DEPO = "id_depo";
+
 
 	// STAFF TEMP Table Columns names
 	private static final String KEY_STAFF_TEMP_ID_STAFF = "id_staff";
@@ -55,7 +56,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_STAFF_TEMP_LEVEL = "level";
 	private static final String KEY_STAFF_TEMP_ID_BRANCH = "id_branch";
 	private static final String KEY_STAFF_TEMP_TYPE_CUSTOMER = "id_type_customer";
-	private static final String KEY_STAFF_TEMP_ID_WILAYAH = "id_wilayah";
+	private static final String KEY_STAFF_TEMP_ID_DEPO = "id_depo";
 
 	// CUSTOMER Table Columns names
 	private static final String KEY_CUSTOMER_ID_CUSTOMER = "id_customer";
@@ -93,6 +94,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_CUSTOMER_NAMA_ANAK1 = "nama_anak1";
 	private static final String KEY_CUSTOMER_NAMA_ANAK2 = "nama_anak2";
 	private static final String KEY_CUSTOMER_NAMA_ANAK3 = "nama_anak3";
+	private static final String KEY_CUSTOMER_KODE_POS = "kode_pos";
+	private static final String KEY_CUSTOMER_ID_DEPO = "id_depo";
+    private static final String KEY_CUSTOMER_ISACTIVE = "isactive";
+    private static final String KEY_CUSTOMER_DESCRIPTION = "description";
+
 
 	// PRODUCT Table Columns names
 	private static final String KEY_PRODUCT_ID_PRODUCT = "id_product";
@@ -242,7 +248,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ " TEXT," + KEY_STAFF_PASSWORD + " TEXT," + KEY_STAFF_NO_TELP
 				+ " TEXT," + KEY_STAFF_LEVEL + " INTEGER,"
 				+ KEY_STAFF_ID_BRANCH + " TEXT," + KEY_STAFF_TYPE_CUSTOMER
-				+ " TEXT," + KEY_STAFF_ID_WILAYAH + " INTEGER" + ")";
+				+ " TEXT," + KEY_STAFF_ID_DEPO + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE_STAFF);
 
 		String CREATE_TABLE_STAFF_TEMP = "CREATE TABLE " + TABLE_STAFF_TEMP
@@ -252,7 +258,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ " TEXT," + KEY_STAFF_TEMP_NO_TELP + " TEXT,"
 				+ KEY_STAFF_TEMP_LEVEL + " INTEGER," + KEY_STAFF_TEMP_ID_BRANCH
 				+ " TEXT," + KEY_STAFF_TEMP_TYPE_CUSTOMER + " TEXT,"
-				+ KEY_STAFF_TEMP_ID_WILAYAH + " INTEGER" + ")";
+				+ KEY_STAFF_TEMP_ID_DEPO + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE_STAFF_TEMP);
 
 		String CREATE_TABLE_TYPE_CUSTOMER = "CREATE TABLE "
@@ -324,7 +330,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_CUSTOMER_NAMA_ISTRI + " TEXT,"
 				+ KEY_CUSTOMER_NAMA_ANAK1 + " TEXT,"
 				+ KEY_CUSTOMER_NAMA_ANAK2 + " TEXT,"
-				+ KEY_CUSTOMER_NAMA_ANAK3 + " TEXT"
+				+ KEY_CUSTOMER_NAMA_ANAK3 + " TEXT,"
+				+ KEY_CUSTOMER_KODE_POS + " TEXT,"
+				+ KEY_CUSTOMER_ID_DEPO + " TEXT,"
+                + KEY_CUSTOMER_ISACTIVE + " TEXT,"
+                + KEY_CUSTOMER_DESCRIPTION + " TEXT"
 
 				+ ")";
 		db.execSQL(CREATE_TABLE_CUSTOMER);
@@ -457,7 +467,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_STAFF_LEVEL, staff.getLevel());
 		values.put(KEY_STAFF_ID_BRANCH, staff.getId_branch());
 		values.put(KEY_STAFF_TYPE_CUSTOMER, staff.getId_type_customer());
-		values.put(KEY_STAFF_ID_WILAYAH, staff.getId_wilayah());
+		values.put(KEY_STAFF_ID_DEPO, staff.getId_depo());
 		// Inserting Row
 		db.insert(TABLE_STAFF, null, values);
 		db.close(); // Closing database connection
@@ -476,7 +486,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_STAFF_TEMP_ID_BRANCH, staff_temp.getId_branch());
 		values.put(KEY_STAFF_TEMP_TYPE_CUSTOMER,
 				staff_temp.getId_type_customer());
-		values.put(KEY_STAFF_TEMP_ID_WILAYAH, staff_temp.getId_wilayah());
+		values.put(KEY_STAFF_TEMP_ID_DEPO, staff_temp.getId_depo());
 		// Inserting Row
 		db.insert(TABLE_STAFF_TEMP, null, values);
 		db.close(); // Closing database connection
@@ -524,6 +534,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_NAMA_ANAK1, customer.getNama_anak1());
 		values.put(KEY_CUSTOMER_NAMA_ANAK2, customer.getNama_anak2());
 		values.put(KEY_CUSTOMER_NAMA_ANAK3, customer.getNama_anak3());
+		values.put(KEY_CUSTOMER_KODE_POS, customer.getKode_pos());
+		values.put(KEY_CUSTOMER_ID_DEPO, customer.getId_depo());
+        values.put(KEY_CUSTOMER_ISACTIVE, customer.getIsactive());
+        values.put(KEY_CUSTOMER_DESCRIPTION, customer.getDescription());
 
 
 		// Inserting Row
@@ -773,7 +787,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_STAFF_ID_STAFF, KEY_STAFF_NAMA_LENGKAP, KEY_STAFF_USERNAME,
 						KEY_STAFF_PASSWORD, KEY_STAFF_NO_TELP, KEY_STAFF_LEVEL,
 						KEY_STAFF_ID_BRANCH, KEY_STAFF_TYPE_CUSTOMER,
-						KEY_STAFF_ID_WILAYAH }, KEY_STAFF_ID_STAFF + "=?",
+						KEY_STAFF_ID_DEPO }, KEY_STAFF_ID_STAFF + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 
 		if (cursor != null)
@@ -809,7 +823,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_NPWP, KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_CLUSTER, KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX,
 						KEY_CUSTOMER_OMSET, KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
-						KEY_CUSTOMER_NAMA_ANAK3}, KEY_CUSTOMER_ID_CUSTOMER + "=?",
+						KEY_CUSTOMER_NAMA_ANAK3,KEY_CUSTOMER_KODE_POS,KEY_CUSTOMER_ID_DEPO,KEY_CUSTOMER_ISACTIVE,KEY_CUSTOMER_DESCRIPTION},
+                KEY_CUSTOMER_ID_CUSTOMER + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 
 
@@ -827,7 +842,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(23), cursor.getString(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
-				cursor.getString(32), cursor.getString(33), cursor.getString(34));
+				cursor.getString(32), cursor.getString(33), cursor.getString(34),
+				cursor.getString(35), cursor.getString(36),cursor.getString(37),
+                cursor.getString(38));
 		// return customer
 		cursor.close();
 		db.close();
@@ -855,7 +872,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX, KEY_CUSTOMER_OMSET,
 						KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
-						KEY_CUSTOMER_NAMA_ANAK3 }, KEY_CUSTOMER_KODE_CUSTOMER + "=?",
+						KEY_CUSTOMER_NAMA_ANAK3, KEY_CUSTOMER_KODE_POS, KEY_CUSTOMER_ID_DEPO, KEY_CUSTOMER_ISACTIVE,
+                        KEY_CUSTOMER_DESCRIPTION}, KEY_CUSTOMER_KODE_CUSTOMER + "=?",
 				new String[] { kode_customer }, null, null, null, null);
 
 		if (cursor != null)
@@ -872,7 +890,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(23), cursor.getString(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
-				cursor.getString(32), cursor.getString(33), cursor.getString(34));
+				cursor.getString(32), cursor.getString(33), cursor.getString(34),
+				cursor.getString(35),cursor.getString(36),cursor.getString(37),
+                cursor.getString(38));
 		// return customer
 		cursor.close();
 		db.close();
@@ -900,7 +920,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX, KEY_CUSTOMER_OMSET,
 						KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
-						KEY_CUSTOMER_NAMA_ANAK3}, KEY_CUSTOMER_KODE_CUSTOMER + "=?",
+						KEY_CUSTOMER_NAMA_ANAK3,KEY_CUSTOMER_KODE_POS, KEY_CUSTOMER_ID_DEPO, KEY_CUSTOMER_ISACTIVE,
+                        KEY_CUSTOMER_DESCRIPTION}, KEY_CUSTOMER_KODE_CUSTOMER + "=?",
 				new String[] { String.valueOf(kode_customer) }, null, null,
 				null, null);
 
@@ -918,7 +939,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(23), cursor.getString(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
-				cursor.getString(32), cursor.getString(33), cursor.getString(34));
+				cursor.getString(32), cursor.getString(33), cursor.getString(34),
+				cursor.getString(35),cursor.getString(36),cursor.getString(37),
+                cursor.getString(38));
 		// return customer
 		cursor.close();
 		db.close();
@@ -1159,7 +1182,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					staff.setLevel(cursor.getInt(5));
 					staff.setId_branch(cursor.getString(6));
 					staff.setId_type_customer(cursor.getString(7));
-					staff.setId_wilayah(cursor.getInt(8));
+					staff.setId_depo(cursor.getInt(8));
 
 					// Adding staff to list
 					staff_list.add(staff);
@@ -1203,7 +1226,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					staff_temp.setLevel(cursor.getInt(5));
 					staff_temp.setId_branch(cursor.getString(6));
 					staff_temp.setId_type_customer(cursor.getString(7));
-					staff_temp.setId_wilayah(cursor.getInt(8));
+					staff_temp.setId_depo(cursor.getInt(8));
 
 					// Adding staff_temp_list to list
 					staff_temp_list.add(staff_temp);
@@ -1247,7 +1270,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					staff.setLevel(cursor.getInt(5));
 					staff.setId_branch(cursor.getString(6));
 					staff.setId_type_customer(cursor.getString(7));
-					staff.setId_wilayah(cursor.getInt(8));
+					staff.setId_depo(cursor.getInt(8));
 
 					// Adding staff to list
 					staff_list.add(staff);
@@ -1288,7 +1311,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					staff.setLevel(cursor.getInt(5));
 					staff.setId_branch(cursor.getString(6));
 					staff.setId_type_customer(cursor.getString(7));
-					staff.setId_wilayah(cursor.getInt(8));
+					staff.setId_depo(cursor.getInt(8));
 
 					// Adding staff to list
 					staff_temp_list.add(staff);
@@ -1352,11 +1375,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setCara_pembayaran(cursor.getString(28));
 					customer.setPlafon_kredit(cursor.getString(29));
 					customer.setTerm_kredit(cursor.getString(30));
-
 					customer.setNama_istri(cursor.getString(31));
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 
 					// Adding customer_list to list
 					customer_list.add(customer);
@@ -1735,11 +1761,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setCara_pembayaran(cursor.getString(28));
 					customer.setPlafon_kredit(cursor.getString(29));
 					customer.setTerm_kredit(cursor.getString(30));
-
 					customer.setNama_istri(cursor.getString(31));
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -1807,6 +1836,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -1824,13 +1857,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	// Getting All Customer
-	public ArrayList<Customer> getAllCustomerActive(int id_wilayah) {
+	public ArrayList<Customer> getAllCustomerActive(int id_depo) {
 		try {
 			customer_list.clear();
 
 			// Select All Query
 			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
-					+ " WHERE blokir ='N' AND id_wilayah=" + id_wilayah;
+					+ " WHERE blokir ='N' AND id_depo=" + id_depo;
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -1869,11 +1902,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setCara_pembayaran(cursor.getString(28));
 					customer.setPlafon_kredit(cursor.getString(29));
 					customer.setTerm_kredit(cursor.getString(30));
-
 					customer.setNama_istri(cursor.getString(31));
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -1936,11 +1972,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setCara_pembayaran(cursor.getString(28));
 					customer.setPlafon_kredit(cursor.getString(29));
 					customer.setTerm_kredit(cursor.getString(30));
-
 					customer.setNama_istri(cursor.getString(31));
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -1967,7 +2006,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
 					+ " WHERE blokir ='N' AND "
 					+ KEY_CUSTOMER_NAMA_LENGKAP_CUSTOMER + " LIKE '" + search
-					+ "%' AND id_wilayah=" + id_wilayah;
+					+ "%' AND id_depo=" + id_wilayah;
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -2011,6 +2050,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -2075,11 +2117,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setCara_pembayaran(cursor.getString(28));
 					customer.setPlafon_kredit(cursor.getString(29));
 					customer.setTerm_kredit(cursor.getString(30));
-
 					customer.setNama_istri(cursor.getString(31));
 					customer.setNama_anak1(cursor.getString(32));
 					customer.setNama_anak2(cursor.getString(33));
 					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getString(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
 					// Adding customer_list to list
 					customer_list.add(customer);
 				} while (cursor.moveToNext());
@@ -2468,6 +2513,61 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_NAMA_ANAK1, customer.getNama_anak1());
 		values.put(KEY_CUSTOMER_NAMA_ANAK2, customer.getNama_anak2());
 		values.put(KEY_CUSTOMER_NAMA_ANAK3, customer.getNama_anak3());
+		values.put(KEY_CUSTOMER_KODE_POS, customer.getKode_pos());
+		values.put(KEY_CUSTOMER_ID_DEPO, customer.getId_depo());
+        values.put(KEY_CUSTOMER_ISACTIVE, customer.getIsactive());
+        values.put(KEY_CUSTOMER_DESCRIPTION, customer.getDescription());
+
+
+		// updating row
+		return db.update(TABLE_CUSTOMER, values, KEY_CUSTOMER_ID_CUSTOMER
+				+ " = ?", new String[] { String.valueOf(id) });
+	}
+
+	//update status update customer
+	public int updateCustomer1(int id, Customer customer) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_CUSTOMER_KODE_CUSTOMER, customer.getKode_customer());
+		values.put(KEY_CUSTOMER_EMAIL_CUSTOMER, customer.getEmail());
+		values.put(KEY_CUSTOMER_ALAMAT_CUSTOMER, customer.getAlamat());
+		values.put(KEY_CUSTOMER_LATS_CUSTOMER, customer.getLats());
+		values.put(KEY_CUSTOMER_LONGS_CUSTOMER, customer.getLongs());
+		values.put(KEY_CUSTOMER_NAMA_LENGKAP_CUSTOMER,
+				customer.getNama_lengkap());
+		values.put(KEY_CUSTOMER_NO_TELP_CUSTOMER, customer.getNo_telp());
+		values.put(KEY_CUSTOMER_ID_WILAYAH_CUSTOMER, customer.getId_wilayah());
+		values.put(KEY_CUSTOMER_FOTO_1_CUSTOMER, customer.getFoto_1());
+		values.put(KEY_CUSTOMER_FOTO_2_CUSTOMER, customer.getFoto_2());
+		values.put(KEY_CUSTOMER_FOTO_3_CUSTOMER, customer.getFoto_3());
+		values.put(KEY_CUSTOMER_ID_TYPE_CUSTOMER, customer.getId_type_customer());
+		values.put(KEY_CUSTOMER_BLOKIR, customer.getBlokir());
+		values.put(KEY_CUSTOMER_DATE, customer.getDate());
+		values.put(KEY_CUSTOMER_STATUS_UPDATE, customer.getStatus_update());
+		values.put(KEY_CUSTOMER_ID_STAFF, customer.getId_staff());
+		values.put(KEY_CUSTOMER_NO_KTP, customer.getNo_ktp());
+		values.put(KEY_CUSTOMER_TANGGAL_LAHIR, customer.getTanggal_lahir());
+		values.put(KEY_CUSTOMER_NAMA_BANK, customer.getNama_bank());
+		values.put(KEY_CUSTOMER_NO_REKENING, customer.getNo_rekening());
+		values.put(KEY_CUSTOMER_ATAS_NAMA, customer.getAtas_nama());
+		values.put(KEY_CUSTOMER_NPWP, customer.getNpwp());
+		values.put(KEY_CUSTOMER_NAMA_PASAR, customer.getNama_pasar());
+		values.put(KEY_CUSTOMER_CLUSTER, customer.getCluster());
+		values.put(KEY_CUSTOMER_TELP, customer.getTelp());
+		values.put(KEY_CUSTOMER_FAX, customer.getFax());
+		values.put(KEY_CUSTOMER_OMSET, customer.getOmset());
+		values.put(KEY_CUSTOMER_CARA_PEMBAYARAN, customer.getCara_pembayaran());
+		values.put(KEY_CUSTOMER_PLAFON_KREDIT, customer.getPlafon_kredit());
+		values.put(KEY_CUSTOMER_TERM_KREDIT, customer.getTerm_kredit());
+
+		values.put(KEY_CUSTOMER_NAMA_ISTRI, customer.getNama_istri());
+		values.put(KEY_CUSTOMER_NAMA_ANAK1, customer.getNama_anak1());
+		values.put(KEY_CUSTOMER_NAMA_ANAK2, customer.getNama_anak2());
+		values.put(KEY_CUSTOMER_NAMA_ANAK3, customer.getNama_anak3());
+		values.put(KEY_CUSTOMER_KODE_POS, customer.getKode_pos());
+		values.put(KEY_CUSTOMER_ID_DEPO, customer.getId_depo());
+        values.put(KEY_CUSTOMER_ISACTIVE, customer.getIsactive());
+        values.put(KEY_CUSTOMER_DESCRIPTION, customer.getDescription());
 
 
 		// updating row

@@ -49,7 +49,7 @@ public class CONFIG {
 	// public static final String CONFIG_APP_URL_DIR_IMG_CUSTOMER =
 	// "http://mahkota.com/mahkota/imgLib/customer/";
 	public static final String CONFIG_APP_URL_DIR_IMG_CUSTOMER = "http://110.232.84.22:8081/mahkota/imgLib/customer/";
-	public static final String CONFIG_APP_URL_DOWNLOAD_CUSTOMER = "mahkota/ws/get_customer.php";
+	public static final String CONFIG_APP_URL_DOWNLOAD_CUSTOMER = "mahkota/ws/get_customer_pst.php";
 	public static final String SHARED_PREFERENCES_TABLE_CUSTOMER = "mahkota_table_customer";
 	public static final String SHARED_PREFERENCES_TABLE_CUSTOMER_SAME_DATA = "mahkota_table_customer_same_data";
 	public static final String SHARED_PREFERENCES_TABLE_CUSTOMER_ID_CUSTOMER = "mahkota_table_customer_id_customer";

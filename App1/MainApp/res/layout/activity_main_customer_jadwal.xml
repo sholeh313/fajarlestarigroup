@@ -59,8 +59,8 @@
 
             <EditText
                 android:id="@+id/activity_customer_edittext_search"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0.0001dp"
+                android:layout_height="0.0001dp"
                 android:background="@drawable/description_back_shape"
                 android:hint="@string/app_customer_hint_search_customer"
                 android:imeOptions="actionDone"

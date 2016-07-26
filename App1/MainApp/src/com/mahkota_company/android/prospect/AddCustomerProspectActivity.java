@@ -77,6 +77,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	private EditText etNama_anak1;
 	private EditText etNama_anak2;
 	private EditText etNama_anak3;
+	private EditText etKode_pos;
 
 	private TextView tvWilayahCustomer;
 	private Spinner spinnerTypeCustomer;
@@ -173,7 +174,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		etNama_anak1 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak1_value);
 		etNama_anak2 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak2_value);
 		etNama_anak3 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak3_value);
-
+		etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
 
 		tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
 		tvHeaderNamaCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_nama_customer);
@@ -473,6 +474,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 							newCustomer.setNama_anak1(etNama_anak1.getText().toString());
 							newCustomer.setNama_anak2(etNama_anak2.getText().toString());
 							newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+							newCustomer.setKode_pos(etKode_pos.getText().toString());
 
 							databaseHandler.add_Customer(newCustomer);
 							String msg = getApplicationContext()

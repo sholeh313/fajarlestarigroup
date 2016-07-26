@@ -211,6 +211,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
+							String kode_pos = customer_from_db.get(i)
+									.getKode_pos();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -331,6 +333,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
+							String kode_pos = customer_from_db.get(i)
+									.getKode_pos();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -368,6 +372,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                             customer.setNama_anak1(nama_anak1);
                             customer.setNama_anak2(nama_anak2);
                             customer.setNama_anak3(nama_anak3);
+							customer.setKode_pos(kode_pos);
 
 							customer_list.add(customer);
 						}
@@ -472,6 +477,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                         .getNama_anak2();
                 String nama_anak3 = customer_from_db.get(i)
                         .getNama_anak3();
+				String kode_pos = customer_from_db.get(i)
+						.getKode_pos();
 
 
 				Customer customer = new Customer();
@@ -511,6 +518,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                 customer.setNama_anak1(nama_anak1);
                 customer.setNama_anak2(nama_anak2);
                 customer.setNama_anak3(nama_anak3);
+				customer.setKode_pos(kode_pos);
 
 				customer_list.add(customer);
 			}
@@ -601,7 +609,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 					final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
                     final String telp, final String fax, final String omset, final String cara_pembayaran,
                     final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
-					final String nama_anak2, final String nama_anak3) {
+					final String nama_anak2, final String nama_anak3, final String kode_pos) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -667,6 +675,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 			entity.addPart("nama_anak2", new StringBody(nama_anak2 != null ? nama_anak2
 					: ""));
 			entity.addPart("nama_anak3", new StringBody(nama_anak3 != null ? nama_anak3
+					: ""));
+			entity.addPart("kode_pos", new StringBody(kode_pos != null ? kode_pos
 					: ""));
 
 			httppost.setEntity(entity);
@@ -753,7 +763,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						customer.getNama_istri(),
 						customer.getNama_anak1(),
 						customer.getNama_anak2(),
-						customer.getNama_anak3());
+						customer.getNama_anak3(),
+						customer.getKode_pos());
 			}
 			return null;
 		}

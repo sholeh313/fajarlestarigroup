@@ -12,7 +12,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -105,6 +107,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	private TextView tvNamaCustomer;
 	private TextView tvNamaAlamat;
     private String response;
+    private Customer customer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -232,6 +235,14 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getNama_anak2();
 							String nama_anak3 = customer_from_db.get(i)
 									.getNama_anak3();
+                            String kode_pos = customer_from_db.get(i)
+                                    .getKode_pos();
+							String id_depo = customer_from_db.get(i)
+									.getId_depo();
+							String isactive = customer_from_db.get(i)
+									.getIsactive();
+							String description = customer_from_db.get(i)
+									.getDescription();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -265,11 +276,14 @@ public class CustomerActivity extends ActionBarActivity implements
                             customer.setCara_pembayaran(cara_pembayaran);
                             customer.setPlafon_kredit(plafon_kredit);
                             customer.setTerm_kredit(term_kredit);
-
 							customer.setNama_istri(nama_istri);
 							customer.setNama_anak1(nama_anak1);
 							customer.setNama_anak2(nama_anak2);
 							customer.setNama_anak3(nama_anak3);
+                            customer.setKode_pos(kode_pos);
+							customer.setId_depo(id_depo);
+							customer.setIsactive(isactive);
+							customer.setDescription(description);
 
 							customer_list.add(customer);
 						}
@@ -353,7 +367,14 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getNama_anak2();
 							String nama_anak3 = customer_from_db.get(i)
 									.getNama_anak3();
-
+                            String kode_pos = customer_from_db.get(i)
+                                    .getKode_pos();
+							String id_depo = customer_from_db.get(i)
+								.getId_depo();
+							String isactive = customer_from_db.get(i)
+									.getIsactive();
+							String description = customer_from_db.get(i)
+									.getDescription();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -390,6 +411,10 @@ public class CustomerActivity extends ActionBarActivity implements
 							customer.setNama_anak1(nama_anak1);
 							customer.setNama_anak2(nama_anak2);
 							customer.setNama_anak3(nama_anak3);
+                            customer.setKode_pos(kode_pos);
+							customer.setId_depo(id_depo);
+							customer.setIsactive(isactive);
+							customer.setDescription(description);
 
 							customer_list.add(customer);
 						}
@@ -652,6 +677,14 @@ public class CustomerActivity extends ActionBarActivity implements
 							: oResponsealue.getString("nama_anak2");
 					String nama_anak3 = oResponsealue.isNull("nama_anak3") ? null
 							: oResponsealue.getString("nama_anak3");
+					String kode_pos = oResponsealue.isNull("kode_pos") ? null
+							: oResponsealue.getString("kode_pos");
+					String id_depo = oResponsealue.isNull("id_depo") ? null
+							: oResponsealue.getString("id_depo");
+					String isactive = oResponsealue.isNull("isactive") ? null
+							: oResponsealue.getString("isactive");
+					String description = oResponsealue.isNull("description") ? null
+							: oResponsealue.getString("description");
 
 					Log.d(LOG_TAG, "id_customer:" + id_customer);
 					Log.d(LOG_TAG, "kode_customer:" + kode_customer);
@@ -687,6 +720,11 @@ public class CustomerActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "nama_anak1:" + nama_anak1);
 					Log.d(LOG_TAG, "nama_anak2:" + nama_anak2);
 					Log.d(LOG_TAG, "nama_anak3:" + nama_anak3);
+					Log.d(LOG_TAG, "kode_pos:" + kode_pos);
+					Log.d(LOG_TAG, "id_depo:" + id_depo);
+					Log.d(LOG_TAG, "isactive:" + isactive);
+					Log.d(LOG_TAG, "description:" + description);
+
 
 
 					databaseHandler.add_Customer(new Customer(Integer
@@ -698,7 +736,8 @@ public class CustomerActivity extends ActionBarActivity implements
 							tanggal_lahir,nama_bank,no_rekening, atas_nama, npwp,
                             nama_pasar, cluster, telp, fax, omset, cara_pembayaran,
 							plafon_kredit,term_kredit, nama_istri, nama_anak1,
-							nama_anak2, nama_anak3));
+							nama_anak2, nama_anak3, kode_pos, id_depo, isactive,
+							description));
 
 				}
 			} catch (JSONException e) {
@@ -752,6 +791,8 @@ public class CustomerActivity extends ActionBarActivity implements
 		int levelStaff = Integer.parseInt(main_app_staff_level);
 		ArrayList<Customer> customer_from_db = null;
 		if (levelStaff > 2) {
+			//customer_from_db = databaseHandler.getAllCustomerActive(Integer
+			//		.parseInt(main_app_staff_id_wilayah));
 			customer_from_db = databaseHandler.getAllCustomerActive(Integer
 					.parseInt(main_app_staff_id_wilayah));
 		} else {
@@ -814,6 +855,14 @@ public class CustomerActivity extends ActionBarActivity implements
 						.getNama_anak2();
 				String nama_anak3 = customer_from_db.get(i)
 						.getNama_anak3();
+                String kode_pos = customer_from_db.get(i)
+                        .getKode_pos();
+				String id_depo = customer_from_db.get(i)
+						.getId_depo();
+				String isactive = customer_from_db.get(i)
+						.getIsactive();
+				String description = customer_from_db.get(i)
+						.getDescription();
 
 				Customer customer = new Customer();
 				customer.setId_customer(id_customer);
@@ -847,11 +896,14 @@ public class CustomerActivity extends ActionBarActivity implements
                 customer.setCara_pembayaran(cara_pembayaran);
                 customer.setPlafon_kredit(plafon_kredit);
                 customer.setTerm_kredit(term_kredit);
-
 				customer.setNama_istri(nama_istri);
 				customer.setNama_anak1(nama_anak1);
 				customer.setNama_anak2(nama_anak2);
 				customer.setNama_anak3(nama_anak3);
+                customer.setKode_pos(kode_pos);
+				customer.setId_depo(id_depo);
+				customer.setIsactive(isactive);
+				customer.setDescription(description);
 
 				if (foto1.length() > 0) {
 					File dir = new File(CONFIG.getFolderPath() + "/"
@@ -1216,7 +1268,8 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
                                           final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
-                                          final String nama_anak2, final String nama_anak3) {
+                                          final String nama_anak2, final String nama_anak3, final String kode_pos,final String id_depo,
+								          final String isactive,final String description) {
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
@@ -1284,6 +1337,14 @@ public class CustomerActivity extends ActionBarActivity implements
                     : ""));
             entity.addPart("nama_anak3", new StringBody(nama_anak3 != null ? nama_anak3
                     : ""));
+            entity.addPart("kode_pos", new StringBody(kode_pos != null ? kode_pos
+                    : ""));
+			entity.addPart("id_depo", new StringBody(id_depo != null ? id_depo
+					: ""));
+			entity.addPart("isactive", new StringBody(isactive != null ? isactive
+					: ""));
+			entity.addPart("description", new StringBody(description != null ? description
+					: ""));
 
             httppost.setEntity(entity);
 
@@ -1340,6 +1401,7 @@ public class CustomerActivity extends ActionBarActivity implements
             for (Customer customer : dataUpload) {
                 response = uploadCustomer(upload_url,
 
+
                         customer.getKode_customer(),
                         customer.getEmail(),
                         customer.getAlamat(),
@@ -1370,7 +1432,11 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getNama_istri(),
                         customer.getNama_anak1(),
                         customer.getNama_anak2(),
-                        customer.getNama_anak3());
+                        customer.getNama_anak3(),
+                        customer.getKode_pos(),
+						customer.getId_depo(),
+						customer.getIsactive(),
+						customer.getDescription());
 
 			}
 			return null;
@@ -1434,7 +1500,7 @@ public class CustomerActivity extends ActionBarActivity implements
                             .getApplicationContext()
                             .getResources()
                             .getString(
-                                    R.string.app_customer_prospect_processing_upload_success);
+                                    R.string.app_customer_processing_upload_success);
                     CustomDialogUploadSuccess(msg);
                 }
 
@@ -1473,7 +1539,7 @@ public class CustomerActivity extends ActionBarActivity implements
 
 	}
 
-	public class ListViewAdapter extends ArrayAdapter<Customer> {
+    public class ListViewAdapter extends ArrayAdapter<Customer> {
 		Activity activity;
 		int layoutResourceId;
 		Customer customerData;

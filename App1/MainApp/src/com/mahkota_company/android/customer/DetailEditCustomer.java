@@ -51,6 +51,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 @SuppressWarnings("deprecation")
 public class DetailEditCustomer extends FragmentActivity {
@@ -98,8 +99,12 @@ public class DetailEditCustomer extends FragmentActivity {
     private EditText etNama_anak1;
     private EditText etNama_anak2;
     private EditText etNama_anak3;
+    private EditText etKode_pos;
+    private ToggleButton tgStatus;
+    private EditText etDescription;
 
     private Customer customer;
+    private TextView tvstatus;
     private TextView tvHeaderKodeCustomer;
     private TextView tvHeaderNamaCustomer;
     private TextView tvHeaderEmailCustomer;
@@ -183,8 +188,11 @@ public class DetailEditCustomer extends FragmentActivity {
         etNama_anak1 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak1_value);
         etNama_anak2 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak2_value);
         etNama_anak3 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak3_value);
+        etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
+        tgStatus = (ToggleButton) findViewById(R.id.activity_customer_detail_status_value);
+        etDescription = (EditText) findViewById(R.id.activity_customer_prospect_description_value);
 
-
+        tvstatus = (TextView) findViewById(R.id.activity_customer_detail_status);
         tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
         tvHeaderNamaCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_nama_customer);
         tvHeaderEmailCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_email_customer);
@@ -230,6 +238,18 @@ public class DetailEditCustomer extends FragmentActivity {
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
                 });
+
+        tgStatus.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tgStatus.isChecked()){
+                    tvstatus.setText(customer.getIsactive());
+                }else{
+                    tvstatus.setText("N");
+                }
+            }
+        });
+
         idTypeCustomer = typeCustomerList.get(0).getId_type_customer();
 
         tvKodeCustomer.setTypeface(typefaceSmall);
@@ -704,6 +724,9 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setNama_anak2(etNama_anak2.getText().toString());
             newCustomer.setNama_anak3(etNama_anak3.getText().toString());
             newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+            newCustomer.setKode_pos(etKode_pos.getText().toString());
+            newCustomer.setIsactive(tvstatus.getText().toString());
+            newCustomer.setDescription(etDescription.getText().toString());
 
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
@@ -776,6 +799,10 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setNama_anak2(etNama_anak2.getText().toString());
             newCustomer.setNama_anak3(etNama_anak3.getText().toString());
             newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+            newCustomer.setKode_pos(etKode_pos.getText().toString());
+            newCustomer.setIsactive(tvstatus.getText().toString());
+            newCustomer.setDescription(etDescription.getText().toString());
+
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
                     R.string.app_customer_update_success);
@@ -907,7 +934,16 @@ public class DetailEditCustomer extends FragmentActivity {
             etNama_anak1.setText(customer.getNama_anak1());
             etNama_anak2.setText(customer.getNama_anak2());
             etNama_anak3.setText(customer.getNama_anak3());
-
+            etKode_pos.setText(customer.getKode_pos());
+            tvstatus.setText((customer.getIsactive()));
+            etDescription.setText(customer.getDescription());
+            if(customer.getIsactive().equals("Y")){
+                tgStatus.setTextOn("Aktif");
+                tgStatus.setChecked(true);
+            }else{
+                tgStatus.setTextOff("Tidak Aktif");
+                tgStatus.setChecked(false);
+            }
             tempLatitude = customer.getLats();
             tempLongitude = customer.getLongs();
 

@@ -172,6 +172,24 @@
                             android:textColor="@color/black"
                             android:textSize="16sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/activity_customer_detail_title_kode_pos"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="left|center"
+                            android:text="@string/app_customer_kode_pos"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -739,6 +757,27 @@
                             android:textColorHint="@color/Ivory3"
                             android:inputType="datetime"
                             android:hint="Contoh : 12/12/1993"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/activity_customer_prospect_kode_pos_value"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/input_field_style"
+                            android:imeOptions="actionDone"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/Ivory3"
+                            android:inputType="datetime"
+                            android:hint="Contoh : 35143"/>
                     </LinearLayout>
 
                     <LinearLayout

@@ -1170,8 +1170,8 @@ public class LoginActivity extends Activity {
 				String id_type_customer = oResponsealue
 						.isNull("id_type_customer") ? null : oResponsealue
 						.getString("id_type_customer");
-				String id_wilayah = oResponsealue.isNull("id_wilayah") ? null
-						: oResponsealue.getString("id_wilayah");
+				String id_depo = oResponsealue.isNull("id_depo") ? null
+						: oResponsealue.getString("id_depo");
 				Log.d(LOG_TAG, "id_staff:" + id_staff);
 				Log.d(LOG_TAG, "nama_lengkap:" + nama_lengkap);
 				Log.d(LOG_TAG, "username:" + username);
@@ -1179,16 +1179,16 @@ public class LoginActivity extends Activity {
 				Log.d(LOG_TAG, "level:" + level);
 				Log.d(LOG_TAG, "id_branch:" + id_branch);
 				Log.d(LOG_TAG, "id_type_customer:" + id_type_customer);
-				Log.d(LOG_TAG, "id_wilayah:" + id_wilayah);
+				Log.d(LOG_TAG, "id_depo:" + id_depo);
 				databaseHandler.add_Staff(new Staff(Integer.parseInt(id_staff),
 						nama_lengkap, userNameStaff, no_telp, passwordStaff,
 						Integer.parseInt(level), id_branch, id_type_customer,
-						Integer.parseInt(id_wilayah)));
+						Integer.parseInt(id_depo)));
 				saveAppDataStaffUsername(userNameStaff);
 				saveAppDataStaffLevel(level);
 				saveAppDataStaffNamaLengkap(nama_lengkap);
 				saveAppDataStaffKodeBranch(id_branch);
-				saveAppDataStaffIdWilayah(id_wilayah);
+				saveAppDataStaffIdWilayah(id_depo);
 				saveAppDataStaffIdStaff(id_staff);
 			}
 			gotoMenuUtama();

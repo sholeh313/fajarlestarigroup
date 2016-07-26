@@ -66,6 +66,7 @@
     <string name="app_customer_no_rekening">No Rekening</string>
     <string name="app_customer_nama_bank">Nama Bank</string>
     <string name="app_customer_taggal_lahir">Tanggal Lahir</string>
+    <string name="app_customer_kode_pos">Kode Pos</string>
     <string name="app_customer_email_customer">Email</string>
     <string name="app_customer_alamat_customer">Alamat</string>
 

@@ -134,7 +134,7 @@ public class StockOnHandActivity extends ActionBarActivity implements
 										.getId_wilayah(), null, null, null, 0,
 								null, null, null, 0, null, null, null, null, null, null, null,
 								null, null, null, null,
-								null, null, null, null, null, null, null);
+								null, null, null, null, null, null, null,null, null,null,null);
 						dataCustomer.add(customer);
 
 					}

@@ -83,6 +83,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	private EditText etNama_anak1;
 	private EditText etNama_anak2;
 	private EditText etNama_anak3;
+	private EditText etKode_pos;
 
 	private Customer customer;
 	private TextView tvHeaderKodeCustomer;
@@ -167,7 +168,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		etNama_anak1 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak1_value);
 		etNama_anak2 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak2_value);
 		etNama_anak3 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak3_value);
-
+		etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
 
 		tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
 		tvHeaderNamaCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_nama_customer);
@@ -414,6 +415,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
                             && etNama_anak1.getText().length() > 0
                             && etNama_anak2.getText().length() > 0
                             && etNama_anak3.getText().length() > 0
+							&& etKode_pos.getText().length() > 0
 
 							&& etNamaCustomer.getText().length() > 0
 							&& etTelpCustomer.getText().length() > 0) {
@@ -534,6 +536,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setNama_anak1(customer.getNama_anak1());
 		newCustomer.setNama_anak2(customer.getNama_anak2());
 		newCustomer.setNama_anak3(customer.getNama_anak3());
+		newCustomer.setKode_pos(customer.getKode_pos());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -578,6 +581,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setNama_anak1(customer.getNama_anak1());
 		newCustomer.setNama_anak2(customer.getNama_anak2());
 		newCustomer.setNama_anak3(customer.getNama_anak3());
+		newCustomer.setKode_pos(customer.getKode_pos());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -709,6 +713,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 			etNama_anak1.setText(customer.getNama_anak1());
 			etNama_anak2.setText(customer.getNama_anak2());
 			etNama_anak3.setText(customer.getNama_anak3());
+			etKode_pos.setText(customer.getKode_pos());
 
 			tempLatitude = customer.getLats();
 			tempLongitude = customer.getLongs();
