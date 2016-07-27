@@ -60,6 +60,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -584,13 +585,144 @@ public class CustomerActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								updateContentRefreshCustomer();
+                                updateContentRefreshCustomer();
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 
 	}
+
+    ////////////////////////////////////////////////////////////////////
+    private class DownloadDataCustomer1 extends
+            AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setMessage(getApplicationContext().getResources()
+                    .getString(R.string.app_customer_processing));
+            progressDialog.show();
+            progressDialog
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            String msg = getApplicationContext()
+                                    .getResources()
+                                    .getString(
+                                            R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_CANCEL);
+                            showCustomDialog(msg);
+                        }
+                    });
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String download_data_url = CONFIG.CONFIG_APP_URL_PUBLIC
+                    + CONFIG.CONFIG_APP_URL_DOWNLOAD_CUSTOMER;
+            HttpResponse response = getDownloadData(download_data_url);
+            int retCode = (response != null) ? response.getStatusLine()
+                    .getStatusCode() : -1;
+            if (retCode != 200) {
+                message = act.getApplicationContext().getResources()
+                        .getString(R.string.MSG_DLG_LABEL_URL_NOT_FOUND);
+                handler.post(new Runnable() {
+                    public void run() {
+                        showCustomDialog(message);
+                    }
+                });
+            } else {
+                try {
+                    response_data = EntityUtils.toString(response.getEntity());
+
+                    SharedPreferences spPreferences = getSharedPrefereces();
+                    String main_app_table_data = spPreferences.getString(
+                            CONFIG.SHARED_PREFERENCES_TABLE_CUSTOMER, null);
+                    if (main_app_table_data != null) {
+                        if (main_app_table_data.equalsIgnoreCase(response_data)) {
+                            saveAppDataCustomerSameData(act
+                                    .getApplicationContext().getResources()
+                                    .getString(R.string.app_value_true));
+                        } else {
+                            databaseHandler.deleteTableCustomer();
+                            saveAppDataCustomerSameData(act
+                                    .getApplicationContext().getResources()
+                                    .getString(R.string.app_value_false));
+                        }
+                    } else {
+                        databaseHandler.deleteTableCustomer();
+                        saveAppDataCustomerSameData(act.getApplicationContext()
+                                .getResources()
+                                .getString(R.string.app_value_false));
+                    }
+                } catch (ParseException e) {
+                    message = e.toString();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            showCustomDialog(message);
+                        }
+                    });
+                } catch (IOException e) {
+                    message = e.toString();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            showCustomDialog(message);
+                        }
+                    });
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (response_data != null) {
+                saveAppDataCustomer(response_data);
+                extractDataCustomer();
+                message = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(
+                                R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_SUCCESS);
+                showCustomDialogDownloadSuccess1(message);
+            } else {
+                message = act.getApplicationContext().getResources()
+                        .getString(R.string.MSG_DLG_LABEL_DOWNLOAD_FAILED);
+                handler.post(new Runnable() {
+                    public void run() {
+                        showCustomDialog(message);
+                    }
+                });
+            }
+        }
+
+    }
+
+    public void showCustomDialogDownloadSuccess1(String msg) {
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                act);
+        alertDialogBuilder
+                .setMessage(msg)
+                .setCancelable(false)
+                .setPositiveButton(
+                        act.getApplicationContext().getResources()
+                                .getString(R.string.MSG_DLG_LABEL_OK),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                AlertDialog alertDialog = alertDialogBuilder
+                                        .create();
+                                alertDialog.dismiss();
+                                databaseHandler.updateStatus();
+                                //updateContentRefreshCustomer();
+                            }
+                        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+    }
 
 	public void extractDataCustomer() {
 		SharedPreferences spPreferences = getSharedPrefereces();
@@ -1268,8 +1400,8 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
                                           final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
-                                          final String nama_anak2, final String nama_anak3, final String kode_pos,final String id_depo,
-								          final String isactive,final String description) {
+                                          final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
+								          final String isactive, final String description) {
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
@@ -1401,7 +1533,6 @@ public class CustomerActivity extends ActionBarActivity implements
             for (Customer customer : dataUpload) {
                 response = uploadCustomer(upload_url,
 
-
                         customer.getKode_customer(),
                         customer.getEmail(),
                         customer.getAlamat(),
@@ -1456,18 +1587,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         .getString(
                                 R.string.app_customer_prospect_processing_upload_success);
                 CustomDialogUploadSuccess(msg);
-                /*
-                final String msg = act
-						.getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_customer_processing_upload_failed);
-				handler.post(new Runnable() {
-					public void run() {
-						showCustomDialog(msg);
-					}
-				});
-				*/
+
 			}
 		}
 
@@ -1531,7 +1651,7 @@ public class CustomerActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								new DownloadDataCustomer().execute();
+                                new DownloadDataCustomer1().execute();
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();

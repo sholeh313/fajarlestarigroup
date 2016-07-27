@@ -128,7 +128,7 @@
     <string name="app_customer_prospect_update_success">Customer Prospect berhasil di ubah !</string>
     <string name="app_customer_update_success">Data Customer berhasil diperbarui, silahkan Upload perubahan ke server</string>
     <string name="app_customer_prospect_save_failed_no_image">Mohon mengambil foto customer prospect !</string>
-    <string name="app_customer_prospect_save_failed_no_image_old">Mohon mengambil foto lokasi customer</string>
+    <string name="app_customer_prospect_save_failed_no_image_old">Silahkan mengupdate lokasi dan gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_no_image_new">Perbaharui gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_empty_box">Mohon mengisi seluruh data customer prospect !</string>
     <string name="app_customer_prospect_save_failed_empty">Mohon mengisi data customer dengan benar</string>

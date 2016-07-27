@@ -2566,8 +2566,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_NAMA_ANAK3, customer.getNama_anak3());
 		values.put(KEY_CUSTOMER_KODE_POS, customer.getKode_pos());
 		values.put(KEY_CUSTOMER_ID_DEPO, customer.getId_depo());
-        values.put(KEY_CUSTOMER_ISACTIVE, customer.getIsactive());
-        values.put(KEY_CUSTOMER_DESCRIPTION, customer.getDescription());
 
 
 		// updating row
@@ -3413,5 +3411,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.execSQL("DELETE FROM " + TABLE_WILAYAH);
 	}
+
+    public void updateStatus() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("update customer set status_update='1' where status_update='2'");
+    }
 
 }

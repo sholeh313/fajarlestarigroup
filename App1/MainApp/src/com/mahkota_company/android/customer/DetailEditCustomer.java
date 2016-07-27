@@ -243,9 +243,11 @@ public class DetailEditCustomer extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 if(tgStatus.isChecked()){
-                    tvstatus.setText(customer.getIsactive());
+                    tvstatus.setText("Y");
+                    etDescription.setText("Aktif");
                 }else{
                     tvstatus.setText("N");
+                    etDescription.setText("Tidak Aktif");
                 }
             }
         });
@@ -725,6 +727,7 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setNama_anak3(etNama_anak3.getText().toString());
             newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
             newCustomer.setKode_pos(etKode_pos.getText().toString());
+            newCustomer.setId_depo(customer.getId_depo());
             newCustomer.setIsactive(tvstatus.getText().toString());
             newCustomer.setDescription(etDescription.getText().toString());
 
@@ -743,13 +746,13 @@ public class DetailEditCustomer extends FragmentActivity {
     }
 
     protected void saveOnlyProfile() {
-        if (tvImage1Customer.getText().equals("'")){
+        if (customer.getFoto_1().equals("'")){
             String msg = getApplicationContext()
                     .getResources()
                     .getString(
                             R.string.app_customer_prospect_save_failed_no_image_old);
             showCustomDialog(msg);
-        }else if (tvImage1Customer.getText().equals("")){
+        }else if (customer.getFoto_1().equals("")){
             String msg = getApplicationContext()
                     .getResources()
                     .getString(
@@ -800,6 +803,7 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setNama_anak3(etNama_anak3.getText().toString());
             newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
             newCustomer.setKode_pos(etKode_pos.getText().toString());
+            newCustomer.setId_depo(customer.getId_depo());
             newCustomer.setIsactive(tvstatus.getText().toString());
             newCustomer.setDescription(etDescription.getText().toString());
 

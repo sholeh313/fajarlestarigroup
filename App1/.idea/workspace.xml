@@ -12,35 +12,15 @@
     <list default="true" id="652055ad-328c-4357-982f-1a66b58f737d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/MainApp/MainApp.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/google/android/gms/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/google/android/gms/BuildConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$10.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataBranch$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataBranch$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataBranch.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataBranch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataKemasan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataTypeCustomer$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataTypeCustomer$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataTypeCustomer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataTypeCustomer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataWilayah$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataWilayah$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataWilayah.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$DownloadDataWilayah.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$LoginToServer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity$LoginToServer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/LoginActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter$ViewHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerFragment.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$id.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$integer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$layout.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$menu.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$string.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$style.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$styleable.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/common/AlarmReceiver.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/common/AlarmReceiver.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$3.class" />
@@ -61,147 +41,29 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$UploadData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerLocatorActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerLocatorActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/Customer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/Customer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/DatabaseHandler.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/DatabaseHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/Staff.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/Staff.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/StaffTemp.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/StaffTemp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/AddDisplayProductActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/AddDisplayProductActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/AddDisplayProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/AddDisplayProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DetailDisplayProductActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DetailDisplayProductActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DetailDisplayProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DetailDisplayProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$UploadData$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailCustomerLocatorActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailCustomerLocatorActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailJadwalCustomerActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailJadwalCustomerActivity$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailJadwalCustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/DetailJadwalCustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/DetailProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/DetailProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/AddCustomerProspectActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectLocatorActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectLocatorActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$ImageAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity$ImageAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$UploadData$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/utils/CONFIG.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/utils/CONFIG.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/android-support-v7-appcompat/android/support/v7/appcompat/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/android-support-v7-appcompat/android/support/v7/appcompat/BuildConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/google-play-services_lib/com/google/android/gms/BuildConfig.class" afterPath="$PROJECT_DIR$/out/production/google-play-services_lib/com/google/android/gms/BuildConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/layout/activity_add_customer_prospect.xml" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_add_customer_prospect.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_edit.xml" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_edit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_prospect.xml" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_prospect.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/layout/activity_main_customer_jadwal.xml" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_main_customer_jadwal.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/values/strings.xml" afterPath="$PROJECT_DIR$/MainApp/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Customer.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Customer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Staff.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Staff.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/StaffTemp.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/StaffTemp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/locator/LocatorActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/locator/LocatorActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/AddSalesOrderActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/AddSalesOrderActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/SalesOrderActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/SalesOrderActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" />
     </list>
     <ignored path="App1.iws" />
@@ -224,15 +86,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CustomerActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CustomerActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.171084">
-              <caret line="1231" column="29" selection-start-line="1231" selection-start-column="23" selection-end-line="1231" selection-end-column="29" />
+            <state vertical-scroll-proportion="-23.0">
+              <caret line="1645" column="24" selection-start-line="1645" selection-start-column="24" selection-end-line="1645" selection-end-column="24" />
               <folding>
-                <element signature="e#20307#20394#0" expanded="true" />
-                <element signature="e#20393#20394#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3383#3415#0" expanded="true" />
+                <element signature="e#5123#5195#0" expanded="true" />
+                <element signature="e#5226#5313#0" expanded="true" />
+                <element signature="e#6111#6210#0" expanded="true" />
+                <element signature="e#19399#19487#0" expanded="true" />
+                <element signature="e#19690#19818#0" expanded="true" />
+                <element signature="e#20238#20335#0" expanded="true" />
+                <element signature="e#20849#20946#0" expanded="true" />
+                <element signature="e#21045#21143#0" expanded="true" />
+                <element signature="e#21247#21343#0" expanded="true" />
+                <element signature="e#21433#21524#0" expanded="true" />
+                <element signature="e#21523#21524#0" expanded="true" />
+                <element signature="e#21935#22066#0" expanded="true" />
+                <element signature="e#22140#22239#0" expanded="true" />
+                <element signature="e#22668#22756#0" expanded="true" />
+                <element signature="e#23420#23523#0" expanded="true" />
+                <element signature="e#23816#24031#0" expanded="true" />
+                <element signature="e#24601#24716#0" expanded="true" />
+                <element signature="e#25443#25594#0" expanded="true" />
+                <element signature="e#25753#25905#0" expanded="true" />
+                <element signature="e#26078#26222#0" expanded="true" />
+                <element signature="e#26369#26532#0" expanded="true" />
+                <element signature="e#26531#26532#0" expanded="true" />
+                <element signature="e#27159#27368#0" expanded="true" />
+                <element signature="e#27476#27593#0" expanded="true" />
+                <element signature="e#28215#28327#0" expanded="true" />
+                <element signature="e#29355#29443#0" expanded="true" />
+                <element signature="e#43632#43731#0" expanded="true" />
+                <element signature="e#46502#46601#0" expanded="true" />
+                <element signature="e#49141#49213#0" expanded="true" />
+                <element signature="e#49244#49348#0" expanded="true" />
+                <element signature="e#53098#53186#0" expanded="true" />
+                <element signature="e#53926#54025#0" expanded="true" />
+                <element signature="e#70456#70545#0" expanded="true" />
+                <element signature="e#70729#70814#0" expanded="true" />
+                <element signature="e#71068#71152#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CONFIG.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="85" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -240,60 +147,45 @@
       <file leaf-file-name="DetailEditCustomer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.172414">
-              <caret line="801" column="69" selection-start-line="801" selection-start-column="69" selection-end-line="801" selection-end-column="69" />
-              <folding>
-                <element signature="e#12517#12816#0" expanded="true" />
-                <element signature="e#12815#12816#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="764" column="26" selection-start-line="764" selection-start-column="26" selection-end-line="764" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_detail_customer_edit.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_edit.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="CustomerProspectActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5238094">
-              <caret line="1283" column="63" selection-start-line="1283" selection-start-column="63" selection-end-line="1283" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.58514494">
+              <caret line="611" column="91" selection-start-line="611" selection-start-column="68" selection-end-line="611" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3414" column="28" selection-start-line="3414" selection-start-column="28" selection-end-line="3414" selection-end-column="28" />
               <folding>
-                <element signature="e#847#865#0" expanded="true" />
-                <element signature="e#1196#1214#0" expanded="true" />
-                <element signature="e#1573#1591#0" expanded="true" />
-                <element signature="e#4724#4760#0" expanded="true" />
-                <element signature="e#5738#5774#0" expanded="true" />
-                <element signature="e#6753#6790#0" expanded="true" />
-                <element signature="e#7760#7788#0" expanded="true" />
-                <element signature="e#8767#8802#0" expanded="true" />
-                <element signature="e#9774#9805#0" expanded="true" />
-                <element signature="e#10779#10811#0" expanded="true" />
-                <element signature="e#11787#11821#0" expanded="true" />
-                <element signature="e#12794#12826#0" expanded="true" />
-                <element signature="e#13794#13821#0" expanded="true" />
-                <element signature="e#14801#14839#0" expanded="true" />
-                <element signature="e#15814#15847#0" expanded="true" />
-                <element signature="e#16818#16848#0" expanded="true" />
-                <element signature="e#17811#17838#0" expanded="true" />
-                <element signature="e#18816#18852#0" expanded="true" />
-                <element signature="e#19819#19845#0" expanded="true" />
-                <element signature="e#20825#20864#0" expanded="true" />
-                <element signature="e#21842#21878#0" expanded="true" />
-                <element signature="e#22848#22876#0" expanded="true" />
-                <element signature="e#23855#23882#0" expanded="true" />
-                <element signature="e#24852#24881#0" expanded="true" />
-                <element signature="e#25849#25876#0" expanded="true" />
-                <element signature="e#32778#32813#0" expanded="true" />
-                <element signature="e#33783#33822#0" expanded="true" />
-                <element signature="e#34794#34833#0" expanded="true" />
-                <element signature="e#35805#35844#0" expanded="true" />
-                <element signature="e#69940#69972#0" expanded="true" />
-                <element signature="e#71863#71895#0" expanded="true" />
-                <element signature="e#73786#73818#0" expanded="true" />
-                <element signature="e#75132#75160#0" expanded="true" />
-                <element signature="e#76126#76153#0" expanded="true" />
-                <element signature="e#77120#77158#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#12737#12744#0" expanded="true" />
+                <element signature="e#12821#12835#0" expanded="true" />
+                <element signature="e#12899#12907#0" expanded="true" />
+                <element signature="e#12973#12982#0" expanded="true" />
+                <element signature="e#13048#13057#0" expanded="true" />
+                <element signature="e#13123#13132#0" expanded="true" />
+                <element signature="e#13200#13210#0" expanded="true" />
+                <element signature="e#13274#13282#0" expanded="true" />
+                <element signature="e#13441#13457#0" expanded="true" />
+                <element signature="e#13630#13643#0" expanded="true" />
+                <element signature="e#13716#13728#0" expanded="true" />
+                <element signature="e#13796#13806#0" expanded="true" />
+                <element signature="e#13877#13888#0" expanded="true" />
+                <element signature="e#13934#13935#0" expanded="true" />
+                <element signature="e#13994#13995#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -304,7 +196,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-              <folding />
+              <folding>
+                <element signature="e#449#450#0" expanded="false" />
+                <element signature="e#479#480#0" expanded="false" />
+                <element signature="e#537#538#0" expanded="false" />
+                <element signature="e#584#585#0" expanded="false" />
+                <element signature="e#621#622#0" expanded="false" />
+                <element signature="e#648#649#0" expanded="false" />
+                <element signature="e#703#704#0" expanded="false" />
+                <element signature="e#744#745#0" expanded="false" />
+                <element signature="e#777#778#0" expanded="false" />
+                <element signature="e#800#801#0" expanded="false" />
+                <element signature="e#847#848#0" expanded="false" />
+                <element signature="e#880#881#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -314,17 +219,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocatorActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/locator/LocatorActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="661" column="48" selection-start-line="661" selection-start-column="48" selection-end-line="661" selection-end-column="48" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2559#2560#0" expanded="false" />
+                <element signature="e#2582#2583#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -359,9 +258,7 @@
         <option value="$PROJECT_DIR$/MainApp/res/layout/activity_customer_view_edit.xml" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.java" />
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_prospect.xml" />
-        <option value="$PROJECT_DIR$/MainApp/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/MainApp/res/layout/activity_main_customer_jadwal.xml" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Staff.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/StaffTemp.java" />
@@ -369,24 +266,25 @@
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/LokasiRayon.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/LokasiDepo.java" />
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/AddSalesOrderActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/SalesOrderActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Customer.java" />
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
-        <option value="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_edit.xml" />
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" />
+        <option value="$PROJECT_DIR$/MainApp/res/layout/activity_detail_customer_edit.xml" />
+        <option value="$PROJECT_DIR$/MainApp/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
     <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -421,8 +319,71 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/mahkota_company/android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="MainApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/mahkota_company/android">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="prospect">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -433,7 +394,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
       <pane id="Scratches" />
     </panes>
@@ -811,21 +771,25 @@
       <option name="project" value="LOCAL" />
       <updated>1469003381228</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="tambah status, tambah depo, belum testing..">
+      <created>1469528192451</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1469528192451</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
+    <frame x="-8" y="0" width="1382" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2080537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2080537" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -833,7 +797,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18910742" sideWeight="0.5067114" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718122" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22758621" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.49328858" order="0" side_tool="false" content_ui="combo" />
@@ -842,6 +806,8 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -865,7 +831,8 @@
     <MESSAGE value=" upload customer edit success.." />
     <MESSAGE value="Version 1.0.0 Beta, Update data customer, check-in, check-out, sales order must check in first, customer prospect, disp all customer location, req stock on hand, photo display product." />
     <MESSAGE value="solved bug force close detailcustomerjadwal before upload data customerupdate." />
-    <option name="LAST_COMMIT_MESSAGE" value="solved bug force close detailcustomerjadwal before upload data customerupdate." />
+    <MESSAGE value="tambah status, tambah depo, belum testing.." />
+    <option name="LAST_COMMIT_MESSAGE" value="tambah status, tambah depo, belum testing.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,15 +850,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1374</line>
+          <line>1506</line>
           <properties />
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1473</line>
-          <properties />
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java</url>
@@ -901,55 +862,55 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1231</line>
+          <line>1363</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1260</line>
+          <line>1392</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1291</line>
+          <line>1423</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1354</line>
+          <line>1486</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1352</line>
+          <line>1484</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>1351</line>
+          <line>1483</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>468</line>
+          <line>470</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>470</line>
+          <line>472</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>469</line>
+          <line>471</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
@@ -985,13 +946,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>698</line>
+          <line>700</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>697</line>
+          <line>699</line>
           <properties />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
@@ -1129,105 +1090,87 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>466</line>
+          <line>467</line>
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>566</line>
+          <line>567</line>
           <properties />
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
-          <line>699</line>
+          <line>701</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>595</line>
+          <line>727</line>
           <properties />
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>752</line>
+          <line>884</line>
           <properties />
           <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java</url>
-          <line>2524</line>
-          <properties />
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>487</line>
-          <properties />
-          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
           <line>488</line>
           <properties />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>490</line>
-          <properties />
-          <option name="timeStamp" value="81" />
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
           <line>489</line>
           <properties />
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>491</line>
+          <properties />
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>490</line>
+          <properties />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>796</line>
+          <line>928</line>
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>795</line>
+          <line>927</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>794</line>
+          <line>926</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>159</line>
+          <line>160</line>
           <properties />
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>441</line>
+          <line>442</line>
           <properties />
           <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java</url>
-          <line>1865</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java</url>
-          <line>1866</line>
-          <properties />
-          <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java</url>
@@ -1240,6 +1183,48 @@
           <line>1146</line>
           <properties />
           <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>244</line>
+          <properties />
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>245</line>
+          <properties />
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>247</line>
+          <properties />
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>948</line>
+          <properties />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>946</line>
+          <properties />
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>944</line>
+          <properties />
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>1064</line>
+          <properties />
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java</url>
@@ -1261,15 +1246,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
-          <line>594</line>
+          <line>726</line>
           <properties class="com.mahkota_company.android.customer.CustomerActivity" method="extractDataCustomer" />
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java</url>
-          <line>2476</line>
-          <properties class="com.mahkota_company.android.database.DatabaseHandler" method="updateCustomer" />
-          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java</url>
@@ -1277,8 +1256,20 @@
           <properties class="com.mahkota_company.android.LoginActivity" method="extractDataLogin" />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java</url>
+          <line>243</line>
+          <properties method="onClick" />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java</url>
+          <line>914</line>
+          <properties class="com.mahkota_company.android.customer.CustomerActivity" method="updateContentCustomer" />
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="94" />
+      <option name="time" value="110" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1477,22 +1468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="476" column="46" selection-start-line="476" selection-start-column="46" selection-end-line="476" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28612718">
-          <caret line="1097" column="59" selection-start-line="1097" selection-start-column="59" selection-end-line="1097" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/DetailCustomerProspectActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1559,14 +1534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="353" column="18" selection-start-line="353" selection-start-column="18" selection-end-line="353" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3669903">
-          <caret line="123" column="118" selection-start-line="123" selection-start-column="118" selection-end-line="123" selection-end-column="118" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1672,7 +1639,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="661" column="48" selection-start-line="661" selection-start-column="48" selection-end-line="661" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#14419#14420#0" expanded="false" />
+            <element signature="e#14459#14460#0" expanded="false" />
+            <element signature="e#15499#15500#0" expanded="false" />
+            <element signature="e#15541#15542#0" expanded="false" />
+            <element signature="e#15670#15671#0" expanded="false" />
+            <element signature="e#15712#15713#0" expanded="false" />
+            <element signature="e#16155#16156#0" expanded="false" />
+            <element signature="e#16197#16198#0" expanded="false" />
+            <element signature="e#16732#16733#0" expanded="false" />
+            <element signature="e#16772#16773#0" expanded="false" />
+            <element signature="e#17946#17947#0" expanded="false" />
+            <element signature="e#17986#17987#0" expanded="false" />
+            <element signature="e#19016#19017#0" expanded="false" />
+            <element signature="e#19058#19059#0" expanded="false" />
+            <element signature="e#19187#19188#0" expanded="false" />
+            <element signature="e#19229#19230#0" expanded="false" />
+            <element signature="e#19856#19857#0" expanded="false" />
+            <element signature="e#19896#19897#0" expanded="false" />
+            <element signature="e#26279#26280#0" expanded="false" />
+            <element signature="e#26319#26320#0" expanded="false" />
+            <element signature="e#29104#29105#0" expanded="false" />
+            <element signature="e#29144#29145#0" expanded="false" />
+            <element signature="e#35512#35513#0" expanded="false" />
+            <element signature="e#35542#35543#0" expanded="false" />
+            <element signature="e#39516#39517#0" expanded="false" />
+            <element signature="e#39546#39547#0" expanded="false" />
+            <element signature="e#41590#41591#0" expanded="false" />
+            <element signature="e#41622#41623#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1688,15 +1685,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="27.325705">
-          <caret line="1197" column="0" selection-start-line="1197" selection-start-column="0" selection-end-line="1197" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#449#450#0" expanded="false" />
+            <element signature="e#479#480#0" expanded="false" />
+            <element signature="e#537#538#0" expanded="false" />
+            <element signature="e#584#585#0" expanded="false" />
+            <element signature="e#621#622#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
+            <element signature="e#777#778#0" expanded="false" />
+            <element signature="e#800#801#0" expanded="false" />
+            <element signature="e#847#848#0" expanded="false" />
+            <element signature="e#880#881#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1704,14 +1706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39788732">
           <caret line="136" column="93" selection-start-line="136" selection-start-column="93" selection-end-line="136" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/AddSalesOrderActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48239437">
-          <caret line="147" column="86" selection-start-line="147" selection-start-column="86" selection-end-line="147" selection-end-column="86" />
           <folding />
         </state>
       </provider>
@@ -1734,40 +1728,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="70.0">
-          <caret line="113" column="24" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
-          <folding>
-            <element signature="e#7799#7800#0" expanded="true" />
-            <element signature="e#7820#7821#0" expanded="true" />
-            <element signature="e#7863#7864#0" expanded="true" />
-            <element signature="e#7892#7893#0" expanded="true" />
-            <element signature="e#7924#7925#0" expanded="true" />
-            <element signature="e#7946#7947#0" expanded="true" />
-            <element signature="e#7991#7992#0" expanded="true" />
-            <element signature="e#8022#8023#0" expanded="true" />
-            <element signature="e#8056#8057#0" expanded="true" />
-            <element signature="e#8081#8082#0" expanded="true" />
-            <element signature="e#8132#8133#0" expanded="true" />
-            <element signature="e#8169#8170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3320965">
-          <caret line="538" column="40" selection-start-line="538" selection-start-column="32" selection-end-line="538" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/jadwal/JadwalCustomerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2559#2560#0" expanded="false" />
+            <element signature="e#2582#2583#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1776,78 +1745,152 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5238094">
-          <caret line="1283" column="63" selection-start-line="1283" selection-start-column="63" selection-end-line="1283" selection-end-column="63" />
-          <folding>
-            <element signature="e#847#865#0" expanded="true" />
-            <element signature="e#1196#1214#0" expanded="true" />
-            <element signature="e#1573#1591#0" expanded="true" />
-            <element signature="e#4724#4760#0" expanded="true" />
-            <element signature="e#5738#5774#0" expanded="true" />
-            <element signature="e#6753#6790#0" expanded="true" />
-            <element signature="e#7760#7788#0" expanded="true" />
-            <element signature="e#8767#8802#0" expanded="true" />
-            <element signature="e#9774#9805#0" expanded="true" />
-            <element signature="e#10779#10811#0" expanded="true" />
-            <element signature="e#11787#11821#0" expanded="true" />
-            <element signature="e#12794#12826#0" expanded="true" />
-            <element signature="e#13794#13821#0" expanded="true" />
-            <element signature="e#14801#14839#0" expanded="true" />
-            <element signature="e#15814#15847#0" expanded="true" />
-            <element signature="e#16818#16848#0" expanded="true" />
-            <element signature="e#17811#17838#0" expanded="true" />
-            <element signature="e#18816#18852#0" expanded="true" />
-            <element signature="e#19819#19845#0" expanded="true" />
-            <element signature="e#20825#20864#0" expanded="true" />
-            <element signature="e#21842#21878#0" expanded="true" />
-            <element signature="e#22848#22876#0" expanded="true" />
-            <element signature="e#23855#23882#0" expanded="true" />
-            <element signature="e#24852#24881#0" expanded="true" />
-            <element signature="e#25849#25876#0" expanded="true" />
-            <element signature="e#32778#32813#0" expanded="true" />
-            <element signature="e#33783#33822#0" expanded="true" />
-            <element signature="e#34794#34833#0" expanded="true" />
-            <element signature="e#35805#35844#0" expanded="true" />
-            <element signature="e#69940#69972#0" expanded="true" />
-            <element signature="e#71863#71895#0" expanded="true" />
-            <element signature="e#73786#73818#0" expanded="true" />
-            <element signature="e#75132#75160#0" expanded="true" />
-            <element signature="e#76126#76153#0" expanded="true" />
-            <element signature="e#77120#77158#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="24" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
+    <entry file="file://$PROJECT_DIR$/MainApp/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.172414">
-          <caret line="801" column="69" selection-start-line="801" selection-start-column="69" selection-end-line="801" selection-end-column="69" />
+        <state vertical-scroll-proportion="-3.5660377">
+          <caret line="130" column="88" selection-start-line="130" selection-start-column="88" selection-end-line="130" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.871479">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/AddCustomerProspectActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="478" column="44" selection-start-line="478" selection-start-column="44" selection-end-line="478" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/AddSalesOrderActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="439" column="29" selection-start-line="439" selection-start-column="29" selection-end-line="439" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/android/database/sqlite/SQLiteOpenHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.036231883">
+          <caret line="160" column="26" selection-start-line="160" selection-start-column="26" selection-end-line="160" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="319" column="43" selection-start-line="319" selection-start-column="28" selection-end-line="319" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3414" column="28" selection-start-line="3414" selection-start-column="28" selection-end-line="3414" selection-end-column="28" />
           <folding>
-            <element signature="e#12517#12816#0" expanded="true" />
-            <element signature="e#12815#12816#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#12737#12744#0" expanded="true" />
+            <element signature="e#12821#12835#0" expanded="true" />
+            <element signature="e#12899#12907#0" expanded="true" />
+            <element signature="e#12973#12982#0" expanded="true" />
+            <element signature="e#13048#13057#0" expanded="true" />
+            <element signature="e#13123#13132#0" expanded="true" />
+            <element signature="e#13200#13210#0" expanded="true" />
+            <element signature="e#13274#13282#0" expanded="true" />
+            <element signature="e#13441#13457#0" expanded="true" />
+            <element signature="e#13630#13643#0" expanded="true" />
+            <element signature="e#13716#13728#0" expanded="true" />
+            <element signature="e#13796#13806#0" expanded="true" />
+            <element signature="e#13877#13888#0" expanded="true" />
+            <element signature="e#13934#13935#0" expanded="true" />
+            <element signature="e#13994#13995#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94014084">
-          <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
-          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
-          <caret line="42" column="85" selection-start-line="42" selection-start-column="85" selection-end-line="42" selection-end-column="85" />
-          <caret line="50" column="86" selection-start-line="50" selection-start-column="86" selection-end-line="50" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="85" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.171084">
-          <caret line="1231" column="29" selection-start-line="1231" selection-start-column="23" selection-end-line="1231" selection-end-column="29" />
+        <state vertical-scroll-proportion="-23.0">
+          <caret line="1645" column="24" selection-start-line="1645" selection-start-column="24" selection-end-line="1645" selection-end-column="24" />
           <folding>
-            <element signature="e#20307#20394#0" expanded="true" />
-            <element signature="e#20393#20394#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3383#3415#0" expanded="true" />
+            <element signature="e#5123#5195#0" expanded="true" />
+            <element signature="e#5226#5313#0" expanded="true" />
+            <element signature="e#6111#6210#0" expanded="true" />
+            <element signature="e#19399#19487#0" expanded="true" />
+            <element signature="e#19690#19818#0" expanded="true" />
+            <element signature="e#20238#20335#0" expanded="true" />
+            <element signature="e#20849#20946#0" expanded="true" />
+            <element signature="e#21045#21143#0" expanded="true" />
+            <element signature="e#21247#21343#0" expanded="true" />
+            <element signature="e#21433#21524#0" expanded="true" />
+            <element signature="e#21523#21524#0" expanded="true" />
+            <element signature="e#21935#22066#0" expanded="true" />
+            <element signature="e#22140#22239#0" expanded="true" />
+            <element signature="e#22668#22756#0" expanded="true" />
+            <element signature="e#23420#23523#0" expanded="true" />
+            <element signature="e#23816#24031#0" expanded="true" />
+            <element signature="e#24601#24716#0" expanded="true" />
+            <element signature="e#25443#25594#0" expanded="true" />
+            <element signature="e#25753#25905#0" expanded="true" />
+            <element signature="e#26078#26222#0" expanded="true" />
+            <element signature="e#26369#26532#0" expanded="true" />
+            <element signature="e#26531#26532#0" expanded="true" />
+            <element signature="e#27159#27368#0" expanded="true" />
+            <element signature="e#27476#27593#0" expanded="true" />
+            <element signature="e#28215#28327#0" expanded="true" />
+            <element signature="e#29355#29443#0" expanded="true" />
+            <element signature="e#43632#43731#0" expanded="true" />
+            <element signature="e#46502#46601#0" expanded="true" />
+            <element signature="e#49141#49213#0" expanded="true" />
+            <element signature="e#49244#49348#0" expanded="true" />
+            <element signature="e#53098#53186#0" expanded="true" />
+            <element signature="e#53926#54025#0" expanded="true" />
+            <element signature="e#70456#70545#0" expanded="true" />
+            <element signature="e#70729#70814#0" expanded="true" />
+            <element signature="e#71068#71152#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="764" column="26" selection-start-line="764" selection-start-column="26" selection-end-line="764" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/prospect/CustomerProspectActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58514494">
+          <caret line="611" column="91" selection-start-line="611" selection-start-column="68" selection-end-line="611" selection-end-column="91" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -211,8 +211,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
-							String kode_pos = customer_from_db.get(i)
-									.getKode_pos();
+							//String kode_pos = customer_from_db.get(i)
+								//	.getKode_pos();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -333,8 +333,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
-							String kode_pos = customer_from_db.get(i)
-									.getKode_pos();
+							//String kode_pos = customer_from_db.get(i)
+							//		.getKode_pos();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -372,7 +372,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                             customer.setNama_anak1(nama_anak1);
                             customer.setNama_anak2(nama_anak2);
                             customer.setNama_anak3(nama_anak3);
-							customer.setKode_pos(kode_pos);
+							//customer.setKode_pos(kode_pos);
 
 							customer_list.add(customer);
 						}
@@ -477,8 +477,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                         .getNama_anak2();
                 String nama_anak3 = customer_from_db.get(i)
                         .getNama_anak3();
-				String kode_pos = customer_from_db.get(i)
-						.getKode_pos();
+				//String kode_pos = customer_from_db.get(i)
+				//		.getKode_pos();
 
 
 				Customer customer = new Customer();
@@ -518,7 +518,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                 customer.setNama_anak1(nama_anak1);
                 customer.setNama_anak2(nama_anak2);
                 customer.setNama_anak3(nama_anak3);
-				customer.setKode_pos(kode_pos);
+				//customer.setKode_pos(kode_pos);
 
 				customer_list.add(customer);
 			}

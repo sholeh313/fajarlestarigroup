@@ -12,7 +12,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_FOLDER_PHOTO_PURCHASE = "photo_purchase";
 	public static final String CONFIG_APP_FOLDER_DISPLAY_PRODUCT = "photo_display_product";
 	// public static final String CONFIG_APP_URL_PUBLIC = "http://mahkota.com/";
-	public static final String CONFIG_APP_URL_PUBLIC = "http://110.232.84.22:8081/";
+	public static final String CONFIG_APP_URL_PUBLIC = "http://186.132.0.58:8081/";
 	public static final String CONFIG_APP_APP_FOLDER = "mahkota";
 	public static final String SHARED_PREFERENCES_NAME = "mahkota_android";
 
@@ -32,7 +32,7 @@ public class CONFIG {
 
 	// public static final String CONFIG_APP_URL_DIR_IMG_PRODUCT =
 	// "http://mahkota.com/mahkota/imgLib/product/";
-	public static final String CONFIG_APP_URL_DIR_IMG_PRODUCT = "http://110.232.84.22:8081/mahkota/imgLib/product/";
+	public static final String CONFIG_APP_URL_DIR_IMG_PRODUCT = "http://186.132.0.58:8081/mahkota/imgLib/product/";
 	public static final String CONFIG_APP_URL_DOWNLOAD_PRODUCT = "mahkota/ws/get_product.php";
 	public static final String SHARED_PREFERENCES_TABLE_PRODUCT = "mahkota_table_product";
 	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_SAME_DATA = "mahkota_table_product_same_data";
@@ -40,7 +40,7 @@ public class CONFIG {
 
 	// public static final String CONFIG_APP_URL_DIR_IMG_PROMOSI =
 	// "http://mahkota.com/mahkota/imgLib/promosi/";
-	public static final String CONFIG_APP_URL_DIR_IMG_PROMOSI = "http://110.232.84.22:8081/mahkota/imgLib/promosi/";
+	public static final String CONFIG_APP_URL_DIR_IMG_PROMOSI = "http://186.132.0.58:8081/mahkota/imgLib/promosi/";
 	public static final String CONFIG_APP_URL_DOWNLOAD_PROMOSI = "mahkota/ws/get_promosi.php";
 	public static final String SHARED_PREFERENCES_TABLE_PROMOSI = "mahkota_table_promosi";
 	public static final String SHARED_PREFERENCES_TABLE_PROMOSI_SAME_DATA = "mahkota_table_promosi_same_data";
@@ -48,7 +48,7 @@ public class CONFIG {
 
 	// public static final String CONFIG_APP_URL_DIR_IMG_CUSTOMER =
 	// "http://mahkota.com/mahkota/imgLib/customer/";
-	public static final String CONFIG_APP_URL_DIR_IMG_CUSTOMER = "http://110.232.84.22:8081/mahkota/imgLib/customer/";
+	public static final String CONFIG_APP_URL_DIR_IMG_CUSTOMER = "http://186.132.0.58:8081/mahkota/imgLib/customer/";
 	public static final String CONFIG_APP_URL_DOWNLOAD_CUSTOMER = "mahkota/ws/get_customer_pst.php";
 	public static final String SHARED_PREFERENCES_TABLE_CUSTOMER = "mahkota_table_customer";
 	public static final String SHARED_PREFERENCES_TABLE_CUSTOMER_SAME_DATA = "mahkota_table_customer_same_data";
