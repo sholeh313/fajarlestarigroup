@@ -509,8 +509,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_FOTO_1_CUSTOMER, customer.getFoto_1());
 		values.put(KEY_CUSTOMER_FOTO_2_CUSTOMER, customer.getFoto_2());
 		values.put(KEY_CUSTOMER_FOTO_3_CUSTOMER, customer.getFoto_3());
-		values.put(KEY_CUSTOMER_ID_TYPE_CUSTOMER,
-				customer.getId_type_customer());
+		values.put(KEY_CUSTOMER_ID_TYPE_CUSTOMER, customer.getId_type_customer());
 		values.put(KEY_CUSTOMER_BLOKIR, customer.getBlokir());
 		values.put(KEY_CUSTOMER_DATE, customer.getDate());
 		values.put(KEY_CUSTOMER_STATUS_UPDATE, customer.getStatus_update());
@@ -2996,8 +2995,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					wilayah.setId_wilayah(cursor.getInt(0));
 					wilayah.setNama_wilayah(cursor.getString(1));
 					wilayah.setDeskripsi(cursor.getString(2));
-					wilayah.setLats(cursor.getString(3));
-					wilayah.setLongs(cursor.getString(4));
 
 					// Adding wilayah_list to list
 					wilayah_list.add(wilayah);

@@ -79,11 +79,18 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	private EditText etNama_anak3;
 	private EditText etKode_pos;
 
-	private TextView tvWilayahCustomer;
-	private Spinner spinnerTypeCustomer;
+	private TextView tvId_depo;
+    private Spinner spinnerWilayah;
+    private ArrayList<Wilayah> wilayahList;
+    private ArrayList<String> wilayahStringList;
+    private int idWilayah = 0;
+
+
+    private Spinner spinnerTypeCustomer;
 	private ArrayList<TypeCustomer> typeCustomerList;
 	private ArrayList<String> typeCustomerStringList;
 	private int idTypeCustomer = 0;
+
 	private TextView tvGpsCustomer;
 	private TextView tvImage1Customer;
 	private TextView tvImage2Customer;
@@ -146,18 +153,17 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		etNamaCustomer = (EditText) findViewById(R.id.activity_customer_prospect_nama_customer_value);
 		etEmailCustomer = (EditText) findViewById(R.id.activity_customer_prospect_email_customer_value);
 		etAlamatCustomer = (EditText) findViewById(R.id.activity_customer_prospect_alamat_customer_value);
-		tvWilayahCustomer = (TextView) findViewById(R.id.activity_customer_detail_value_wilayah_customer);
-		spinnerTypeCustomer = (Spinner) findViewById(R.id.activity_customer_prospect_type_customer_value);
+
+        spinnerWilayah = (Spinner) findViewById(R.id.activity_customer_prospect_wilayah_value);
+        spinnerTypeCustomer = (Spinner) findViewById(R.id.activity_customer_prospect_type_customer_value);
 		tvGpsCustomer = (TextView) findViewById(R.id.activity_customer_detail_value_gps_location);
 		tvImage1Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image);
 		tvImage2Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image_2);
 		tvImage3Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image_3);
 		etTelpCustomer = (EditText) findViewById(R.id.activity_customer_prospect_telp_customer_value);
-
 		etNoKtp = (EditText) findViewById(R.id.activity_customer_prospect_noktp_value);
 		etTanggalLahir = (EditText) findViewById(R.id.activity_customer_prospect_tanggal_lahir_value);
 		etNamaBank = (EditText) findViewById(R.id.activity_customer_prospect_nama_bank_value);
-
 		etAtasNama = (EditText) findViewById(R.id.activity_customer_prospect_atas_nama_value);
 		etNoRekening = (EditText) findViewById(R.id.activity_customer_prospect_no_rekening_value);
 		etNPWP = (EditText) findViewById(R.id.activity_customer_prospect_npwp_value);
@@ -169,7 +175,6 @@ public class AddCustomerProspectActivity extends FragmentActivity {
         etCaraPembayaran = (EditText) findViewById(R.id.activity_customer_prospect_cara_pembayaran_value);
         etPlafonKredit = (EditText) findViewById(R.id.activity_customer_prospect_plafon_value);
         etTermKredit = (EditText) findViewById(R.id.activity_customer_prospect_term_value);
-
 		etNama_istri = (EditText) findViewById(R.id.activity_customer_prospect_nama_istri_value);
 		etNama_anak1 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak1_value);
 		etNama_anak2 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak2_value);
@@ -187,13 +192,41 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		tvHeaderImage2Customer = (TextView) findViewById(R.id.activity_customer_detail_title_image_2);
 		tvHeaderImage3Customer = (TextView) findViewById(R.id.activity_customer_detail_title_image_3);
 		tvHeaderTelpCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_telp_customer);
-
 		mButtonCustomerDetailImage1 = (Button) findViewById(R.id.activity_customer_detail_btn_image);
 		mButtonCustomerDetailImage2 = (Button) findViewById(R.id.activity_customer_detail_btn_image_2);
 		mButtonCustomerDetailImage3 = (Button) findViewById(R.id.activity_customer_detail_btn_image_3);
 		mButtonCustomerDetailCancel = (Button) findViewById(R.id.activity_customer_detail_btn_cancel);
 		mButtonCustomerDetailSave = (Button) findViewById(R.id.activity_customer_detail_btn_save);
 
+        //set list wiayah
+        wilayahList = new ArrayList<Wilayah>();
+        wilayahStringList = new ArrayList<String>();
+        List<Wilayah> dataWilayah = databaseHandler
+                .getAllWilayah();
+        for (Wilayah wilayah : dataWilayah) {
+            wilayahList.add(wilayah);
+            wilayahStringList.add(wilayah.getNama_wilayah());
+        }
+
+        SpinnerAdapter adapterWilayah = new SpinnerAdapter(
+                getApplicationContext(), android.R.layout.simple_spinner_item,
+                wilayahStringList);
+        adapterWilayah.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWilayah.setAdapter(adapterWilayah);
+        spinnerWilayah
+                .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id) {
+                        idWilayah = wilayahList.get(position)
+                                .getId_wilayah();
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+        idWilayah = wilayahList.get(0).getId_wilayah();
+
+        //set list type customer
 		typeCustomerList = new ArrayList<TypeCustomer>();
 		typeCustomerStringList = new ArrayList<String>();
 		List<TypeCustomer> dataTypeCustomer = databaseHandler
@@ -206,8 +239,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		SpinnerAdapter adapterCustomer = new SpinnerAdapter(
 				getApplicationContext(), android.R.layout.simple_spinner_item,
 				typeCustomerStringList);
-		adapterCustomer
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapterCustomer.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerTypeCustomer.setAdapter(adapterCustomer);
 		spinnerTypeCustomer
 				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -223,7 +255,6 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		idTypeCustomer = typeCustomerList.get(0).getId_type_customer();
 
 		tvKodeCustomer.setTypeface(typefaceSmall);
-		tvWilayahCustomer.setTypeface(typefaceSmall);
 		tvGpsCustomer.setTypeface(typefaceSmall);
 		tvImage1Customer.setTypeface(typefaceSmall);
 		tvImage1Customer.setTypeface(typefaceSmall);
@@ -415,7 +446,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 					} else {
 						if (newImageName1 != null) {
 							SharedPreferences spPreferences = getSharedPrefereces();
-							String idWilayah = spPreferences.getString(
+							String idDepo = spPreferences.getString(
 									CONFIG.SHARED_PREFERENCES_STAFF_ID_WILAYAH,
 									null);
 							String idStaff = spPreferences.getString(
@@ -443,8 +474,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 							newCustomer.setFoto_2(newImageName2);
 							newCustomer.setFoto_3(newImageName3);
 							newCustomer.setId_type_customer(idTypeCustomer);
-							newCustomer.setId_wilayah(Integer
-									.parseInt(idWilayah));
+							newCustomer.setId_wilayah(idWilayah);
 							newCustomer.setKode_customer(tvKodeCustomer
 									.getText().toString());
 							newCustomer.setLats(String.valueOf(latitude));
@@ -469,12 +499,14 @@ public class AddCustomerProspectActivity extends FragmentActivity {
                             newCustomer.setCara_pembayaran(etCaraPembayaran.getText().toString());
                             newCustomer.setPlafon_kredit(etPlafonKredit.getText().toString());
                             newCustomer.setTerm_kredit(etTermKredit.getText().toString());
-
+                            newCustomer.setId_depo(idDepo);
 							newCustomer.setNama_istri(etNama_istri.getText().toString());
 							newCustomer.setNama_anak1(etNama_anak1.getText().toString());
 							newCustomer.setNama_anak2(etNama_anak2.getText().toString());
 							newCustomer.setNama_anak3(etNama_anak3.getText().toString());
 							newCustomer.setKode_pos(etKode_pos.getText().toString());
+                            newCustomer.setIsactive("N");
+                            newCustomer.setDescription("Belum Aktif");
 
 							databaseHandler.add_Customer(newCustomer);
 							String msg = getApplicationContext()
@@ -680,9 +712,9 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		String headerKodeCustomer = CONFIG.CONFIG_APP_KODE_CUSTOMER_HEADER
 				+ branch.getKode_branch() + "." + datetime + countData;
 		tvKodeCustomer.setText(headerKodeCustomer);
-		Wilayah wilayah = databaseHandler.getWilayah(Integer
-				.parseInt(idWilayah));
-		tvWilayahCustomer.setText(wilayah.getNama_wilayah());
+		//Wilayah wilayah = databaseHandler.getWilayah(Integer
+				//.parseInt(idWilayah));
+		//tvWilayahCustomer.setText(wilayah.getNama_wilayah());
 
 	}
 

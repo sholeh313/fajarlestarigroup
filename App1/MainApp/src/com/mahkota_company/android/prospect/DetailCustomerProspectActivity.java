@@ -524,19 +524,22 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
 		newCustomer.setAtas_nama(etAtas_nama.getText().toString());
 		newCustomer.setNpwp(etNpwp.getText().toString());
-        newCustomer.setNama_pasar(customer.getNama_pasar());
-        newCustomer.setCluster(customer.getCluster());
-        newCustomer.setTelp(customer.getTelp());
-        newCustomer.setFax(customer.getFax());
-        newCustomer.setOmset(customer.getOmset());
-        newCustomer.setCara_pembayaran(customer.getCara_pembayaran());
-        newCustomer.setPlafon_kredit(customer.getPlafon_kredit());
-        newCustomer.setTerm_kredit(customer.getTerm_kredit());
-		newCustomer.setNama_istri(customer.getNama_istri());
-		newCustomer.setNama_anak1(customer.getNama_anak1());
-		newCustomer.setNama_anak2(customer.getNama_anak2());
-		newCustomer.setNama_anak3(customer.getNama_anak3());
-		newCustomer.setKode_pos(customer.getKode_pos());
+        newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+        newCustomer.setCluster(etCluster.getText().toString());
+        newCustomer.setTelp(etTelp.getText().toString());
+        newCustomer.setFax(etFax.getText().toString());
+        newCustomer.setOmset(etOmset.getText().toString());
+        newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+        newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+        newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+		newCustomer.setNama_istri(etNama_istri.getText().toString());
+		newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+		newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+		newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+		newCustomer.setKode_pos(etKode_pos.getText().toString());
+		newCustomer.setId_depo(customer.getId_depo());
+		newCustomer.setIsactive(customer.getIsactive());
+		newCustomer.setDescription(customer.getDescription());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -557,8 +560,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setId_type_customer(idTypeCustomer);
 		newCustomer.setId_wilayah(customer.getId_wilayah());
 		newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
-		newCustomer.setLats(tempLatitude);
-		newCustomer.setLongs(tempLongitude);
+		newCustomer.setLats(customer.getLats());
+		newCustomer.setLongs(customer.getLongs());
 		newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
 		newCustomer.setNo_telp(etTelpCustomer.getText().toString());
 		newCustomer.setStatus_update(customer.getStatus_update());
@@ -569,8 +572,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setNo_rekening(customer.getNo_rekening());
 		newCustomer.setAtas_nama(customer.getAtas_nama());
 		newCustomer.setNpwp(customer.getNpwp());
-        newCustomer.setNama_pasar(customer.getNama_pasar());
-        newCustomer.setCluster(customer.getCluster());
+        newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+        newCustomer.setCluster(etCluster.getText().toString());
         newCustomer.setTelp(customer.getTelp());
         newCustomer.setFax(customer.getFax());
         newCustomer.setOmset(customer.getOmset());
@@ -582,6 +585,9 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setNama_anak2(customer.getNama_anak2());
 		newCustomer.setNama_anak3(customer.getNama_anak3());
 		newCustomer.setKode_pos(customer.getKode_pos());
+		newCustomer.setId_depo(customer.getId_depo());
+		newCustomer.setIsactive(customer.getIsactive());
+		newCustomer.setDescription(customer.getDescription());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(

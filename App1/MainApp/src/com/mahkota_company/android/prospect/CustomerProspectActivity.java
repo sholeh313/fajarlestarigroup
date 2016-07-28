@@ -211,8 +211,15 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
-							//String kode_pos = customer_from_db.get(i)
-								//	.getKode_pos();
+							String kode_pos = customer_from_db.get(i)
+									.getKode_pos();
+							String id_depo = customer_from_db.get(i)
+									.getId_depo();
+							String isactive = customer_from_db.get(i)
+									.getIsactive();
+							String description = customer_from_db.get(i)
+									.getDescription();
+
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -238,7 +245,6 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							customer.setNo_rekening(no_rekening);
 							customer.setAtas_nama(atas_nama);
 							customer.setNpwp(npwp);
-
                             customer.setNama_pasar(nama_pasar);
                             customer.setCluster(cluster);
                             customer.setTelp(telp);
@@ -251,6 +257,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                             customer.setNama_anak1(nama_anak1);
                             customer.setNama_anak2(nama_anak2);
                             customer.setNama_anak3(nama_anak3);
+							customer.setKode_pos(kode_pos);
+							customer.setId_depo(id_depo);
+							customer.setIsactive(isactive);
+							customer.setDescription(description);
 
 							customer_list.add(customer);
 						}
@@ -324,7 +334,6 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getPlafon_kredit();
                             String term_kredit = customer_from_db.get(i)
                                     .getTerm_kredit();
-
                             String nama_istri = customer_from_db.get(i)
                                     .getNama_istri();
                             String nama_anak1 = customer_from_db.get(i)
@@ -333,8 +342,14 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak2();
                             String nama_anak3 = customer_from_db.get(i)
                                     .getNama_anak3();
-							//String kode_pos = customer_from_db.get(i)
-							//		.getKode_pos();
+							String kode_pos = customer_from_db.get(i)
+									.getKode_pos();
+							String id_depo = customer_from_db.get(i)
+									.getId_depo();
+							String isactive = customer_from_db.get(i)
+									.getIsactive();
+							String description = customer_from_db.get(i)
+									.getDescription();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -367,12 +382,14 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                             customer.setCara_pembayaran(cara_pembayaran);
                             customer.setPlafon_kredit(plafon_kredit);
                             customer.setTerm_kredit(term_kredit);
-
                             customer.setNama_istri(nama_istri);
                             customer.setNama_anak1(nama_anak1);
                             customer.setNama_anak2(nama_anak2);
                             customer.setNama_anak3(nama_anak3);
-							//customer.setKode_pos(kode_pos);
+							customer.setKode_pos(kode_pos);
+							customer.setId_depo(id_depo);
+							customer.setIsactive(isactive);
+							customer.setDescription(description);
 
 							customer_list.add(customer);
 						}
@@ -468,7 +485,6 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                         .getPlafon_kredit();
                 String term_kredit = customer_from_db.get(i)
                         .getTerm_kredit();
-
                 String nama_istri = customer_from_db.get(i)
                         .getNama_istri();
                 String nama_anak1 = customer_from_db.get(i)
@@ -477,8 +493,14 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                         .getNama_anak2();
                 String nama_anak3 = customer_from_db.get(i)
                         .getNama_anak3();
-				//String kode_pos = customer_from_db.get(i)
-				//		.getKode_pos();
+				String kode_pos = customer_from_db.get(i)
+						.getKode_pos();
+				String id_depo = customer_from_db.get(i)
+						.getId_depo();
+				String isactive = customer_from_db.get(i)
+						.getIsactive();
+				String description = customer_from_db.get(i)
+						.getDescription();
 
 
 				Customer customer = new Customer();
@@ -513,12 +535,15 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                 customer.setCara_pembayaran(cara_pembayaran);
                 customer.setPlafon_kredit(plafon_kredit);
                 customer.setTerm_kredit(term_kredit);
-
                 customer.setNama_istri(nama_istri);
                 customer.setNama_anak1(nama_anak1);
                 customer.setNama_anak2(nama_anak2);
                 customer.setNama_anak3(nama_anak3);
-				//customer.setKode_pos(kode_pos);
+				customer.setKode_pos(kode_pos);
+				customer.setId_depo(id_depo);
+				customer.setIsactive(isactive);
+				customer.setDescription(description);
+
 
 				customer_list.add(customer);
 			}
@@ -609,7 +634,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 					final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
                     final String telp, final String fax, final String omset, final String cara_pembayaran,
                     final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
-					final String nama_anak2, final String nama_anak3, final String kode_pos) {
+					final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
+					final String isactive, final String description) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -667,7 +693,6 @@ public class CustomerProspectActivity extends ActionBarActivity implements
             entity.addPart("cara_pembayaran", new StringBody(cara_pembayaran));
             entity.addPart("plafon_kredit", new StringBody(plafon_kredit));
             entity.addPart("term_kredit", new StringBody(term_kredit));
-
 			entity.addPart("nama_istri", new StringBody(nama_istri != null ? nama_istri
 					: ""));
 			entity.addPart("nama_anak1", new StringBody(nama_anak1 != null ? nama_anak1
@@ -677,6 +702,13 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 			entity.addPart("nama_anak3", new StringBody(nama_anak3 != null ? nama_anak3
 					: ""));
 			entity.addPart("kode_pos", new StringBody(kode_pos != null ? kode_pos
+					: ""));
+
+			entity.addPart("id_depo", new StringBody(id_depo != null ? id_depo
+					: ""));
+			entity.addPart("isactive", new StringBody(isactive != null ? isactive
+					: ""));
+			entity.addPart("description", new StringBody(description != null ? description
 					: ""));
 
 			httppost.setEntity(entity);
@@ -764,7 +796,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						customer.getNama_anak1(),
 						customer.getNama_anak2(),
 						customer.getNama_anak3(),
-						customer.getKode_pos());
+						customer.getKode_pos(),
+						customer.getId_depo(),
+						customer.getIsactive(),
+						customer.getDescription());
 			}
 			return null;
 		}
