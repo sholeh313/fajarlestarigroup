@@ -1,5 +1,18 @@
 package com.mahkota_company.android.prospect;
+import java.util.Calendar;
+import android.app.Dialog;
+import android.view.MotionEvent;
+import android.view.View.OnTouchListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.AdapterView;
 
+import com.mahkota_company.android.database.Cluster;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.TypeCustomer;
@@ -9,6 +22,7 @@ import com.mahkota_company.android.utils.SpinnerAdapter;
 import com.mahkota_company.android.R;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -45,6 +59,18 @@ import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
 public class DetailCustomerProspectActivity extends FragmentActivity {
+	int hour, minute, mYear,mMonth, mDay;
+	static final int TIME_DIALOG_ID = 0;
+	static final int DATE_DIALOG_ID = 1;
+	private EditText etTanggal_lahir;
+	private String[] arrMonth = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+
+
+	private Spinner spinnerCluster;
+	private ArrayList<Cluster> clusterList;
+	private ArrayList<String> clusterStringList;
+	private int idCluster = 0;
+
 	private Context act;
 	private ImageView menuBackButton;
 	private DatabaseHandler databaseHandler;
@@ -65,7 +91,6 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	private TextView tvImage3Customer;
 	private EditText etTelpCustomer;
 	private EditText etno_ktp;
-	private EditText etTanggal_lahir;
 	private EditText etNama_bank;
 	private EditText etNo_rekenig;
 	private EditText etAtas_nama;
@@ -156,7 +181,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		etNpwp = (EditText) findViewById(R.id.activity_customer_prospect_npwp_value);
 
         etNama_pasar = (EditText) findViewById(R.id.activity_customer_prospect_nama_pasar_value);
-        etCluster = (EditText) findViewById(R.id.activity_customer_prospect_cluster_value);
+        //etCluster = (EditText) findViewById(R.id.activity_customer_prospect_cluster_value);
+		spinnerCluster = (Spinner) findViewById(R.id.activity_customer_prospect_cluster);
         etTelp = (EditText) findViewById(R.id.activity_customer_prospect_telp_value);
         etFax = (EditText) findViewById(R.id.activity_customer_prospect_fax_value);
         etOmset = (EditText) findViewById(R.id.activity_customer_prospect_omset_value);
@@ -188,6 +214,34 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		mButtonCustomerDetailImage3 = (Button) findViewById(R.id.activity_customer_detail_btn_image_3);
 		mButtonCustomerDetailPreview = (Button) findViewById(R.id.activity_customer_detail_btn_preview);
 		mButtonCustomerDetailSave = (Button) findViewById(R.id.activity_customer_detail_btn_save);
+
+		//set list cluster
+		clusterList = new ArrayList<Cluster>();
+		clusterStringList = new ArrayList<String>();
+		List<Cluster> dataCluster = databaseHandler
+				.getAllCluster();
+		for (Cluster cluster : dataCluster) {
+			clusterList.add(cluster);
+			clusterStringList.add(cluster.getNama_cluster());
+		}
+
+		SpinnerAdapter adapterCluster = new SpinnerAdapter(
+				getApplicationContext(), android.R.layout.simple_spinner_item,
+				clusterStringList);
+		adapterCluster.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerCluster.setAdapter(adapterCluster);
+		spinnerCluster
+				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+					public void onItemSelected(AdapterView<?> parent,
+											   View view, int position, long id) {
+						idCluster = clusterList.get(position)
+								.getId_cluster();
+					}
+
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+		idCluster = clusterList.get(0).getId_cluster();
 
 		typeCustomerList = new ArrayList<TypeCustomer>();
 		typeCustomerStringList = new ArrayList<String>();
@@ -402,7 +456,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 							&& etNo_rekenig.getText().length() > 0
 							&& etAtas_nama.getText().length() > 0
 							&& etNpwp.getText().length() > 0
-                            && etCluster.getText().length() > 0
+                            && idCluster != 0
                             && etTelp.getText().length() > 0
                             && etFax.getText().length() > 0
                             && etNama_pasar.getText().length() > 0
@@ -525,7 +579,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setAtas_nama(etAtas_nama.getText().toString());
 		newCustomer.setNpwp(etNpwp.getText().toString());
         newCustomer.setNama_pasar(etNama_pasar.getText().toString());
-        newCustomer.setCluster(etCluster.getText().toString());
+        newCustomer.setId_cluster(idCluster);
         newCustomer.setTelp(etTelp.getText().toString());
         newCustomer.setFax(etFax.getText().toString());
         newCustomer.setOmset(etOmset.getText().toString());
@@ -573,7 +627,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setAtas_nama(customer.getAtas_nama());
 		newCustomer.setNpwp(customer.getNpwp());
         newCustomer.setNama_pasar(etNama_pasar.getText().toString());
-        newCustomer.setCluster(etCluster.getText().toString());
+        newCustomer.setId_cluster(idCluster);
         newCustomer.setTelp(customer.getTelp());
         newCustomer.setFax(customer.getFax());
         newCustomer.setOmset(customer.getOmset());
@@ -708,7 +762,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
             etNpwp.setText(customer.getNpwp());
 
             etNama_pasar.setText(customer.getNama_pasar());
-            etCluster.setText(customer.getCluster());
+            //etCluster.setText(customer.getId_cluster());
+
             etTelp.setText(customer.getTelp());
             etFax.setText(customer.getFax());
             etOmset.setText(customer.getOmset());
@@ -735,6 +790,18 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 			}
 			spinnerTypeCustomer.setSelection(index);
 			idTypeCustomer = typeCustomerList.get(index).getId_type_customer();
+
+			List<Cluster> dataCluster = databaseHandler
+					.getAllCluster();
+			int index1 = 0;
+			for (Cluster cluster : dataCluster) {
+				if (cluster.getId_cluster() == customer
+						.getId_cluster())
+					break;
+				index1 += 1;
+			}
+			spinnerCluster.setSelection(index1);
+			idCluster = clusterList.get(index1).getId_cluster();
 		} else {
 			gotoCustomerProspect();
 		}

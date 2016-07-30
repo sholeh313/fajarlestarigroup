@@ -27,7 +27,7 @@ public class Customer {
 	private String atas_nama;
 	private String npwp;
 	private String nama_pasar;
-	private String cluster;
+	private int id_cluster;
 	private String telp;
 	private String fax;
 	private String omset;
@@ -60,7 +60,7 @@ public class Customer {
 
 					String tanggal_lahir, String nama_bank, String no_rekening,
 
-					String atas_nama, String npwp, String nama_pasar, String cluster,
+					String atas_nama, String npwp, String nama_pasar, int id_cluster,
 
 					String telp, String fax, String omset, String cara_pembayaran,
 
@@ -97,7 +97,7 @@ public class Customer {
 		this.npwp = npwp;
 
 		this.nama_pasar = nama_pasar;
-		this.cluster = cluster;
+		this.id_cluster = id_cluster;
 		this.telp = telp;
 		this.fax = fax;
 		this.omset = omset;
@@ -305,11 +305,11 @@ public class Customer {
 		this.nama_pasar = nama_pasar;
 	}
 
-	public String getCluster(){
-		return  cluster;
+	public int getId_cluster(){
+		return  id_cluster;
 	}
-	public void setCluster(String cluster){
-		this.cluster = cluster;
+	public void setId_cluster(int id_cluster){
+		this.id_cluster = id_cluster;
 	}
 
 	public  String getTelp (){

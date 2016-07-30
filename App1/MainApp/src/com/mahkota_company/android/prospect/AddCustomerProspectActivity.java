@@ -1,6 +1,7 @@
 package com.mahkota_company.android.prospect;
 
 import com.mahkota_company.android.database.Branch;
+import com.mahkota_company.android.database.Cluster;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.TypeCustomer;
@@ -86,6 +87,12 @@ public class AddCustomerProspectActivity extends FragmentActivity {
     private int idWilayah = 0;
 
 
+	private Spinner spinnerCluster;
+	private ArrayList<Cluster> clusterList;
+	private ArrayList<String> clusterStringList;
+	private int idCluster = 0;
+
+
     private Spinner spinnerTypeCustomer;
 	private ArrayList<TypeCustomer> typeCustomerList;
 	private ArrayList<String> typeCustomerStringList;
@@ -156,6 +163,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 
         spinnerWilayah = (Spinner) findViewById(R.id.activity_customer_prospect_wilayah_value);
         spinnerTypeCustomer = (Spinner) findViewById(R.id.activity_customer_prospect_type_customer_value);
+		spinnerCluster = (Spinner) findViewById(R.id.activity_customer_prospect_cluster);
 		tvGpsCustomer = (TextView) findViewById(R.id.activity_customer_detail_value_gps_location);
 		tvImage1Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image);
 		tvImage2Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image_2);
@@ -253,6 +261,35 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 					}
 				});
 		idTypeCustomer = typeCustomerList.get(0).getId_type_customer();
+
+
+		//set list cluster
+		clusterList = new ArrayList<Cluster>();
+		clusterStringList = new ArrayList<String>();
+		List<Cluster> dataCluster = databaseHandler
+				.getAllCluster();
+		for (Cluster cluster : dataCluster) {
+			clusterList.add(cluster);
+			clusterStringList.add(cluster.getNama_cluster());
+		}
+
+		SpinnerAdapter adapterCluster = new SpinnerAdapter(
+				getApplicationContext(), android.R.layout.simple_spinner_item,
+				clusterStringList);
+		adapterCluster.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerCluster.setAdapter(adapterCluster);
+		spinnerCluster
+				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+					public void onItemSelected(AdapterView<?> parent,
+											   View view, int position, long id) {
+						idCluster = clusterList.get(position)
+								.getId_cluster();
+					}
+
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+		idCluster = clusterList.get(0).getId_cluster();
 
 		tvKodeCustomer.setTypeface(typefaceSmall);
 		tvGpsCustomer.setTypeface(typefaceSmall);
@@ -492,7 +529,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
                             newCustomer.setAtas_nama(etAtasNama.getText().toString());
                             newCustomer.setNpwp(etNPWP.getText().toString());
                             newCustomer.setNama_pasar(etNamaPasar.getText().toString());
-                            newCustomer.setCluster(etCluster.getText().toString());
+                            newCustomer.setId_cluster(idCluster);
                             newCustomer.setTelp(etTelp.getText().toString());
                             newCustomer.setFax(etFax.getText().toString());
                             newCustomer.setOmset(etOmset.getText().toString());

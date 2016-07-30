@@ -22,6 +22,7 @@ import org.json.JSONObject;
 import com.mahkota_company.android.common.AlarmReceiver;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Branch;
+import com.mahkota_company.android.database.Cluster;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Kemasan;
 import com.mahkota_company.android.database.Staff;
@@ -459,7 +460,7 @@ public class LoginActivity extends Activity {
 				if (progressDialog != null) {
 					progressDialog.dismiss();
 				}
-				new DownloadDataWilayah().execute();
+				new DownloadDatacluster().execute();
 			} else {
 				message = act.getApplicationContext().getResources()
 						.getString(R.string.MSG_DLG_LABEL_DOWNLOAD_FAILED);
@@ -472,6 +473,112 @@ public class LoginActivity extends Activity {
 		}
 
 	}
+
+    //////////////////////////////////
+    private class DownloadDatacluster extends
+            AsyncTask<String, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setMessage(getApplicationContext().getResources()
+                    .getString(R.string.MSG_DLG_LABEL_SYNRONISASI_DATA));
+            progressDialog.show();
+            progressDialog
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            String msg = getApplicationContext()
+                                    .getResources()
+                                    .getString(
+                                            R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_CANCEL);
+                            showCustomDialog(msg);
+                        }
+                    });
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            String download_data_url = CONFIG.CONFIG_APP_URL_PUBLIC
+                    + CONFIG.CONFIG_APP_URL_DOWNLOAD_CLUSTER;
+            HttpResponse response = getDownloadData(download_data_url);
+            int retCode = (response != null) ? response.getStatusLine()
+                    .getStatusCode() : -1;
+            if (retCode != 200) {
+                message = act.getApplicationContext().getResources()
+                        .getString(R.string.MSG_DLG_LABEL_URL_NOT_FOUND);
+                handler.post(new Runnable() {
+                    public void run() {
+                        showCustomDialog(message);
+                    }
+                });
+            } else {
+                try {
+                    response_data = EntityUtils.toString(response.getEntity());
+
+                    SharedPreferences spPreferences = getSharedPrefereces();
+                    String main_app_table_data = spPreferences
+                            .getString(
+                                    CONFIG.SHARED_PREFERENCES_TABLE_CLUSTER,
+                                    null);
+                    if (main_app_table_data != null) {
+                        if (main_app_table_data.equalsIgnoreCase(response_data)) {
+                            saveAppDataClusterSameData(act
+                                    .getApplicationContext().getResources()
+                                    .getString(R.string.app_value_true));
+                        } else {
+                            databaseHandler.deleteTableCluster();
+                            saveAppDataClusterSameData(act
+                                    .getApplicationContext().getResources()
+                                    .getString(R.string.app_value_false));
+                        }
+                    } else {
+                        databaseHandler.deleteTableCluster();
+                        saveAppDataClusterSameData(act
+                                .getApplicationContext().getResources()
+                                .getString(R.string.app_value_false));
+                    }
+                } catch (ParseException e) {
+                    message = e.toString();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            showCustomDialog(message);
+                        }
+                    });
+                } catch (IOException e) {
+                    message = e.toString();
+                    handler.post(new Runnable() {
+                        public void run() {
+                            showCustomDialog(message);
+                        }
+                    });
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (response_data != null) {
+                saveAppDataCluster(response_data);
+                extractDataCluster();
+                if (progressDialog != null) {
+                    progressDialog.dismiss();
+                }
+                new DownloadDataWilayah().execute();
+            } else {
+                message = act.getApplicationContext().getResources()
+                        .getString(R.string.MSG_DLG_LABEL_DOWNLOAD_FAILED);
+                handler.post(new Runnable() {
+                    public void run() {
+                        showCustomDialog(message);
+                    }
+                });
+            }
+        }
+
+    }
+
+    ///////////////////////////////////
 
 	private class DownloadDataWilayah extends
 			AsyncTask<String, Integer, String> {
@@ -654,6 +761,23 @@ public class LoginActivity extends Activity {
 		editor.commit();
 	}
 
+    public void saveAppDataCluster(String responsedata) {
+        SharedPreferences sp = getSharedPrefereces();
+        Editor editor = sp.edit();
+        editor.putString(CONFIG.SHARED_PREFERENCES_TABLE_CLUSTER,
+                responsedata);
+        editor.commit();
+    }
+
+    public void saveAppDataClusterSameData(String responsedata) {
+        SharedPreferences sp = getSharedPrefereces();
+        Editor editor = sp.edit();
+        editor.putString(
+                CONFIG.SHARED_PREFERENCES_TABLE_CLUSTER_SAME_DATA,
+                responsedata);
+        editor.commit();
+    }
+
 	public void saveAppDataWilayah(String responsedata) {
 		SharedPreferences sp = getSharedPrefereces();
 		Editor editor = sp.edit();
@@ -792,6 +916,48 @@ public class LoginActivity extends Activity {
 			}
 		}
 	}
+
+    public void extractDataCluster() {
+        SharedPreferences spPreferences = getSharedPrefereces();
+        String main_app_table_same_data = spPreferences.getString(
+                CONFIG.SHARED_PREFERENCES_TABLE_CLUSTER_SAME_DATA, null);
+        String main_app_table = spPreferences.getString(
+                CONFIG.SHARED_PREFERENCES_TABLE_CLUSTER, null);
+        if (main_app_table_same_data.equalsIgnoreCase(act
+                .getApplicationContext().getResources()
+                .getString(R.string.app_value_false))) {
+            JSONObject oResponse;
+            try {
+                oResponse = new JSONObject(main_app_table);
+                JSONArray jsonarr = oResponse.getJSONArray("cluster");
+                for (int i = 0; i < jsonarr.length(); i++) {
+                    JSONObject oResponsealue = jsonarr.getJSONObject(i);
+                    String id_cluster = oResponsealue
+                            .isNull("id_cluster") ? null : oResponsealue
+                            .getString("id_cluster");
+                    String nama_cluster = oResponsealue
+                            .isNull("nama_cluster") ? null : oResponsealue
+                            .getString("nama_cluster");
+                    String description = oResponsealue.isNull("description") ? null
+                            : oResponsealue.getString("description");
+                    Log.d(LOG_TAG, "id_cluster:" + id_cluster);
+                    Log.d(LOG_TAG, "nama_cluster:" + nama_cluster);
+                    Log.d(LOG_TAG, "description:" + description);
+                    databaseHandler.add_Cluster(new Cluster(Integer
+                            .parseInt(id_cluster), nama_cluster,
+                            description));
+                }
+            } catch (JSONException e) {
+                final String message = e.toString();
+                handler.post(new Runnable() {
+                    public void run() {
+                        showCustomDialog(message);
+                    }
+                });
+
+            }
+        }
+    }
 
 	public void extractDataWilayah() {
 		SharedPreferences spPreferences = getSharedPrefereces();

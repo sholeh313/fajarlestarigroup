@@ -497,6 +497,7 @@ public class DetailJadwalCustomerActivity extends FragmentActivity {
 							String datetime = dateOutput + " " + time;
 							Jadwal newJadwal = new Jadwal();
 							newJadwal.setId_jadwal(jadwal.getId_jadwal());
+							newJadwal.setKode_jadwal(jadwal.getKode_jadwal());
 							newJadwal.setAlamat(jadwal.getAlamat());
 							newJadwal.setCheckin(jadwal.getCheckin());
 							newJadwal.setCheckout(datetime);

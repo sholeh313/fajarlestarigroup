@@ -976,20 +976,12 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal" >
 
-                        <EditText
+                        <Spinner
                             android:id="@+id/activity_customer_prospect_cluster_value"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:layout_weight="0.3"
-                            android:background="@drawable/input_field_style"
-                            android:imeOptions="actionDone"
-                            android:singleLine="true"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/Ivory3"
-                            android:inputType="number"
-                            android:hint="cluster"/>
+                            android:layout_weight="1"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 

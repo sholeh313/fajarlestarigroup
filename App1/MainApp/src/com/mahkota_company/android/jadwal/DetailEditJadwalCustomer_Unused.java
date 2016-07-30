@@ -38,6 +38,7 @@ import android.widget.Toast;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.customer.CustomerLocatorActivity;
+import com.mahkota_company.android.database.Cluster;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.TypeCustomer;
@@ -62,6 +63,11 @@ public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
     private String newImageName1;
     private String newImageName2;
     private String newImageName3;
+
+    private Spinner spinnerCluster;
+    private ArrayList<Cluster> clusterList;
+    private ArrayList<String> clusterStringList;
+    private int idCluster = 0;
 
     private DatabaseHandler databaseHandler;
     private ProgressDialog progressDialog;
@@ -206,6 +212,34 @@ public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
 
         typeCustomerList = new ArrayList<TypeCustomer>();
         typeCustomerStringList = new ArrayList<String>();
+
+        //set list cluster
+        clusterList = new ArrayList<Cluster>();
+        clusterStringList = new ArrayList<String>();
+        List<Cluster> dataCluster = databaseHandler
+                .getAllCluster();
+        for (Cluster cluster : dataCluster) {
+            clusterList.add(cluster);
+            clusterStringList.add(cluster.getNama_cluster());
+        }
+
+        SpinnerAdapter adapterCluster = new SpinnerAdapter(
+                getApplicationContext(), android.R.layout.simple_spinner_item,
+                clusterStringList);
+        adapterCluster.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCluster.setAdapter(adapterCluster);
+        spinnerCluster
+                .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id) {
+                        idCluster = clusterList.get(position)
+                                .getId_cluster();
+                    }
+
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
+        idCluster = clusterList.get(0).getId_cluster();
 
         /*
         tvHeaderImage1Customer.setVisibility(View.INVISIBLE);
@@ -706,7 +740,7 @@ public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
             newCustomer.setNpwp(etNpwp.getText().toString());
             newCustomer.setStatus_update("2");
             newCustomer.setNama_pasar(etNama_pasar.getText().toString());
-            newCustomer.setCluster(etCluster.getText().toString());
+            newCustomer.setId_cluster(idCluster);
             newCustomer.setTelp(etTelp.getText().toString());
             newCustomer.setFax(etFax.getText().toString());
             newCustomer.setOmset(etOmset.getText().toString());
@@ -778,7 +812,7 @@ public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
             newCustomer.setNpwp(etNpwp.getText().toString());
             newCustomer.setStatus_update("2");
             newCustomer.setNama_pasar(etNama_pasar.getText().toString());
-            newCustomer.setCluster(etCluster.getText().toString());
+            newCustomer.setId_cluster(idCluster);
             newCustomer.setTelp(etTelp.getText().toString());
             newCustomer.setFax(etFax.getText().toString());
             newCustomer.setOmset(etOmset.getText().toString());
@@ -909,7 +943,7 @@ public class DetailEditJadwalCustomer_Unused extends FragmentActivity {
             etNpwp.setText(customer.getNpwp());
 
             etNama_pasar.setText(customer.getNama_pasar());
-            etCluster.setText(customer.getCluster());
+            etCluster.setText(customer.getId_cluster());
             etTelp.setText(customer.getTelp());
             etFax.setText(customer.getFax());
             etOmset.setText(customer.getOmset());

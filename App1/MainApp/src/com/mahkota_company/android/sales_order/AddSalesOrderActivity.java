@@ -144,8 +144,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						null, null, null, null, jadwal.getNama_lengkap(), null,
 						jadwal.getId_wilayah(), null, null, null, 0, null,
 						null, null, 0, null, null, null, null, null, null, null,
-						null, null, null, null,
-						null, null, null, null, null, null, null, null,null, null,null);
+						0, null, null, null,null, null, null, null, null, null,
+						null, null,null, null,null);
 				dataCustomer.add(customer);
 
 			}

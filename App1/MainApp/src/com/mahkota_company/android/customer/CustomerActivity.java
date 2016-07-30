@@ -214,8 +214,8 @@ public class CustomerActivity extends ActionBarActivity implements
                                     .getNpwp();
                             String nama_pasar = customer_from_db.get(i)
                                     .getNama_pasar();
-                            String cluster = customer_from_db.get(i)
-                                    .getCluster();
+                            int id_cluster = customer_from_db.get(i)
+                                    .getId_cluster();
                             String telp = customer_from_db.get(i)
                                     .getTelp();
                             String fax = customer_from_db.get(i)
@@ -270,7 +270,7 @@ public class CustomerActivity extends ActionBarActivity implements
                             customer.setAtas_nama(atas_nama);
                             customer.setNpwp(npwp);
                             customer.setNama_pasar(nama_pasar);
-                            customer.setCluster(cluster);
+                            customer.setId_cluster(id_cluster);
                             customer.setTelp(telp);
                             customer.setFax(fax);
                             customer.setOmset(omset);
@@ -346,8 +346,8 @@ public class CustomerActivity extends ActionBarActivity implements
                                     .getNpwp();
                             String nama_pasar = customer_from_db.get(i)
                                     .getNama_pasar();
-                            String cluster = customer_from_db.get(i)
-                                    .getCluster();
+                            int id_cluster = customer_from_db.get(i)
+                                    .getId_cluster();
                             String telp = customer_from_db.get(i)
                                     .getTelp();
                             String fax = customer_from_db.get(i)
@@ -401,7 +401,7 @@ public class CustomerActivity extends ActionBarActivity implements
                             customer.setAtas_nama(atas_nama);
                             customer.setNpwp(npwp);
                             customer.setNama_pasar(nama_pasar);
-                            customer.setCluster(cluster);
+                            customer.setId_cluster(id_cluster);
                             customer.setTelp(telp);
                             customer.setFax(fax);
                             customer.setOmset(omset);
@@ -564,7 +564,6 @@ public class CustomerActivity extends ActionBarActivity implements
 				});
 			}
 		}
-
 	}
 
 	public void showCustomDialogDownloadSuccess(String msg) {
@@ -787,8 +786,8 @@ public class CustomerActivity extends ActionBarActivity implements
 							: oResponsealue.getString("npwp");
                     String nama_pasar = oResponsealue.isNull("nama_pasar") ? null
                             : oResponsealue.getString("nama_pasar");
-                    String cluster = oResponsealue.isNull("cluster") ? null
-                            : oResponsealue.getString("cluster");
+                    String id_cluster = oResponsealue.isNull("id_cluster") ? null
+                            : oResponsealue.getString("id_cluster");
                     String telp = oResponsealue.isNull("telp") ? null
                             : oResponsealue.getString("telp");
                     String fax = oResponsealue.isNull("fax") ? null
@@ -841,7 +840,7 @@ public class CustomerActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "atas_nama:" + atas_nama);
 					Log.d(LOG_TAG, "npwp:" + npwp);
                     Log.d(LOG_TAG, "nama_pasar:" + nama_pasar);
-                    Log.d(LOG_TAG, "cluster:" + cluster);
+                    Log.d(LOG_TAG, "id_cluster:" + id_cluster);
                     Log.d(LOG_TAG, "telp:" + telp);
                     Log.d(LOG_TAG, "fax:" + fax);
                     Log.d(LOG_TAG, "omset:" + omset);
@@ -866,7 +865,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							foto_3, Integer.parseInt(id_type_customer), blokir,
 							date, "1", Integer.parseInt(id_staff), no_ktp,
 							tanggal_lahir,nama_bank,no_rekening, atas_nama, npwp,
-                            nama_pasar, cluster, telp, fax, omset, cara_pembayaran,
+                            nama_pasar, Integer.parseInt(id_cluster) , telp, fax, omset, cara_pembayaran,
 							plafon_kredit,term_kredit, nama_istri, nama_anak1,
 							nama_anak2, nama_anak3, kode_pos, id_depo, isactive,
 							description));
@@ -964,8 +963,8 @@ public class CustomerActivity extends ActionBarActivity implements
                         .getNpwp();
                 String nama_pasar = customer_from_db.get(i)
                         .getNama_pasar();
-                String cluster = customer_from_db.get(i)
-                        .getCluster();
+                int id_cluster = customer_from_db.get(i)
+                        .getId_cluster();
                 String telp = customer_from_db.get(i)
                         .getTelp();
                 String fax = customer_from_db.get(i)
@@ -1021,7 +1020,7 @@ public class CustomerActivity extends ActionBarActivity implements
                 customer.setAtas_nama(atas_nama);
                 customer.setNpwp(npwp);
                 customer.setNama_pasar(nama_pasar);
-                customer.setCluster(cluster);
+                customer.setId_cluster(id_cluster);
                 customer.setTelp(telp);
                 customer.setFax(fax);
                 customer.setOmset(omset);
@@ -1397,7 +1396,7 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String foto_3, final String id_type_customer,
                                           final String date, final String no_ktp,
                                           final String tanggal_lahir, final String nama_bank, final String no_rekening,
-                                          final String atas_nama, final String npwp, final String nama_pasar, final String cluster,
+                                          final String atas_nama, final String npwp, final String nama_pasar, final String id_cluster,
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
                                           final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
                                           final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
@@ -1453,7 +1452,7 @@ public class CustomerActivity extends ActionBarActivity implements
             entity.addPart("atas_nama", new StringBody(atas_nama));
             entity.addPart("npwp", new StringBody(npwp));
             entity.addPart("nama_pasar", new StringBody(nama_pasar));
-            entity.addPart("cluster", new StringBody(cluster));
+            entity.addPart("id_cluster", new StringBody(id_cluster));
             entity.addPart("telp", new StringBody(telp));
             entity.addPart("fax", new StringBody(fax));
             entity.addPart("omset", new StringBody(omset));
@@ -1553,7 +1552,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getAtas_nama(),
                         customer.getNpwp(),
                         customer.getNama_pasar(),
-                        customer.getCluster(),
+						String.valueOf(customer.getId_cluster()),
                         customer.getTelp(),
                         customer.getFax(),
                         customer.getOmset(),

@@ -273,8 +273,8 @@
     <string name="app_jadwal_processing_upload_success">Proses upload jadwal sukses !</string>
     <string name="app_jadwal_processing_upload">Proses upload jadwal</string>
     <string name="app_jadwal_status_update_1">Belum Check In</string>
-    <string name="app_jadwal_status_update_2">Belum Check Out</string>
-    <string name="app_jadwal_status_update_3">Sudah Check Out</string>
+    <string name="app_jadwal_status_update_2">Check In</string>
+    <string name="app_jadwal_status_update_3">Check Out</string>
     <!-- Dialog -->
     <string name="MSG_DLG_LABEL_SAVE">Save</string>
     <string name="MSG_DLG_LABEL_CANCEL">Cancel</string>

@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_STAFF_TEMP = "staff_temp";
 	private static final String TABLE_BRANCH = "branch";
 	private static final String TABLE_TYPE_CUSTOMER = "type_customer";
+	private static final String TABLE_CLUSTER = "cluster";
 	private static final String TABLE_WILAYAH = "wilayah";
 	private static final String TABLE_KEMASAN = "kemasan";
 	private static final String TABLE_PRODUCT = "product";
@@ -83,7 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_CUSTOMER_ATAS_NAMA = "atas_nama";
 	private static final String KEY_CUSTOMER_NPWP = "npwp";
 	private static final String KEY_CUSTOMER_NAMA_PASAR = "nama_pasar";
-	private static final String KEY_CUSTOMER_CLUSTER = "cluster";
+	private static final String KEY_CUSTOMER_ID_CLUSTER = "id_cluster";
 	private static final String KEY_CUSTOMER_TELP = "telp";
 	private static final String KEY_CUSTOMER_FAX = "fax";
 	private static final String KEY_CUSTOMER_OMSET= "omset";
@@ -156,6 +157,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_TYPE_CUSTOMER_TYPE_CUSTOMER = "type_customer";
 	private static final String KEY_TYPE_CUSTOMER_DESKRIPSI = "deskripsi";
 
+	//CLUSTER table columns names
+	private static final String KEY_CLUSTER_ID_CLUSTER = "id_cluster";
+	private static final String KEY_CLUSTER_NAMA_CLUSTER = "nama_cluster";
+	private static final String KEY_CLUSTER_DESCRIPTION = "description";
+
 	// BRANCH Table Columns names
 	private static final String KEY_BRANCH_ID_BRANCH = "id_branch";
 	private static final String KEY_BRANCH_KODE_BRANCH = "kode_branch";
@@ -221,6 +227,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	private final ArrayList<Staff> staff_list = new ArrayList<Staff>();
 	private final ArrayList<TypeCustomer> type_customer_list = new ArrayList<TypeCustomer>();
+	private final ArrayList<Cluster> cluster_list = new ArrayList<Cluster>();
+
 	private final ArrayList<Branch> branch_list = new ArrayList<Branch>();
 	private final ArrayList<Kemasan> kemasan_list = new ArrayList<Kemasan>();
 	private final ArrayList<Wilayah> wilayah_list = new ArrayList<Wilayah>();
@@ -267,6 +275,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_TYPE_CUSTOMER_TYPE_CUSTOMER + " TEXT,"
 				+ KEY_TYPE_CUSTOMER_DESKRIPSI + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE_TYPE_CUSTOMER);
+
+		String CREATE_TABLE_CLUSTER = "CREATE TABLE "
+				+ TABLE_CLUSTER + "("
+				+ KEY_CLUSTER_ID_CLUSTER + " INTEGER PRIMARY KEY,"
+				+ KEY_CLUSTER_NAMA_CLUSTER + " TEXT,"
+				+ KEY_CLUSTER_DESCRIPTION + " TEXT" + ")";
+		db.execSQL(CREATE_TABLE_CLUSTER);
 
 		String CREATE_TABLE_BRANCH = "CREATE TABLE " + TABLE_BRANCH + "("
 				+ KEY_BRANCH_ID_BRANCH + " INTEGER PRIMARY KEY,"
@@ -320,7 +335,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_CUSTOMER_ATAS_NAMA + " TEXT,"
 				+ KEY_CUSTOMER_NPWP + " TEXT,"
 				+ KEY_CUSTOMER_NAMA_PASAR + " TEXT,"
-				+ KEY_CUSTOMER_CLUSTER + " TEXT,"
+				+ KEY_CUSTOMER_ID_CLUSTER + " INTEGER,"
 				+ KEY_CUSTOMER_TELP + " TEXT,"
 				+ KEY_CUSTOMER_FAX + " TEXT,"
 				+ KEY_CUSTOMER_OMSET + " TEXT,"
@@ -436,6 +451,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFF);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_BRANCH);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE_CUSTOMER);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLUSTER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_WILAYAH);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_KEMASAN);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
@@ -521,7 +537,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_ATAS_NAMA, customer.getAtas_nama());
 		values.put(KEY_CUSTOMER_NPWP, customer.getNpwp());
 		values.put(KEY_CUSTOMER_NAMA_PASAR, customer.getNama_pasar());
-		values.put(KEY_CUSTOMER_CLUSTER, customer.getCluster());
+		values.put(KEY_CUSTOMER_ID_CLUSTER, customer.getId_cluster());
 		values.put(KEY_CUSTOMER_TELP, customer.getTelp());
 		values.put(KEY_CUSTOMER_FAX, customer.getFax());
 		values.put(KEY_CUSTOMER_OMSET, customer.getOmset());
@@ -653,6 +669,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_TYPE_CUSTOMER_DESKRIPSI, typeCustomer.getDeskripsi());
 		// Inserting Row
 		db.insert(TABLE_TYPE_CUSTOMER, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Adding new Cluster
+	public void add_Cluster(Cluster cluster) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_CLUSTER_ID_CLUSTER,
+				cluster.getId_cluster());
+		values.put(KEY_CLUSTER_NAMA_CLUSTER,
+				cluster.getNama_cluster());
+		values.put(KEY_CLUSTER_DESCRIPTION, cluster.getDescription());
+		// Inserting Row
+		db.insert(TABLE_CLUSTER, null, values);
 		db.close(); // Closing database connection
 	}
 
@@ -819,7 +849,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_DATE, KEY_CUSTOMER_STATUS_UPDATE,
 						KEY_CUSTOMER_ID_STAFF, KEY_CUSTOMER_NO_KTP, KEY_CUSTOMER_TANGGAL_LAHIR,
 						KEY_CUSTOMER_NAMA_BANK, KEY_CUSTOMER_NO_REKENING, KEY_CUSTOMER_ATAS_NAMA,
-						KEY_CUSTOMER_NPWP, KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_CLUSTER, KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX,
+						KEY_CUSTOMER_NPWP, KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_ID_CLUSTER, KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX,
 						KEY_CUSTOMER_OMSET, KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
 						KEY_CUSTOMER_NAMA_ANAK3,KEY_CUSTOMER_KODE_POS,KEY_CUSTOMER_ID_DEPO,KEY_CUSTOMER_ISACTIVE,KEY_CUSTOMER_DESCRIPTION},
@@ -838,7 +868,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(14), cursor.getString(15), cursor.getInt(16),
 				cursor.getString(17), cursor.getString(18), cursor.getString(19),
 				cursor.getString(20), cursor.getString(21), cursor.getString(22),
-				cursor.getString(23), cursor.getString(24), cursor.getString(25),
+				cursor.getString(23), cursor.getInt(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
 				cursor.getString(32), cursor.getString(33), cursor.getString(34),
@@ -867,7 +897,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_DATE, KEY_CUSTOMER_STATUS_UPDATE,
 						KEY_CUSTOMER_ID_STAFF, KEY_CUSTOMER_NO_KTP, KEY_CUSTOMER_TANGGAL_LAHIR,
 						KEY_CUSTOMER_NAMA_BANK, KEY_CUSTOMER_NO_REKENING, KEY_CUSTOMER_ATAS_NAMA,
-						KEY_CUSTOMER_NPWP,KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_CLUSTER,
+						KEY_CUSTOMER_NPWP,KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_ID_CLUSTER,
 						KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX, KEY_CUSTOMER_OMSET,
 						KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
@@ -886,7 +916,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(14), cursor.getString(15), cursor.getInt(16),
 				cursor.getString(17), cursor.getString(18), cursor.getString(19),
 				cursor.getString(20), cursor.getString(21), cursor.getString(22),
-				cursor.getString(23), cursor.getString(24), cursor.getString(25),
+				cursor.getString(23), cursor.getInt(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
 				cursor.getString(32), cursor.getString(33), cursor.getString(34),
@@ -915,7 +945,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_CUSTOMER_DATE, KEY_CUSTOMER_STATUS_UPDATE,
 						KEY_CUSTOMER_ID_STAFF, KEY_CUSTOMER_NO_KTP, KEY_CUSTOMER_TANGGAL_LAHIR,
 						KEY_CUSTOMER_NAMA_BANK, KEY_CUSTOMER_NO_REKENING, KEY_CUSTOMER_ATAS_NAMA,
-						KEY_CUSTOMER_NPWP,KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_CLUSTER,
+						KEY_CUSTOMER_NPWP,KEY_CUSTOMER_NAMA_PASAR, KEY_CUSTOMER_ID_CLUSTER,
 						KEY_CUSTOMER_TELP, KEY_CUSTOMER_FAX, KEY_CUSTOMER_OMSET,
 						KEY_CUSTOMER_CARA_PEMBAYARAN, KEY_CUSTOMER_PLAFON_KREDIT,
 						KEY_CUSTOMER_TERM_KREDIT,KEY_CUSTOMER_NAMA_ISTRI, KEY_CUSTOMER_NAMA_ANAK1, KEY_CUSTOMER_NAMA_ANAK2,
@@ -935,7 +965,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(14), cursor.getString(15), cursor.getInt(16),
 				cursor.getString(17), cursor.getString(18), cursor.getString(19),
 				cursor.getString(20), cursor.getString(21), cursor.getString(22),
-				cursor.getString(23), cursor.getString(24), cursor.getString(25),
+				cursor.getString(23), cursor.getInt(24), cursor.getString(25),
 				cursor.getString(26), cursor.getString(27), cursor.getString(28),
 				cursor.getString(29), cursor.getString(30), cursor.getString(31),
 				cursor.getString(32), cursor.getString(33), cursor.getString(34),
@@ -1134,6 +1164,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		cursor.close();
 		db.close();
 		return typeCustomer;
+	}
+
+	// Getting single Cluster
+	public Cluster getCluster(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_CLUSTER, new String[] {
+						KEY_CLUSTER_ID_CLUSTER,
+						KEY_CLUSTER_NAMA_CLUSTER, KEY_CLUSTER_DESCRIPTION },
+				KEY_CLUSTER_ID_CLUSTER + "=?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		Cluster cluster = new Cluster(cursor.getInt(0),
+				cursor.getString(1), cursor.getString(2));
+		// return branch
+		cursor.close();
+		db.close();
+		return cluster;
 	}
 
 	// Getting single Wilayah
@@ -1367,7 +1418,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -1753,7 +1804,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -1823,7 +1874,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -1894,7 +1945,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -1964,7 +2015,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -2037,7 +2088,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -2109,7 +2160,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					customer.setAtas_nama(cursor.getString(21));
 					customer.setNpwp(cursor.getString(22));
 					customer.setNama_pasar(cursor.getString(23));
-					customer.setCluster(cursor.getString(24));
+					customer.setId_cluster(cursor.getInt(24));
 					customer.setTelp(cursor.getString(25));
 					customer.setFax(cursor.getString(26));
 					customer.setOmset(cursor.getString(27));
@@ -2500,7 +2551,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_ATAS_NAMA, customer.getAtas_nama());
 		values.put(KEY_CUSTOMER_NPWP, customer.getNpwp());
 		values.put(KEY_CUSTOMER_NAMA_PASAR, customer.getNama_pasar());
-		values.put(KEY_CUSTOMER_CLUSTER, customer.getCluster());
+		values.put(KEY_CUSTOMER_ID_CLUSTER, customer.getId_cluster());
 		values.put(KEY_CUSTOMER_TELP, customer.getTelp());
 		values.put(KEY_CUSTOMER_FAX, customer.getFax());
 		values.put(KEY_CUSTOMER_OMSET, customer.getOmset());
@@ -2551,7 +2602,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_CUSTOMER_ATAS_NAMA, customer.getAtas_nama());
 		values.put(KEY_CUSTOMER_NPWP, customer.getNpwp());
 		values.put(KEY_CUSTOMER_NAMA_PASAR, customer.getNama_pasar());
-		values.put(KEY_CUSTOMER_CLUSTER, customer.getCluster());
+		values.put(KEY_CUSTOMER_ID_CLUSTER, customer.getId_cluster());
 		values.put(KEY_CUSTOMER_TELP, customer.getTelp());
 		values.put(KEY_CUSTOMER_FAX, customer.getFax());
 		values.put(KEY_CUSTOMER_OMSET, customer.getOmset());
@@ -2975,6 +3026,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 
 		return type_customer_list;
+	}
+
+	// Getting All Cluster
+	public ArrayList<Cluster> getAllCluster() {
+		try {
+			cluster_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_CLUSTER;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Cluster cluster = new Cluster();
+					cluster.setId_cluster(cursor.getInt(0));
+					cluster.setNama_cluster(cursor.getString(1));
+					cluster.setDescription(cursor.getString(2));
+
+					// Adding cluster_list to list
+					cluster_list.add(cluster);
+				} while (cursor.moveToNext());
+			}
+
+			// return cluster_list
+			cursor.close();
+			db.close();
+			return cluster_list;
+		} catch (Exception e) {
+			Log.e("cluster_list", "" + e);
+		}
+
+		return cluster_list;
 	}
 
 	// Getting All Wilayah
@@ -3402,6 +3488,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void deleteTableTypeCustomer() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.execSQL("DELETE FROM " + TABLE_TYPE_CUSTOMER);
+	}
+
+	public void deleteTableCluster() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_CLUSTER);
 	}
 
 	public void deleteTableWilayah() {
