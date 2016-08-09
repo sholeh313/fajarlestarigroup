@@ -60,15 +60,16 @@ public class DetailEditCustomer extends FragmentActivity {
     private ImageView menuBackButton;
     public static final int MEDIA_TYPE_IMAGE = 1;
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    private double tempCheckInLatitude;
+    private double tempCheckInLongitude;
+
     private String newImageName1;
     private String newImageName2;
     private String newImageName3;
-
     private Spinner spinnerCluster;
     private ArrayList<Cluster> clusterList;
     private ArrayList<String> clusterStringList;
     private int idCluster = 0;
-
     private DatabaseHandler databaseHandler;
     private ProgressDialog progressDialog;
     private Typeface typefaceSmall;
@@ -100,7 +101,6 @@ public class DetailEditCustomer extends FragmentActivity {
     private EditText etCara_pembayaran;
     private EditText etPlafon_kredit;
     private EditText etTerm_kredit;
-
     private EditText etNama_istri;
     private EditText etNama_anak1;
     private EditText etNama_anak2;
@@ -108,7 +108,7 @@ public class DetailEditCustomer extends FragmentActivity {
     private EditText etKode_pos;
     private ToggleButton tgStatus;
     private EditText etDescription;
-
+    private EditText etNama_toko;
     private Customer customer;
     private TextView tvstatus;
     private TextView tvHeaderKodeCustomer;
@@ -198,6 +198,7 @@ public class DetailEditCustomer extends FragmentActivity {
         etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
         tgStatus = (ToggleButton) findViewById(R.id.activity_customer_detail_status_value);
         etDescription = (EditText) findViewById(R.id.activity_customer_prospect_description_value);
+        etNama_toko = (EditText) findViewById(R.id.activity_customer_prospect_nama_toko_value);
 
         tvstatus = (TextView) findViewById(R.id.activity_customer_detail_status);
         tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
@@ -717,8 +718,195 @@ public class DetailEditCustomer extends FragmentActivity {
 
     }
 
+    private double distanceNew(double lat1, double lon1, double lat2,
+                               double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        // if (unit == 'K') {
+        dist = dist * 1.609344;
+        // } else if (unit == 'N') {
+        // dist = dist * 0.8684;
+        // }
+        return (dist) * 2;
+    }
+
+    /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+	/* :: This function converts decimal degrees to radians : */
+	/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+	/* :: This function converts radians to decimal degrees : */
+	/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+    private double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
+    }
+
     protected void saveGPSandProfile() {
+        tempCheckInLatitude = Double.parseDouble(customer.getLats());
+        tempCheckInLongitude = Double.parseDouble(customer.getLongs());
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
         if (newImageName1 != null){
+            String curLatitude = String
+                    .valueOf((int) tempCheckInLatitude);
+            String curLongitude = String
+                    .valueOf((int) tempCheckInLongitude);
+            if (curLatitude.equalsIgnoreCase("0")
+                    || curLongitude.equalsIgnoreCase("0")){
+                final String date = "yyyy-MM-dd";
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                        date);
+                final String checkDate = dateFormat.format(calendar
+                        .getTime());
+                Customer newCustomer = new Customer();
+                newCustomer.setId_customer(customer.getId_customer());
+                newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                newCustomer.setBlokir(customer.getBlokir());
+                newCustomer.setDate(checkDate);
+                newCustomer.setEmail(etEmailCustomer.getText().toString());
+                newCustomer.setFoto_1(newImageName1);
+                newCustomer.setFoto_2(newImageName2);
+                newCustomer.setFoto_3(newImageName3);
+                newCustomer.setId_type_customer(idTypeCustomer);
+                newCustomer.setId_wilayah(customer.getId_wilayah());
+                newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                newCustomer.setLats(String.valueOf(latitude));
+                newCustomer.setLongs(String.valueOf(longitude));
+                newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                newCustomer.setStatus_update(customer.getStatus_update());
+                newCustomer.setId_staff(customer.getId_staff());
+                newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                newCustomer.setNama_bank(etNama_bank.getText().toString());
+                newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                newCustomer.setNpwp(etNpwp.getText().toString());
+                newCustomer.setStatus_update("2");
+                newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                newCustomer.setId_cluster(idCluster);
+                newCustomer.setTelp(etTelp.getText().toString());
+                newCustomer.setFax(etFax.getText().toString());
+                newCustomer.setOmset(etOmset.getText().toString());
+                newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                newCustomer.setNama_istri(etNama_istri.getText().toString());
+                newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                newCustomer.setKode_pos(etKode_pos.getText().toString());
+                newCustomer.setId_depo(customer.getId_depo());
+                newCustomer.setIsactive(tvstatus.getText().toString());
+                newCustomer.setDescription(etDescription.getText().toString());
+                newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                String msg = getApplicationContext().getResources().getString(
+                        R.string.app_customer_update_success);
+                showCustomDialogSaveSuccess(msg);
+
+            }else{
+                double differentKm = distanceNew(tempCheckInLatitude,
+                        tempCheckInLongitude, latitude, longitude);
+                int getMeter = (int) differentKm * 1000;
+                String message = getApplicationContext()
+                        .getResources()
+                        .getString(
+                                R.string.app_customer_detail_far_away_location);
+
+                if(getMeter < 50){
+                    final String date = "yyyy-MM-dd";
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(
+                            date);
+                    final String checkDate = dateFormat.format(calendar
+                            .getTime());
+                    Customer newCustomer = new Customer();
+                    newCustomer.setId_customer(customer.getId_customer());
+                    newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                    newCustomer.setBlokir(customer.getBlokir());
+                    newCustomer.setDate(checkDate);
+                    newCustomer.setEmail(etEmailCustomer.getText().toString());
+                    newCustomer.setFoto_1(newImageName1);
+                    newCustomer.setFoto_2(newImageName2);
+                    newCustomer.setFoto_3(newImageName3);
+                    newCustomer.setId_type_customer(idTypeCustomer);
+                    newCustomer.setId_wilayah(customer.getId_wilayah());
+                    newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                    newCustomer.setLats(String.valueOf(latitude));
+                    newCustomer.setLongs(String.valueOf(longitude));
+                    newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                    newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                    newCustomer.setStatus_update(customer.getStatus_update());
+                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                    newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                    newCustomer.setNama_bank(etNama_bank.getText().toString());
+                    newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                    newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                    newCustomer.setNpwp(etNpwp.getText().toString());
+                    newCustomer.setStatus_update("2");
+                    newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                    newCustomer.setId_cluster(idCluster);
+                    newCustomer.setTelp(etTelp.getText().toString());
+                    newCustomer.setFax(etFax.getText().toString());
+                    newCustomer.setOmset(etOmset.getText().toString());
+                    newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                    newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                    newCustomer.setNama_istri(etNama_istri.getText().toString());
+                    newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                    newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                    newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                    newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                    newCustomer.setKode_pos(etKode_pos.getText().toString());
+                    newCustomer.setId_depo(customer.getId_depo());
+                    newCustomer.setIsactive(tvstatus.getText().toString());
+                    newCustomer.setDescription(etDescription.getText().toString());
+                    newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                    databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                    String msg = getApplicationContext().getResources().getString(
+                            R.string.app_customer_update_success);
+                    showCustomDialogSaveSuccess(msg);
+                }else if(getMeter > 50){
+                    showCustomDialog(message);
+                }
+            }
+
+        } else{
+            String msg = getApplicationContext()
+                    .getResources()
+                    .getString(
+                            R.string.app_customer_prospect_save_failed_no_image_new);
+            showCustomDialog(msg);
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    protected void saveOnlyProfile() {
+        if (customer.getFoto_1().equals("'")){
+            String msg = getApplicationContext()
+                    .getResources()
+                    .getString(
+                            R.string.app_customer_prospect_save_failed_no_image_old);
+            showCustomDialog(msg);
+        }else if (customer.getFoto_1().equals("")){
+            String msg = getApplicationContext()
+                    .getResources()
+                    .getString(
+                            R.string.app_customer_prospect_save_failed_no_image_old);
+            showCustomDialog(msg);
+        }else{
             final String date = "yyyy-MM-dd";
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -731,14 +919,14 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setBlokir(customer.getBlokir());
             newCustomer.setDate(checkDate);
             newCustomer.setEmail(etEmailCustomer.getText().toString());
-            newCustomer.setFoto_1(newImageName1);
-            newCustomer.setFoto_2(newImageName2);
-            newCustomer.setFoto_3(newImageName3);
+            newCustomer.setFoto_1(customer.getFoto_1());
+            newCustomer.setFoto_2(customer.getFoto_2());
+            newCustomer.setFoto_3(customer.getFoto_3());
             newCustomer.setId_type_customer(idTypeCustomer);
             newCustomer.setId_wilayah(customer.getId_wilayah());
             newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
-            newCustomer.setLats(String.valueOf(latitude));
-            newCustomer.setLongs(String.valueOf(longitude));
+            newCustomer.setLats(customer.getLats());
+            newCustomer.setLongs(customer.getLongs());
             newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
             newCustomer.setNo_telp(etTelpCustomer.getText().toString());
             newCustomer.setStatus_update(customer.getStatus_update());
@@ -766,22 +954,19 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setId_depo(customer.getId_depo());
             newCustomer.setIsactive(tvstatus.getText().toString());
             newCustomer.setDescription(etDescription.getText().toString());
+            newCustomer.setNama_toko(etNama_toko.getText().toString());
 
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
                     R.string.app_customer_update_success);
             showCustomDialogSaveSuccess(msg);
-        } else{
-            String msg = getApplicationContext()
-                    .getResources()
-                    .getString(
-                            R.string.app_customer_prospect_save_failed_no_image_new);
-            showCustomDialog(msg);
         }
 
     }
 
-    protected void saveOnlyProfile() {
+    ////////////////////////////////////////////// dibawah gak dipake sementara
+    /*
+    protected void ssaveOnlyProfile() {
         if (customer.getFoto_1().equals("'")){
             String msg = getApplicationContext()
                     .getResources()
@@ -842,6 +1027,7 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setId_depo(customer.getId_depo());
             newCustomer.setIsactive(tvstatus.getText().toString());
             newCustomer.setDescription(etDescription.getText().toString());
+            newCustomer.setNama_toko(etNama_toko.getText().toString());
 
             databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
             String msg = getApplicationContext().getResources().getString(
@@ -849,6 +1035,7 @@ public class DetailEditCustomer extends FragmentActivity {
             showCustomDialogSaveSuccess(msg);
         }
     }
+    */
 
     private void previewImageDialog() {
         if (customer != null) {
@@ -976,6 +1163,8 @@ public class DetailEditCustomer extends FragmentActivity {
             etKode_pos.setText(customer.getKode_pos());
             tvstatus.setText((customer.getIsactive()));
             etDescription.setText(customer.getDescription());
+            etNama_toko.setText(customer.getNama_toko());
+
             if(customer.getIsactive().equals("Y")){
                 tgStatus.setTextOn("Aktif");
                 tgStatus.setChecked(true);

@@ -73,6 +73,8 @@ public class LoginActivity extends Activity {
 	private String response_data;
 	private long tm = 1;
 
+	private Branch branch;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,16 +106,60 @@ public class LoginActivity extends Activity {
 		// || databaseHandler.getCountKemasan() == 0
 		// || databaseHandler.getCountTypeCustomer() == 0
 		// || databaseHandler.getCountWilayah() == 0) {
-		if (GlobalApp.checkInternetConnection(act)) {
-			new DownloadDataKemasan().execute();
-		} else {
-			String message = act
-					.getApplicationContext()
-					.getResources()
-					.getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
-			showCustomDialog(message);
-		}
-		// }
+		if (databaseHandler.getCountKemasan() == 0){
+			if (GlobalApp.checkInternetConnection(act)) {
+				new DownloadDataKemasan().execute();
+			} else {
+				String message = act
+						.getApplicationContext()
+						.getResources()
+						.getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
+				showCustomDialog(message);
+			}
+		}else if (databaseHandler.getCountBranch() == 0) {
+            if (GlobalApp.checkInternetConnection(act)) {
+                new DownloadDataBranch().execute();
+            } else {
+                String message = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
+                showCustomDialog(message);
+            }
+        }else if (databaseHandler.getCountTypeCustomer() == 0) {
+            if (GlobalApp.checkInternetConnection(act)) {
+                new DownloadDataTypeCustomer().execute();
+            } else {
+                String message = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
+                showCustomDialog(message);
+            }
+        }else if (databaseHandler.getCountCluster() == 0) {
+            if (GlobalApp.checkInternetConnection(act)) {
+                new DownloadDatacluster().execute();
+            } else {
+                String message = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
+                showCustomDialog(message);
+            }
+        }else if (databaseHandler.getCountWilayah() == 0) {
+            if (GlobalApp.checkInternetConnection(act)) {
+                new DownloadDataWilayah().execute();
+            } else {
+                String message = act
+                        .getApplicationContext()
+                        .getResources()
+                        .getString(R.string.MSG_DLG_LABEL_CHECK_INTERNET_CONNECTION);
+                showCustomDialog(message);
+            }
+        }else {
+
+        }
+
 	}
 
 	public void showCustomDialog(String msg) {

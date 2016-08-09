@@ -449,7 +449,7 @@ public class ProductActivity extends ActionBarActivity implements
 			listview.setVisibility(View.INVISIBLE);
 		}
 
-		if (product_list.size() > 0) {
+		if (product_list.size() < 0) { // awalnya > 0
 			if (GlobalApp.checkInternetConnection(act)) {
 				processDownloadContentProduct();
 			} else {

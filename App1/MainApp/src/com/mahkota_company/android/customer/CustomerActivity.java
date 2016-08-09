@@ -244,6 +244,8 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getIsactive();
 							String description = customer_from_db.get(i)
 									.getDescription();
+                            String nama_toko = customer_from_db.get(i)
+                                    .getNama_toko();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -285,6 +287,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							customer.setId_depo(id_depo);
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
+                            customer.setNama_toko(nama_toko);
 
 							customer_list.add(customer);
 						}
@@ -376,6 +379,8 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getIsactive();
 							String description = customer_from_db.get(i)
 									.getDescription();
+                            String nama_toko = customer_from_db.get(i)
+                                    .getNama_toko();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -416,6 +421,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							customer.setId_depo(id_depo);
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
+                            customer.setNama_toko(nama_toko);
 
 							customer_list.add(customer);
 						}
@@ -816,6 +822,8 @@ public class CustomerActivity extends ActionBarActivity implements
 							: oResponsealue.getString("isactive");
 					String description = oResponsealue.isNull("description") ? null
 							: oResponsealue.getString("description");
+                    String nama_toko = oResponsealue.isNull("nama_toko") ? null
+                            : oResponsealue.getString("nama_toko");
 
 					Log.d(LOG_TAG, "id_customer:" + id_customer);
 					Log.d(LOG_TAG, "kode_customer:" + kode_customer);
@@ -855,6 +863,7 @@ public class CustomerActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "id_depo:" + id_depo);
 					Log.d(LOG_TAG, "isactive:" + isactive);
 					Log.d(LOG_TAG, "description:" + description);
+                    Log.d(LOG_TAG, "nama_toko:" + nama_toko);
 
 
 
@@ -868,7 +877,7 @@ public class CustomerActivity extends ActionBarActivity implements
                             nama_pasar, Integer.parseInt(id_cluster) , telp, fax, omset, cara_pembayaran,
 							plafon_kredit,term_kredit, nama_istri, nama_anak1,
 							nama_anak2, nama_anak3, kode_pos, id_depo, isactive,
-							description));
+							description,nama_toko));
 
 				}
 			} catch (JSONException e) {
@@ -994,6 +1003,8 @@ public class CustomerActivity extends ActionBarActivity implements
 						.getIsactive();
 				String description = customer_from_db.get(i)
 						.getDescription();
+                String nama_toko = customer_from_db.get(i)
+                        .getNama_toko();
 
 				Customer customer = new Customer();
 				customer.setId_customer(id_customer);
@@ -1035,6 +1046,7 @@ public class CustomerActivity extends ActionBarActivity implements
 				customer.setId_depo(id_depo);
 				customer.setIsactive(isactive);
 				customer.setDescription(description);
+                customer.setNama_toko(nama_toko);
 
 				if (foto1.length() > 0) {
 					File dir = new File(CONFIG.getFolderPath() + "/"
@@ -1049,7 +1061,7 @@ public class CustomerActivity extends ActionBarActivity implements
 			listview.setVisibility(View.INVISIBLE);
 		}
 
-		if (customer_list.size() > 0) {
+		if (customer_list.size() < 0) { // awalnya > 0
 			if (GlobalApp.checkInternetConnection(act)) {
 				processDownloadContentCustomer();
 			} else {
@@ -1077,42 +1089,44 @@ public class CustomerActivity extends ActionBarActivity implements
 				int id_customer = customer_from_db.get(i).getId_customer();
 				String kode_customer = customer_from_db.get(i)
 						.getKode_customer();
-				String email = customer_from_db.get(i).getEmail();
+			//	String email = customer_from_db.get(i).getEmail();
 				String alamat = customer_from_db.get(i).getAlamat();
 				String lats = customer_from_db.get(i).getLats();
 				String longs = customer_from_db.get(i).getLongs();
 				String nama_lengkap = customer_from_db.get(i).getNama_lengkap();
-				String no_telp = customer_from_db.get(i).getNo_telp();
-				int id_wilayah = customer_from_db.get(i).getId_wilayah();
+			//	String no_telp = customer_from_db.get(i).getNo_telp();
+			//	int id_wilayah = customer_from_db.get(i).getId_wilayah();
 				String foto1 = customer_from_db.get(i).getFoto_1();
-				String foto2 = customer_from_db.get(i).getFoto_2();
-				String foto3 = customer_from_db.get(i).getFoto_3();
-				int id_type = customer_from_db.get(i).getId_type_customer();
-				String blockir = customer_from_db.get(i).getBlokir();
-				String date = customer_from_db.get(i).getDate();
-				String status_update = customer_from_db.get(i)
-						.getStatus_update();
-				int id_staff = customer_from_db.get(i).getId_staff();
-
+			//	String foto2 = customer_from_db.get(i).getFoto_2();
+			//	String foto3 = customer_from_db.get(i).getFoto_3();
+			//	int id_type = customer_from_db.get(i).getId_type_customer();
+			//	String blockir = customer_from_db.get(i).getBlokir();
+			//	String date = customer_from_db.get(i).getDate();
+			//	String status_update = customer_from_db.get(i)
+			//			.getStatus_update();
+			//	int id_staff = customer_from_db.get(i).getId_staff();
+                String nama_toko = customer_from_db.get(i)
+                        .getNama_toko();
 
 				Customer customer = new Customer();
 				customer.setId_customer(id_customer);
 				customer.setKode_customer(kode_customer);
-				customer.setEmail(email);
+				//customer.setEmail(email);
 				customer.setAlamat(alamat);
 				customer.setLats(lats);
 				customer.setLongs(longs);
 				customer.setNama_lengkap(nama_lengkap);
-				customer.setNo_telp(no_telp);
-				customer.setId_wilayah(id_wilayah);
+			//	customer.setNo_telp(no_telp);
+			//	customer.setId_wilayah(id_wilayah);
 				customer.setFoto_1(foto1);
-				customer.setFoto_2(foto2);
-				customer.setFoto_3(foto3);
-				customer.setId_type_customer(id_type);
-				customer.setBlokir(blockir);
-				customer.setDate(date);
-				customer.setStatus_update(status_update);
-				customer.setId_staff(id_staff);
+				//customer.setFoto_2(foto2);
+			//	customer.setFoto_3(foto3);
+				//customer.setId_type_customer(id_type);
+				//customer.setBlokir(blockir);
+				//customer.setDate(date);
+				//customer.setStatus_update(status_update);
+				//customer.setId_staff(id_staff);
+                customer.setNama_toko(nama_toko);
 
 				if (foto1.length() > 0) {
 					File dir = new File(CONFIG.getFolderPath() + "/"
@@ -1131,7 +1145,7 @@ public class CustomerActivity extends ActionBarActivity implements
 			listview.setVisibility(View.INVISIBLE);
 		}
 
-		if (customer_list.size() > 0) {
+		if (customer_list.size() < 0) { // awalnya > 0
 			if (GlobalApp.checkInternetConnection(act)) {
 				processDownloadContentCustomer();
 			} else {
@@ -1269,41 +1283,43 @@ public class CustomerActivity extends ActionBarActivity implements
 				int id_customer = customer_from_db.get(i).getId_customer();
 				String kode_customer = customer_from_db.get(i)
 						.getKode_customer();
-				String email = customer_from_db.get(i).getEmail();
+				//String email = customer_from_db.get(i).getEmail();
 				String alamat = customer_from_db.get(i).getAlamat();
 				String lats = customer_from_db.get(i).getLats();
 				String longs = customer_from_db.get(i).getLongs();
 				String nama_lengkap = customer_from_db.get(i).getNama_lengkap();
-				String no_telp = customer_from_db.get(i).getNo_telp();
+				//String no_telp = customer_from_db.get(i).getNo_telp();
 				int id_wilayah = customer_from_db.get(i).getId_wilayah();
 				String foto1 = customer_from_db.get(i).getFoto_1();
-				String foto2 = customer_from_db.get(i).getFoto_2();
-				String foto3 = customer_from_db.get(i).getFoto_3();
-				int id_type = customer_from_db.get(i).getId_type_customer();
-				String blockir = customer_from_db.get(i).getBlokir();
-				String date = customer_from_db.get(i).getDate();
-				String status_update = customer_from_db.get(i)
-						.getStatus_update();
-				int id_staff = customer_from_db.get(i).getId_staff();
+				//String foto2 = customer_from_db.get(i).getFoto_2();
+				//String foto3 = customer_from_db.get(i).getFoto_3();
+				//int id_type = customer_from_db.get(i).getId_type_customer();
+				//String blockir = customer_from_db.get(i).getBlokir();
+				//String date = customer_from_db.get(i).getDate();
+				//String status_update = customer_from_db.get(i)
+				//		.getStatus_update();
+				//int id_staff = customer_from_db.get(i).getId_staff();
+                String nama_toko = customer_from_db.get(i).getNama_toko();
 
 				Customer customer = new Customer();
 				customer.setId_customer(id_customer);
 				customer.setKode_customer(kode_customer);
-				customer.setEmail(email);
+				//customer.setEmail(email);
 				customer.setAlamat(alamat);
 				customer.setLats(lats);
 				customer.setLongs(longs);
 				customer.setNama_lengkap(nama_lengkap);
-				customer.setNo_telp(no_telp);
+				//customer.setNo_telp(no_telp);
 				customer.setId_wilayah(id_wilayah);
 				customer.setFoto_1(foto1);
-				customer.setFoto_2(foto2);
-				customer.setFoto_3(foto3);
-				customer.setId_type_customer(id_type);
-				customer.setBlokir(blockir);
-				customer.setDate(date);
-				customer.setStatus_update(status_update);
-				customer.setId_staff(id_staff);
+				//customer.setFoto_2(foto2);
+				//customer.setFoto_3(foto3);
+				//customer.setId_type_customer(id_type);
+				//customer.setBlokir(blockir);
+				//customer.setDate(date);
+				//customer.setStatus_update(status_update);
+				//customer.setId_staff(id_staff);
+                customer.setNama_toko(nama_toko);
 				customer_list.add(customer);
 			}
 
@@ -1400,7 +1416,7 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
                                           final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
                                           final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
-								          final String isactive, final String description) {
+								          final String isactive, final String description,final String nama_toko) {
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
@@ -1476,6 +1492,8 @@ public class CustomerActivity extends ActionBarActivity implements
 					: ""));
 			entity.addPart("description", new StringBody(description != null ? description
 					: ""));
+            entity.addPart("nama_toko", new StringBody(nama_toko != null ? nama_toko
+                    : ""));
 
             httppost.setEntity(entity);
 
@@ -1566,7 +1584,8 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getKode_pos(),
 						customer.getId_depo(),
 						customer.getIsactive(),
-						customer.getDescription());
+						customer.getDescription(),
+                        customer.getNama_toko());
 
 			}
 			return null;
@@ -1578,7 +1597,7 @@ public class CustomerActivity extends ActionBarActivity implements
 
             super.onPostExecute(result);
 			if (response_data != null) {
-				initUploadCustomer();
+				//initUploadCustomer();
 			} else {
                 final String msg = act
                         .getApplicationContext()
@@ -1591,6 +1610,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		}
 
 	}
+
 
 	public void initUploadCustomer() {
         JSONObject oResponse;
@@ -1650,7 +1670,7 @@ public class CustomerActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-                                new DownloadDataCustomer1().execute();
+                                new DownloadDataCustomer1().execute(); // awalnya new DownloadDataCustomer()
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();
@@ -1697,7 +1717,7 @@ public class CustomerActivity extends ActionBarActivity implements
 			}
 			customerData = data.get(position);
 			holder.list_kodeCustomer.setText(customerData.getKode_customer());
-			holder.list_namaCustomer.setText(customerData.getNama_lengkap());
+			holder.list_namaCustomer.setText(customerData.getNama_toko());
 
 			// Wilayah wilayah = databaseHandler.getWilayah(customerData
 			// .getId_wilayah());

@@ -72,7 +72,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
-                        android:text="@string/app_customer_hint_nama_customer"
+                        android:text="@string/app_customer_hint_nama_toko"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textColor="@color/black"
                         android:textSize="18sp"

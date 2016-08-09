@@ -43,6 +43,7 @@ public class Customer {
 	private String id_depo;
 	private String isactive;
 	private String description;
+	private String nama_toko;
 
 	public Customer() {
 
@@ -68,7 +69,7 @@ public class Customer {
 
 					String nama_anak1 ,String nama_anak2,String nama_anak3, String kode_pos,
 
-					String id_depo, String isactive, String description){
+					String id_depo, String isactive, String description, String nama_toko){
 
 
 		this.id_customer = id_customer;
@@ -112,6 +113,7 @@ public class Customer {
 		this.id_depo = id_depo;
 		this.isactive = isactive;
 		this.description = description;
+		this.nama_toko = nama_toko;
 
 	}
 
@@ -410,6 +412,13 @@ public class Customer {
 	}
 	public void setDescription(String  description) {
 		this.description = description;
+	}
+
+	public String getNama_toko() {
+		return nama_toko;
+	}
+	public void setNama_toko(String  nama_toko) {
+		this.nama_toko = nama_toko;
 	}
 
 }

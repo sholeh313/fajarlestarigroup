@@ -43,6 +43,7 @@
     <string name="app_customer_hint_search_customer">Search Customer</string>
     <string name="app_customer_hint_kode_customer">Kode Customer</string>
     <string name="app_customer_hint_nama_customer">Nama Customer</string>
+    <string name="app_customer_hint_nama_toko">Nama Toko</string>
     <string name="app_customer_hint_wilayah">Wilayah</string>
     <string name="app_customer_hint_alamat">Alamat</string>
     <string name="app_customer_hint_status">Status</string>
@@ -60,6 +61,7 @@
     <string name="app_customer_processing_download_success">Proses download content customer berhasil.</string>
     <string name="app_customer_kode_customer">Kode</string>
     <string name="app_customer_nama_customer">Nama Customer</string>
+    <string name="app_customer_nama_toko">Nama Toko</string>
     <string name="app_customer_noktp">No KTP</string>
     <string name="app_customer_npwp">NPWP</string>
     <string name="app_customer_atas_nama">Atas Nama</string>

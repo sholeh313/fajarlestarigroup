@@ -123,6 +123,25 @@
                         android:orientation="horizontal" >
 
                         <TextView
+                            android:id="@+id/activity_customer_detail_title_nama_toko"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="left|center"
+                            android:text="@string/app_customer_nama_toko"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
                             android:id="@+id/activity_customer_detail_title_nama_customer"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -519,7 +538,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="5dp"
                             android:gravity="left|center"
-                            android:text="Nama istri"
+                            android:text="Nama Pasangan"
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -723,6 +742,28 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/activity_customer_prospect_nama_toko_value"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="0.3"
+                            android:background="@drawable/input_field_style"
+                            android:imeOptions="actionDone"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/Ivory3"
+                            android:inputType="text" />
+
                     </LinearLayout>
 
                     <LinearLayout

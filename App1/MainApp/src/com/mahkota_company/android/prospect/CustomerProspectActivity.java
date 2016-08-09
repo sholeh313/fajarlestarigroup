@@ -219,6 +219,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 									.getIsactive();
 							String description = customer_from_db.get(i)
 									.getDescription();
+							String nama_toko = customer_from_db.get(i)
+									.getNama_toko();
 
 
 							Customer customer = new Customer();
@@ -261,6 +263,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							customer.setId_depo(id_depo);
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
+							customer.setNama_toko(nama_toko);
 
 							customer_list.add(customer);
 						}
@@ -350,6 +353,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 									.getIsactive();
 							String description = customer_from_db.get(i)
 									.getDescription();
+							String nama_toko = customer_from_db.get(i)
+									.getNama_toko();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -390,6 +395,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							customer.setId_depo(id_depo);
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
+							customer.setNama_toko(nama_toko);
 
 							customer_list.add(customer);
 						}
@@ -501,6 +507,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						.getIsactive();
 				String description = customer_from_db.get(i)
 						.getDescription();
+				String nama_toko = customer_from_db.get(i)
+						.getNama_toko();
 
 
 				Customer customer = new Customer();
@@ -543,6 +551,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 				customer.setId_depo(id_depo);
 				customer.setIsactive(isactive);
 				customer.setDescription(description);
+				customer.setNama_toko(nama_toko);
 
 
 				customer_list.add(customer);
@@ -635,7 +644,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                     final String telp, final String fax, final String omset, final String cara_pembayaran,
                     final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
 					final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
-					final String isactive, final String description) {
+					final String isactive, final String description, final String nama_toko) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -709,6 +718,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 			entity.addPart("isactive", new StringBody(isactive != null ? isactive
 					: ""));
 			entity.addPart("description", new StringBody(description != null ? description
+					: ""));
+			entity.addPart("nama_toko", new StringBody(nama_toko != null ? nama_toko
 					: ""));
 
 			httppost.setEntity(entity);
@@ -799,7 +810,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						customer.getKode_pos(),
 						customer.getId_depo(),
 						customer.getIsactive(),
-						customer.getDescription());
+						customer.getDescription(),
+						customer.getNama_toko());
 			}
 			return null;
 		}

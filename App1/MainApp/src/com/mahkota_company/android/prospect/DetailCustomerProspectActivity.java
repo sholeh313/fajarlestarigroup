@@ -109,6 +109,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	private EditText etNama_anak2;
 	private EditText etNama_anak3;
 	private EditText etKode_pos;
+	private EditText etNama_toko;
 
 	private Customer customer;
 	private TextView tvHeaderKodeCustomer;
@@ -195,6 +196,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		etNama_anak2 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak2_value);
 		etNama_anak3 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak3_value);
 		etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
+		etNama_toko = (EditText) findViewById(R.id.activity_customer_prospect_nama_toko_value);
 
 		tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
 		tvHeaderNamaCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_nama_customer);
@@ -594,6 +596,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setId_depo(customer.getId_depo());
 		newCustomer.setIsactive(customer.getIsactive());
 		newCustomer.setDescription(customer.getDescription());
+		newCustomer.setNama_toko(customer.getNama_toko());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -642,6 +645,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setId_depo(customer.getId_depo());
 		newCustomer.setIsactive(customer.getIsactive());
 		newCustomer.setDescription(customer.getDescription());
+		newCustomer.setNama_toko(customer.getNama_toko());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -760,10 +764,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
             etNo_rekenig.setText(customer.getNo_rekening());
             etAtas_nama.setText(customer.getAtas_nama());
             etNpwp.setText(customer.getNpwp());
-
             etNama_pasar.setText(customer.getNama_pasar());
             //etCluster.setText(customer.getId_cluster());
-
             etTelp.setText(customer.getTelp());
             etFax.setText(customer.getFax());
             etOmset.setText(customer.getOmset());
@@ -775,6 +777,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 			etNama_anak2.setText(customer.getNama_anak2());
 			etNama_anak3.setText(customer.getNama_anak3());
 			etKode_pos.setText(customer.getKode_pos());
+			etNama_toko.setText(customer.getNama_toko());
 
 			tempLatitude = customer.getLats();
 			tempLongitude = customer.getLongs();
