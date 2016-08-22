@@ -30,6 +30,21 @@
                 android:orientation="vertical" >
 
                 <LinearLayout
+                    android:id="@+id/activity_customer_linear_chat"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal"
+                    android:padding="15dip" >
+
+                    <Button
+                        android:id="@+id/chat"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="Chat"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/activity_customer_linear_search"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

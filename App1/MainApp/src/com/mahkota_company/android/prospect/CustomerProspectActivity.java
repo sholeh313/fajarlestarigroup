@@ -24,7 +24,9 @@ import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
+import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
+import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
@@ -1104,8 +1106,18 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
+				}else if (position == 8) {
+					Intent intentActivity = new Intent(this,
+							Pilihan_Kontak.class);
+					startActivity(intentActivity);
+					finish();
 				}
-
+				else if (position == 9) {
+					Intent intentActivity = new Intent(this,
+							InventoryActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
 			}
 		}
 

@@ -754,6 +754,361 @@ public class DetailEditCustomer extends FragmentActivity {
         tempCheckInLongitude = Double.parseDouble(customer.getLongs());
 
         ////////////////////////////////////////////////////////////////////////////////////////////
+        if( tvImage1Customer != null){
+            String curLatitude = String
+                    .valueOf((int) tempCheckInLatitude);
+            String curLongitude = String
+                    .valueOf((int) tempCheckInLongitude);
+            if(curLatitude.equalsIgnoreCase("0")
+                    || curLongitude.equalsIgnoreCase("0")){
+                if(customer.getFoto_1() .length() == 0){
+                    final String date = "yyyy-MM-dd";
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(
+                            date);
+                    final String checkDate = dateFormat.format(calendar
+                            .getTime());
+                    Customer newCustomer = new Customer();
+                    newCustomer.setId_customer(customer.getId_customer());
+                    newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                    newCustomer.setBlokir(customer.getBlokir());
+                    newCustomer.setDate(checkDate);
+                    newCustomer.setEmail(etEmailCustomer.getText().toString());
+                    newCustomer.setFoto_1(newImageName1);
+                    newCustomer.setFoto_2(newImageName2);
+                    newCustomer.setFoto_3(newImageName3);
+                    newCustomer.setId_type_customer(idTypeCustomer);
+                    newCustomer.setId_wilayah(customer.getId_wilayah());
+                    newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                    newCustomer.setLats(String.valueOf(latitude));
+                    newCustomer.setLongs(String.valueOf(longitude));
+                    newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                    newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                    newCustomer.setStatus_update(customer.getStatus_update());
+                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                    newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                    newCustomer.setNama_bank(etNama_bank.getText().toString());
+                    newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                    newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                    newCustomer.setNpwp(etNpwp.getText().toString());
+                    newCustomer.setStatus_update("2");
+                    newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                    newCustomer.setId_cluster(idCluster);
+                    newCustomer.setTelp(etTelp.getText().toString());
+                    newCustomer.setFax(etFax.getText().toString());
+                    newCustomer.setOmset(etOmset.getText().toString());
+                    newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                    newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                    newCustomer.setNama_istri(etNama_istri.getText().toString());
+                    newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                    newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                    newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                    newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                    newCustomer.setKode_pos(etKode_pos.getText().toString());
+                    newCustomer.setId_depo(customer.getId_depo());
+                    newCustomer.setIsactive(tvstatus.getText().toString());
+                    newCustomer.setDescription(etDescription.getText().toString());
+                    newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                    databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                    String msg = getApplicationContext().getResources().getString(
+                            R.string.app_customer_update_success);
+                    showCustomDialogSaveSuccess(msg);
+                }else if(customer.getFoto_2() .length() == 0){
+                    final String date = "yyyy-MM-dd";
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(
+                            date);
+                    final String checkDate = dateFormat.format(calendar
+                            .getTime());
+                    Customer newCustomer = new Customer();
+                    newCustomer.setId_customer(customer.getId_customer());
+                    newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                    newCustomer.setBlokir(customer.getBlokir());
+                    newCustomer.setDate(checkDate);
+                    newCustomer.setEmail(etEmailCustomer.getText().toString());
+                    newCustomer.setFoto_1(customer.getFoto_1());
+                    newCustomer.setFoto_2(newImageName2);
+                    newCustomer.setFoto_3(newImageName3);
+                    newCustomer.setId_type_customer(idTypeCustomer);
+                    newCustomer.setId_wilayah(customer.getId_wilayah());
+                    newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                    newCustomer.setLats(String.valueOf(latitude));
+                    newCustomer.setLongs(String.valueOf(longitude));
+                    newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                    newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                    newCustomer.setStatus_update(customer.getStatus_update());
+                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                    newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                    newCustomer.setNama_bank(etNama_bank.getText().toString());
+                    newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                    newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                    newCustomer.setNpwp(etNpwp.getText().toString());
+                    newCustomer.setStatus_update("2");
+                    newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                    newCustomer.setId_cluster(idCluster);
+                    newCustomer.setTelp(etTelp.getText().toString());
+                    newCustomer.setFax(etFax.getText().toString());
+                    newCustomer.setOmset(etOmset.getText().toString());
+                    newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                    newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                    newCustomer.setNama_istri(etNama_istri.getText().toString());
+                    newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                    newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                    newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                    newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                    newCustomer.setKode_pos(etKode_pos.getText().toString());
+                    newCustomer.setId_depo(customer.getId_depo());
+                    newCustomer.setIsactive(tvstatus.getText().toString());
+                    newCustomer.setDescription(etDescription.getText().toString());
+                    newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                    databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                    String msg = getApplicationContext().getResources().getString(
+                            R.string.app_customer_update_success);
+                    showCustomDialogSaveSuccess(msg);
+                }else{
+                    final String date = "yyyy-MM-dd";
+                    Calendar calendar = Calendar.getInstance();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(
+                            date);
+                    final String checkDate = dateFormat.format(calendar
+                            .getTime());
+                    Customer newCustomer = new Customer();
+                    newCustomer.setId_customer(customer.getId_customer());
+                    newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                    newCustomer.setBlokir(customer.getBlokir());
+                    newCustomer.setDate(checkDate);
+                    newCustomer.setEmail(etEmailCustomer.getText().toString());
+                    newCustomer.setFoto_1(customer.getFoto_1());
+                    newCustomer.setFoto_2(customer.getFoto_2());
+                    newCustomer.setFoto_3(newImageName3);
+                    newCustomer.setId_type_customer(idTypeCustomer);
+                    newCustomer.setId_wilayah(customer.getId_wilayah());
+                    newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                    newCustomer.setLats(String.valueOf(latitude));
+                    newCustomer.setLongs(String.valueOf(longitude));
+                    newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                    newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                    newCustomer.setStatus_update(customer.getStatus_update());
+                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                    newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                    newCustomer.setNama_bank(etNama_bank.getText().toString());
+                    newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                    newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                    newCustomer.setNpwp(etNpwp.getText().toString());
+                    newCustomer.setStatus_update("2");
+                    newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                    newCustomer.setId_cluster(idCluster);
+                    newCustomer.setTelp(etTelp.getText().toString());
+                    newCustomer.setFax(etFax.getText().toString());
+                    newCustomer.setOmset(etOmset.getText().toString());
+                    newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                    newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                    newCustomer.setNama_istri(etNama_istri.getText().toString());
+                    newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                    newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                    newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                    newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                    newCustomer.setKode_pos(etKode_pos.getText().toString());
+                    newCustomer.setId_depo(customer.getId_depo());
+                    newCustomer.setIsactive(tvstatus.getText().toString());
+                    newCustomer.setDescription(etDescription.getText().toString());
+                    newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                    databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                    String msg = getApplicationContext().getResources().getString(
+                            R.string.app_customer_update_success);
+                    showCustomDialogSaveSuccess(msg);
+                }
+            }else{
+                double differentKm = distanceNew(tempCheckInLatitude,
+                        tempCheckInLongitude, latitude, longitude);
+                int getMeter = (int) differentKm * 1000;
+                String message = getApplicationContext()
+                        .getResources()
+                        .getString(
+                                R.string.app_customer_detail_far_away_location);
+                if(getMeter < 50){
+                    if(customer.getFoto_1() .length() == 0){
+                        final String date = "yyyy-MM-dd";
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                                date);
+                        final String checkDate = dateFormat.format(calendar
+                                .getTime());
+                        Customer newCustomer = new Customer();
+                        newCustomer.setId_customer(customer.getId_customer());
+                        newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                        newCustomer.setBlokir(customer.getBlokir());
+                        newCustomer.setDate(checkDate);
+                        newCustomer.setEmail(etEmailCustomer.getText().toString());
+                        newCustomer.setFoto_1(newImageName1);
+                        newCustomer.setFoto_2(newImageName2);
+                        newCustomer.setFoto_3(newImageName3);
+                        newCustomer.setId_type_customer(idTypeCustomer);
+                        newCustomer.setId_wilayah(customer.getId_wilayah());
+                        newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                        newCustomer.setLats(String.valueOf(latitude));
+                        newCustomer.setLongs(String.valueOf(longitude));
+                        newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                        newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                        newCustomer.setStatus_update(customer.getStatus_update());
+                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                        newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                        newCustomer.setNama_bank(etNama_bank.getText().toString());
+                        newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                        newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                        newCustomer.setNpwp(etNpwp.getText().toString());
+                        newCustomer.setStatus_update("2");
+                        newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                        newCustomer.setId_cluster(idCluster);
+                        newCustomer.setTelp(etTelp.getText().toString());
+                        newCustomer.setFax(etFax.getText().toString());
+                        newCustomer.setOmset(etOmset.getText().toString());
+                        newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                        newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                        newCustomer.setNama_istri(etNama_istri.getText().toString());
+                        newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                        newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                        newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                        newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                        newCustomer.setKode_pos(etKode_pos.getText().toString());
+                        newCustomer.setId_depo(customer.getId_depo());
+                        newCustomer.setIsactive(tvstatus.getText().toString());
+                        newCustomer.setDescription(etDescription.getText().toString());
+                        newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                        databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                        String msg = getApplicationContext().getResources().getString(
+                                R.string.app_customer_update_success);
+                        showCustomDialogSaveSuccess(msg);
+                    }else if(customer.getFoto_2() .length() == 0){
+                        final String date = "yyyy-MM-dd";
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                                date);
+                        final String checkDate = dateFormat.format(calendar
+                                .getTime());
+                        Customer newCustomer = new Customer();
+                        newCustomer.setId_customer(customer.getId_customer());
+                        newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                        newCustomer.setBlokir(customer.getBlokir());
+                        newCustomer.setDate(checkDate);
+                        newCustomer.setEmail(etEmailCustomer.getText().toString());
+                        newCustomer.setFoto_1(customer.getFoto_1());
+                        newCustomer.setFoto_2(newImageName2);
+                        newCustomer.setFoto_3(newImageName3);
+                        newCustomer.setId_type_customer(idTypeCustomer);
+                        newCustomer.setId_wilayah(customer.getId_wilayah());
+                        newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                        newCustomer.setLats(String.valueOf(latitude));
+                        newCustomer.setLongs(String.valueOf(longitude));
+                        newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                        newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                        newCustomer.setStatus_update(customer.getStatus_update());
+                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                        newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                        newCustomer.setNama_bank(etNama_bank.getText().toString());
+                        newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                        newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                        newCustomer.setNpwp(etNpwp.getText().toString());
+                        newCustomer.setStatus_update("2");
+                        newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                        newCustomer.setId_cluster(idCluster);
+                        newCustomer.setTelp(etTelp.getText().toString());
+                        newCustomer.setFax(etFax.getText().toString());
+                        newCustomer.setOmset(etOmset.getText().toString());
+                        newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                        newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                        newCustomer.setNama_istri(etNama_istri.getText().toString());
+                        newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                        newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                        newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                        newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                        newCustomer.setKode_pos(etKode_pos.getText().toString());
+                        newCustomer.setId_depo(customer.getId_depo());
+                        newCustomer.setIsactive(tvstatus.getText().toString());
+                        newCustomer.setDescription(etDescription.getText().toString());
+                        newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                        databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                        String msg = getApplicationContext().getResources().getString(
+                                R.string.app_customer_update_success);
+                        showCustomDialogSaveSuccess(msg);
+                    }else{
+                        final String date = "yyyy-MM-dd";
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                                date);
+                        final String checkDate = dateFormat.format(calendar
+                                .getTime());
+                        Customer newCustomer = new Customer();
+                        newCustomer.setId_customer(customer.getId_customer());
+                        newCustomer.setAlamat(etAlamatCustomer.getText().toString());
+                        newCustomer.setBlokir(customer.getBlokir());
+                        newCustomer.setDate(checkDate);
+                        newCustomer.setEmail(etEmailCustomer.getText().toString());
+                        newCustomer.setFoto_1(customer.getFoto_1());
+                        newCustomer.setFoto_2(customer.getFoto_2());
+                        newCustomer.setFoto_3(newImageName3);
+                        newCustomer.setId_type_customer(idTypeCustomer);
+                        newCustomer.setId_wilayah(customer.getId_wilayah());
+                        newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
+                        newCustomer.setLats(String.valueOf(latitude));
+                        newCustomer.setLongs(String.valueOf(longitude));
+                        newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
+                        newCustomer.setNo_telp(etTelpCustomer.getText().toString());
+                        newCustomer.setStatus_update(customer.getStatus_update());
+                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setNo_ktp(etno_ktp.getText().toString());
+                        newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
+                        newCustomer.setNama_bank(etNama_bank.getText().toString());
+                        newCustomer.setNo_rekening(etNo_rekenig.getText().toString());
+                        newCustomer.setAtas_nama(etAtas_nama.getText().toString());
+                        newCustomer.setNpwp(etNpwp.getText().toString());
+                        newCustomer.setStatus_update("2");
+                        newCustomer.setNama_pasar(etNama_pasar.getText().toString());
+                        newCustomer.setId_cluster(idCluster);
+                        newCustomer.setTelp(etTelp.getText().toString());
+                        newCustomer.setFax(etFax.getText().toString());
+                        newCustomer.setOmset(etOmset.getText().toString());
+                        newCustomer.setCara_pembayaran(etCara_pembayaran.getText().toString());
+                        newCustomer.setPlafon_kredit(etPlafon_kredit.getText().toString());
+                        newCustomer.setNama_istri(etNama_istri.getText().toString());
+                        newCustomer.setNama_anak1(etNama_anak1.getText().toString());
+                        newCustomer.setNama_anak2(etNama_anak2.getText().toString());
+                        newCustomer.setNama_anak3(etNama_anak3.getText().toString());
+                        newCustomer.setTerm_kredit(etTerm_kredit.getText().toString());
+                        newCustomer.setKode_pos(etKode_pos.getText().toString());
+                        newCustomer.setId_depo(customer.getId_depo());
+                        newCustomer.setIsactive(tvstatus.getText().toString());
+                        newCustomer.setDescription(etDescription.getText().toString());
+                        newCustomer.setNama_toko(etNama_toko.getText().toString());
+
+                        databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
+                        String msg = getApplicationContext().getResources().getString(
+                                R.string.app_customer_update_success);
+                        showCustomDialogSaveSuccess(msg);
+                    }
+                }else{
+                    showCustomDialog(message);
+                }
+            }
+        }else{
+            String msg = getApplicationContext()
+                    .getResources()
+                    .getString(R.string.app_customer_prospect_save_failed_no_image_new);
+                showCustomDialog(msg);
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        /*
         if (newImageName1 != null){
             String curLatitude = String
                     .valueOf((int) tempCheckInLatitude);
@@ -878,7 +1233,7 @@ public class DetailEditCustomer extends FragmentActivity {
                     String msg = getApplicationContext().getResources().getString(
                             R.string.app_customer_update_success);
                     showCustomDialogSaveSuccess(msg);
-                }else if(getMeter > 50){
+                }else {
                     showCustomDialog(message);
                 }
             }
@@ -890,6 +1245,7 @@ public class DetailEditCustomer extends FragmentActivity {
                             R.string.app_customer_prospect_save_failed_no_image_new);
             showCustomDialog(msg);
         }
+        */
         ////////////////////////////////////////////////////////////////////////////////////////////
     }
 

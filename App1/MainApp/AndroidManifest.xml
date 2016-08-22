@@ -63,6 +63,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".chat.XMPPClient" android:label="@string/app_name" />
+        <activity android:name=".chat.ActivitySignIn" android:label="@string/app_name" />
+        <activity android:name=".chat.SignUPActivity" android:label="@string/app_name" />
+        <activity android:name=".chat.CheckLoginDulu" android:label="@string/app_name" />
+        <activity android:name=".chat.LayananActivity" android:label="@string/app_name" />
+        <activity android:name=".chat.Splashscreen" android:label="@string/app_name" />
+
+        <activity android:name=".Contact.ListContactCustomer" android:label="@string/app_name" />
+        <activity android:name=".Contact.PilihanContactUnused" android:label="@string/app_name" />
+        <activity android:name=".kontak.jadwal.Pilihan_Kontak" android:label="@string/app_name" />
+        <activity android:name=".kontak.jadwal.Detail_Kontak" android:label="@string/app_name" />
+        <activity android:name=".kontak.jadwal.List_Kontak" android:label="@string/app_name" />
+
+
+        <activity android:name=".inventory.AddPenjualanActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.AddTargetPenjualanActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.DetailPenjualanActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.DetailTargetPenjualanActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.InventoryActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.LoadProductActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.PenjualanActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.PhysicalCountingActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.RequestLoadActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.StockSummaryActivityTemp" android:label="@string/app_name" />
+        <activity android:name=".inventory.StockSummayActivity" android:label="@string/app_name" />
+        <activity android:name=".inventory.StockSummayActivitycoba" android:label="@string/app_name" />
+        <activity android:name=".inventory.TargetPenjualanActivity" android:label="@string/app_name" />
+
         <activity
             android:name="com.mahkota_company.android.SplashScreenActivity"
             android:icon="@drawable/ic_launcher"

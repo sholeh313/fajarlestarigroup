@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mahkota_company.android.Contact.PilihanContactUnused;
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.customer.CustomerActivity;
@@ -34,6 +35,8 @@ import com.mahkota_company.android.database.StaffTemp;
 import com.mahkota_company.android.database.Tracking;
 import com.mahkota_company.android.database.Wilayah;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
+//import com.mahkota_company.android.inventory.InventoryActivity;
+import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
@@ -1428,7 +1431,19 @@ public class LocatorActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
+				}else if (position == 8) {
+					Intent intentActivity = new Intent(this,
+							PilihanContactUnused.class);
+					startActivity(intentActivity);
+					finish();
 				}
+				else if (position == 9) {
+					Intent intentActivity = new Intent(this,
+							InventoryActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
+
 
 			}
 		}

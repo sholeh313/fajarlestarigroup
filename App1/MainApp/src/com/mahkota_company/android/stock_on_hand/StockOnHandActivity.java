@@ -52,7 +52,10 @@ import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Jadwal;
 import com.mahkota_company.android.database.StockOnHand;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
+//import com.mahkota_company.android.inventory.InventoryActivity;
+import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
+import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
@@ -704,7 +707,19 @@ public class StockOnHandActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
+				}else if (position == 8) {
+					Intent intentActivity = new Intent(this,
+							Pilihan_Kontak.class);
+					startActivity(intentActivity);
+					finish();
 				}
+				else if (position == 9) {
+					Intent intentActivity = new Intent(this,
+							InventoryActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
+
 
 			}
 		}

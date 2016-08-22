@@ -12,25 +12,20 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,10 +34,14 @@ import org.json.JSONObject;
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
+import com.mahkota_company.android.chat.Splashscreen;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
+
+import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
+import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
@@ -60,7 +59,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -82,6 +80,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -109,6 +108,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	private TextView tvNamaAlamat;
     private String response;
     private Customer customer;
+	private Button chat;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +124,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		tvKodeCustomer.setTypeface(typefaceSmall);
 		tvNamaCustomer.setTypeface(typefaceSmall);
 		tvNamaAlamat.setTypeface(typefaceSmall);
+		chat = (Button) findViewById(R.id.chat);
 
 		act = this;
 		setSupportActionBar(mToolbar);
@@ -157,6 +158,13 @@ public class CustomerActivity extends ActionBarActivity implements
 		} else {
 			updateContentCustomer();
 		}
+
+		chat.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent intentSignUP=new Intent(getApplicationContext(), Splashscreen.class);
+				startActivity(intentSignUP);
+			}
+		});
 
 		searchCustomer.addTextChangedListener(new TextWatcher() {
 
@@ -1792,12 +1800,20 @@ public class CustomerActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
+				} else if (position == 8) {
+					Intent intentActivity = new Intent(this,
+							Pilihan_Kontak.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 9) {
+					Intent intentActivity = new Intent(this,
+							InventoryActivity.class);
+					startActivity(intentActivity);
+					finish();
 				}
+
 			}
 		}
-
-		// Toast.makeText(this, "Menu item selected -> " + position,
-		// Toast.LENGTH_SHORT).show();
 	}
 
 	@Override

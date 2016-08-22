@@ -26,4 +26,7 @@
     <dimen name="default_font_size">16sp</dimen>
     <dimen name="default_header_font_size">20sp</dimen>
 
+    <dimen name="txtsize_btn_inventory">14dp</dimen>
+    <dimen name="margin_btn_inventory">10dp</dimen>
+
 </resources>

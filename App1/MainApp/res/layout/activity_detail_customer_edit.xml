@@ -1007,7 +1007,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="nama pasar terdekat"/>
+                            android:hint="nama pasar yang dikunjungi"/>
 
                     </LinearLayout>
 

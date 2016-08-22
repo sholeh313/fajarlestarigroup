@@ -5,6 +5,127 @@
         <item>Cash</item>
         <item>Kredit</item>
     </string-array>
+
+    <string-array name="admin">
+        <item>mohammadsholeh24@xmpp.jp</item>
+    </string-array>
+
+    <string-array name="nominal">
+        <item>Pilih nominal</item>
+        <item>5.000</item>
+        <item>10.000</item>
+        <item>20.000</item>
+        <item>25.000</item>
+        <item>50.000</item>
+        <item>100.000</item>
+    </string-array>
+
+    <string-array name="jenisTransaksi">
+        <item>Jenis Transaksi</item>
+        <item>infopln</item>
+        <item>bayarpln</item>
+    </string-array>
+
+    <string-array name="nominaltoken">
+        <item>Pilih Nominal</item>
+        <item>20.000</item>
+        <item>25.000</item>
+        <item>50.000</item>
+        <item>100.000</item>
+    </string-array>
+
+    <string name="userxmpp">robbymuksin@xmpp.jp
+    </string>
+    <string name="pwdxmpp">
+        gilak001
+    </string>
+
+    <string name="host">xmpp.jp</string>
+    <string name="port">5222</string>
+
+    <string-array name="HOST">
+        <item>-Pilih HOST-</item>
+        <item>xmpp.jp</item>
+    </string-array>
+
+    <string-array name="SERVICE">
+        <item></item>
+        <item>xmpp.jp</item>
+    </string-array>
+
+    <string-array name="PORT">
+        <item>5222</item>
+    </string-array>
+
+    <!-- Inventory -->
+    <string name="app_inventory_menu_stock_summary">Stock Summary</string>
+    <string name="app_inventory_menu_stock_request_load">Request Load</string>
+    <string name="app_inventory_menu_stock_load_products">Loads Product</string>
+    <string name="app_inventory_menu_stock_unload_products">Unloads Product</string>
+    <string name="app_inventory_menu_stock_physical_counting">Physical Counting</string>
+    <string name="app_inventory_menu_stock_suggested">Suggested Stock</string>
+    <string name="app_inventory_request_load_textview_kode_product">Kode Product</string>
+    <string name="app_inventory_request_load_textview_nama_product">Nama Product</string>
+    <string name="app_inventory_request_load_textview_jumlah">Jumlah</string>
+    <string name="app_inventory_request_load_textview_hint">0</string>
+    <string name="app_inventory_request_load_failed_empty_data_product">Mohon mendownload data product !</string>
+    <string name="app_inventory_processing_upload_request_load_failed">Proses upload request load ke server gagal !</string>
+    <string name="app_inventory_processing_upload_request_load_failed_2">Anda sudah melakukan Proses upload request, mohon menunggu konfirmasi dari admin !</string>
+    <string name="app_inventory_processing_upload_request_load">Proses upload request load</string>
+    <string name="app_inventory_processing_upload_request_load_success">Proses upload request load berhasil !</string>
+    <string name="app_inventory_processing_upload_physical_counting_failed">Proses upload update physical counting ke server gagal !</string>
+    <string name="app_inventory_processing_upload_physical_counting_failed_2">Anda sudah melakukan Proses update physical counting, mohon melakukan request load !</string>
+    <string name="app_inventory_processing_upload_physical_counting_load">Proses update physical counting...</string>
+    <string name="app_inventory_processing_upload_physical_counting_load_success">Proses update physical counting berhasil !</string>
+    <string name="app_inventory_stock_summary_failed_empty_data_product">Mohon mendownload data product !</string>
+    <string name="app_inventory_stock_summary_textview_kode_product">Kode Product</string>
+    <string name="app_inventory_stock_summary_textview_nama_product">Nama Product</string>
+    <string name="app_inventory_stock_summary_textview_stock_gudang">Stock Gudang</string>
+    <string name="app_inventory_stock_summary_textview_stock_van">Stock Van</string>
+    <string name="app_inventory_processing_download_stock_summary">Proses download stock summary...</string>
+    <string name="app_inventory_processing_download_stock_summary_empty">Mohon periksa koneksi internet anda, untuk download data stock summary !</string>
+    <string name="app_inventory_processing_download_load_product">Proses download load product...</string>
+    <string name="app_inventory_processing_download_load_product_empty">Mohon periksa koneksi internet anda, untuk download data load product !</string>
+    <string name="app_inventory_physical_counting_textview_kode_product">Kode Product</string>
+    <string name="app_inventory_physical_counting_textview_nama_product">Nama Product</string>
+    <string name="app_inventory_physical_counting_textview_stock_van">Stock Van</string>
+    <string name="app_inventory_physical_counting_textview_sisa_stock">Sisa Stock</string>
+    <string name="app_inventory_physical_counting_failed_empty_data_stock_van">Mohon mendownload data stock summary !</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing">Proses download target penjualan...</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_download_failed">Mohon periksa koneksi internet anda, untuk download data target penjualan dari server !</string>
+    <string name="app_inventory_unload_product_target_penjualan_button_add_target_penjualan">Add TP</string>
+
+    <string name="app_inventory_unload_product_target_penjualan_button_upload_target_penjualan">Upload TP</string>
+    <string name="app_inventory_unload_product_target_penjualan_hint_search_customer">Search Customer</string>
+    <string name="app_inventory_unload_product_target_penjualan_tv_nomor_target_penjualan">Nomer TP</string>
+    <string name="app_inventory_unload_product_target_penjualan_tv_nama_target_penjualan">Nama Customer</string>
+    <string name="app_inventory_unload_product_target_penjualan_tv_action">Action</string>
+    <string name="app_inventory_unload_product_target_penjualan_button_delete_target_penjualan">Delete</string>
+    <string name="app_inventory_unload_product_target_penjualan_button_save_target_penjualan">Save</string>
+    <string name="app_inventory_unload_product_target_penjualan_button_cancel_target_penjualan">Cancel</string><string name="app_inventory_unload_product_target_penjualan_textview_kode_product">Kode Product</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_nama_product">Nama Product</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_stok_van">Stok Van</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_jumlah">Jumlah Target</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_hint">0</string>
+    <string name="app_inventory_unload_product_target_penjualan_failed_input_value">Stok di van hanya </string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_nomor_tp">Nomer Target Penjualan</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_kode_customer">Kode Customer</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_nama_customer">Nama Customer</string>
+    <string name="app_inventory_unload_product_target_penjualan_save_success">Target Penjualan berhasil di tambah !</string>
+    <string name="app_inventory_unload_product_target_penjualan_save_error">Target Penjualan gagal, mohon hubungi head office !</string>
+
+    <string name="app_inventory_unload_product_target_penjualan_textview_jumlah_terjual">Jumlah Terjual</string>
+    <string name="app_inventory_unload_product_target_penjualan_textview_diskon">Diskon</string>
+    <string name="app_inventory_unload_product_target_penjualan_add_penjualan">View Penjualan</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_upload_tp_failed">Mohon periksa koneksi internet anda, untuk upload target penjualan !</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_upload_tp_failed_no_data">Tidak ada data target penjualan, mohon membuatnya terlebih dahulu !</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_upload">Proses Upload Target Penjualan ...</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_upload_failed">Proses Upload Target Penjualan gagal !</string>
+    <string name="app_inventory_unload_product_target_penjualan_processing_upload_success">Proses Upload Target Penjualan sukses !</string>
+    <string name="app_inventory_unload_product_target_penjualan_add_save_failed_no_data">Mohon mengisi seluruh data !</string>
+    <string name="app_inventory_unload_product_target_penjualan_add_save_success">Penjualan berhasil di simpan !</string>
+
+
     <string name="crash_toast">There is a problem Please send report to developer</string>
     <string name="app_name">SALES ORDER and TRACKING</string>
     <string name="drawer_open">Menu opened</string>
@@ -18,6 +139,7 @@
     <string name="app_version">Version 1.0.1</string>
     <string name="app_value_true">true</string>
     <string name="app_value_false">false</string>
+
     <!-- Setting -->
     <string name="app_setting_hint_url">Setting URL</string>
     <string name="app_setting_tv_url">Setting URL:</string>
@@ -39,6 +161,8 @@
     <string name="menu_6">Sales Order</string>
     <string name="menu_7">Stock On Hand</string>
     <string name="menu_8">Photo Display Product</string>
+    <string name="menu_9">Kontak Customer</string>
+    <string name="menu_10">Inventory</string>
     <!-- Customer -->
     <string name="app_customer_hint_search_customer">Search Customer</string>
     <string name="app_customer_hint_kode_customer">Kode Customer</string>
@@ -134,6 +258,7 @@
     <string name="app_customer_prospect_save_failed_no_image_new">Perbaharui gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_empty_box">Mohon mengisi seluruh data customer prospect !</string>
     <string name="app_customer_prospect_save_failed_empty">Mohon mengisi data customer dengan benar</string>
+
     <!-- Photo Purchase -->
     <string name="app_photo_purchase_hint_photo_purchase">Tambah Photo Purchase</string>
     <string name="app_photo_purchase_hint_kode_customer">Kode Customer</string>
@@ -278,7 +403,13 @@
     <string name="app_jadwal_status_update_2">Check In</string>
     <string name="app_jadwal_status_update_3">Check Out</string>
     <!-- Dialog -->
+    <string name="MSG_DLG_LABEL_ADD_PRODUCT">Add Product</string>
+
+    <string name="MSG_DLG_LABEL_KEMBALI">Kembali</string>
+    <string name="app_sales_order_total_penjualan">Total Penjualan</string>
     <string name="MSG_DLG_LABEL_SAVE">Save</string>
+    <string name="MSG_DLG_LABEL_REQUEST">Request</string>
+    <string name="MSG_DLG_LABEL_UPDATE">Update</string>
     <string name="MSG_DLG_LABEL_CANCEL">Cancel</string>
     <string name="MSG_DLG_LABEL_OK">OK</string>
     <string name="MSG_DLG_LABEL_CLOSE">Close</string>

@@ -35,6 +35,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_STOCK_ON_HAND = "stock_on_hand";
 	private static final String TABLE_SALES_ORDER = "sales_order";
 	private static final String TABLE_TRACKING = "tracking";
+	private static final String TABLE_STOCK_VAN = "stok_van";
+	private static final String TABLE_REQUEST_LOAD = "request_load";
+	private static final String TABLE_PRODUCT_TARGET = "product_target";
+	private static final String TABLE_PENJUALAN = "penjualan";
+	private static final String TABLE_PENJUALAN_DETAIL = "penjualan_detail";
+
+	// Penjualan Column Name
+	private static final String KEY_PENJUALAN_ID_PENJUALAN = "id_penjualan";
+	private static final String KEY_PENJUALAN_NOMER_PENJUALAN = "nomer_product_terjual";
+	private static final String KEY_PENJUALAN_DATE_PENJUALAN = "date_product_terjual";
+	private static final String KEY_PENJUALAN_TIME_PENJUALAN = "time_product_terjual";
+	private static final String KEY_PENJUALAN_ID_CUSTOMER = "id_customer";
+	private static final String KEY_PENJUALAN_ID_STAFF = "id_staff";
+	private static final String KEY_PENJUALAN_DISKON = "diskon";
 
 	// STAFF Table Columns names
 	private static final String KEY_STAFF_ID_STAFF = "id_staff";
@@ -58,6 +72,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_STAFF_TEMP_ID_BRANCH = "id_branch";
 	private static final String KEY_STAFF_TEMP_TYPE_CUSTOMER = "id_type_customer";
 	private static final String KEY_STAFF_TEMP_ID_DEPO = "id_depo";
+
+	//REQ LOAD TABLE
+	//private static final String KEY_REQUEST_LOAD_REQUEST_LOAD = "id_request_load";
+	//private static final String KEY_REQUEST_LOAD_STAFF = "id_staff";
+	//private static final String KEY_REQUEST_LOAD_ID_PRODUCT = "id_product";
+	//private static final String KEY_REQUEST_LOAD_STATUS = "status";
+	//private static final String KEY_REQUEST_LOAD_JUMLAH_REQUEST = "jumlah_request";
+
+	// STOK VAN Table Columns names
+	private static final String KEY_STOCK_VAN_ID_PRODUCT = "id_product";
+	private static final String KEY_STOCK_VAN_NAMA_PRODUCT = "nama_product";
+	private static final String KEY_STOCK_VAN_KODE_PRODUCT = "kode_product";
+	private static final String KEY_STOCK_VAN_HARGA_JUAL = "harga_jual";
+	private static final String KEY_STOCK_VAN_JUMLAH_REQUEST = "jumlahRequest";
+	private static final String KEY_STOCK_VAN_JUMLAH_ACCEPT = "jumlahAccept";
+	private static final String KEY_STOCK_VAN_JUMLAH_SISA = "jumlahSisa";
+	private static final String KEY_STOCK_VAN_ID_KEMASAN = "id_kemasan";
+	private static final String KEY_STOCK_VAN_FOTO = "foto";
+	private static final String KEY_STOCK_VAN_DESKRIPSI = "deskripsi";
 
 	// CUSTOMER Table Columns names
 	private static final String KEY_CUSTOMER_ID_CUSTOMER = "id_customer";
@@ -195,6 +228,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_STOCK_ON_HAND_HARGA_JUAL = "harga_jual";
 	private static final String KEY_STOCK_ON_HAND_STOCK = "stock";
 
+	// Penjualan Detail Column Name
+	private static final String KEY_PENJUALAN_DETAIL_ID_PENJUALAN_DETAIL = "id_penjualan_detail";
+	private static final String KEY_PENJUALAN_DETAIL_NOMER_PENJUALAN = "nomer_product_terjual";
+	private static final String KEY_PENJUALAN_DETAIL_ID_PRODUCT = "id_product";
+	private static final String KEY_PENJUALAN_DETAIL_JUMLAH = "jumlah";
+
 	// SALES_ORDER Table Columns names
 	private static final String KEY_SALES_ORDER_ID_SALES_ORDER = "id_sales_order";
 	private static final String KEY_SALES_ORDER_NOMER_ORDER = "nomer_order";
@@ -226,6 +265,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_TRACKING_DATE = "date";
 	private static final String KEY_TRACKING_TIME = "time";
 
+
+	// PRODUCT TARGET Table Columns names
+	private static final String KEY_PRODUCT_TARGET_ID_PRODUCT_TARGET = "id_product_target";
+	private static final String KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET = "nomer_product_target";
+	private static final String KEY_PRODUCT_TARGET_CD_PRODUCT_TARGET = "created_date_product_target";
+	private static final String KEY_PRODUCT_TARGET_CT_PRODUCT_TARGET = "created_time_product_target";
+	private static final String KEY_PRODUCT_TARGET_UD_PRODUCT_TARGET = "updated_date_product_target";
+	private static final String KEY_PRODUCT_TARGET_UT_PRODUCT_TARGET = "updated_time_product_target";
+	private static final String KEY_PRODUCT_TARGET_CB = "created_by";
+	private static final String KEY_PRODUCT_TARGET_UB = "updated_by";
+	private static final String KEY_PRODUCT_TARGET_ID_STAFF = "id_staff";
+	private static final String KEY_PRODUCT_TARGET_ID_CUSTOMER = "id_customer";
+	private static final String KEY_PRODUCT_TARGET_ID_PRODUCT = "id_product";
+	private static final String KEY_PRODUCT_TARGET_JUMLAH_TARGET = "jumlah_target";
+	private static final String KEY_PRODUCT_TARGET_JUMLAH_TERJUAL = "jumlah_terjual";
+
 	private final ArrayList<Staff> staff_list = new ArrayList<Staff>();
 	private final ArrayList<TypeCustomer> type_customer_list = new ArrayList<TypeCustomer>();
 	private final ArrayList<Cluster> cluster_list = new ArrayList<Cluster>();
@@ -236,6 +291,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private final ArrayList<Product> product_list = new ArrayList<Product>();
 	private final ArrayList<Customer> customer_list = new ArrayList<Customer>();
 	private final ArrayList<Jadwal> jadwal_list = new ArrayList<Jadwal>();
+	private final ArrayList<ProductStockVan> productStockVanList = new ArrayList<ProductStockVan>();
 	//	private final ArrayList<Promosi> promosi_list = new ArrayList<Promosi>();
 	private final ArrayList<DisplayProduct> display_product_list = new ArrayList<DisplayProduct>();
 	//	private final ArrayList<PhotoPurchase> photo_purchase_list = new ArrayList<PhotoPurchase>();
@@ -243,6 +299,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private final ArrayList<SalesOrder> sales_order_list = new ArrayList<SalesOrder>();
 	private final ArrayList<Tracking> tracking_list = new ArrayList<Tracking>();
 	private final ArrayList<StaffTemp> staff_temp_list = new ArrayList<StaffTemp>();
+	private final ArrayList<StockVan> stock_van_list = new ArrayList<StockVan>();
+	private final ArrayList<Request_load> request_load_list = new ArrayList<Request_load>();
+	private final ArrayList<ProductTarget> productTarget_list = new ArrayList<ProductTarget>();
+	private final ArrayList<Penjualan> penjualan_list = new ArrayList<Penjualan>();
+	private final ArrayList<PenjualanDetail> penjualan_detail_list = new ArrayList<PenjualanDetail>();
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -259,6 +320,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_STAFF_ID_BRANCH + " TEXT," + KEY_STAFF_TYPE_CUSTOMER
 				+ " TEXT," + KEY_STAFF_ID_DEPO + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE_STAFF);
+
+		String CREATE_TABLE_STOK_VAN = "CREATE TABLE " + TABLE_STOCK_VAN + "("
+				+ KEY_STOCK_VAN_ID_PRODUCT + " INTEGER PRIMARY KEY,"
+				+ KEY_STOCK_VAN_NAMA_PRODUCT + " TEXT,"
+				+ KEY_STOCK_VAN_KODE_PRODUCT + " TEXT,"
+				+ KEY_STOCK_VAN_HARGA_JUAL + " TEXT,"
+				+ KEY_STOCK_VAN_JUMLAH_REQUEST + " INTEGER,"
+				+ KEY_STOCK_VAN_JUMLAH_ACCEPT + " INTEGER,"
+				+ KEY_STOCK_VAN_JUMLAH_SISA + " INTEGER,"
+				+ KEY_STOCK_VAN_ID_KEMASAN + " TEXT," + KEY_STOCK_VAN_FOTO
+				+ " TEXT," + KEY_STOCK_VAN_DESKRIPSI + " TEXT" + ")";
+		db.execSQL(CREATE_TABLE_STOK_VAN);
+
+		//String CREATE_TABLE_REQ_LOAD = "CREATE TABLE " + TABLE_REQUEST_LOAD + "("
+		//		+ KEY_REQUEST_LOAD_REQUEST_LOAD + " INTEGER PRIMARY KEY,"
+		//		+ KEY_REQUEST_LOAD_STAFF + " TEXT,"
+		//		+ KEY_REQUEST_LOAD_ID_PRODUCT + " TEXT,"
+		//		+ KEY_REQUEST_LOAD_STATUS + " INTEGER,"
+		//		+ KEY_REQUEST_LOAD_JUMLAH_REQUEST + " TEXT,"
+		//		+ KEY_REQUEST_LOAD_REQUEST_LOAD + " TEXT" + ")";
+		//db.execSQL(CREATE_TABLE_REQ_LOAD);
 
 		String CREATE_TABLE_STAFF_TEMP = "CREATE TABLE " + TABLE_STAFF_TEMP
 				+ "(" + KEY_STAFF_TEMP_ID_STAFF + " INTEGER PRIMARY KEY,"
@@ -454,6 +536,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_BRANCH);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPE_CUSTOMER);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CLUSTER);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_STOCK_VAN);
+		//db.execSQL("DROP TABLE IF EXISTS " + TABLE_REQUEST_LOAD);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_WILAYAH);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_KEMASAN);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT);
@@ -491,6 +575,49 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close(); // Closing database connection
 	}
 
+	// Adding new Penjualan
+	public void addPenjualan(Penjualan penjualan) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PENJUALAN_ID_PENJUALAN, penjualan.getId_penjualan());
+		values.put(KEY_PENJUALAN_NOMER_PENJUALAN,
+				penjualan.getNomer_product_terjual());
+		values.put(KEY_PENJUALAN_DATE_PENJUALAN,
+				penjualan.getDate_product_terjual());
+		values.put(KEY_PENJUALAN_TIME_PENJUALAN,
+				penjualan.getTime_product_terjual());
+		values.put(KEY_PENJUALAN_ID_CUSTOMER, penjualan.getId_customer());
+		values.put(KEY_PENJUALAN_ID_STAFF, penjualan.getId_staff());
+		values.put(KEY_PENJUALAN_DISKON, penjualan.getDiskon());
+		// Inserting Row
+		db.insert(TABLE_PENJUALAN, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Adding new PenjualanDetail
+	public void addPenjualanDetail(PenjualanDetail penjualanDetail) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PENJUALAN_DETAIL_ID_PENJUALAN_DETAIL,
+				penjualanDetail.getId_penjualan_detail());
+		values.put(KEY_PENJUALAN_DETAIL_ID_PRODUCT,
+				penjualanDetail.getIdProduct());
+		values.put(KEY_PENJUALAN_DETAIL_JUMLAH, penjualanDetail.getJumlah());
+		values.put(KEY_PENJUALAN_DETAIL_NOMER_PENJUALAN,
+				penjualanDetail.getNomer_product_terjual());
+		// Inserting Row
+		db.insert(TABLE_PENJUALAN_DETAIL, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Deleting Table Target Penjualan
+	public void deleteTablePenjualanDetail(String nomor_tp) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_PENJUALAN_DETAIL, KEY_PENJUALAN_DETAIL_NOMER_PENJUALAN
+				+ " = ?", new String[] { String.valueOf(nomor_tp) });
+		db.close();
+	}
+
 	// Adding new staff temp
 	public void add_Staff_Temp(StaffTemp staff_temp) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -509,6 +636,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_STAFF_TEMP, null, values);
 		db.close(); // Closing database connection
 	}
+
+	// Adding new StockVan
+	public void addStockVan(StockVan stock_van) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_STOCK_VAN_ID_PRODUCT, stock_van.getId_product());
+		values.put(KEY_STOCK_VAN_NAMA_PRODUCT, stock_van.getNama_product());
+		values.put(KEY_STOCK_VAN_KODE_PRODUCT, stock_van.getKode_product());
+		values.put(KEY_STOCK_VAN_HARGA_JUAL, stock_van.getHarga_jual());
+		values.put(KEY_STOCK_VAN_JUMLAH_REQUEST, stock_van.getJumlahRequest());
+		values.put(KEY_STOCK_VAN_JUMLAH_ACCEPT, stock_van.getJumlahAccept());
+		values.put(KEY_STOCK_VAN_JUMLAH_SISA, stock_van.getJumlahSisa());
+		values.put(KEY_STOCK_VAN_ID_KEMASAN, stock_van.getIdKemasan());
+		values.put(KEY_STOCK_VAN_FOTO, stock_van.getFoto());
+		values.put(KEY_STOCK_VAN_DESKRIPSI, stock_van.getDeskripsi());
+		// Inserting Row
+		db.insert(TABLE_STOCK_VAN, null, values);
+		db.close(); // Closing database connection
+	}
+
+	/*
+	// Adding new req load
+	public void add_request_load(Request_load request_load) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_REQUEST_LOAD_REQUEST_LOAD, request_load.getId_product());
+		values.put(KEY_REQUEST_LOAD_STAFF, stock_van.getNama_product());
+		values.put(KEY_REQUEST_LOAD_ID_PRODUCT, stock_van.getKode_product());
+		values.put(KEY_REQUEST_LOAD_STATUS, stock_van.getHarga_jual());
+		values.put(KEY_REQUEST_LOAD_JUMLAH_REQUEST, stock_van.getJumlahRequest());
+		// Inserting Row
+		db.insert(TABLE_STOCK_VAN, null, values);
+		db.close(); // Closing database connection
+	}
+	*/
 
 	// Adding new customer
 	public void add_Customer(Customer customer) {
@@ -598,6 +760,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_PRODUCT_DESKRIPSI, product.getDeskripsi());
 		// Inserting Row
 		db.insert(TABLE_PRODUCT, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Adding new ProductTarget
+	public void addProductTarget(ProductTarget productTarget) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PRODUCT_TARGET_ID_PRODUCT_TARGET,
+				productTarget.getId_product_target());
+		values.put(KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET,
+				productTarget.getNomer_product_target());
+		values.put(KEY_PRODUCT_TARGET_CD_PRODUCT_TARGET,
+				productTarget.getCreated_date_product_target());
+		values.put(KEY_PRODUCT_TARGET_CT_PRODUCT_TARGET,
+				productTarget.getCreated_time_product_target());
+		values.put(KEY_PRODUCT_TARGET_UD_PRODUCT_TARGET,
+				productTarget.getUpdated_date_product_target());
+		values.put(KEY_PRODUCT_TARGET_UT_PRODUCT_TARGET,
+				productTarget.getUpdated_time_product_target());
+		values.put(KEY_PRODUCT_TARGET_CB, productTarget.getCreated_by());
+		values.put(KEY_PRODUCT_TARGET_UB, productTarget.getUpdated_by());
+		values.put(KEY_PRODUCT_TARGET_ID_STAFF, productTarget.getId_staff());
+		values.put(KEY_PRODUCT_TARGET_ID_CUSTOMER,
+				productTarget.getId_customer());
+		values.put(KEY_PRODUCT_TARGET_ID_PRODUCT, productTarget.getId_product());
+		values.put(KEY_PRODUCT_TARGET_JUMLAH_TARGET,
+				productTarget.getJumlah_target());
+		values.put(KEY_PRODUCT_TARGET_JUMLAH_TERJUAL,
+				productTarget.getJumlah_terjual());
+		// Inserting Row
+		db.insert(TABLE_PRODUCT_TARGET, null, values);
 		db.close(); // Closing database connection
 	}
 
@@ -834,6 +1027,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 
 		return staff;
+	}
+
+	// Getting single StockVan
+	public StockVan getStockVan(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_STOCK_VAN, new String[] {
+						KEY_STOCK_VAN_ID_PRODUCT, KEY_STOCK_VAN_NAMA_PRODUCT,
+						KEY_STOCK_VAN_KODE_PRODUCT, KEY_STOCK_VAN_HARGA_JUAL,
+						KEY_STOCK_VAN_JUMLAH_REQUEST, KEY_STOCK_VAN_JUMLAH_ACCEPT,
+						KEY_STOCK_VAN_JUMLAH_SISA, KEY_STOCK_VAN_ID_KEMASAN,
+						KEY_STOCK_VAN_FOTO, KEY_STOCK_VAN_DESKRIPSI },
+				KEY_STOCK_VAN_ID_PRODUCT + "=?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		StockVan stockvan = new StockVan(cursor.getInt(0), cursor.getString(1),
+				cursor.getString(2), cursor.getString(3), cursor.getInt(4),
+				cursor.getInt(5), cursor.getInt(6), cursor.getString(7),
+				cursor.getString(8), cursor.getString(9));
+		// return staff
+		cursor.close();
+		db.close();
+
+		return stockvan;
 	}
 
 	// Getting single Customer untuk nampilin dihalaman awal
@@ -1299,6 +1518,257 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		return staff_temp_list;
 
+	}
+
+	// Getting All Product Target
+	public ArrayList<ProductTarget> getAllProductTargetGroupByNomerPenjualan() {
+		try {
+			productTarget_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCT_TARGET
+					+ " GROUP BY " + KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					ProductTarget productTarget = new ProductTarget();
+					productTarget.setId_product_target(cursor.getInt(0));
+					productTarget.setNomer_product_target(cursor.getString(1));
+					productTarget.setCreated_date_product_target(cursor
+							.getString(2));
+					productTarget.setCreated_time_product_target(cursor
+							.getString(3));
+					productTarget.setUpdated_date_product_target(cursor
+							.getString(4));
+					productTarget.setUpdated_time_product_target(cursor
+							.getString(5));
+					productTarget.setCreated_by(cursor.getInt(6));
+					productTarget.setUpdated_by(cursor.getInt(7));
+					productTarget.setId_staff(cursor.getInt(8));
+					productTarget.setId_customer(cursor.getInt(9));
+					productTarget.setId_product(cursor.getInt(10));
+					productTarget.setJumlah_target(cursor.getInt(11));
+					productTarget.setJumlah_terjual(cursor.getInt(12));
+					// Adding productTarget_list to list
+					productTarget_list.add(productTarget);
+				} while (cursor.moveToNext());
+			}
+
+			// return productTarget_list
+			cursor.close();
+			db.close();
+			return productTarget_list;
+		} catch (Exception e) {
+			Log.e("productTarget_list", "" + e);
+		}
+
+		return productTarget_list;
+	}
+
+	// Getting All Product Target
+	public ArrayList<ProductTarget> getAllProductTarget() {
+		try {
+			productTarget_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCT_TARGET;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					ProductTarget productTarget = new ProductTarget();
+					productTarget.setId_product_target(cursor.getInt(0));
+					productTarget.setNomer_product_target(cursor.getString(1));
+					productTarget.setCreated_date_product_target(cursor
+							.getString(2));
+					productTarget.setCreated_time_product_target(cursor
+							.getString(3));
+					productTarget.setUpdated_date_product_target(cursor
+							.getString(4));
+					productTarget.setUpdated_time_product_target(cursor
+							.getString(5));
+					productTarget.setCreated_by(cursor.getInt(6));
+					productTarget.setUpdated_by(cursor.getInt(7));
+					productTarget.setId_staff(cursor.getInt(8));
+					productTarget.setId_customer(cursor.getInt(9));
+					productTarget.setId_product(cursor.getInt(10));
+					productTarget.setJumlah_target(cursor.getInt(11));
+					productTarget.setJumlah_terjual(cursor.getInt(12));
+					// Adding productTarget_list to list
+					productTarget_list.add(productTarget);
+				} while (cursor.moveToNext());
+			}
+
+			// return productTarget_list
+			cursor.close();
+			db.close();
+			return productTarget_list;
+		} catch (Exception e) {
+			Log.e("productTarget_list", "" + e);
+		}
+
+		return productTarget_list;
+	}
+
+	// Getting All Penjualan
+	public ArrayList<Penjualan> getAllPenjualan() {
+		try {
+			penjualan_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PENJUALAN;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Penjualan penjualan = new Penjualan();
+					penjualan.setId_penjualan(cursor.getInt(0));
+					penjualan.setNomer_product_terjual(cursor.getString(1));
+					penjualan.setDate_product_terjual(cursor.getString(2));
+					penjualan.setTime_product_terjual(cursor.getString(3));
+					penjualan.setId_customer(cursor.getInt(4));
+					penjualan.setId_staff(cursor.getInt(5));
+					penjualan.setDiskon(cursor.getInt(6));
+					// Adding penjualan_list to list
+					penjualan_list.add(penjualan);
+				} while (cursor.moveToNext());
+			}
+
+			// return penjualan_list
+			cursor.close();
+			db.close();
+			return penjualan_list;
+		} catch (Exception e) {
+			Log.e("penjualan_list", "" + e);
+		}
+
+		return penjualan_list;
+	}
+
+	// Getting All Penjualan
+	public ArrayList<Penjualan> getAllPenjualanOrderWhereNomerPenjualan(
+			String nomer_penjualan) {
+		try {
+			penjualan_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PENJUALAN
+					+ " WHERE " + KEY_PENJUALAN_NOMER_PENJUALAN + "='"
+					+ nomer_penjualan + "' ";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Penjualan penjualan = new Penjualan();
+					penjualan.setId_penjualan(cursor.getInt(0));
+					penjualan.setNomer_product_terjual(cursor.getString(1));
+					penjualan.setDate_product_terjual(cursor.getString(2));
+					penjualan.setTime_product_terjual(cursor.getString(3));
+					penjualan.setId_customer(cursor.getInt(4));
+					penjualan.setId_staff(cursor.getInt(5));
+					penjualan.setDiskon(cursor.getInt(6));
+					// Adding penjualan_list to list
+					penjualan_list.add(penjualan);
+				} while (cursor.moveToNext());
+			}
+
+			// return penjualan_list
+			cursor.close();
+			db.close();
+			return penjualan_list;
+		} catch (Exception e) {
+			Log.e("penjualan_list", "" + e);
+		}
+
+		return penjualan_list;
+	}
+
+	// Getting All Penjualan Detail
+	public ArrayList<PenjualanDetail> getAllPenjualanDetailWhereNomerPenjualan(
+			String nomer_penjualan) {
+		try {
+			penjualan_detail_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PENJUALAN_DETAIL
+					+ " WHERE " + KEY_PENJUALAN_DETAIL_NOMER_PENJUALAN + "='"
+					+ nomer_penjualan + "' ";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					PenjualanDetail penjualanDetail = new PenjualanDetail();
+					penjualanDetail.setId_penjualan_detail(cursor.getInt(0));
+					penjualanDetail.setNomer_product_terjual(cursor
+							.getString(1));
+					penjualanDetail.setIdProduct(cursor.getInt(2));
+					penjualanDetail.setJumlah(cursor.getInt(3));
+					// Adding penjualan_detail_list to list
+					penjualan_detail_list.add(penjualanDetail);
+				} while (cursor.moveToNext());
+			}
+
+			// return penjualan_detail_list
+			cursor.close();
+			db.close();
+			return penjualan_detail_list;
+		} catch (Exception e) {
+			Log.e("penjualan_detail_list", "" + e);
+		}
+
+		return penjualan_detail_list;
+	}
+
+	// Getting All Penjualan Detail
+	public ArrayList<PenjualanDetail> getAllPenjualanDetail() {
+		try {
+			penjualan_detail_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PENJUALAN_DETAIL;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					PenjualanDetail penjualanDetail = new PenjualanDetail();
+					penjualanDetail.setId_penjualan_detail(cursor.getInt(0));
+					penjualanDetail.setNomer_product_terjual(cursor
+							.getString(1));
+					penjualanDetail.setIdProduct(cursor.getInt(2));
+					penjualanDetail.setJumlah(cursor.getInt(3));
+					// Adding penjualan_detail_list to list
+					penjualan_detail_list.add(penjualanDetail);
+				} while (cursor.moveToNext());
+			}
+
+			// return penjualan_detail_list
+			cursor.close();
+			db.close();
+			return penjualan_detail_list;
+		} catch (Exception e) {
+			Log.e("penjualan_detail_list", "" + e);
+		}
+
+		return penjualan_detail_list;
 	}
 
 	// Getting All Staff
@@ -2299,6 +2769,56 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return stock_on_hand_list;
 	}
 
+	// Getting All Product Target
+	public ArrayList<ProductTarget> getAllProductTargetWhereNomerPenjualan(
+			String nomer_tp) {
+		try {
+			productTarget_list.clear();
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCT_TARGET
+					+ " WHERE " + KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET
+					+ "='" + nomer_tp + "' ";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					ProductTarget productTarget = new ProductTarget();
+					productTarget.setId_product_target(cursor.getInt(0));
+					productTarget.setNomer_product_target(cursor.getString(1));
+					productTarget.setCreated_date_product_target(cursor
+							.getString(2));
+					productTarget.setCreated_time_product_target(cursor
+							.getString(3));
+					productTarget.setUpdated_date_product_target(cursor
+							.getString(4));
+					productTarget.setUpdated_time_product_target(cursor
+							.getString(5));
+					productTarget.setCreated_by(cursor.getInt(6));
+					productTarget.setUpdated_by(cursor.getInt(7));
+					productTarget.setId_staff(cursor.getInt(8));
+					productTarget.setId_customer(cursor.getInt(9));
+					productTarget.setId_product(cursor.getInt(10));
+					productTarget.setJumlah_target(cursor.getInt(11));
+					productTarget.setJumlah_terjual(cursor.getInt(12));
+					// Adding productTarget_list to list
+					productTarget_list.add(productTarget);
+				} while (cursor.moveToNext());
+			}
+
+			// return productTarget_list
+			cursor.close();
+			db.close();
+			return productTarget_list;
+		} catch (Exception e) {
+			Log.e("productTarget_list", "" + e);
+		}
+
+		return productTarget_list;
+	}
+
 	// Getting All Sales Order
 	public ArrayList<StockOnHand> getAllStockOnHandGroupByNomerOrder() {
 		try {
@@ -2534,6 +3054,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return tracking_list;
 	}
 
+	// Update StockVan
+	public int updateStockVanJumlahSisa(int id, int jumlah_sisa) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_STOCK_VAN_JUMLAH_SISA, jumlah_sisa);
+		// updating row
+		return db.update(TABLE_STOCK_VAN, values, KEY_STOCK_VAN_ID_PRODUCT
+				+ " = ?", new String[] { String.valueOf(id) });
+	}
+
 	// Update Customer
 	public int updateCustomer(int id, Customer customer) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -2658,6 +3188,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(id) });
 	}
 
+	// Update Target Penjualan
+	public int updateTargetPenjualan(int idProduct, int jumlahPenjualan,
+									 String updateDate, String updateTime, int updateBy, String nomerTp) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PRODUCT_TARGET_JUMLAH_TERJUAL, jumlahPenjualan);
+		values.put(KEY_PRODUCT_TARGET_UD_PRODUCT_TARGET, updateDate);
+		values.put(KEY_PRODUCT_TARGET_UT_PRODUCT_TARGET, updateTime);
+		values.put(KEY_PRODUCT_TARGET_UB, updateBy);
+		// updating row
+		return db.update(TABLE_PRODUCT_TARGET, values,
+				KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET + " = ? AND "
+						+ KEY_PRODUCT_TARGET_ID_PRODUCT + " = ?",
+				new String[] { String.valueOf(nomerTp), String.valueOf(idProduct) });
+	}
 	// Update displayProduct
 	public int updateDisplayProduct(int id, DisplayProduct displayProduct) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -2736,6 +3281,143 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 
 		return product_list;
+	}
+
+
+	// Getting All ProductStockVan
+	public ArrayList<ProductStockVan> getAllProductStokVan() {
+		try {
+			productStockVanList.clear();
+
+			// Select All Query
+			// String selectQuery = "SELECT * FROM " + TABLE_PRODUCT + ", "
+			// + TABLE_STOCK_VAN + "." + KEY_STOCK_VAN_JUMLAH_ACCEPT
+			// + " WHERE " + TABLE_PRODUCT + "." + KEY_PRODUCT_ID_PRODUCT
+			// + "=" + TABLE_STOCK_VAN + "." + KEY_STOCK_VAN_ID_PRODUCT;
+
+			String selectQuery = "SELECT * FROM " + TABLE_PRODUCT + ", "
+					+ TABLE_STOCK_VAN + " WHERE " + TABLE_PRODUCT + "."
+					+ KEY_PRODUCT_ID_PRODUCT + "=" + TABLE_STOCK_VAN + "."
+					+ KEY_STOCK_VAN_ID_PRODUCT;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					ProductStockVan productStockVan = new ProductStockVan();
+					productStockVan.setId_product(cursor.getInt(0));
+					productStockVan.setNama_product(cursor.getString(1));
+					productStockVan.setKode_product(cursor.getString(2));
+					productStockVan.setHarga_jual(cursor.getString(3));
+					productStockVan.setStockGudang(Integer.parseInt(cursor
+							.getString(4)));
+					productStockVan.setIdKemasan(cursor.getString(5));
+					productStockVan.setFoto(cursor.getString(6));
+					productStockVan.setDeskripsi(cursor.getString(7));
+					productStockVan.setStockVan(Integer.parseInt(cursor
+							.getString(13)));
+					// Adding productStockVanList to list
+					productStockVanList.add(productStockVan);
+				} while (cursor.moveToNext());
+			}
+
+			// return productStockVanList
+			cursor.close();
+			db.close();
+			return productStockVanList;
+		} catch (Exception e) {
+			Log.e("productStockVanList", "" + e);
+		}
+
+		return productStockVanList;
+	}
+
+	// Getting All StockVan
+	public ArrayList<StockVan> getAllStockVan() {
+		try {
+			stock_van_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_STOCK_VAN;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					StockVan stockVan = new StockVan();
+					stockVan.setId_product(cursor.getInt(0));
+					stockVan.setNama_product(cursor.getString(1));
+					stockVan.setKode_product(cursor.getString(2));
+					stockVan.setHarga_jual(cursor.getString(3));
+					stockVan.setJumlahRequest(cursor.getInt(4));
+					stockVan.setJumlahAccept(cursor.getInt(5));
+					stockVan.setJumlahSisa(cursor.getInt(6));
+					stockVan.setIdKemasan(cursor.getString(7));
+					stockVan.setFoto(cursor.getString(8));
+					stockVan.setDeskripsi(cursor.getString(9));
+
+					// Adding stock_van to list
+					stock_van_list.add(stockVan);
+				} while (cursor.moveToNext());
+			}
+
+			// return stock_van_list
+			cursor.close();
+			db.close();
+			return stock_van_list;
+		} catch (Exception e) {
+			Log.e("stock_van_list", "" + e);
+		}
+
+		return stock_van_list;
+	}
+
+	// Getting All StockVan
+	public ArrayList<StockVan> getAllStockVanBaseOnSearch(String search) {
+		try {
+			stock_van_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_STOCK_VAN
+					+ " WHERE " + KEY_STOCK_VAN_KODE_PRODUCT + " LIKE '"
+					+ search + "%'";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					StockVan stockVan = new StockVan();
+					stockVan.setId_product(cursor.getInt(0));
+					stockVan.setNama_product(cursor.getString(1));
+					stockVan.setKode_product(cursor.getString(2));
+					stockVan.setHarga_jual(cursor.getString(3));
+					stockVan.setJumlahRequest(cursor.getInt(4));
+					stockVan.setJumlahAccept(cursor.getInt(5));
+					stockVan.setJumlahSisa(cursor.getInt(6));
+					stockVan.setIdKemasan(cursor.getString(7));
+					stockVan.setFoto(cursor.getString(8));
+					stockVan.setDeskripsi(cursor.getString(9));
+
+					// Adding stock van to list
+					stock_van_list.add(stockVan);
+				} while (cursor.moveToNext());
+			}
+
+			// return stock_van_list
+			cursor.close();
+			db.close();
+			return stock_van_list;
+		} catch (Exception e) {
+			Log.e("stock_van_list", "" + e);
+		}
+
+		return stock_van_list;
 	}
 
 	// Getting All Product
@@ -3123,6 +3805,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return count;
 	}
 
+	public int getCountStockVan() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_STOCK_VAN,
+				null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
 	public int getCountStaffTemp() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db
@@ -3218,6 +3910,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return count;
 	}
 
+	public int getCountPenjualan(String nomerPenjualan) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PENJUALAN
+				+ " WHERE " + KEY_PENJUALAN_NOMER_PENJUALAN + "='"
+				+ nomerPenjualan + "'", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
 	public int getCountPromosi() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PROMOSI,
@@ -3259,6 +3961,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		mCount.close();
 		return count;
 	}
+
+
+
 
 	// public int getCountPhotoPurchase(String kode_customer) {
 	// SQLiteDatabase db = this.getReadableDatabase();
@@ -3376,9 +4081,51 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return count;
 	}
 
+	///////////////////////////////////////////////
+	public int getCountTargetPenjualan() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from "
+				+ TABLE_PRODUCT_TARGET, null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountTargetPenjualan(String idCustomer) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from "
+				+ TABLE_PRODUCT_TARGET + " WHERE "
+				+ KEY_PRODUCT_TARGET_ID_CUSTOMER + "=" + idCustomer + "", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+
+	public int getCountTargetPenjualan(String nomerTp, int idProduct) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from "
+				+ TABLE_PRODUCT_TARGET + " WHERE "
+				+ KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET + "='" + nomerTp + "' AND "
+				+ KEY_PRODUCT_TARGET_ID_PRODUCT + "=" + idProduct + "", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+	//////////////////////////////////////////////////
+
+
 	public void deleteTableBranch() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.execSQL("DELETE FROM " + TABLE_BRANCH);
+	}
+
+	public void deleteTableStockVan() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_STOCK_VAN);
 	}
 
 	public void deleteTableKemasan() {
@@ -3502,13 +4249,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DELETE FROM " + TABLE_PHOTO_PURCHASE);
 	}
 
-	// // Deleting single Photo Purchase
-	// public void deleteTablePhotoPurchase(int id) {
-	// SQLiteDatabase db = this.getWritableDatabase();
-	// db.delete(TABLE_PHOTO_PURCHASE, KEY_PHOTO_PURCHASE_ID_PHOTO_PURCHASE
-	// + " = ?", new String[] { String.valueOf(id) });
-	// db.close();
-	// }
+	// Deleting Table Target Penjualan
+	public void deleteTablePenjualan(String nomor_tp) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_PENJUALAN, KEY_PENJUALAN_NOMER_PENJUALAN + " = ? ",
+				new String[] { String.valueOf(nomor_tp) });
+		db.close();
+	}
+
+	// Deleting Table Target Penjualan
+	public void deleteTableProductTarget(int nomor_tp) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_PRODUCT_TARGET, KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET
+				+ " = ?", new String[] { String.valueOf(nomor_tp) });
+		db.close();
+	}
 
 	public void deleteTableTypeCustomer() {
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -3530,4 +4285,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("update customer set status_update='1' where status_update='2'");
     }
 
+
+	public final int getCountTargetPenjualan(int idCustomer) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from "
+				+ TABLE_PRODUCT_TARGET + " WHERE "
+				+ KEY_PRODUCT_TARGET_ID_CUSTOMER + "=" + idCustomer + "", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+
+	public void deleteTableProductTarget1() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_PRODUCT_TARGET);
+	}
+
+	public void deleteTablePenjualan1() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_PENJUALAN);
+	}
+
+	public void deleteTablePenjualanDetail1() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_PENJUALAN_DETAIL);
+	}
 }

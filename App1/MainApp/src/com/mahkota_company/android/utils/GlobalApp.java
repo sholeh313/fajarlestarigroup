@@ -7,6 +7,10 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.util.Log;
 import android.widget.EditText;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class GlobalApp {
 	public static final String SHARED_PREFERENCES_NAME = "mahkota_android_app";
@@ -128,4 +132,14 @@ public class GlobalApp {
 		}
 	}
 
+	public static String getUniqueId() {
+		String timeStamp = new SimpleDateFormat("HHmmss", Locale.getDefault())
+				.format(new Date());
+		final String date = "yyyyMMdd";
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat(date);
+		final String dateOutput = dateFormat.format(calendar.getTime());
+		String unId = dateOutput + timeStamp;
+		return unId;
+	}
 }
