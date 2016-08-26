@@ -9,159 +9,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="652055ad-328c-4357-982f-1a66b58f737d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_splash_screen1.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/AddPenjualanActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/AddTargetPenjualanActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailTargetPenjualanActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/InventoryActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/LoadProductActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/PenjualanActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/PhysicalCountingActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/RequestLoadActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/StockSummayActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/TargetPenjualanActivity.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/MainApp/MainApp.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/MainApp/res/drawable-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/MainApp/MainApp.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$id.class" afterPath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$layout.class" afterPath="$PROJECT_DIR$/out/production/MainApp/android/support/v7/appcompat/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/GpsChecking.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/GpsChecking.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter$ViewHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerFragment.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/NavigationDrawerFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$id.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$integer.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$layout.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$menu.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$string.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$style.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$styleable.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/SplashScreenActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/customer/CustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/DatabaseHandler.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/DatabaseHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/StaffTemp.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/database/StaffTemp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/display_product/DisplayProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$DownloadDataJadwal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity$UploadData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/jadwal/JadwalCustomerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$10.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$11.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$12.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$13.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$14.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$15.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataStaff.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$DownloadDataTracking.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$mDateSetListener.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity$mDateSetListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/locator/LocatorActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadContentProduct.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadContentProduct.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$3.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$4.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$5.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$DownloadDataProduct.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter$1.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter$UserHolder.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter$UserHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/product/ProductActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$2.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/prospect/CustomerProspectActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$8.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/AddSalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$10.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/DetailSalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/sales_order/SalesOrderActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$7.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/AddStockOnHandActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$6.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$9.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity$ListViewChooseAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/DetailStockOnHandActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$ListViewAdapter.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity$ListViewAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/utils/CONFIG.class" afterPath="$PROJECT_DIR$/out/production/MainApp/com/mahkota_company/android/utils/CONFIG.class" />
+    <list default="true" id="652055ad-328c-4357-982f-1a66b58f737d" name="Default" comment="tambah inventory, menu contact belum selesai.">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/AndroidManifest.xml" afterPath="$PROJECT_DIR$/MainApp/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/res/layout/activity_splash_screen.xml" afterPath="$PROJECT_DIR$/MainApp/res/layout/activity_splash_screen.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/Contact/PilihanContactUnused.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/Contact/PilihanContactUnused.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/SplashScreenActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/SplashScreenActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/StaffTemp.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/StaffTemp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/display_product/DisplayProductActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/display_product/DisplayProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/jadwal/JadwalActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/jadwal/JadwalActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/kontak/jadwal/Pilihan_Kontak.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/kontak/jadwal/Pilihan_Kontak.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/locator/LocatorActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/locator/LocatorActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/product/ProductActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/product/ProductActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/SalesOrderActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/sales_order/SalesOrderActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" afterPath="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/utils/CONFIG.java" />
     </list>
     <ignored path="App1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -240,21 +90,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MainApp/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5291829">
+            <state vertical-scroll-proportion="-14.290909">
               <caret line="290" column="25" selection-start-line="290" selection-start-column="25" selection-end-line="290" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetailPenjualanActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DetailPenjualanActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="241" column="51" selection-start-line="241" selection-start-column="51" selection-end-line="241" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.11950791">
+              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -329,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/kontak/jadwal/Detail_Kontak.java" />
         <option value="$PROJECT_DIR$/MainApp/res/layout/activity_detail_kontak.xml" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailCustomerActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/DetailEditCustomer.java" />
@@ -365,7 +214,6 @@
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/StockSummayActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/StockSummaryActivityRem.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/RequestLoadActivity.java" />
-        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailRemPenjualanActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/customer/CustomerActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/display_product/DisplayProductActivity.java" />
@@ -380,13 +228,15 @@
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/stock_on_hand/StockOnHandActivity.java" />
         <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/MainApp/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualan_Activity.java" />
+        <option value="$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -890,12 +740,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471857270471</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="tambah inventory, menu contact belum selesai.">
+      <created>1472198774563</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1472198774563</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1378" height="754" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -910,10 +766,10 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5241379" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13816926" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.78224456" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.47586206" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2313988" sideWeight="0.5137931" order="0" side_tool="false" content_ui="combo" x="538" y="49" width="286" height="618" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23208955" sideWeight="0.5137931" order="0" side_tool="false" content_ui="combo" x="538" y="49" width="286" height="618" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -950,7 +806,8 @@
     <MESSAGE value="ready to implementation" />
     <MESSAGE value="virsi 1.1.0 hampir fix" />
     <MESSAGE value="tambah menu inventory. menu contact belum selesai." />
-    <option name="LAST_COMMIT_MESSAGE" value="tambah menu inventory. menu contact belum selesai." />
+    <MESSAGE value="tambah inventory, menu contact belum selesai." />
+    <option name="LAST_COMMIT_MESSAGE" value="tambah inventory, menu contact belum selesai." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2035,14 +1892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="241" column="51" selection-start-line="241" selection-start-column="51" selection-end-line="241" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/AddTargetPenjualanActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.275862">
@@ -2053,8 +1902,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MainApp/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5291829">
+        <state vertical-scroll-proportion="-14.290909">
           <caret line="290" column="25" selection-start-line="290" selection-start-column="25" selection-end-line="290" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainApp/src/com/mahkota_company/android/inventory/DetailPenjualanActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11950791">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding />
         </state>
       </provider>
