@@ -10,6 +10,8 @@ public class StaffTemp {
 	private String id_branch;
 	private String id_type_customer;
 	private int id_depo;
+	private int id_wilayah;
+
 
 	public StaffTemp() {
 
@@ -92,6 +94,14 @@ public class StaffTemp {
 
 	public void setId_type_customer(String id_type_customer) {
 		this.id_type_customer = id_type_customer;
+	}
+
+	public int getId_wilayah() {
+		return id_wilayah;
+	}
+
+	public void setId_wilayah(int id_wilayah) {
+		this.id_wilayah = id_wilayah;
 	}
 
 	public int getId_depo() {

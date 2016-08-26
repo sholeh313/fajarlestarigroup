@@ -453,13 +453,13 @@ public class TargetPenjualanActivity extends FragmentActivity {
 									.getApplicationContext().getResources()
 									.getString(R.string.app_value_true));
 						} else {
-							databaseHandler.deleteTableProductTarget1();
+							databaseHandler.deleteTableProductTarget();
 							saveAppDataTargetPenjualanSameData(act
 									.getApplicationContext().getResources()
 									.getString(R.string.app_value_false));
 						}
 					} else {
-						databaseHandler.deleteTableProductTarget1();
+						databaseHandler.deleteTableProductTarget();
 						saveAppDataTargetPenjualanSameData(act
 								.getApplicationContext().getResources()
 								.getString(R.string.app_value_false));
@@ -1311,9 +1311,9 @@ public class TargetPenjualanActivity extends FragmentActivity {
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								databaseHandler.deleteTableProductTarget1();
-								databaseHandler.deleteTablePenjualan1();
-								databaseHandler.deleteTablePenjualanDetail1();
+								databaseHandler.deleteTableProductTarget();
+								databaseHandler.deleteTablePenjualan();
+								databaseHandler.deleteTablePenjualanDetail();
 								finish();
 								startActivity(getIntent());
 							}

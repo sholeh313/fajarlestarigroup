@@ -34,8 +34,8 @@ import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Jadwal;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
-//import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
+
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.product.ProductActivity;
@@ -810,8 +810,6 @@ public class Pilihan_Kontak extends ActionBarActivity implements
 					startActivity(intentActivity);
 					finish();
 				}
-
-
 			}
 		}
 	}

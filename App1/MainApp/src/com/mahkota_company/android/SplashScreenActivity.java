@@ -1,25 +1,24 @@
 package com.mahkota_company.android;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SplashScreenActivity extends Activity {
 	protected boolean _active = true;
-	protected int _splashTime = 1500;
+	protected int _splashTime = 5000;
 	private Typeface typefaceSmall;
 	private TextView txtDevelopedBy;
 	private TextView txtDeveloper;
+	private TextView txtLoading;
+	private ProgressBar bar;
+	int total = 0;
+	boolean isRunning = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,11 @@ public class SplashScreenActivity extends Activity {
 		txtDevelopedBy.setTypeface(typefaceSmall);
 		txtDeveloper = (TextView) findViewById(R.id.splash_screen_developer);
 		txtDeveloper.setTypeface(typefaceSmall);
+		bar = (ProgressBar) findViewById(R.id.loading);
+		txtLoading = (TextView) findViewById(R.id.splash_loading);
+		txtLoading.setTypeface(typefaceSmall);
+
+
 		Thread splashTread = new Thread() {
 			@Override
 			public void run() {
@@ -43,14 +47,18 @@ public class SplashScreenActivity extends Activity {
 					while (_active && (waited < _splashTime)) {
 						sleep(100);
 						if (_active) {
+							total += 2;
+							bar.incrementProgressBy(2);
 							waited += 100;
 						}
 					}
+
 				} catch (InterruptedException e) {
 				} finally {
 					finish();
 					startActivity(new Intent(getApplicationContext(),
 							LoginActivity.class));
+
 				}
 			}
 		};
@@ -59,4 +67,6 @@ public class SplashScreenActivity extends Activity {
 
 	}
 
+
 }
+

@@ -926,7 +926,7 @@ public class InventoryActivity extends ActionBarActivity implements
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		if (mNavigationDrawerFragment != null) {
-			if (mNavigationDrawerFragment.getCurrentSelectedPosition() != 3) {
+			if (mNavigationDrawerFragment.getCurrentSelectedPosition() != 9) {
 				if (position == 0) {
 					Intent intentActivity = new Intent(this,
 							CustomerActivity.class);
@@ -962,18 +962,18 @@ public class InventoryActivity extends ActionBarActivity implements
 							StockOnHandActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 7) {
+				}else if (position == 7) {
 					Intent intentActivity = new Intent(this,
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 8) {
+				}
+				else if (position == 8) {
 					Intent intentActivity = new Intent(this,
 							Pilihan_Kontak.class);
 					startActivity(intentActivity);
 					finish();
 				}
-
 			}
 		}
 	}

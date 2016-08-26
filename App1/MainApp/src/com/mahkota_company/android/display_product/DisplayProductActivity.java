@@ -54,8 +54,8 @@ import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.DisplayProduct;
-//import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
+
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
@@ -689,8 +689,6 @@ public class DisplayProductActivity extends ActionBarActivity implements
 					startActivity(intentActivity);
 					finish();
 				}
-
-
 			}
 		}
 

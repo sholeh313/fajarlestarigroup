@@ -61,7 +61,6 @@ import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
-//import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;

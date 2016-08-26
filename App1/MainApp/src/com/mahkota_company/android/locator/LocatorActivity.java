@@ -35,7 +35,6 @@ import com.mahkota_company.android.database.StaffTemp;
 import com.mahkota_company.android.database.Tracking;
 import com.mahkota_company.android.database.Wilayah;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
-//import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.product.ProductActivity;

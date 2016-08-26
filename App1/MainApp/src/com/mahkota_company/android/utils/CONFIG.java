@@ -5,6 +5,8 @@ import java.io.File;
 import android.os.Environment;
 
 public class CONFIG {
+	//186.132.0.58
+	//110.232.84.22
 	public static final String CONFIG_APP_URL_DOWNLOAD_STOCK_VAN = "mahkota/ws/get_request_load.php";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN = "mahkota_table_stock_van";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_SAME_DATA = "mahkota_table_stock_van_same_data";
