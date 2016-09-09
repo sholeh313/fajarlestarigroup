@@ -1134,13 +1134,7 @@ public class LoginActivity extends Activity {
 						showCustomDialog(message);
 					}
 				}
-
 			}
-			// else {
-			// String message = act.getApplicationContext().getResources()
-			// .getString(R.string.app_login_error_blank);
-			// showCustomDialog(message);
-			// }
 		}
 	};
 

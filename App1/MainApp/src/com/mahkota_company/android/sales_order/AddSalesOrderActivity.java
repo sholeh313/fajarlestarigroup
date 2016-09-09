@@ -67,6 +67,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 	private Button mButtonAddProduct;
 	private Button mButtonSave;
 	private Button mButtonCancel;
+	private Button mButtonTTD;
 	private Spinner spinnerKodeCustomer;
 	public ArrayList<Customer> customerList;
 	public ArrayList<String> customerStringList;
@@ -118,6 +119,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		tvHeaderTotalDiskonTitle = (TextView) findViewById(R.id.activity_app_sales_order_total_diskon_title);
 		mButtonAddProduct = (Button) findViewById(R.id.activity_sales_order_btn_add_product);
 		mButtonSave = (Button) findViewById(R.id.activity_sales_order_btn_save);
+		mButtonTTD = (Button) findViewById(R.id.ttd_customer);
 
 		etNamaCustomer.setTypeface(typefaceSmall);
 		etAlamatCustomer.setTypeface(typefaceSmall);
@@ -218,6 +220,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		etNamaCustomer.setText(customer.getNama_lengkap());
 		etAlamatCustomer.setText(customer.getAlamat());
 		mButtonSave.setOnClickListener(maddSalesOrderButtonOnClickListener);
+		mButtonTTD.setOnClickListener(maddSalesOrderButtonOnClickListener);
 		mButtonAddProduct
 				.setOnClickListener(maddSalesOrderButtonOnClickListener);
 
@@ -267,6 +270,10 @@ public class AddSalesOrderActivity extends FragmentActivity {
 					ChooseProductDialog();
 				}
 				break;
+			case R.id.ttd_customer:
+					BukaTTD();
+
+					break;
 			case R.id.activity_sales_order_btn_save:
 				if (etDeskripsiSalesOrder.getText().toString().length() > 0) {
                     String timeStamp = new SimpleDateFormat("HHmmss",
@@ -359,6 +366,13 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		}
 
 	};
+
+	private void BukaTTD() {
+		Intent intentActivity = new Intent(
+				AddSalesOrderActivity.this,
+				AndroidCanvasExample.class);
+		startActivity(intentActivity);
+	}
 
 	private void ChooseProductDialog() {
 		final Dialog chooseProductDialog = new Dialog(act);

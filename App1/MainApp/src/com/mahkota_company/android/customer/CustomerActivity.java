@@ -43,8 +43,10 @@ import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
+import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
+import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
@@ -1424,7 +1426,7 @@ public class CustomerActivity extends ActionBarActivity implements
                                           final String telp, final String fax, final String omset, final String cara_pembayaran,
                                           final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
                                           final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
-								          final String isactive, final String description,final String nama_toko) {
+								          final String isactive, final String description,final String nama_toko, final String id_staff) {
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(url);
@@ -1468,7 +1470,7 @@ public class CustomerActivity extends ActionBarActivity implements
                     : ""));
             entity.addPart("id_type_customer", new StringBody(id_type_customer));
             entity.addPart("date", new StringBody(date));
-            //entity.addPart("id_staff", new StringBody(id_staff));
+            entity.addPart("id_staff", new StringBody(id_staff));
             entity.addPart("no_ktp", new StringBody(no_ktp));
             entity.addPart("tanggal_lahir", new StringBody(tanggal_lahir));
             entity.addPart("nama_bank", new StringBody(nama_bank));
@@ -1593,8 +1595,8 @@ public class CustomerActivity extends ActionBarActivity implements
 						customer.getId_depo(),
 						customer.getIsactive(),
 						customer.getDescription(),
-                        customer.getNama_toko());
-
+                        customer.getNama_toko(),
+						String.valueOf(customer.getId_staff()));
 			}
 			return null;
 		}
@@ -1810,8 +1812,17 @@ public class CustomerActivity extends ActionBarActivity implements
 							InventoryActivity.class);
 					startActivity(intentActivity);
 					finish();
+				}else if (position == 10) {
+					Intent intentActivity = new Intent(this,
+							ReturActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 11) {
+					Intent intentActivity = new Intent(this,
+							CustomerMerchandiseActivity.class);
+					startActivity(intentActivity);
+					finish();
 				}
-
 			}
 		}
 	}

@@ -6,21 +6,17 @@
 
     <LinearLayout
         android:id="@+id/topbar"
-        style="@android:style/Widget.ActionButton"
         android:layout_width="fill_parent"
         android:layout_height="60dip"
         android:background="@color/myPrimaryColor"
         android:orientation="horizontal" >
-
         <ImageView
             android:id="@+id/menuBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:background="@drawable/action_item_back"
             android:clickable="true"
             android:contentDescription="@string/app_name" />
-
         <TextView
             android:id="@+id/titleMenuButton"
             android:layout_width="0dip"
@@ -101,7 +97,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="60dip"
                         android:baselineAligned="false"
-                        android:orientation="horizontal" >
+                        android:orientation="vertical" >
 
                         <TextView
                             android:id="@+id/activity_customer_detail_title_kode_customer"
@@ -114,6 +110,9 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
+
+
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -750,19 +749,16 @@
                         android:baselineAligned="false"
                         android:orientation="horizontal" >
 
-                        <EditText
+                        <TextView
                             android:id="@+id/activity_customer_prospect_nama_toko_value"
-                            android:layout_width="0dip"
+                            android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginBottom="5dp"
-                            android:layout_weight="0.3"
-                            android:background="@drawable/input_field_style"
-                            android:imeOptions="actionDone"
-                            android:singleLine="true"
+                            android:gravity="left|center"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/Ivory3"
-                            android:inputType="text" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -854,7 +850,7 @@
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
                             android:inputType="datetime"
-                            android:hint="Contoh : 12/12/1993"/>
+                            android:hint="Contoh : 12-12-1993"/>
 
                     </LinearLayout>
                     <LinearLayout

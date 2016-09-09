@@ -3,6 +3,7 @@ package com.mahkota_company.android.customer;
 import com.mahkota_company.android.database.Cluster;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.database.Staff;
 import com.mahkota_company.android.database.TypeCustomer;
 import com.mahkota_company.android.database.Wilayah;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
@@ -74,6 +75,7 @@ public class DetailEditCustomer extends FragmentActivity {
     private ProgressDialog progressDialog;
     private Typeface typefaceSmall;
     private TextView tvKodeCustomer;
+    private TextView tvId_staff;
     private EditText etNamaCustomer;
     private EditText etEmailCustomer;
     private EditText etAlamatCustomer;
@@ -108,8 +110,9 @@ public class DetailEditCustomer extends FragmentActivity {
     private EditText etKode_pos;
     private ToggleButton tgStatus;
     private EditText etDescription;
-    private EditText etNama_toko;
+    private TextView etNama_toko;
     private Customer customer;
+    private Staff staff;
     private TextView tvstatus;
     private TextView tvHeaderKodeCustomer;
     private TextView tvHeaderNamaCustomer;
@@ -198,7 +201,7 @@ public class DetailEditCustomer extends FragmentActivity {
         etKode_pos = (EditText) findViewById(R.id.activity_customer_prospect_kode_pos_value);
         tgStatus = (ToggleButton) findViewById(R.id.activity_customer_detail_status_value);
         etDescription = (EditText) findViewById(R.id.activity_customer_prospect_description_value);
-        etNama_toko = (EditText) findViewById(R.id.activity_customer_prospect_nama_toko_value);
+        etNama_toko = (TextView) findViewById(R.id.activity_customer_prospect_nama_toko_value);
 
         tvstatus = (TextView) findViewById(R.id.activity_customer_detail_status);
         tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_customer_detail_title_kode_customer);
@@ -754,7 +757,7 @@ public class DetailEditCustomer extends FragmentActivity {
         tempCheckInLongitude = Double.parseDouble(customer.getLongs());
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        if( tvImage1Customer != null){
+        if( tvImage1Customer.getText().toString().length() > 3){
             String curLatitude = String
                     .valueOf((int) tempCheckInLatitude);
             String curLongitude = String
@@ -768,6 +771,11 @@ public class DetailEditCustomer extends FragmentActivity {
                             date);
                     final String checkDate = dateFormat.format(calendar
                             .getTime());
+                    SharedPreferences spPreferences = getSharedPrefereces();
+                    String idStaff = spPreferences.getString(
+                            CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                            null);
+
                     Customer newCustomer = new Customer();
                     newCustomer.setId_customer(customer.getId_customer());
                     newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -785,7 +793,7 @@ public class DetailEditCustomer extends FragmentActivity {
                     newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                     newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                     newCustomer.setStatus_update(customer.getStatus_update());
-                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setId_staff(Integer.parseInt(idStaff));
                     newCustomer.setNo_ktp(etno_ktp.getText().toString());
                     newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                     newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -815,13 +823,18 @@ public class DetailEditCustomer extends FragmentActivity {
                     String msg = getApplicationContext().getResources().getString(
                             R.string.app_customer_update_success);
                     showCustomDialogSaveSuccess(msg);
-                }else if(customer.getFoto_2() .length() == 0){
+                }else if(customer.getFoto_1().length()> 0 ||customer.getFoto_2() .length() == 0){
                     final String date = "yyyy-MM-dd";
                     Calendar calendar = Calendar.getInstance();
                     SimpleDateFormat dateFormat = new SimpleDateFormat(
                             date);
                     final String checkDate = dateFormat.format(calendar
                             .getTime());
+                    SharedPreferences spPreferences = getSharedPrefereces();
+                    String idStaff = spPreferences.getString(
+                            CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                            null);
+
                     Customer newCustomer = new Customer();
                     newCustomer.setId_customer(customer.getId_customer());
                     newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -839,7 +852,7 @@ public class DetailEditCustomer extends FragmentActivity {
                     newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                     newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                     newCustomer.setStatus_update(customer.getStatus_update());
-                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setId_staff(Integer.parseInt(idStaff));
                     newCustomer.setNo_ktp(etno_ktp.getText().toString());
                     newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                     newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -876,6 +889,11 @@ public class DetailEditCustomer extends FragmentActivity {
                             date);
                     final String checkDate = dateFormat.format(calendar
                             .getTime());
+                    SharedPreferences spPreferences = getSharedPrefereces();
+                    String idStaff = spPreferences.getString(
+                            CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                            null);
+
                     Customer newCustomer = new Customer();
                     newCustomer.setId_customer(customer.getId_customer());
                     newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -893,7 +911,7 @@ public class DetailEditCustomer extends FragmentActivity {
                     newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                     newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                     newCustomer.setStatus_update(customer.getStatus_update());
-                    newCustomer.setId_staff(customer.getId_staff());
+                    newCustomer.setId_staff(Integer.parseInt(idStaff));
                     newCustomer.setNo_ktp(etno_ktp.getText().toString());
                     newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                     newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -940,6 +958,10 @@ public class DetailEditCustomer extends FragmentActivity {
                                 date);
                         final String checkDate = dateFormat.format(calendar
                                 .getTime());
+                        SharedPreferences spPreferences = getSharedPrefereces();
+                        String idStaff = spPreferences.getString(
+                                CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                                null);
                         Customer newCustomer = new Customer();
                         newCustomer.setId_customer(customer.getId_customer());
                         newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -957,7 +979,7 @@ public class DetailEditCustomer extends FragmentActivity {
                         newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                         newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                         newCustomer.setStatus_update(customer.getStatus_update());
-                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setId_staff(Integer.parseInt(idStaff));
                         newCustomer.setNo_ktp(etno_ktp.getText().toString());
                         newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                         newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -987,13 +1009,17 @@ public class DetailEditCustomer extends FragmentActivity {
                         String msg = getApplicationContext().getResources().getString(
                                 R.string.app_customer_update_success);
                         showCustomDialogSaveSuccess(msg);
-                    }else if(customer.getFoto_2() .length() == 0){
+                    }else if(customer.getFoto_1().length() > 0 || customer.getFoto_2() .length() == 0){
                         final String date = "yyyy-MM-dd";
                         Calendar calendar = Calendar.getInstance();
                         SimpleDateFormat dateFormat = new SimpleDateFormat(
                                 date);
                         final String checkDate = dateFormat.format(calendar
                                 .getTime());
+                        SharedPreferences spPreferences = getSharedPrefereces();
+                        String idStaff = spPreferences.getString(
+                                CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                                null);
                         Customer newCustomer = new Customer();
                         newCustomer.setId_customer(customer.getId_customer());
                         newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -1011,7 +1037,7 @@ public class DetailEditCustomer extends FragmentActivity {
                         newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                         newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                         newCustomer.setStatus_update(customer.getStatus_update());
-                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setId_staff(Integer.parseInt(idStaff));
                         newCustomer.setNo_ktp(etno_ktp.getText().toString());
                         newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                         newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -1048,6 +1074,10 @@ public class DetailEditCustomer extends FragmentActivity {
                                 date);
                         final String checkDate = dateFormat.format(calendar
                                 .getTime());
+                        SharedPreferences spPreferences = getSharedPrefereces();
+                        String idStaff = spPreferences.getString(
+                                CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                                null);
                         Customer newCustomer = new Customer();
                         newCustomer.setId_customer(customer.getId_customer());
                         newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -1065,7 +1095,7 @@ public class DetailEditCustomer extends FragmentActivity {
                         newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                         newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                         newCustomer.setStatus_update(customer.getStatus_update());
-                        newCustomer.setId_staff(customer.getId_staff());
+                        newCustomer.setId_staff(Integer.parseInt(idStaff));
                         newCustomer.setNo_ktp(etno_ktp.getText().toString());
                         newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
                         newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -1269,6 +1299,10 @@ public class DetailEditCustomer extends FragmentActivity {
                     date);
             final String checkDate = dateFormat.format(calendar
                     .getTime());
+            SharedPreferences spPreferences = getSharedPrefereces();
+            String idStaff = spPreferences.getString(
+                    CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF,
+                    null);
             Customer newCustomer = new Customer();
             newCustomer.setId_customer(customer.getId_customer());
             newCustomer.setAlamat(etAlamatCustomer.getText().toString());
@@ -1286,7 +1320,7 @@ public class DetailEditCustomer extends FragmentActivity {
             newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
             newCustomer.setNo_telp(etTelpCustomer.getText().toString());
             newCustomer.setStatus_update(customer.getStatus_update());
-            newCustomer.setId_staff(customer.getId_staff());
+            newCustomer.setId_staff(Integer.parseInt(idStaff));
             newCustomer.setNo_ktp(etno_ktp.getText().toString());
             newCustomer.setTanggal_lahir(etTanggal_lahir.getText().toString());
             newCustomer.setNama_bank(etNama_bank.getText().toString());
@@ -1505,7 +1539,6 @@ public class DetailEditCustomer extends FragmentActivity {
             etAtas_nama.setText(customer.getAtas_nama());
             etNpwp.setText(customer.getNpwp());
             etNama_pasar.setText(customer.getNama_pasar());
-            //etCluster.setText(customer.getId_cluster());
             etTelp.setText(customer.getTelp());
             etFax.setText(customer.getFax());
             etOmset.setText(customer.getOmset());

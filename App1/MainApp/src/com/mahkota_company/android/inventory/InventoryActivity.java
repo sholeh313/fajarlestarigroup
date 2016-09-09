@@ -65,8 +65,10 @@ import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
+import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
+import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
@@ -967,10 +969,19 @@ public class InventoryActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}
-				else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
 							Pilihan_Kontak.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 10) {
+					Intent intentActivity = new Intent(this,
+							ReturActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 11) {
+					Intent intentActivity = new Intent(this,
+							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
 				}

@@ -37,8 +37,11 @@ import com.mahkota_company.android.database.Wilayah;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
+import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
+import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
+import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
@@ -1432,7 +1435,7 @@ public class LocatorActivity extends ActionBarActivity implements
 					finish();
 				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							PilihanContactUnused.class);
+							Pilihan_Kontak.class);
 					startActivity(intentActivity);
 					finish();
 				}
@@ -1441,9 +1444,17 @@ public class LocatorActivity extends ActionBarActivity implements
 							InventoryActivity.class);
 					startActivity(intentActivity);
 					finish();
+				}else if (position == 10) {
+					Intent intentActivity = new Intent(this,
+							ReturActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 11) {
+					Intent intentActivity = new Intent(this,
+							CustomerMerchandiseActivity.class);
+					startActivity(intentActivity);
+					finish();
 				}
-
-
 			}
 		}
 

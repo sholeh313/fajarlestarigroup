@@ -7,21 +7,17 @@
 
     <LinearLayout
         android:id="@+id/topbar"
-        style="@android:style/Widget.ActionButton"
         android:layout_width="fill_parent"
         android:layout_height="60dip"
         android:background="@color/myPrimaryColor"
         android:orientation="horizontal" >
-
         <ImageView
             android:id="@+id/menuBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:background="@drawable/action_item_back"
             android:clickable="true"
             android:contentDescription="@string/app_name" />
-
         <TextView
             android:id="@+id/titleMenuButton"
             android:layout_width="0dip"
@@ -167,6 +163,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -296,6 +293,7 @@
                     android:textColor="@color/white" />
 
                 <Button
+                    android:id="@+id/ttd_customer"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dip"
@@ -305,9 +303,8 @@
                     android:background="@drawable/ibbutton_black"
                     android:minHeight="50dp"
                     android:minWidth="200dp"
-                    android:text="@string/app_photo_purchase_detail_save_btn"
-                    android:textColor="@color/white"
-                    android:visibility="invisible" />
+                    android:text="@string/ttd_sales_order"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <LinearLayout

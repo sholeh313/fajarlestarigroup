@@ -163,6 +163,8 @@
     <string name="menu_8">Photo Display Product</string>
     <string name="menu_9">Kontak Customer</string>
     <string name="menu_10">Inventory</string>
+    <string name="menu_11">Retur</string>
+    <string name="menu_12">Merchandise</string>
     <!-- Customer -->
     <string name="app_customer_hint_search_customer">Search Customer</string>
     <string name="app_customer_hint_kode_customer">Kode Customer</string>
@@ -281,6 +283,7 @@
     <string name="app_photo_purchase_preview">Preview</string>
     <string name="app_photo_purchase_missing_file">File terhapus, mohon mengambil photo !</string>
     <string name="app_photo_purchase_detail_save_btn">Save</string>
+    <string name="ttd_sales_order">Tanda Tangan</string>
     <!-- Display Product -->
     <string name="app_display_product_hint_display_product">Tambah Display Product</string>
     <string name="app_display_product_hint_kode_customer">Kode Customer</string>
@@ -305,9 +308,11 @@
     <string name="app_display_product_detail_save_btn">Save</string>
     <!-- Sales Order -->
     <string name="app_sales_order_hint_kode_sales_order">Kode Sales Order</string>
+    <string name="app_sales_order_hint_kode_retur">Nomor Retur</string>
     <string name="app_sales_order_hint_kode_customer">Kode Customer</string>
     <string name="app_sales_order_hint_nama_customer">Nama Customer</string>
     <string name="app_sales_order_hint_add_sales_order">Tambah Sales Order</string>
+    <string name="app_sales_order_hint_add_retur">Buat Retur</string>
     <string name="app_sales_order_kode_customer">Kode Customer</string>
     <string name="app_sales_order_total_bayar">Total Bayar</string>
     <string name="app_sales_order_total_diskon">Total Diskon</string>

@@ -6,7 +6,6 @@ import android.os.Environment;
 
 public class CONFIG {
 	//186.132.0.58
-	//110.232.84.22
 	public static final String CONFIG_APP_URL_DOWNLOAD_STOCK_VAN = "mahkota/ws/get_request_load.php";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN = "mahkota_table_stock_van";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_SAME_DATA = "mahkota_table_stock_van_same_data";
@@ -90,6 +89,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_URL_UPLOAD_CUSTOMER_PROSPECT = "mahkota/ws/update_customer_prospect1.php";
 	public static final String CONFIG_APP_URL_UPLOAD_PHOTO_PURCHASE = "mahkota/ws/update_photo_purchase.php";
 	public static final String CONFIG_APP_URL_UPLOAD_SALES_ORDER = "mahkota/ws/update_sales_order.php";
+	public static final String CONFIG_APP_URL_UPLOAD_RETUR = "mahkota/ws/update_retur.php";
 	public static final String CONFIG_APP_URL_UPLOAD_STOCK_ON_HAND = "mahkota/ws/update_stock_on_hand.php";
 	public static final String CONFIG_APP_URL_UPLOAD_DISPLAY_PRODUCT = "mahkota/ws/update_display_product.php";
 	public static final String CONFIG_APP_URL_UPLOAD_LOCATOR = "mahkota/ws/update_locator_sales.php";

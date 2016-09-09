@@ -35,6 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_DISPLAY_PRODUCT = "display_product";
 	private static final String TABLE_STOCK_ON_HAND = "stock_on_hand";
 	private static final String TABLE_SALES_ORDER = "sales_order";
+	private static final String TABLE_RETUR = "retur";
 	private static final String TABLE_TRACKING = "tracking";
 	private static final String TABLE_PRODUCT_TARGET = "product_target";
 	private static final String TABLE_PENJUALAN = "penjualan";
@@ -255,6 +256,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SALES_ORDER_HARGA_JUAL = "harga_jual";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER = "jumlah_order";
 
+	// RETUR Table Columns names
+	private static final String KEY_RETUR_ID_RETUR = "id_retur";
+	private static final String KEY_RETUR_NOMER_RETUR = "nomer_retur";
+	private static final String KEY_RETUR_NOMER_RETUR_DETAIL = "nomer_retur_detail";
+	private static final String KEY_RETUR_DATE_STOCK_ON_HAND = "date_retur";
+	private static final String KEY_RETUR_TIME_STOCK_ON_HAND = "time_retur";
+	private static final String KEY_RETUR_DESKRIPSI = "deskripsi";
+	private static final String KEY_RETUR_ID_PROMOSI = "id_promosi";
+	private static final String KEY_RETUR_USERNAME = "username";
+	private static final String KEY_RETUR_KODE_CUSTOMER = "kode_customer";
+	private static final String KEY_RETUR_ALAMAT = "alamat";
+	private static final String KEY_RETUR_NAMA_LENGKAP = "nama_lengkap";
+	private static final String KEY_RETUR_NAMA_PRODUCT = "nama_product";
+	private static final String KEY_RETUR_KODE_PRODUCT = "kode_product";
+	private static final String KEY_RETUR_HARGA_JUAL = "harga_jual";
+	private static final String KEY_RETUR_JUMLAH_RETUR = "jumlah_retur";
+
 	// TRACKING Table Columns names
 	private static final String KEY_TRACKING_ID_LOCATOR = "id_locator";
 	private static final String KEY_TRACKING_USERNAME = "username";
@@ -287,6 +305,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	//	private final ArrayList<PhotoPurchase> photo_purchase_list = new ArrayList<PhotoPurchase>();
 	private final ArrayList<StockOnHand> stock_on_hand_list = new ArrayList<StockOnHand>();
 	private final ArrayList<SalesOrder> sales_order_list = new ArrayList<SalesOrder>();
+	private final ArrayList<Retur> retur_list = new ArrayList<Retur>();
 	private final ArrayList<ProductTarget> productTarget_list = new ArrayList<ProductTarget>();
 	private final ArrayList<Penjualan> penjualan_list = new ArrayList<Penjualan>();
 	private final ArrayList<PenjualanDetail> penjualan_detail_list = new ArrayList<PenjualanDetail>();
@@ -495,6 +514,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT" + ")";
 		db.execSQL(CREATE_TABLE_SALES_ORDER);
 
+		String CREATE_TABLE_RETUR = "CREATE TABLE " + TABLE_RETUR
+				+ "(" + KEY_RETUR_ID_RETUR
+				+ " INTEGER PRIMARY KEY," + KEY_RETUR_NOMER_RETUR
+				+ " TEXT," + KEY_RETUR_NOMER_RETUR_DETAIL + " TEXT,"
+				+ KEY_RETUR_DATE_STOCK_ON_HAND + " TEXT,"
+				+ KEY_RETUR_TIME_STOCK_ON_HAND + " TEXT,"
+				+ KEY_RETUR_DESKRIPSI + " TEXT,"
+				+ KEY_RETUR_ID_PROMOSI + " INTEGER,"
+				+ KEY_RETUR_USERNAME + " TEXT,"
+				+ KEY_RETUR_KODE_CUSTOMER + " TEXT,"
+				+ KEY_RETUR_ALAMAT + " TEXT,"
+				+ KEY_RETUR_NAMA_LENGKAP + " TEXT,"
+				+ KEY_RETUR_NAMA_PRODUCT + " TEXT,"
+				+ KEY_RETUR_KODE_PRODUCT + " TEXT,"
+				+ KEY_RETUR_HARGA_JUAL + " TEXT,"
+				+ KEY_RETUR_JUMLAH_RETUR + " TEXT" + ")";
+		db.execSQL(CREATE_TABLE_RETUR);
+
 		String CREATE_TABLE_TRACKING = "CREATE TABLE " + TABLE_TRACKING + "("
 				+ KEY_TRACKING_ID_LOCATOR + " INTEGER PRIMARY KEY,"
 				+ KEY_TRACKING_USERNAME + " TEXT," + KEY_TRACKING_NAMA_LENGKAP
@@ -559,6 +596,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DISPLAY_PRODUCT);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_STOCK_ON_HAND);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_SALES_ORDER);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_RETUR);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRACKING);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFF_TEMP);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT_TARGET);
@@ -934,6 +972,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER, salesOrder.getJumlah_order());
 		// Inserting Row
 		db.insert(TABLE_SALES_ORDER, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Adding new RETUR
+	public void add_Retur(Retur retur) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_RETUR_ID_RETUR,
+				retur.getId_retur());
+		values.put(KEY_RETUR_NOMER_RETUR, retur.getNomer_retur());
+		values.put(KEY_RETUR_NOMER_RETUR_DETAIL,
+				retur.getNomer_retur_detail());
+		values.put(KEY_RETUR_DATE_STOCK_ON_HAND,
+				retur.getDate_retur());
+		values.put(KEY_RETUR_TIME_STOCK_ON_HAND,
+				retur.getTime_retur());
+		values.put(KEY_RETUR_DESKRIPSI, retur.getDeskripsi());
+		values.put(KEY_RETUR_ID_PROMOSI, retur.getId_promosi());
+		values.put(KEY_RETUR_USERNAME, retur.getUsername());
+		values.put(KEY_RETUR_KODE_CUSTOMER, retur.getKode_customer());
+		values.put(KEY_RETUR_ALAMAT, retur.getAlamat());
+		values.put(KEY_RETUR_NAMA_LENGKAP, retur.getNama_lengkap());
+		values.put(KEY_RETUR_NAMA_PRODUCT, retur.getNama_product());
+		values.put(KEY_RETUR_KODE_PRODUCT, retur.getKode_product());
+		values.put(KEY_RETUR_HARGA_JUAL, retur.getHarga_jual());
+		values.put(KEY_RETUR_JUMLAH_RETUR, retur.getJumlah_retur());
+		// Inserting Row
+		db.insert(TABLE_RETUR, null, values);
 		db.close(); // Closing database connection
 	}
 
@@ -2273,7 +2339,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// Select All Query
 			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
 					+ " WHERE blokir ='N' AND "
-					+ KEY_CUSTOMER_NAMA_LENGKAP_CUSTOMER + " LIKE '" + search
+					+ KEY_CUSTOMER_NAMA_TOKO + " LIKE '" + search
 					+ "%' AND id_depo=" + id_wilayah;
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
@@ -2864,6 +2930,55 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return sales_order_list;
 	}
 
+	// Getting All retur
+	public ArrayList<Retur> getAllRetur() {
+		try {
+			retur_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_RETUR;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Retur retur = new Retur();
+					retur.setId_retur(cursor.getInt(0));
+					retur.setNomer_retur(cursor.getString(1));
+					retur.setNomer_retur_detail(cursor.getString(2));
+					retur.setDate_retur(cursor.getString(3));
+					retur.setTime_retur(cursor.getString(4));
+					retur.setDeskripsi(cursor.getString(5));
+					retur.setId_promosi(cursor.getInt(6));
+					retur.setUsername(cursor.getString(7));
+					retur.setKode_customer(cursor.getString(8));
+					retur.setAlamat(cursor.getString(9));
+					retur.setNama_lengkap(cursor.getString(10));
+					retur.setNama_product(cursor.getString(11));
+					retur.setKode_product(cursor.getString(12));
+					retur.setHarga_jual(cursor.getString(13));
+					retur.setJumlah_retur(cursor.getString(14));
+
+					// Adding retur_list to list
+					retur_list.add(retur);
+				} while (cursor.moveToNext());
+			}
+
+			// return retur_list
+			cursor.close();
+			db.close();
+			return retur_list;
+		} catch (Exception e) {
+			Log.e("retur_list", "" + e);
+		}
+
+		return retur_list;
+	}
+
+
+
 	// Getting All Sales Order
 	public ArrayList<SalesOrder> getAllSalesOrderGroupByNomerOrder() {
 		try {
@@ -2910,6 +3025,55 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 
 		return sales_order_list;
+	}
+
+
+	// Getting All retur
+	public ArrayList<Retur> getAllReturGroupByNomerOrder() {
+		try {
+			retur_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_SALES_ORDER
+					+ " GROUP BY " + KEY_RETUR_NOMER_RETUR;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Retur retur = new Retur();
+					retur.setId_retur(cursor.getInt(0));
+					retur.setNomer_retur(cursor.getString(1));
+					retur.setNomer_retur_detail(cursor.getString(2));
+					retur.setDate_retur(cursor.getString(3));
+					retur.setTime_retur(cursor.getString(4));
+					retur.setDeskripsi(cursor.getString(5));
+					retur.setId_promosi(cursor.getInt(6));
+					retur.setUsername(cursor.getString(7));
+					retur.setKode_customer(cursor.getString(8));
+					retur.setAlamat(cursor.getString(9));
+					retur.setNama_lengkap(cursor.getString(10));
+					retur.setNama_product(cursor.getString(11));
+					retur.setKode_product(cursor.getString(12));
+					retur.setHarga_jual(cursor.getString(13));
+					retur.setJumlah_retur(cursor.getString(14));
+
+					// Adding retur_list to list
+					retur_list.add(retur);
+				} while (cursor.moveToNext());
+			}
+
+			// return retur_list
+			cursor.close();
+			db.close();
+			return retur_list;
+		} catch (Exception e) {
+			Log.e("retur_list", "" + e);
+		}
+
+		return retur_list;
 	}
 
 	// Getting All Sales Order
@@ -2959,6 +3123,55 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		}
 
 		return sales_order_list;
+	}
+
+	// Getting All Retur
+	public ArrayList<Retur> getAllReturWhereNomerOrder(
+			String nomer_retur) {
+		try {
+			retur_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_RETUR
+					+ " WHERE nomer_retur ='" + nomer_retur + "' ";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Retur retur = new Retur();
+					retur.setId_retur(cursor.getInt(0));
+					retur.setNomer_retur(cursor.getString(1));
+					retur.setNomer_retur_detail(cursor.getString(2));
+					retur.setDate_retur(cursor.getString(3));
+					retur.setTime_retur(cursor.getString(4));
+					retur.setDeskripsi(cursor.getString(5));
+					retur.setId_promosi(cursor.getInt(6));
+					retur.setUsername(cursor.getString(7));
+					retur.setKode_customer(cursor.getString(8));
+					retur.setAlamat(cursor.getString(9));
+					retur.setNama_lengkap(cursor.getString(10));
+					retur.setNama_product(cursor.getString(11));
+					retur.setKode_product(cursor.getString(12));
+					retur.setHarga_jual(cursor.getString(13));
+					retur.setJumlah_retur(cursor.getString(14));
+
+					// Adding retur_list to list
+					retur_list.add(retur);
+				} while (cursor.moveToNext());
+			}
+
+			// return retur_list
+			cursor.close();
+			db.close();
+			return retur_list;
+		} catch (Exception e) {
+			Log.e("retur_list", "" + e);
+		}
+
+		return retur_list;
 	}
 
 	// Getting All Tracking
@@ -3025,7 +3238,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_PRODUCT_TARGET_UB, updateBy);
 		// updating row
 		return db.update(TABLE_PRODUCT_TARGET, values,
-				KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET + " = ? AND " 
+				KEY_PRODUCT_TARGET_NOMER_PRODUCT_TARGET + " = ? AND "
 				+ KEY_PRODUCT_TARGET_ID_PRODUCT + " = ?",
 				new String[] { String.valueOf(nomerTp), String.valueOf(idProduct) });
 	}
@@ -3907,6 +4120,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return count;
 	}
 
+	public int getCountRetur() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery(
+				"select count(*) from " + TABLE_RETUR, null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
 	public int getCountTargetPenjualan() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db.rawQuery("select count(*) from "
@@ -3976,6 +4199,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_SALES_ORDER
 				+ " WHERE " + KEY_SALES_ORDER_KODE_CUSTOMER + "='"
+				+ kode_customer + "'", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountReturWhereNomerOrder(String nomerRetur) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_RETUR
+				+ " WHERE " + KEY_RETUR_NOMER_RETUR + "='" + nomerRetur
+				+ "'", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountRetur(String kode_customer) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_RETUR
+				+ " WHERE " + KEY_RETUR_KODE_CUSTOMER + "='"
 				+ kode_customer + "'", null);
 		mCount.moveToFirst();
 		int count = mCount.getInt(0);
@@ -4096,6 +4341,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_NOMER_ORDER + "='" + nomerOrder + "'");
 	}
 
+	public void deleteTableRetur() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_RETUR);
+	}
+
+	public void deleteTableReturWhereNomerOrder(String nomerRetur) {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_RETUR + " WHERE "
+				+ KEY_RETUR_NOMER_RETUR + "='" + nomerRetur + "'");
+	}
+
 	public void deleteTableTracking() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.execSQL("DELETE FROM " + TABLE_TRACKING);
@@ -4138,6 +4394,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void deleteTableSalesOrder(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(TABLE_SALES_ORDER, KEY_SALES_ORDER_ID_SALES_ORDER + " = ?",
+				new String[] { String.valueOf(id) });
+		db.close();
+	}
+
+	// Deleting single Table Retur
+	public void deleteTableRetur(int id) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_RETUR, KEY_RETUR_ID_RETUR + " = ?",
 				new String[] { String.valueOf(id) });
 		db.close();
 	}

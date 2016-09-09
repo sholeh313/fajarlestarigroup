@@ -6,21 +6,17 @@
 
     <LinearLayout
         android:id="@+id/topbar"
-        style="@android:style/Widget.ActionButton"
         android:layout_width="fill_parent"
         android:layout_height="60dip"
         android:background="@color/myPrimaryColor"
         android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@+id/menuBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/action_item_back"
-            android:clickable="true"
-            android:contentDescription="@string/app_name" />
-
+            <ImageView
+                android:id="@+id/menuBackButton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_item_back"
+                android:clickable="true"
+                android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/titleMenuButton"
             android:layout_width="0dip"
@@ -797,7 +793,7 @@
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
                             android:inputType="datetime"
-                            android:hint="Contoh : 12/12/1993"/>
+                            android:hint="Contoh : 12-12-1993"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="fill_parent"
