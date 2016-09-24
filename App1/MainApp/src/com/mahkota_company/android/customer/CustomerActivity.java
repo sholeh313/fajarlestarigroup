@@ -35,13 +35,13 @@ import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.chat.Splashscreen;
+import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 
 import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
-import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
@@ -609,8 +609,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	}
 
     ////////////////////////////////////////////////////////////////////
-    private class DownloadDataCustomer1 extends
-            AsyncTask<String, Integer, String> {
+    private class DownloadDataCustomer1 extends AsyncTask<String, Integer, String> {
         @Override
         protected void onPreExecute() {
             progressDialog.setMessage(getApplicationContext().getResources()
@@ -645,6 +644,7 @@ public class CustomerActivity extends ActionBarActivity implements
                     }
                 });
             } else {
+				databaseHandler.updateStatus();
                 try {
                     response_data = EntityUtils.toString(response.getEntity());
 
@@ -709,7 +709,6 @@ public class CustomerActivity extends ActionBarActivity implements
                 });
             }
         }
-
     }
 
     public void showCustomDialogDownloadSuccess1(String msg) {
@@ -1107,7 +1106,7 @@ public class CustomerActivity extends ActionBarActivity implements
 			//	String no_telp = customer_from_db.get(i).getNo_telp();
 			//	int id_wilayah = customer_from_db.get(i).getId_wilayah();
 				String foto1 = customer_from_db.get(i).getFoto_1();
-			//	String foto2 = customer_from_db.get(i).getFoto_2();
+				String foto2 = customer_from_db.get(i).getFoto_2();
 			//	String foto3 = customer_from_db.get(i).getFoto_3();
 			//	int id_type = customer_from_db.get(i).getId_type_customer();
 			//	String blockir = customer_from_db.get(i).getBlokir();
@@ -1559,7 +1558,6 @@ public class CustomerActivity extends ActionBarActivity implements
                     .getAllCustomerActiveAndUpdateByUser();
             for (Customer customer : dataUpload) {
                 response = uploadCustomer(upload_url,
-
                         customer.getKode_customer(),
                         customer.getEmail(),
                         customer.getAlamat(),
@@ -1613,7 +1611,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         .getApplicationContext()
                         .getResources()
                         .getString(
-                                R.string.app_customer_prospect_processing_upload_success);
+                                R.string.app_customer_processing_upload_success);
                 CustomDialogUploadSuccess(msg);
 
 			}
@@ -1622,7 +1620,7 @@ public class CustomerActivity extends ActionBarActivity implements
 	}
 
 
-	public void initUploadCustomer() {
+	/*public void initUploadCustomer() {
         JSONObject oResponse;
         try {
             oResponse = new JSONObject(response_data);
@@ -1660,7 +1658,7 @@ public class CustomerActivity extends ActionBarActivity implements
             showCustomDialog(message);
 
         }
-	}
+	}*/
 
 	public void CustomDialogUploadSuccess(String msg) {
 		if (progressDialog != null) {
@@ -1680,7 +1678,8 @@ public class CustomerActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-                                new DownloadDataCustomer1().execute(); // awalnya new DownloadDataCustomer()
+								databaseHandler.updateStatus();
+								//new DownloadDataCustomer1().execute(); // awalnya new DownloadDataCustomer()
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();
@@ -1782,12 +1781,12 @@ public class CustomerActivity extends ActionBarActivity implements
 							CustomerProspectActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 4) {
+				} /*else if (position == 4) {
 					Intent intentActivity = new Intent(this,
 							LocatorActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 5) {
+				} */else if (position == 5) {
 					Intent intentActivity = new Intent(this,
 							SalesOrderActivity.class);
 					startActivity(intentActivity);
@@ -1802,9 +1801,9 @@ public class CustomerActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 8) {
+				} /*else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							Pilihan_Kontak.class);
+							ContactActivty.class);
 					startActivity(intentActivity);
 					finish();
 				}else if (position == 9) {
@@ -1822,7 +1821,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}
+				}*/
 			}
 		}
 	}

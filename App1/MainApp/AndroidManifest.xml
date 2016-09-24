@@ -71,11 +71,8 @@
         <activity android:name=".chat.LayananActivity" android:label="@string/app_name" />
         <activity android:name=".chat.Splashscreen" android:label="@string/app_name" />
 
-        <activity android:name=".Contact.ListContactCustomer" android:label="@string/app_name" />
-        <activity android:name=".Contact.PilihanContactUnused" android:label="@string/app_name" />
-        <activity android:name=".kontak.jadwal.Pilihan_Kontak" android:label="@string/app_name" />
-        <activity android:name=".kontak.jadwal.Detail_Kontak" android:label="@string/app_name" />
-        <activity android:name=".kontak.jadwal.List_Kontak" android:label="@string/app_name" />
+        <activity android:name=".contact.ContactActivty" android:label="@string/app_name" />
+        <activity android:name=".contact.DetailContact" android:label="@string/app_name" />
 
         <activity android:name=".inventory.AddTargetPenjualanActivity" android:label="@string/app_name" />
         <activity android:name=".inventory.DetailPenjualanActivity" android:label="@string/app_name" />

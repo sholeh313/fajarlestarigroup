@@ -25,9 +25,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mahkota_company.android.Contact.PilihanContactUnused;
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
+import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
@@ -37,7 +37,6 @@ import com.mahkota_company.android.database.Wilayah;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.inventory.InventoryActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
-import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
@@ -1435,7 +1434,7 @@ public class LocatorActivity extends ActionBarActivity implements
 					finish();
 				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							Pilihan_Kontak.class);
+							ContactActivty.class);
 					startActivity(intentActivity);
 					finish();
 				}

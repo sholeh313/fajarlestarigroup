@@ -58,12 +58,12 @@ import android.widget.TextView;
 
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
+import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
-import com.mahkota_company.android.kontak.jadwal.Pilihan_Kontak;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
@@ -949,12 +949,12 @@ public class InventoryActivity extends ActionBarActivity implements
 							CustomerProspectActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 4) {
+				} /*else if (position == 4) {
 					Intent intentActivity = new Intent(this,
 							LocatorActivity.class);
 					startActivity(intentActivity);
 					finish();
-				} else if (position == 5) {
+				}*/ else if (position == 5) {
 					Intent intentActivity = new Intent(this,
 							SalesOrderActivity.class);
 					startActivity(intentActivity);
@@ -969,9 +969,9 @@ public class InventoryActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}else if (position == 8) {
+				}/*else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							Pilihan_Kontak.class);
+							ContactActivty.class);
 					startActivity(intentActivity);
 					finish();
 				}else if (position == 10) {
@@ -984,7 +984,7 @@ public class InventoryActivity extends ActionBarActivity implements
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}
+				}*/
 			}
 		}
 	}
