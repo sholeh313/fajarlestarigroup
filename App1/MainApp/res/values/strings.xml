@@ -58,7 +58,15 @@
     </string-array>
 
     <!-- Inventory -->
+    <string name="app_inventory_retur_stok_save_error">Retur Stok gagal, mohon hubungi head office !</string>
+    <string name="app_inventory_retur_stok_processing_upload_retur_stok_failed">Proses upload retur stok ke server gagal !</string>
+    <string name="app_inventory_retur_stok_processing_upload_retur_stok_failed_2">Anda sudah melakukan Proses upload retur stok, mohon menunggu konfirmasi dari admin !</string>
+    <string name="app_inventory_retur_stok_processing_upload_retur_stok_success">Proses upload retur stok berhasil !</string>
+    <string name="app_inventory_retur_stok_processing_upload_retur_stok">Proses upload retur stok</string>
     <string name="app_inventory_menu_stock_summary">Stock Summary</string>
+    <string name="app_inventory_menu_stock_retur">Retur Stock</string>
+    <string name="app_inventory_retur_stok_textview_kode_customer">Kode Customer</string>
+    <string name="app_inventory_retur_stok_textview_nama_customer">Nama Customer</string>
     <string name="app_inventory_menu_stock_request_load">Request Load</string>
     <string name="app_inventory_menu_stock_load_products">Loads Product</string>
     <string name="app_inventory_menu_stock_unload_products">Unloads Product</string>
@@ -165,6 +173,7 @@
     <string name="menu_10">Inventory</string>
     <string name="menu_11">Retur</string>
     <string name="menu_12">Merchandise</string>
+    <string name="menu_13">Retur</string>
     <!-- Customer -->
     <string name="app_customer_hint_search_customer">Search Customer</string>
     <string name="app_customer_hint_kode_customer">Kode Customer</string>
@@ -245,6 +254,7 @@
     <string name="app_customer_detail_check_in_btn">Check In</string>
     <string name="app_customer_detail_check_out_btn">Check Out</string>
     <string name="app_customer_add_product">Add Product</string>
+    <string name="app_customer_add_product_Retur">Add Product Retur</string>
     <!-- Customer Prospect -->
     <string name="app_customer_prospect_processing_upload_no_data">Tidak ada customer prospect yang di input oleh user !</string>
     <string name="app_customer_prospect_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload customer prospect</string>
@@ -442,6 +452,7 @@
     <string name="MSG_DLG_LABEL_DATA_DELETE_DIALOG">Apakah anda ingin menghapus item ini ?</string>
     <string name="MSG_DLG_LABEL_FAILED_MISSING_FILE">File telah terhapus !</string>
     <string name="MSG_DLG_LABEL_FAILED_UPLOADING_FILE">Proses upload content gagal !</string>
+    <string name="MSG_DLG_LABEL_RETUR">Retur</string>
 
     <!-- Product -->
     <string name="app_product_processing">Proses download product</string>

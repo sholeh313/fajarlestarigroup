@@ -12,6 +12,7 @@ public class CONFIG {
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_NO_REQUEST_LOAD = "mahkota_table_no_request_load";
 
 	public static final String CONFIG_APP_URL_DOWNLOAD_TARGET_PENJUALAN = "mahkota/ws/get_product_target.php";
+	public static final String CONFIG_APP_URL_UPLOAD_INSERT_RETUR_STOK = "mahkota/ws/insert_retur_load.php";
 	public static final String SHARED_PREFERENCES_TABLE_TARGET_PENJUALAN = "mahkota_table_target_penjualan";
 	public static final String SHARED_PREFERENCES_TABLE_TARGET_PENJUALAN_SAME_DATA = "mahkota_table_target_penjualan_same_data";
 	public static final String SHARED_PREFERENCES_TABLE_TARGET_PENJUALAN_NO_TARGET_PENJUALAN = "mahkota_table_no_target_penjualan";
@@ -97,6 +98,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_KODE_SO_HEADER = "SO.";
 	public static final String CONFIG_APP_KODE_SHO_HEADER = "SOH.";
 	public static final String CONFIG_APP_KODE_TP_HEADER = "TP.";
+	public static final String CONFIG_APP_KODE_RT_HEADER = "RT.";
 	public static final String CONFIG_APP_ERROR_MESSAGE_ADDRESS_FAILED = "Alamat Tidak Terdeteksi";
 
 	public static final String SHARED_PREFERENCES_TABLE_PHOTO_PURCHASE_ID_PHOTO_PURCHASE = "mahkota_table_photo_purchase";

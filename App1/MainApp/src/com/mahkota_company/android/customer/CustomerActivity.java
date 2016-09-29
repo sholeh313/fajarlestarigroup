@@ -38,6 +38,7 @@ import com.mahkota_company.android.chat.Splashscreen;
 import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.database.Request_load;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 
 import com.mahkota_company.android.inventory.InventoryActivity;
@@ -1806,7 +1807,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							ContactActivty.class);
 					startActivity(intentActivity);
 					finish();
-				}else if (position == 9) {
+				}*/else if (position == 9) {
 					Intent intentActivity = new Intent(this,
 							InventoryActivity.class);
 					startActivity(intentActivity);
@@ -1816,7 +1817,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							ReturActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}else if (position == 11) {
+				}/*else if (position == 11) {
 					Intent intentActivity = new Intent(this,
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
