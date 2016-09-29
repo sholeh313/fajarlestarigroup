@@ -3034,7 +3034,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			retur_list.clear();
 
 			// Select All Query
-			String selectQuery = "SELECT  * FROM " + TABLE_SALES_ORDER
+			String selectQuery = "SELECT  * FROM " + TABLE_RETUR
 					+ " GROUP BY " + KEY_RETUR_NOMER_RETUR;
 
 			SQLiteDatabase db = this.getWritableDatabase();

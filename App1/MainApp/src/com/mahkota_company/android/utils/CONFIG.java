@@ -104,6 +104,7 @@ public class CONFIG {
 	public static final String SHARED_PREFERENCES_TABLE_PHOTO_PURCHASE_ID_PHOTO_PURCHASE = "mahkota_table_photo_purchase";
 	public static final String SHARED_PREFERENCES_TABLE_DISPLAY_PRODUCT_ID_DISPLAY_PRODUCT = "mahkota_table_display_product";
 	public static final String SHARED_PREFERENCES_TABLE_SALES_ORDER_NOMER_ORDER = "mahkota_table_sales_order";
+	public static final String SHARED_PREFERENCES_TABLE_RETUR_NOMER_ORDER = "mahkota_table_retur";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_ON_HAND_NOMER_ORDER_STOCK_ON_HAND = "mahkota_table_stock_on_hand";
 
 	public static final String CONFIG_APP_URL_DOWNLOAD_KEMASAN = "mahkota/ws/get_kemasan.php";
