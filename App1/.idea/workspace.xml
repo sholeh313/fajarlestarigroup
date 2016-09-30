@@ -815,7 +815,13 @@
       <option name="project" value="LOCAL" />
       <updated>1475143654264</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fix retur belom upload&#10;">
+      <created>1475206480392</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1475206480392</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1849,10 +1855,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
           <folding>
-            <element signature="e#1398#1399#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
-            <element signature="e#1528#1529#0" expanded="true" />
-            <element signature="e#1553#1554#0" expanded="true" />
+            <element signature="e#1398#1399#0" expanded="false" />
+            <element signature="e#1420#1421#0" expanded="false" />
+            <element signature="e#1528#1529#0" expanded="false" />
+            <element signature="e#1553#1554#0" expanded="false" />
           </folding>
         </state>
       </provider>
