@@ -192,6 +192,7 @@
     <string name="app_customer_status_update_unuploaded">Upload pembaharuan data customer terlebih dahulu</string>
     <string name="app_customer_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload customer</string>
     <string name="app_customer_processing_upload_no_data">Tidak ada customer yang di perbarui oleh user !</string>
+    <string name="app_customer_processing_refresh_failed">Terdapat data yang belum di upload, silahkan upload terlebih dahulu!</string>
     <string name="app_customer_processing_download_content">Proses download content customer.</string>
     <string name="app_customer_processing_download_success">Proses download content customer berhasil.</string>
     <string name="app_customer_kode_customer">Kode</string>
@@ -245,7 +246,11 @@
     <string name="app_customer_image_location_1">Foto 1</string>
     <string name="app_customer_image_location_2">Foto 2</string>
     <string name="app_customer_image_location_3">Foto 3</string>
+    <string name="app_customer_image_ttd1">Tanda Tangan 1</string>
+    <string name="app_customer_image_ttd2">Tanda Tangan 2</string>
     <string name="app_customer_take_foto">Take Foto</string>
+    <string name="app_customer_take_ttd1">TTD 1</string>
+    <string name="app_customer_take_ttd2">TTD 2</string>
     <string name="app_customer_maps_true">True</string>
     <string name="app_customer_maps_false">False</string>
     <string name="app_customer_detail_save_btn">Save</string>
@@ -349,7 +354,9 @@
     <string name="app_sales_order_processing_upload_empty">Mohon periksa koneksi internet anda, untuk mengupload sales order customer !</string>
     <string name="app_sales_order_processing_upload_no_data">Tidak ada data Sales Order yang di input oleh user !</string>
     <string name="app_sales_order_processing_upload_failed">Proses upload sales order customer gagal !</string>
+    <string name="app_retur_processing_upload_failed">Proses upload retur gagal !</string>
     <string name="app_sales_order_processing_upload_success">Proses upload sales order customer berhasil !</string>
+    <string name="app_retur_processing_upload_success">Proses upload retur customer berhasil !</string>
     <string name="app_sales_order_processing_upload">Proses Upload Sales Order</string>
     <!-- Stock On Hand -->
     <string name="app_stock_on_hand_save_success">Stock On Hand berhasil di tambah !</string>

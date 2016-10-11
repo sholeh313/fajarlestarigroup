@@ -249,7 +249,7 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getNama_anak3();
                             String kode_pos = customer_from_db.get(i)
                                     .getKode_pos();
-							String id_depo = customer_from_db.get(i)
+							int id_depo = customer_from_db.get(i)
 									.getId_depo();
 							String isactive = customer_from_db.get(i)
 									.getIsactive();
@@ -384,7 +384,7 @@ public class CustomerActivity extends ActionBarActivity implements
 									.getNama_anak3();
                             String kode_pos = customer_from_db.get(i)
                                     .getKode_pos();
-							String id_depo = customer_from_db.get(i)
+							int id_depo = customer_from_db.get(i)
 								.getId_depo();
 							String isactive = customer_from_db.get(i)
 									.getIsactive();
@@ -886,7 +886,8 @@ public class CustomerActivity extends ActionBarActivity implements
 							tanggal_lahir,nama_bank,no_rekening, atas_nama, npwp,
                             nama_pasar, Integer.parseInt(id_cluster) , telp, fax, omset, cara_pembayaran,
 							plafon_kredit,term_kredit, nama_istri, nama_anak1,
-							nama_anak2, nama_anak3, kode_pos, id_depo, isactive,
+							nama_anak2, nama_anak3, kode_pos, Integer
+							.parseInt(id_depo), isactive,
 							description,nama_toko));
 
 				}
@@ -1007,7 +1008,7 @@ public class CustomerActivity extends ActionBarActivity implements
 						.getNama_anak3();
                 String kode_pos = customer_from_db.get(i)
                         .getKode_pos();
-				String id_depo = customer_from_db.get(i)
+				int id_depo = customer_from_db.get(i)
 						.getId_depo();
 				String isactive = customer_from_db.get(i)
 						.getIsactive();
@@ -1379,7 +1380,19 @@ public class CustomerActivity extends ActionBarActivity implements
 		switch (item.getItemId()) {
 		case R.id.menu_refresh:
 			if (GlobalApp.checkInternetConnection(act)) {
-				new DownloadDataCustomer().execute();
+				int countUpload = databaseHandler
+						.getCountCustomerWhereValidAndUpdate();
+				if(countUpload == 0){
+					new DownloadDataCustomer().execute();
+				}else{
+					String message = act
+							.getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_customer_processing_refresh_failed);
+					showCustomDialog(message);
+				}
+
 			} else {
 				String message = act.getApplicationContext().getResources()
 						.getString(R.string.app_customer_processing_empty);
@@ -1591,7 +1604,7 @@ public class CustomerActivity extends ActionBarActivity implements
                         customer.getNama_anak2(),
                         customer.getNama_anak3(),
                         customer.getKode_pos(),
-						customer.getId_depo(),
+						String.valueOf(customer.getId_depo()),
 						customer.getIsactive(),
 						customer.getDescription(),
                         customer.getNama_toko(),

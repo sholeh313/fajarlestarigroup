@@ -103,6 +103,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	private TextView tvImage1Customer;
 	private TextView tvImage2Customer;
 	private TextView tvImage3Customer;
+	private TextView ttd1;
+	private TextView ttd2;
 
 
 	private TextView tvHeaderKodeCustomer;
@@ -119,6 +121,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	private Button mButtonCustomerDetailImage1;
 	private Button mButtonCustomerDetailImage2;
 	private Button mButtonCustomerDetailImage3;
+	private Button mButtonCustomerttd1;
+	private Button mButtonCustomerttd2;
 	private Button mButtonCustomerDetailCancel;
 	private Button mButtonCustomerDetailSave;
 	private LocationManager locationManager;
@@ -169,6 +173,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		tvImage1Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image);
 		tvImage2Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image_2);
 		tvImage3Customer = (TextView) findViewById(R.id.activity_customer_detail_value_image_3);
+		ttd1 = (TextView) findViewById(R.id.activity_customer_detail_ttd1);
+		ttd2 = (TextView) findViewById(R.id.activity_customer_detail_ttd2);
 		etTelpCustomer = (EditText) findViewById(R.id.activity_customer_prospect_telp_customer_value);
 		etNoKtp = (EditText) findViewById(R.id.activity_customer_prospect_noktp_value);
 		etTanggalLahir = (EditText) findViewById(R.id.activity_customer_prospect_tanggal_lahir_value);
@@ -205,6 +211,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		mButtonCustomerDetailImage1 = (Button) findViewById(R.id.activity_customer_detail_btn_image);
 		mButtonCustomerDetailImage2 = (Button) findViewById(R.id.activity_customer_detail_btn_image_2);
 		mButtonCustomerDetailImage3 = (Button) findViewById(R.id.activity_customer_detail_btn_image_3);
+		mButtonCustomerttd1 = (Button) findViewById(R.id.activity_customer_detail_btn_ttd1);
+		mButtonCustomerttd2 = (Button) findViewById(R.id.activity_customer_detail_btn_ttd2);
 		mButtonCustomerDetailCancel = (Button) findViewById(R.id.activity_customer_detail_btn_cancel);
 		mButtonCustomerDetailSave = (Button) findViewById(R.id.activity_customer_detail_btn_save);
 
@@ -296,9 +304,10 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		tvKodeCustomer.setTypeface(typefaceSmall);
 		tvGpsCustomer.setTypeface(typefaceSmall);
 		tvImage1Customer.setTypeface(typefaceSmall);
-		tvImage1Customer.setTypeface(typefaceSmall);
 		tvImage2Customer.setTypeface(typefaceSmall);
 		tvImage3Customer.setTypeface(typefaceSmall);
+		ttd1.setTypeface(typefaceSmall);
+		ttd2.setTypeface(typefaceSmall);
 
 		tvHeaderKodeCustomer.setTypeface(typefaceSmall);
 		tvHeaderNamaCustomer.setTypeface(typefaceSmall);
@@ -317,6 +326,10 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		mButtonCustomerDetailImage2
 				.setOnClickListener(mDetailCustomerButtonOnClickListener);
 		mButtonCustomerDetailImage3
+				.setOnClickListener(mDetailCustomerButtonOnClickListener);
+		mButtonCustomerttd1
+				.setOnClickListener(mDetailCustomerButtonOnClickListener);
+		mButtonCustomerttd2
 				.setOnClickListener(mDetailCustomerButtonOnClickListener);
 		mButtonCustomerDetailSave
 				.setOnClickListener(mDetailCustomerButtonOnClickListener);
@@ -465,6 +478,12 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 			case R.id.activity_customer_detail_btn_image_3:
 				gotoCaptureImage3();
 				break;
+			case R.id.activity_customer_detail_btn_ttd1:
+				gotoTTD1();
+				break;
+			case R.id.activity_customer_detail_btn_ttd2:
+				gotoTTD2();
+				break;
 			case R.id.activity_customer_detail_btn_cancel:
 				gotoCustomerProspect();
 				break;
@@ -538,7 +557,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
                             newCustomer.setCara_pembayaran(etCaraPembayaran.getText().toString());
                             newCustomer.setPlafon_kredit(etPlafonKredit.getText().toString());
                             newCustomer.setTerm_kredit(etTermKredit.getText().toString());
-                            newCustomer.setId_depo(idDepo);
+                            newCustomer.setId_depo(Integer.parseInt(idDepo));
 							newCustomer.setNama_istri(etNama_istri.getText().toString());
 							newCustomer.setNama_anak1(etNama_anak1.getText().toString());
 							newCustomer.setNama_anak2(etNama_anak2.getText().toString());
@@ -599,6 +618,19 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri3);
 		// start the image capture Intent
 		startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+	}
+
+	public void gotoTTD1() {
+		Intent intentActivity = new Intent(
+				AddCustomerProspectActivity.this,
+				AndroidCanvas.class);
+		startActivity(intentActivity);
+	}
+	public void gotoTTD2() {
+		Intent intentActivity = new Intent(
+				AddCustomerProspectActivity.this,
+				AndroidCanvas.class);
+		startActivity(intentActivity);
 	}
 
 	/*

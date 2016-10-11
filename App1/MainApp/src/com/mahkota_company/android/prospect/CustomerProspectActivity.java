@@ -218,7 +218,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak3();
 							String kode_pos = customer_from_db.get(i)
 									.getKode_pos();
-							String id_depo = customer_from_db.get(i)
+							int id_depo = customer_from_db.get(i)
 									.getId_depo();
 							String isactive = customer_from_db.get(i)
 									.getIsactive();
@@ -352,7 +352,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                                     .getNama_anak3();
 							String kode_pos = customer_from_db.get(i)
 									.getKode_pos();
-							String id_depo = customer_from_db.get(i)
+							int id_depo = customer_from_db.get(i)
 									.getId_depo();
 							String isactive = customer_from_db.get(i)
 									.getIsactive();
@@ -506,7 +506,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                         .getNama_anak3();
 				String kode_pos = customer_from_db.get(i)
 						.getKode_pos();
-				String id_depo = customer_from_db.get(i)
+				int id_depo = customer_from_db.get(i)
 						.getId_depo();
 				String isactive = customer_from_db.get(i)
 						.getIsactive();
@@ -813,7 +813,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						customer.getNama_anak2(),
 						customer.getNama_anak3(),
 						customer.getKode_pos(),
-						customer.getId_depo(),
+						String.valueOf(customer.getId_depo()),
 						customer.getIsactive(),
 						customer.getDescription(),
 						customer.getNama_toko());

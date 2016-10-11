@@ -9,7 +9,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_URL_DOWNLOAD_STOCK_VAN = "mahkota/ws/get_request_load.php";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN = "mahkota_table_stock_van";
 	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_SAME_DATA = "mahkota_table_stock_van_same_data";
-	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_NO_REQUEST_LOAD = "mahkota_table_no_request_load";
+	public static final String SHARED_PREFERENCES_TABLE_STOCK_VAN_NO_REQUEST_LOAD = "mahkota_table_no_ request_load";
 
 	public static final String CONFIG_APP_URL_DOWNLOAD_TARGET_PENJUALAN = "mahkota/ws/get_product_target.php";
 	public static final String CONFIG_APP_URL_UPLOAD_INSERT_RETUR_STOK = "mahkota/ws/insert_retur_load.php";

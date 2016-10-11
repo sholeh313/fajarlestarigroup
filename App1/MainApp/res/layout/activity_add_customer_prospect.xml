@@ -651,6 +651,44 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/activity_customer_detail_title_ttd1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="left|center"
+                            android:text="@string/app_customer_image_ttd1"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/activity_customer_detail_title_ttd2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="left|center"
+                            android:text="@string/app_customer_image_ttd2"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -1345,6 +1383,78 @@
                             android:minHeight="15dip"
                             android:minWidth="60dip"
                             android:text="@string/app_customer_take_foto"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/activity_customer_detail_ttd1"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="2"
+                            android:gravity="left|center"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/activity_customer_detail_btn_ttd1"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/ibbutton_black"
+                            android:minHeight="15dip"
+                            android:minWidth="60dip"
+                            android:text="@string/app_customer_take_ttd1"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dip"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/activity_customer_detail_ttd2"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="2"
+                            android:gravity="left|center"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/activity_customer_detail_btn_ttd2"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/ibbutton_black"
+                            android:minHeight="15dip"
+                            android:minWidth="60dip"
+                            android:text="@string/app_customer_take_ttd2"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>

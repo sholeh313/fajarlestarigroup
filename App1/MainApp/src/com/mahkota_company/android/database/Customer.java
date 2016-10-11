@@ -40,7 +40,7 @@ public class Customer {
 	private String nama_anak2;
 	private String nama_anak3;
 	private String kode_pos;
-	private String id_depo;
+	private int id_depo;
 	private String isactive;
 	private String description;
 	private String nama_toko;
@@ -69,7 +69,7 @@ public class Customer {
 
 					String nama_anak1 ,String nama_anak2,String nama_anak3, String kode_pos,
 
-					String id_depo, String isactive, String description, String nama_toko){
+					int id_depo, String isactive, String description, String nama_toko){
 
 
 		this.id_customer = id_customer;
@@ -394,10 +394,10 @@ public class Customer {
 		this.kode_pos = kode_pos;
 	}
 
-	public String getId_depo() {
+	public int getId_depo() {
 		return id_depo;
 	}
-	public void setId_depo(String  id_depo) {
+	public void setId_depo(int  id_depo) {
 		this.id_depo = id_depo;
 	}
 

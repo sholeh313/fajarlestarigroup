@@ -757,7 +757,7 @@ public class DetailEditCustomer extends FragmentActivity {
         tempCheckInLongitude = Double.parseDouble(customer.getLongs());
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        if( tvImage1Customer.getText().toString().length() > 3){
+        if( tvImage1Customer.getText().toString().length() > 0){
             String curLatitude = String
                     .valueOf((int) tempCheckInLatitude);
             String curLongitude = String
@@ -950,7 +950,7 @@ public class DetailEditCustomer extends FragmentActivity {
                         .getResources()
                         .getString(
                                 R.string.app_customer_detail_far_away_location);
-                if(getMeter < 50){
+                if(getMeter <= 50){
                     if(customer.getFoto_1() .length() == 0){
                         final String date = "yyyy-MM-dd";
                         Calendar calendar = Calendar.getInstance();
@@ -1032,8 +1032,8 @@ public class DetailEditCustomer extends FragmentActivity {
                         newCustomer.setId_type_customer(idTypeCustomer);
                         newCustomer.setId_wilayah(customer.getId_wilayah());
                         newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
-                        newCustomer.setLats(String.valueOf(latitude));
-                        newCustomer.setLongs(String.valueOf(longitude));
+                        newCustomer.setLats(customer.getLats());
+                        newCustomer.setLongs(customer.getLongs());
                         newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                         newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                         newCustomer.setStatus_update(customer.getStatus_update());
@@ -1090,8 +1090,8 @@ public class DetailEditCustomer extends FragmentActivity {
                         newCustomer.setId_type_customer(idTypeCustomer);
                         newCustomer.setId_wilayah(customer.getId_wilayah());
                         newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
-                        newCustomer.setLats(String.valueOf(latitude));
-                        newCustomer.setLongs(String.valueOf(longitude));
+                        newCustomer.setLats(customer.getLats());
+                        newCustomer.setLongs(customer.getLongs());
                         newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
                         newCustomer.setNo_telp(etTelpCustomer.getText().toString());
                         newCustomer.setStatus_update(customer.getStatus_update());

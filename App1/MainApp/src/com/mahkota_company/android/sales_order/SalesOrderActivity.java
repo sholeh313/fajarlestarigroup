@@ -149,7 +149,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 									0, null, null, null, 0, null, null, null,
 									null, null, null, null, 0, null, null, null,
 									null, null, null, null, null, null, null,null,
-									null,null,null,null);
+									0,null,null,null);
 							dataCustomer.add(customer);
 
 						}
