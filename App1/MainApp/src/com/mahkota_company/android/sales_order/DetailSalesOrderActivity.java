@@ -188,7 +188,9 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 						salesOrder.getNama_product(),
 						salesOrder.getKode_product(),
 						salesOrder.getHarga_jual(),
-						salesOrder.getJumlah_order()));
+						salesOrder.getJumlah_order(),
+						salesOrder.getJumlah_order1(),
+						salesOrder.getJumlah_order2()));
 				count += 1;
 			}
 			updateTotalBayar();
@@ -282,8 +284,9 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 						salesOrder.setHarga_jual(detailSalesOrder
 								.getHarga_jual());
 						salesOrder.setId_promosi(idPromosi);
-						salesOrder.setJumlah_order(detailSalesOrder
-								.getJumlah_order());
+						salesOrder.setJumlah_order(detailSalesOrder.getJumlah_order());
+						salesOrder.setJumlah_order1(detailSalesOrder.getJumlah_order1());
+						salesOrder.setJumlah_order2(detailSalesOrder.getJumlah_order2());
 						salesOrder.setKode_customer(etKodeCustomer.getText()
 								.toString());
 						salesOrder.setNama_lengkap(etNamaCustomer.getText()
@@ -352,8 +355,12 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 		final ArrayList<Product> product_list = new ArrayList<Product>();
 		final ListView listview = (ListView) chooseProductDialog
 				.findViewById(R.id.list);
-		final EditText jumlahProduct = (EditText) chooseProductDialog
-				.findViewById(R.id.activity_product_edittext_jumlah);
+        final EditText jumlahProduct = (EditText) chooseProductDialog
+                .findViewById(R.id.activity_product_edittext_pieces);
+        final EditText jumlahProduct1 = (EditText) chooseProductDialog
+                .findViewById(R.id.activity_product_edittext_pack);
+        final EditText jumlahProduct2 = (EditText) chooseProductDialog
+                .findViewById(R.id.activity_product_edittext_dus);
 
 		listview.setItemsCanFocus(false);
 		ArrayList<Product> product_from_db = databaseHandler.getAllProduct();
@@ -382,6 +389,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 				cAdapterChooseAdapter = new ListViewChooseAdapter(
 						DetailSalesOrderActivity.this,
 						R.layout.list_item_product_sales_order, jumlahProduct,
+						jumlahProduct1, jumlahProduct2,
 						product_list, chooseProductDialog);
 				listview.setAdapter(cAdapterChooseAdapter);
 				cAdapterChooseAdapter.notifyDataSetChanged();
@@ -430,7 +438,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									DetailSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct, product_list,
+									jumlahProduct, jumlahProduct1, jumlahProduct2,  product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
@@ -473,7 +481,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									DetailSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct, product_list,
+									jumlahProduct,jumlahProduct1, jumlahProduct2, product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
@@ -563,10 +571,15 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 				holder = new UserHolder();
 				holder.list_kode_product = (TextView) row
 						.findViewById(R.id.sales_order_title_kode_product);
+                holder.list_harga_jual = (TextView) row
+                        .findViewById(R.id.sales_order_title_harga);
 				holder.list_jumlah_order = (TextView) row
 						.findViewById(R.id.sales_order_title_jumlah_order);
-				holder.list_harga_jual = (TextView) row
-						.findViewById(R.id.sales_order_title_harga);
+                holder.list_jumlah_order1 = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order1);
+                holder.list_jumlah_order2 = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order2);
+
 
 				row.setTag(holder);
 			} else {
@@ -574,7 +587,26 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			}
 			productData = data.get(position);
 			holder.list_kode_product.setText(productData.getKode_product());
-			holder.list_jumlah_order.setText(productData.getJumlah_order());
+            if(productData.getJumlah_order().equals(null)){
+                holder.list_jumlah_order.setText(0);
+            }else{
+                holder.list_jumlah_order.setText(productData.getJumlah_order());
+            }
+
+            if(productData.getJumlah_order1().equals(null)){
+                holder.list_jumlah_order1.setText(0);
+            }else{
+                holder.list_jumlah_order1.setText(productData.getJumlah_order1());
+            }
+
+            if(productData.getJumlah_order1().equals(null)){
+                holder.list_jumlah_order2.setText(0);
+            }else{
+                holder.list_jumlah_order2.setText(productData.getJumlah_order2());
+            }
+            //holder.list_jumlah_order.setText(productData.getJumlah_order());
+			//holder.list_jumlah_order1.setText(productData.getJumlah_order1());
+			//holder.list_jumlah_order2.setText(productData.getJumlah_order2());
 			Float priceIDR = Float.valueOf(productData.getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
 			otherSymbols.setDecimalSeparator(',');
@@ -584,6 +616,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			holder.list_harga_jual.setText("Rp. " + df.format(priceIDR));
 			holder.list_kode_product.setTypeface(typefaceSmall);
 			holder.list_jumlah_order.setTypeface(typefaceSmall);
+			holder.list_jumlah_order1.setTypeface(typefaceSmall);
+			holder.list_jumlah_order2.setTypeface(typefaceSmall);
 			holder.list_harga_jual.setTypeface(typefaceSmall);
 			row.setOnClickListener(new OnClickListener() {
 
@@ -599,6 +633,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 		class UserHolder {
 			TextView list_kode_product;
 			TextView list_jumlah_order;
+			TextView list_jumlah_order1;
+			TextView list_jumlah_order2;
 			TextView list_harga_jual;
 		}
 
@@ -647,10 +683,13 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 		ArrayList<Product> data = new ArrayList<Product>();
 		Activity mainActivity;
 		EditText jumlahProduct;
+		EditText jumlahProduct1;
+		EditText jumlahProduct2;
 		Dialog chooseProductDialog;
 
 		public ListViewChooseAdapter(Activity mainActivity,
 				int layoutResourceId, EditText jumlahProduct,
+                EditText jumlahProduct1,EditText jumlahProduct2,
 				ArrayList<Product> data, Dialog chooseProductDialog) {
 			super(mainActivity, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
@@ -658,6 +697,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			this.chooseProductDialog = chooseProductDialog;
 			this.mainActivity = mainActivity;
 			this.jumlahProduct = jumlahProduct;
+			this.jumlahProduct1 = jumlahProduct1;
+			this.jumlahProduct2 = jumlahProduct2;
 			notifyDataSetChanged();
 		}
 
@@ -699,44 +740,66 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			holder.list_namaProduct.setTypeface(getTypefaceSmall());
 			holder.list_harga.setTypeface(getTypefaceSmall());
 			holder.mButtonAddItem.setOnClickListener(new OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
-					if (jumlahProduct.getText().toString().length() > 0) {
-						boolean containSameProduct = false;
-						for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
-							if (detailSalesOrder.getKode_product()
-									.equalsIgnoreCase(
-											data.get(position)
-													.getKode_product())) {
-								containSameProduct = true;
-								break;
-							}
-						}
-						if (containSameProduct) {
-							String msg = getApplicationContext()
-									.getResources()
-									.getString(
-											R.string.app_sales_order_failed_please_add_another_item);
-							showCustomDialog(msg);
-						} else {
-							int count = detailSalesOrderList.size() + 1;
-							updateListViewDetailOrder(new DetailSalesOrder(
-									count,
-									data.get(position).getNama_product(), data
-											.get(position).getKode_product(),
-									data.get(position).getHarga_jual(),
-									jumlahProduct.getText().toString()));
-							chooseProductDialog.hide();
-						}
-					} else {
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_failed_please_add_jumlah);
-						showCustomDialog(msg);
+                    if (jumlahProduct.getText().length()==0){
+                        String msg = getApplicationContext()
+                                .getResources()
+                                .getString(
+                                        R.string.app_sales_order_failed_please_add_pcs);
+                        showCustomDialog(msg);
+                    }else if(jumlahProduct1.getText().length()==0){
+                        String msg = getApplicationContext()
+                                .getResources()
+                                .getString(
+                                        R.string.app_sales_order_failed_please_add_pck);
+                        showCustomDialog(msg);
+                    } else if(jumlahProduct2.getText().length()==0){
+                        String msg = getApplicationContext()
+                                .getResources()
+                                .getString(
+                                        R.string.app_sales_order_failed_please_add_dus);
+                        showCustomDialog(msg);
+                    }else {
+                        if (jumlahProduct.getText().toString().length() > 0 || jumlahProduct1.getText().toString().length() > 0 ||
+                                jumlahProduct2.getText().toString().length() > 0) {
+                            boolean containSameProduct = false;
+                            for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
+                                if (detailSalesOrder.getKode_product()
+                                        .equalsIgnoreCase(
+                                                data.get(position)
+                                                        .getKode_product())) {
+                                    containSameProduct = true;
+                                    break;
+                                }
+                            }
+                            if (containSameProduct) {
+                                String msg = getApplicationContext()
+                                        .getResources()
+                                        .getString(
+                                                R.string.app_sales_order_failed_please_add_another_item);
+                                showCustomDialog(msg);
+                            } else {
+                                int count = detailSalesOrderList.size() + 1;
+                                updateListViewDetailOrder(new DetailSalesOrder(
+                                        count,
+                                        data.get(position).getNama_product(),
+                                        data.get(position).getKode_product(),
+                                        data.get(position).getHarga_jual(),
+                                        jumlahProduct.getText().toString(),
+                                        jumlahProduct1.getText().toString(),
+                                        jumlahProduct2.getText().toString()));
+                                chooseProductDialog.hide();
+                            }
+                        } else {
+                            String msg = getApplicationContext()
+                                    .getResources()
+                                    .getString(
+                                            R.string.app_sales_order_failed_please_add_jumlah);
+                            showCustomDialog(msg);
 
-					}
+                        }
+                    }
 				}
 			});
 			return row;

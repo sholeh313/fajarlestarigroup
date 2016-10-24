@@ -780,7 +780,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text" />
+                            android:inputType="textCapCharacters"/>
 
                     </LinearLayout>
 
@@ -799,7 +799,7 @@
                             android:layout_weight="0.3"
                             android:background="@drawable/input_field_style"
                             android:imeOptions="actionDone"
-                            android:inputType="textEmailAddress"
+                            android:inputType="textCapCharacters"
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
@@ -893,6 +893,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
+                            android:inputType="textCapCharacters"
                             android:hint="ex: BRI/BRI/Mandiri"/>
 
                     </LinearLayout>
@@ -937,7 +938,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="pemilik bank"/>
+                            android:hint="pemilik bank"
+                            android:inputType="textCapCharacters"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -981,7 +983,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="alamat toko"/>
+                            android:hint="alamat toko"
+                            android:inputType="textCapCharacters"/>
 
                     </LinearLayout>
 
@@ -1003,7 +1006,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="nama pasar yang dikunjungi"/>
+                            android:hint="nama pasar yang dikunjungi"
+                            android:inputType="textCapCharacters"/>
 
                     </LinearLayout>
 
@@ -1163,7 +1167,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="Cash/Credit"/>
+                            android:hint="Cash/Credit"
+                            android:inputType="textCapCharacters"/>
 
                     </LinearLayout>
                     <LinearLayout
@@ -1230,7 +1235,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="suami/istri"/>
 
                     </LinearLayout>
@@ -1252,7 +1257,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-1"/>
 
                     </LinearLayout>
@@ -1274,7 +1279,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-2"/>
 
                     </LinearLayout>
@@ -1296,7 +1301,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-3"/>
 
                     </LinearLayout>
@@ -1333,7 +1338,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-3"/>
 
                     </LinearLayout>

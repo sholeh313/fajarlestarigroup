@@ -61,6 +61,7 @@ public class DetailEditCustomer extends FragmentActivity {
     private ImageView menuBackButton;
     public static final int MEDIA_TYPE_IMAGE = 1;
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    private static final int CANVAS_REQ =100;
     private double tempCheckInLatitude;
     private double tempCheckInLongitude;
 

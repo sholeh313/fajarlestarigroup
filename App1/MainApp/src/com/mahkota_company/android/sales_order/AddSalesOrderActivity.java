@@ -147,7 +147,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						jadwal.getId_wilayah(), null, null, null, 0, null,
 						null, null, 0, null, null, null, null, null, null, null,
 						0, null, null, null,null, null, null, null, null, null,
-						null, null,0, null,null,null);
+						null, null,0, null,null,null,null,null);
 				dataCustomer.add(customer);
 
 			}
@@ -329,8 +329,23 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						salesOrder.setHarga_jual(detailSalesOrder
 								.getHarga_jual());
 						salesOrder.setId_promosi(idPromosi);
-						salesOrder.setJumlah_order(detailSalesOrder
-								.getJumlah_order());
+						if(detailSalesOrder.getJumlah_order().equals(null)){
+							salesOrder.setJumlah_order("0");
+						}else{
+							salesOrder.setJumlah_order(detailSalesOrder.getJumlah_order());
+						}
+
+						if(detailSalesOrder.getJumlah_order1().equals(null)){
+							salesOrder.setJumlah_order1("0");
+						}else{
+							salesOrder.setJumlah_order1(detailSalesOrder.getJumlah_order1());
+						}
+
+						if(detailSalesOrder.getJumlah_order2().equals(null)){
+							salesOrder.setJumlah_order2("0");
+						}else{
+							salesOrder.setJumlah_order2(detailSalesOrder.getJumlah_order2());
+						}
 						salesOrder.setKode_customer(kodeCustomer);
 						salesOrder.setNama_lengkap(etNamaCustomer.getText()
 								.toString());
@@ -368,10 +383,11 @@ public class AddSalesOrderActivity extends FragmentActivity {
 	};
 
 	private void BukaTTD() {
-		Intent intentActivity = new Intent(
+		/*Intent intentActivity = new Intent(
 				AddSalesOrderActivity.this,
 				AndroidCanvasExample.class);
 		startActivity(intentActivity);
+		*/
 	}
 
 	private void ChooseProductDialog() {
@@ -381,6 +397,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				.setContentView(R.layout.activity_main_product_choose_dialog);
 		chooseProductDialog.setCanceledOnTouchOutside(false);
 		chooseProductDialog.setCancelable(true);
+
+
 		chooseProductDialog
 				.setOnCancelListener(new DialogInterface.OnCancelListener() {
 					@Override
@@ -406,7 +424,11 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		final ListView listview = (ListView) chooseProductDialog
 				.findViewById(R.id.list);
 		final EditText jumlahProduct = (EditText) chooseProductDialog
-				.findViewById(R.id.activity_product_edittext_jumlah);
+				.findViewById(R.id.activity_product_edittext_pieces);
+		final EditText jumlahProduct1 = (EditText) chooseProductDialog
+				.findViewById(R.id.activity_product_edittext_pack);
+		final EditText jumlahProduct2 = (EditText) chooseProductDialog
+				.findViewById(R.id.activity_product_edittext_dus);
 
 		listview.setItemsCanFocus(false);
 		ArrayList<Product> product_from_db = databaseHandler.getAllProduct();
@@ -435,6 +457,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				cAdapterChooseAdapter = new ListViewChooseAdapter(
 						AddSalesOrderActivity.this,
 						R.layout.list_item_product_sales_order, jumlahProduct,
+						jumlahProduct1, jumlahProduct2,
 						product_list, chooseProductDialog);
 				listview.setAdapter(cAdapterChooseAdapter);
 				cAdapterChooseAdapter.notifyDataSetChanged();
@@ -483,7 +506,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									AddSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct, product_list,
+									jumlahProduct,jumlahProduct1, jumlahProduct2, product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
@@ -526,10 +549,11 @@ public class AddSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									AddSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct, product_list,
+									jumlahProduct, jumlahProduct1, jumlahProduct2, product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
+
 						}
 					} else {
 						listview.setVisibility(View.INVISIBLE);
@@ -617,10 +641,14 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				holder = new UserHolder();
 				holder.list_kode_product = (TextView) row
 						.findViewById(R.id.sales_order_title_kode_product);
-				holder.list_jumlah_order = (TextView) row
-						.findViewById(R.id.sales_order_title_jumlah_order);
 				holder.list_harga_jual = (TextView) row
 						.findViewById(R.id.sales_order_title_harga);
+				holder.list_jumlah_order = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order);
+				holder.list_jumlah_order1 = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order1);
+				holder.list_jumlah_order2 = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order2);
 
 				row.setTag(holder);
 			} else {
@@ -628,7 +656,27 @@ public class AddSalesOrderActivity extends FragmentActivity {
 			}
 			productData = data.get(position);
 			holder.list_kode_product.setText(productData.getKode_product());
-			holder.list_jumlah_order.setText(productData.getJumlah_order());
+
+			if(productData.getJumlah_order().equals(null)){
+				holder.list_jumlah_order.setText(0);
+			}else{
+				holder.list_jumlah_order.setText(productData.getJumlah_order());
+			}
+
+			if(productData.getJumlah_order1().equals(null)){
+				holder.list_jumlah_order1.setText(0);
+			}else{
+				holder.list_jumlah_order1.setText(productData.getJumlah_order1());
+			}
+
+			if(productData.getJumlah_order1().equals(null)){
+				holder.list_jumlah_order2.setText(0);
+			}else{
+				holder.list_jumlah_order2.setText(productData.getJumlah_order2());
+			}
+
+
+
 			Float priceIDR = Float.valueOf(productData.getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
 			otherSymbols.setDecimalSeparator(',');
@@ -638,6 +686,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 			holder.list_harga_jual.setText("Rp. " + df.format(priceIDR));
 			holder.list_kode_product.setTypeface(typefaceSmall);
 			holder.list_jumlah_order.setTypeface(typefaceSmall);
+			holder.list_jumlah_order1.setTypeface(typefaceSmall);
+			holder.list_jumlah_order2.setTypeface(typefaceSmall);
 			holder.list_harga_jual.setTypeface(typefaceSmall);
 
 			return row;
@@ -647,6 +697,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		class UserHolder {
 			TextView list_kode_product;
 			TextView list_jumlah_order;
+			TextView list_jumlah_order1;
+			TextView list_jumlah_order2;
 			TextView list_harga_jual;
 		}
 
@@ -658,10 +710,12 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		ArrayList<Product> data = new ArrayList<Product>();
 		Activity mainActivity;
 		EditText jumlahProduct;
+		EditText jumlahProduct1;
+		EditText jumlahProduct2;
 		Dialog chooseProductDialog;
 
 		public ListViewChooseAdapter(Activity mainActivity,
-				int layoutResourceId, EditText jumlahProduct,
+				int layoutResourceId, EditText jumlahProduct, EditText jumlahProduct1, EditText jumlahProduct2,
 				ArrayList<Product> data, Dialog chooseProductDialog) {
 			super(mainActivity, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
@@ -669,6 +723,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 			this.chooseProductDialog = chooseProductDialog;
 			this.mainActivity = mainActivity;
 			this.jumlahProduct = jumlahProduct;
+			this.jumlahProduct1 = jumlahProduct1;
+			this.jumlahProduct2 = jumlahProduct2;
 			notifyDataSetChanged();
 		}
 
@@ -713,40 +769,63 @@ public class AddSalesOrderActivity extends FragmentActivity {
 
 				@Override
 				public void onClick(View v) {
-					if (jumlahProduct.getText().toString().length() > 0) {
-						boolean containSameProduct = false;
-						for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
-							if (detailSalesOrder.getKode_product()
-									.equalsIgnoreCase(
-											data.get(position)
-													.getKode_product())) {
-								containSameProduct = true;
-								break;
-							}
-						}
-						if (containSameProduct) {
-							String msg = getApplicationContext()
-									.getResources()
-									.getString(
-											R.string.app_sales_order_failed_please_add_another_item);
-							showCustomDialog(msg);
-						} else {
-							int count = detailSalesOrderList.size() + 1;
-							updateListViewDetailOrder(new DetailSalesOrder(
-									count,
-									data.get(position).getNama_product(), data
-											.get(position).getKode_product(),
-									data.get(position).getHarga_jual(),
-									jumlahProduct.getText().toString()));
-							chooseProductDialog.hide();
-						}
-					} else {
+					if (jumlahProduct.getText().length()==0){
 						String msg = getApplicationContext()
 								.getResources()
 								.getString(
-										R.string.app_sales_order_failed_please_add_jumlah);
+										R.string.app_sales_order_failed_please_add_pcs);
 						showCustomDialog(msg);
+					}else if(jumlahProduct1.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_pck);
+						showCustomDialog(msg);
+					} else if(jumlahProduct2.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_dus);
+						showCustomDialog(msg);
+					}else {
+						if (jumlahProduct.getText().toString().length() > 0 || jumlahProduct1.getText().toString().length() > 0 ||
+								jumlahProduct2.getText().toString().length() > 0) {
+							boolean containSameProduct = false;
+							for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
+								if (detailSalesOrder.getKode_product()
+										.equalsIgnoreCase(
+												data.get(position)
+														.getKode_product())) {
+									containSameProduct = true;
+									break;
+								}
+							}
+							if (containSameProduct) {
+								String msg = getApplicationContext()
+										.getResources()
+										.getString(
+												R.string.app_sales_order_failed_please_add_another_item);
+								showCustomDialog(msg);
+							} else {
+								int count = detailSalesOrderList.size() + 1;
+								updateListViewDetailOrder(new DetailSalesOrder(
+										count,
+										data.get(position).getNama_product(),
+										data.get(position).getKode_product(),
+										data.get(position).getHarga_jual(),
+										jumlahProduct.getText().toString(),
+										jumlahProduct1.getText().toString(),
+										jumlahProduct2.getText().toString()));
+								chooseProductDialog.hide();
+							}
+						} else {
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.app_sales_order_failed_please_add_jumlah);
+							showCustomDialog(msg);
 
+						}
 					}
 				}
 			});

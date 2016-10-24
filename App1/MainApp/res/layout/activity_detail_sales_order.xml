@@ -321,7 +321,7 @@
                     android:id="@+id/activity_add_sales_order_title_kode_product"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:text="@string/app_sales_order_title_kode_product"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/black"
@@ -332,20 +332,38 @@
                     android:id="@+id/activity_add_sales_order_title_harga"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:text="@string/app_sales_order_title_harga_product"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/activity_add_sales_order_title_jumlah"
+                    android:id="@+id/activity_add_sales_order_title_jumlahpcs"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/app_sales_order_title_jumlah"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_weight="0.4"
+                    android:text="@string/app_sales_order_title_pcs"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/activity_add_sales_order_title_jumlahpck"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="@string/app_sales_order_title_pck"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/activity_add_sales_order_title_jumlahdus"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="@string/app_sales_order_title_dus"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />

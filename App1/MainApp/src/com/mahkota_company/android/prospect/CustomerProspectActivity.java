@@ -226,6 +226,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 									.getDescription();
 							String nama_toko = customer_from_db.get(i)
 									.getNama_toko();
+							String ttd1 = customer_from_db.get(i)
+									.getTtd1();
+							String ttd2 = customer_from_db.get(i)
+									.getTtd2();
 
 
 							Customer customer = new Customer();
@@ -269,6 +273,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
 							customer.setNama_toko(nama_toko);
+							customer.setTtd1(ttd1);
+							customer.setTtd2(ttd2);
 
 							customer_list.add(customer);
 						}
@@ -360,6 +366,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 									.getDescription();
 							String nama_toko = customer_from_db.get(i)
 									.getNama_toko();
+							String ttd1 = customer_from_db.get(i)
+									.getTtd1();
+							String ttd2 = customer_from_db.get(i)
+									.getTtd2();
 
 							Customer customer = new Customer();
 							customer.setId_customer(id_customer);
@@ -401,6 +411,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							customer.setIsactive(isactive);
 							customer.setDescription(description);
 							customer.setNama_toko(nama_toko);
+							customer.setTtd1(ttd1);
+							customer.setTtd2(ttd2);
 
 							customer_list.add(customer);
 						}
@@ -514,6 +526,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						.getDescription();
 				String nama_toko = customer_from_db.get(i)
 						.getNama_toko();
+				String ttd1 = customer_from_db.get(i)
+						.getTtd1();
+				String ttd2 = customer_from_db.get(i)
+						.getTtd2();
 
 
 				Customer customer = new Customer();
@@ -557,6 +573,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 				customer.setIsactive(isactive);
 				customer.setDescription(description);
 				customer.setNama_toko(nama_toko);
+				customer.setTtd1(ttd1);
+				customer.setTtd2(ttd2);
 
 
 				customer_list.add(customer);
@@ -649,7 +667,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
                     final String telp, final String fax, final String omset, final String cara_pembayaran,
                     final String plafon_kredit, final String term_kredit, final String nama_istri, final String nama_anak1,
 					final String nama_anak2, final String nama_anak3, final String kode_pos, final String id_depo,
-					final String isactive, final String description, final String nama_toko) {
+					final String isactive, final String description, final String nama_toko, final String ttd1, final String ttd2) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -675,6 +693,15 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_3);
 			if (sourceFoto3.exists() && foto_3 != null)
 				entity.addPart("image3", new FileBody(sourceFoto3));
+			File sourceTtd1 = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + ttd1);
+			if (sourceTtd1.exists() && ttd1 != null)
+				entity.addPart("ttd_1", new FileBody(sourceTtd1));
+			File sourceTtd2 = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + ttd2);
+			if (sourceTtd2.exists() && ttd2 != null)
+				entity.addPart("ttd_2", new FileBody(sourceTtd2));
+
 
 			entity.addPart("kode_customer", new StringBody(kode_customer));
 			entity.addPart("email", new StringBody(email));
@@ -725,6 +752,10 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 			entity.addPart("description", new StringBody(description != null ? description
 					: ""));
 			entity.addPart("nama_toko", new StringBody(nama_toko != null ? nama_toko
+					: ""));
+			entity.addPart("ttd1", new StringBody(ttd1 != null ? ttd1
+					: ""));
+			entity.addPart("ttd2", new StringBody(ttd2 != null ? ttd2
 					: ""));
 
 			httppost.setEntity(entity);
@@ -816,7 +847,9 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 						String.valueOf(customer.getId_depo()),
 						customer.getIsactive(),
 						customer.getDescription(),
-						customer.getNama_toko());
+						customer.getNama_toko(),
+						customer.getTtd1(),
+						customer.getTtd2());
 			}
 			return null;
 		}

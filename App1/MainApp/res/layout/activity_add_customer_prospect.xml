@@ -741,7 +741,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="Nama toko"/>
                     </LinearLayout>
 
@@ -763,7 +763,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="Nama Lengkap"/>
                     </LinearLayout>
 
@@ -873,7 +873,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="ex: BRI/BRI/Mandiri"/>
+                            android:hint="ex: BRI/BRI/Mandiri"
+                            android:inputType="textCapCharacters"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -915,7 +916,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="pemilik bank"/>
+                            android:hint="pemilik bank"
+                            android:inputType="textCapCharacters"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -957,7 +959,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="alamat toko"/>
+                            android:hint="alamat toko"
+                            android:inputType="textCapCharacters"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -978,7 +981,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="nama pasar terdekat"/>
+                            android:hint="nama pasar"
+                            android:inputType="textCapCharacters"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -1129,7 +1133,8 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:hint="Cash/Credit"/>
+                            android:hint="Cash/Credit"
+                            android:inputType="textCapCharacters"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -1192,7 +1197,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="suami/istri"/>
                     </LinearLayout>
                     <LinearLayout
@@ -1213,7 +1218,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-1"/>
                     </LinearLayout>
                     <LinearLayout
@@ -1234,7 +1239,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-2"/>
                     </LinearLayout>
                     <LinearLayout
@@ -1255,7 +1260,7 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3"
-                            android:inputType="text"
+                            android:inputType="textCapCharacters"
                             android:hint="anak ke-3"/>
                     </LinearLayout>
 
@@ -1310,7 +1315,7 @@
                             android:background="@drawable/ibbutton_black"
                             android:minHeight="15dip"
                             android:minWidth="60dip"
-                            android:text="@string/app_customer_take_foto"
+                            android:text="Foto Toko"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -1346,7 +1351,7 @@
                             android:background="@drawable/ibbutton_black"
                             android:minHeight="15dip"
                             android:minWidth="60dip"
-                            android:text="@string/app_customer_take_foto"
+                            android:text="Foto KTP"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -1382,7 +1387,7 @@
                             android:background="@drawable/ibbutton_black"
                             android:minHeight="15dip"
                             android:minWidth="60dip"
-                            android:text="@string/app_customer_take_foto"
+                            android:text="Foto Stampel"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>

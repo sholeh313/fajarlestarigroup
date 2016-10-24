@@ -127,7 +127,7 @@ public class AddStockOnHandActivity extends FragmentActivity {
 						jadwal.getId_wilayah(), null, null, null, 0, null,
 						null, null, 0, null, null, null, null, null, null, null,
 						0, null, null, null,null, null, null, null, null, null,
-						null,null,0,null,null,null);
+						null,null,0,null,null,null,null,null);
 				dataCustomer.add(customer);
 
 			}
@@ -349,7 +349,7 @@ public class AddStockOnHandActivity extends FragmentActivity {
 		final ListView listview = (ListView) chooseProductDialog
 				.findViewById(R.id.list);
 		final EditText jumlahProduct = (EditText) chooseProductDialog
-				.findViewById(R.id.activity_product_edittext_jumlah);
+				.findViewById(R.id.activity_product_edittext_pieces);
 
 		listview.setItemsCanFocus(false);
 		ArrayList<Product> product_from_db = databaseHandler.getAllProduct();
@@ -576,6 +576,8 @@ public class AddStockOnHandActivity extends FragmentActivity {
 		ArrayList<Product> data = new ArrayList<Product>();
 		Activity mainActivity;
 		EditText jumlahProduct;
+		EditText jumlahProduct1;
+		EditText jumlahProduct2;
 		Dialog chooseProductDialog;
 
 		public ListViewChooseAdapter(Activity mainActivity,
@@ -655,7 +657,9 @@ public class AddStockOnHandActivity extends FragmentActivity {
 									data.get(position).getNama_product(), data
 											.get(position).getKode_product(),
 									data.get(position).getHarga_jual(),
-									jumlahProduct.getText().toString()));
+									jumlahProduct.getText().toString(),
+									jumlahProduct1.getText().toString(),
+									jumlahProduct2.getText().toString()));
 							chooseProductDialog.hide();
 						}
 					} else {

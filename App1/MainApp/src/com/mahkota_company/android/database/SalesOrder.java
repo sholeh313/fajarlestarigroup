@@ -17,6 +17,8 @@ public class SalesOrder {
 	private String kode_product;
 	private String harga_jual;
 	private String jumlah_order;
+	private String jumlah_order1;
+	private String jumlah_order2;
 
 	public SalesOrder() {
 
@@ -28,7 +30,8 @@ public class SalesOrder {
 			String time_order, int id_promosi, String deskripsi,
 			String username, String kode_customer, String alamat,
 			String nama_lengkap, String nama_product, String kode_product,
-			String harga_jual, String jumlah_order) {
+			String harga_jual, String jumlah_order, String jumlah_order1,
+			String jumlah_order2) {
 		this.id_sales_order = id_sales_order;
 		this.nomer_order = nomer_order;
 		this.nomer_order_detail = nomer_order_detail;
@@ -44,6 +47,8 @@ public class SalesOrder {
 		this.kode_product = kode_product;
 		this.harga_jual = harga_jual;
 		this.jumlah_order = jumlah_order;
+		this.jumlah_order1 = jumlah_order1;
+		this.jumlah_order2 = jumlah_order2;
 
 	}
 
@@ -165,6 +170,22 @@ public class SalesOrder {
 
 	public void setJumlah_order(String jumlah_order) {
 		this.jumlah_order = jumlah_order;
+	}
+
+	public String getJumlah_order1() {
+		return jumlah_order1;
+	}
+
+	public void setJumlah_order1(String jumlah_order1) {
+		this.jumlah_order1 = jumlah_order1;
+	}
+
+	public String getJumlah_order2() {
+		return jumlah_order2;
+	}
+
+	public void setJumlah_order2(String jumlah_order2) {
+		this.jumlah_order2 = jumlah_order2;
 	}
 
 }

@@ -132,6 +132,12 @@
     <string name="app_inventory_unload_product_target_penjualan_processing_upload_success">Proses Upload Target Penjualan sukses !</string>
     <string name="app_inventory_unload_product_target_penjualan_add_save_failed_no_data">Mohon mengisi seluruh data !</string>
     <string name="app_inventory_unload_product_target_penjualan_add_save_success">Penjualan berhasil di simpan !</string>
+    <string name="hint_sign">Get Signature</string>
+    <string name="dialog_title">SIGN HERE</string>
+    <string name="hint_cancel">Cancel</string>
+    <string name="hint_clear">Clear</string>
+    <string name="hint_save">Save</string>
+
 
 
     <string name="crash_toast">There is a problem Please send report to developer</string>
@@ -344,11 +350,18 @@
     <string name="app_sales_order_title_nama_product">Nama Product</string>
     <string name="app_sales_order_title_harga_product">Harga</string>
     <string name="app_sales_order_title_action">Action</string>
-    <string name="app_sales_order_title_jumlah">Jumlah</string>
+    <string name="app_sales_order_title_pcs">pcs</string>
+    <string name="app_sales_order_title_pck">pck</string>
+    <string name="app_sales_order_title_dus">dus</string>
     <string name="app_sales_order_add_item">Add Item</string>
-    <string name="app_sales_order_jumlah">Jumlah</string>
+    <string name="app_sales_order_dus">Dus</string>
+    <string name="app_sales_order_Pack">Pack</string>
+    <string name="app_sales_order_Pcs">Pieces</string>
     <string name="app_sales_order_failed_please_add_jumlah">Mohon memasukkan jumlah item yang di inginkan !</string>
-    <string name="app_sales_order_failed_please_add_another_item">Mohon memasukkan item yang lain !</string>
+    <string name="app_sales_order_failed_please_add_pcs">Jumlah pieces harus diisi</string>
+    <string name="app_sales_order_failed_please_add_pck">Jumlah pack harus diisi</string>
+    <string name="app_sales_order_failed_please_add_dus">Jumlah dus harus diisi</string>
+    <string name="app_sales_order_failed_please_add_another_item">Mohon masukkan item yang lain !</string>
     <string name="app_sales_order_save_success">Sales Order berhasil di tambah !</string>
     <string name="app_sales_order_update_success">Sales Order berhasil di ubah !</string>
     <string name="app_sales_order_processing_upload_empty">Mohon periksa koneksi internet anda, untuk mengupload sales order customer !</string>

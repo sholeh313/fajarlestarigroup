@@ -305,7 +305,7 @@
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/app_sales_order_title_jumlah"
+                    android:text="@string/app_sales_order_title_pcs"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/black"
                     android:textSize="18sp"

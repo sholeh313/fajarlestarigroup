@@ -6,19 +6,24 @@ public class DetailSalesOrder {
 	private String kode_product;
 	private String harga_jual;
 	private String jumlah_order;
+	private String jumlah_order1;
+	private String jumlah_order2;
 
-	public DetailSalesOrder() {
+	public DetailSalesOrder(int count, String nama_product, String kode_product, String harga_jual, String stock) {
 
 	}
 
 	// constructor
 	public DetailSalesOrder(int id_sales_order, String nama_product,
-			String kode_product, String harga_jual, String jumlah_order) {
+			String kode_product, String harga_jual, String jumlah_order,
+							String jumlah_order1, String jumlah_order2) {
 		this.setId_sales_order(id_sales_order);
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
 		this.harga_jual = harga_jual;
 		this.jumlah_order = jumlah_order;
+		this.jumlah_order1 = jumlah_order1;
+		this.jumlah_order2 = jumlah_order2;
 
 	}
 
@@ -60,6 +65,22 @@ public class DetailSalesOrder {
 
 	public void setJumlah_order(String jumlah_order) {
 		this.jumlah_order = jumlah_order;
+	}
+
+	public String getJumlah_order1() {
+		return jumlah_order1;
+	}
+
+	public void setJumlah_order1(String jumlah_order1) {
+		this.jumlah_order1 = jumlah_order1;
+	}
+
+	public String getJumlah_order2() {
+		return jumlah_order2;
+	}
+
+	public void setJumlah_order2(String jumlah_order2) {
+		this.jumlah_order2 = jumlah_order2;
 	}
 
 }

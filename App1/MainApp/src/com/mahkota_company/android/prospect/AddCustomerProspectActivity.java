@@ -10,6 +10,7 @@ import com.mahkota_company.android.utils.CONFIG;
 import com.mahkota_company.android.utils.SpinnerAdapter;
 import com.mahkota_company.android.R;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,11 +19,20 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.location.GpsStatus;
 import android.location.Location;
@@ -30,21 +40,44 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddCustomerProspectActivity extends FragmentActivity {
+	Button btn_get_sign, mClear, mGetSign, mCancel;
+
+	File file;
+	Dialog dialog;
+	LinearLayout mContent;
+	View view;
+	signature mSignature;
+	signature1 mSignature1;
+	Bitmap bitmap;
+
+	// Creating Separate Directory for saving Generated Images
+	String DIRECTORY = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.mahkota_company.android/"+"customer_prospect/";
+	String pic_name = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+	String pic_name1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date())+1;
+	String StoredPath = DIRECTORY + pic_name + ".png";
+	String StoredPath1 = DIRECTORY + pic_name1 + ".png";
+
 	private Context act;
 	private ImageView menuBackButton;
 	private DatabaseHandler databaseHandler;
@@ -52,8 +85,13 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	private String newImageName1;
 	private String newImageName2;
 	private String newImageName3;
+	private String newTTD1;
+	private String newTTD2;
+
 	private Typeface typefaceSmall;
 	private TextView tvKodeCustomer;
+
+	public static final String KODE_CUSTOMER = "USERNAME";
 
 	private EditText etNamaCustomer;
 	private EditText etEmailCustomer;
@@ -144,6 +182,22 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_customer_prospect);
+
+		newTTD1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+		newTTD2 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date())+1;
+
+		file = new File(DIRECTORY);
+		if (!file.exists()) {
+			file.mkdir();
+		}
+
+
+
+        //Intent intent = getIntent();
+        //String hasil_ttd = intent.getStringExtra(Useless_AndroidCanvas1.HASIL_TTD);
+        //ttd1 = (TextView) findViewById(R.id.activity_customer_detail_ttd1);
+        //ttd1.setText(newTTD1);
+
 		act = this;
 		databaseHandler = new DatabaseHandler(this);
 		menuBackButton = (ImageView) findViewById(R.id.menuBackButton);
@@ -155,8 +209,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		typefaceSmall = Typeface.createFromAsset(getAssets(),
 				"fonts/AliquamREG.ttf");
 		progressDialog = new ProgressDialog(this);
-		progressDialog.setTitle(getApplicationContext().getResources()
-				.getString(R.string.app_name));
+		//progressDialog.setTitle(getApplicationContext().getResources()
+		//		.getString(R.string.app_name));
 		progressDialog.setMessage(getApplicationContext().getResources()
 				.getString(R.string.app_promosi_processing));
 		progressDialog.setCancelable(true);
@@ -295,7 +349,6 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 						idCluster = clusterList.get(position)
 								.getId_cluster();
 					}
-
 					public void onNothingSelected(AdapterView<?> parent) {
 					}
 				});
@@ -344,6 +397,254 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 			gotoCustomerProspect();
 		}
 		checkGPS();
+	}
+
+	public class signature extends View {
+		private static final float STROKE_WIDTH = 5f;
+		private static final float HALF_STROKE_WIDTH = STROKE_WIDTH / 2;
+		private Paint paint = new Paint();
+		private Path path = new Path();
+
+		private float lastTouchX;
+		private float lastTouchY;
+		private final RectF dirtyRect = new RectF();
+
+		public signature(Context context, AttributeSet attrs) {
+			super(context, attrs);
+			paint.setAntiAlias(true);
+			paint.setColor(Color.BLACK);
+			paint.setStyle(Paint.Style.STROKE);
+			paint.setStrokeJoin(Paint.Join.ROUND);
+			paint.setStrokeWidth(STROKE_WIDTH);
+		}
+
+		public void save(View v, String StoredPath) {
+			Log.v("log_tag", "Width: " + v.getWidth());
+			Log.v("log_tag", "Height: " + v.getHeight());
+			if (bitmap == null) {
+				bitmap = Bitmap.createBitmap(mContent.getWidth(), mContent.getHeight(), Bitmap.Config.RGB_565);
+			}
+			ttd1.setText(newTTD1);
+
+			Canvas canvas = new Canvas(bitmap);
+			try {
+				// Output the file
+				FileOutputStream mFileOutStream = new FileOutputStream(StoredPath);
+				v.draw(canvas);
+
+				// Convert the output file to Image such as .png
+				bitmap.compress(Bitmap.CompressFormat.PNG, 90, mFileOutStream);
+				mFileOutStream.flush();
+				mFileOutStream.close();
+
+			} catch (Exception e) {
+				Log.v("log_tag", e.toString());
+			}
+			return ;
+		}
+
+
+		public void clear() {
+			path.reset();
+			invalidate();
+		}
+
+		@Override
+		protected void onDraw(Canvas canvas) {
+			canvas.drawPath(path, paint);
+		}
+
+		@Override
+		public boolean onTouchEvent(MotionEvent event) {
+			float eventX = event.getX();
+			float eventY = event.getY();
+			mGetSign.setEnabled(true);
+
+			switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					path.moveTo(eventX, eventY);
+					lastTouchX = eventX;
+					lastTouchY = eventY;
+					return true;
+
+				case MotionEvent.ACTION_MOVE:
+
+				case MotionEvent.ACTION_UP:
+					resetDirtyRect(eventX, eventY);
+					int historySize = event.getHistorySize();
+					for (int i = 0; i < historySize; i++) {
+						float historicalX = event.getHistoricalX(i);
+						float historicalY = event.getHistoricalY(i);
+						expandDirtyRect(historicalX, historicalY);
+						path.lineTo(historicalX, historicalY);
+					}
+					path.lineTo(eventX, eventY);
+					break;
+				default:
+					debug("Ignored touch event: " + event.toString());
+					return false;
+			}
+
+			invalidate((int) (dirtyRect.left - HALF_STROKE_WIDTH),
+					(int) (dirtyRect.top - HALF_STROKE_WIDTH),
+					(int) (dirtyRect.right + HALF_STROKE_WIDTH),
+					(int) (dirtyRect.bottom + HALF_STROKE_WIDTH));
+
+			lastTouchX = eventX;
+			lastTouchY = eventY;
+			return true;
+		}
+
+		private void debug(String string) {
+
+			Log.v("log_tag", string);
+
+		}
+
+		private void expandDirtyRect(float historicalX, float historicalY) {
+			if (historicalX < dirtyRect.left) {
+				dirtyRect.left = historicalX;
+			} else if (historicalX > dirtyRect.right) {
+				dirtyRect.right = historicalX;
+			}
+
+			if (historicalY < dirtyRect.top) {
+				dirtyRect.top = historicalY;
+			} else if (historicalY > dirtyRect.bottom) {
+				dirtyRect.bottom = historicalY;
+			}
+		}
+
+		private void resetDirtyRect(float eventX, float eventY) {
+			dirtyRect.left = Math.min(lastTouchX, eventX);
+			dirtyRect.right = Math.max(lastTouchX, eventX);
+			dirtyRect.top = Math.min(lastTouchY, eventY);
+			dirtyRect.bottom = Math.max(lastTouchY, eventY);
+		}
+	}
+
+	public class signature1 extends View {
+		private static final float STROKE_WIDTH = 5f;
+		private static final float HALF_STROKE_WIDTH = STROKE_WIDTH / 2;
+		private Paint paint = new Paint();
+		private Path path = new Path();
+
+		private float lastTouchX;
+		private float lastTouchY;
+		private final RectF dirtyRect = new RectF();
+
+		public signature1(Context context, AttributeSet attrs) {
+			super(context, attrs);
+			paint.setAntiAlias(true);
+			paint.setColor(Color.BLACK);
+			paint.setStyle(Paint.Style.STROKE);
+			paint.setStrokeJoin(Paint.Join.ROUND);
+			paint.setStrokeWidth(STROKE_WIDTH);
+		}
+
+		public void save(View v, String StoredPath) {
+			Log.v("log_tag", "Width: " + v.getWidth());
+			Log.v("log_tag", "Height: " + v.getHeight());
+			if (bitmap == null) {
+				bitmap = Bitmap.createBitmap(mContent.getWidth(), mContent.getHeight(), Bitmap.Config.RGB_565);
+			}
+			ttd2.setText(newTTD2);
+
+			Canvas canvas = new Canvas(bitmap);
+			try {
+				// Output the file
+				FileOutputStream mFileOutStream = new FileOutputStream(StoredPath);
+				v.draw(canvas);
+
+				// Convert the output file to Image such as .png
+				bitmap.compress(Bitmap.CompressFormat.PNG, 90, mFileOutStream);
+				mFileOutStream.flush();
+				mFileOutStream.close();
+
+			} catch (Exception e) {
+				Log.v("log_tag", e.toString());
+			}
+			return ;
+		}
+
+
+		public void clear() {
+			path.reset();
+			invalidate();
+		}
+
+		@Override
+		protected void onDraw(Canvas canvas) {
+			canvas.drawPath(path, paint);
+		}
+
+		@Override
+		public boolean onTouchEvent(MotionEvent event) {
+			float eventX = event.getX();
+			float eventY = event.getY();
+			mGetSign.setEnabled(true);
+
+			switch (event.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					path.moveTo(eventX, eventY);
+					lastTouchX = eventX;
+					lastTouchY = eventY;
+					return true;
+
+				case MotionEvent.ACTION_MOVE:
+
+				case MotionEvent.ACTION_UP:
+					resetDirtyRect(eventX, eventY);
+					int historySize = event.getHistorySize();
+					for (int i = 0; i < historySize; i++) {
+						float historicalX = event.getHistoricalX(i);
+						float historicalY = event.getHistoricalY(i);
+						expandDirtyRect(historicalX, historicalY);
+						path.lineTo(historicalX, historicalY);
+					}
+					path.lineTo(eventX, eventY);
+					break;
+				default:
+					debug("Ignored touch event: " + event.toString());
+					return false;
+			}
+
+			invalidate((int) (dirtyRect.left - HALF_STROKE_WIDTH),
+					(int) (dirtyRect.top - HALF_STROKE_WIDTH),
+					(int) (dirtyRect.right + HALF_STROKE_WIDTH),
+					(int) (dirtyRect.bottom + HALF_STROKE_WIDTH));
+
+			lastTouchX = eventX;
+			lastTouchY = eventY;
+			return true;
+		}
+
+		private void debug(String string) {
+
+			Log.v("log_tag", string);
+
+		}
+
+		private void expandDirtyRect(float historicalX, float historicalY) {
+			if (historicalX < dirtyRect.left) {
+				dirtyRect.left = historicalX;
+			} else if (historicalX > dirtyRect.right) {
+				dirtyRect.right = historicalX;
+			}
+
+			if (historicalY < dirtyRect.top) {
+				dirtyRect.top = historicalY;
+			} else if (historicalY > dirtyRect.bottom) {
+				dirtyRect.bottom = historicalY;
+			}
+		}
+
+		private void resetDirtyRect(float eventX, float eventY) {
+			dirtyRect.left = Math.min(lastTouchX, eventX);
+			dirtyRect.right = Math.max(lastTouchX, eventX);
+			dirtyRect.top = Math.min(lastTouchY, eventY);
+			dirtyRect.bottom = Math.max(lastTouchY, eventY);
+		}
 	}
 
 	private LocationListener locationListener = new LocationListener() {
@@ -502,7 +803,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 										R.string.MSG_DLG_LABEL_FAILED_GPS_DIALOG);
 						showCustomDialog(msg);
 					} else {
-						if (newImageName1 != null) {
+						if (tvImage1Customer.getText().length()!=0 && tvImage2Customer.getText().length()!=0) {
 							SharedPreferences spPreferences = getSharedPrefereces();
 							String idDepo = spPreferences.getString(
 									CONFIG.SHARED_PREFERENCES_STAFF_ID_WILAYAH,
@@ -566,6 +867,8 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 							newCustomer.setNama_toko(etNama_toko.getText().toString());
                             newCustomer.setIsactive("N");
                             newCustomer.setDescription("Belum Aktif");
+							newCustomer.setTtd1(ttd1.getText().toString());
+							newCustomer.setTtd2(ttd2.getText().toString());
 
 							databaseHandler.add_Customer(newCustomer);
 							String msg = getApplicationContext()
@@ -621,16 +924,125 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	}
 
 	public void gotoTTD1() {
+		dialog = new Dialog(AddCustomerProspectActivity.this);
+		// Removing the features of Normal Dialogs
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.dialog_signature);
+		dialog.setCancelable(true);
+
+		mContent = (LinearLayout) dialog.findViewById(R.id.linearLayout);
+		mSignature = new signature(getApplicationContext(), null);
+		mSignature.setBackgroundColor(Color.WHITE);
+		// Dynamically generating Layout through java code
+		mContent.addView(mSignature, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+		mClear = (Button) dialog.findViewById(R.id.clear);
+		mGetSign = (Button) dialog.findViewById(R.id.getsign);
+		mGetSign.setEnabled(false);
+		mCancel = (Button) dialog.findViewById(R.id.cancel);
+		view = mContent;
+
+		mClear.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.v("log_tag", "Panel Cleared");
+				mSignature.clear();
+				mGetSign.setEnabled(false);
+			}
+		});
+
+		mGetSign.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				Log.v("log_tag", "Panel Saved");
+				view.setDrawingCacheEnabled(true);
+				mSignature.save(view, StoredPath);
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "Successfully Saved", Toast.LENGTH_SHORT).show();
+				// Calling the same class
+				//recreate();
+
+			}
+		});
+
+		mCancel.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.v("log_tag", "Panel Canceled");
+				dialog.dismiss();
+				// Calling the same class
+				//recreate();
+			}
+		});
+		dialog.show();
+		/*String kode_customer;
+		kode_customer = tvKodeCustomer.getText().toString();
 		Intent intentActivity = new Intent(
 				AddCustomerProspectActivity.this,
-				AndroidCanvas.class);
+				Useless_AndroidCanvas1.class);
+		intentActivity.putExtra(KODE_CUSTOMER, kode_customer);
 		startActivity(intentActivity);
+		*/
 	}
+
 	public void gotoTTD2() {
+		dialog = new Dialog(AddCustomerProspectActivity.this);
+		// Removing the features of Normal Dialogs
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.dialog_signature1);
+		dialog.setCancelable(true);
+
+		mContent = (LinearLayout) dialog.findViewById(R.id.linearLayout);
+		mSignature1 = new signature1(getApplicationContext(), null);
+		mSignature1.setBackgroundColor(Color.WHITE);
+		// Dynamically generating Layout through java code
+		mContent.addView(mSignature1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+		mClear = (Button) dialog.findViewById(R.id.clear);
+		mGetSign = (Button) dialog.findViewById(R.id.getsign);
+		mGetSign.setEnabled(false);
+		mCancel = (Button) dialog.findViewById(R.id.cancel);
+		view = mContent;
+
+		mClear.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.v("log_tag", "Panel Cleared");
+				mSignature1.clear();
+				mGetSign.setEnabled(false);
+			}
+		});
+
+		mGetSign.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				Log.v("log_tag", "Panel Saved");
+				view.setDrawingCacheEnabled(true);
+				mSignature1.save(view, StoredPath1);
+				//ttd1.setText(newTTD1);
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "Successfully Saved", Toast.LENGTH_SHORT).show();
+				// Calling the same class
+				//recreate();
+
+			}
+		});
+
+		mCancel.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.v("log_tag", "Panel Canceled");
+				dialog.dismiss();
+				// Calling the same class
+				//recreate();
+			}
+		});
+		dialog.show();
+
+		/*String kode_customer;
+		kode_customer = tvKodeCustomer.getText().toString();
 		Intent intentActivity = new Intent(
 				AddCustomerProspectActivity.this,
-				AndroidCanvas.class);
+				AndroidCanvas2.class);
+		intentActivity.putExtra(KODE_CUSTOMER, kode_customer);
 		startActivity(intentActivity);
+		*/
 	}
 
 	/*
@@ -773,7 +1185,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		final String time = zero(hrs) + zero(min) + zero(sec);
 		int countData = databaseHandler.getCountCustomerProspect(checkDate);
 		countData = countData + 1;
-		String datetime = dateUnique + time;
+		String datetime = dateUnique;
 
 		SharedPreferences spPreferences = getSharedPrefereces();
 		String kodeBranch = spPreferences.getString(
@@ -782,7 +1194,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 				CONFIG.SHARED_PREFERENCES_STAFF_ID_WILAYAH, null);
 		Branch branch = databaseHandler.getBranch(Integer.parseInt(kodeBranch));
 		String headerKodeCustomer = CONFIG.CONFIG_APP_KODE_CUSTOMER_HEADER
-				+ branch.getKode_branch() + "." + datetime + countData;
+				+ branch.getKode_branch() + "." + datetime + time + countData;
 		tvKodeCustomer.setText(headerKodeCustomer);
 		//Wilayah wilayah = databaseHandler.getWilayah(Integer
 				//.parseInt(idWilayah));

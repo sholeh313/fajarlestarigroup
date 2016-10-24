@@ -149,7 +149,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 									0, null, null, null, 0, null, null, null,
 									null, null, null, null, 0, null, null, null,
 									null, null, null, null, null, null, null,null,
-									0,null,null,null);
+									0,null,null,null,null,null);
 							dataCustomer.add(customer);
 
 						}
@@ -219,8 +219,9 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				String kode_product = sales_order_from_db.get(i)
 						.getKode_product();
 				String harga_jual = sales_order_from_db.get(i).getHarga_jual();
-				String jumlah_order = sales_order_from_db.get(i)
-						.getJumlah_order();
+				String jumlah_order = sales_order_from_db.get(i).getJumlah_order();
+				String jumlah_order1 = sales_order_from_db.get(i).getJumlah_order1();
+				String jumlah_order2 = sales_order_from_db.get(i).getJumlah_order2();
 
 				SalesOrder salesOrder = new SalesOrder();
 				salesOrder.setId_sales_order(id_sales_order);
@@ -238,6 +239,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				salesOrder.setKode_product(kode_product);
 				salesOrder.setHarga_jual(harga_jual);
 				salesOrder.setJumlah_order(jumlah_order);
+				salesOrder.setJumlah_order1(jumlah_order1);
+				salesOrder.setJumlah_order2(jumlah_order2);
 				sales_order_list.add(salesOrder);
 			}
 			cAdapter = new ListViewAdapter(this,
@@ -356,7 +359,10 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							salesOrder.getNama_product(),
 							salesOrder.getKode_product(),
 							String.valueOf(salesOrder.getHarga_jual()),
-							String.valueOf(salesOrder.getJumlah_order()));
+							String.valueOf(salesOrder.getJumlah_order()),
+							String.valueOf(salesOrder.getJumlah_order1()),
+							String.valueOf(salesOrder.getJumlah_order2()));
+
 				} else {
 					response_data = uploadSalesOrder(url_add_sales_order,
 							salesOrder.getNomer_order(),
@@ -372,7 +378,9 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							salesOrder.getNama_product(),
 							salesOrder.getKode_product(),
 							String.valueOf(salesOrder.getHarga_jual()),
-							String.valueOf(salesOrder.getJumlah_order()));
+							String.valueOf(salesOrder.getJumlah_order()),
+							String.valueOf(salesOrder.getJumlah_order1()),
+							String.valueOf(salesOrder.getJumlah_order2()));
 				}
 			}
 			return null;
@@ -437,7 +445,9 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			final String kode_customer, final String alamat,
 			final String nama_lengkap, final String nama_product,
 			final String kode_product, final String harga_jual,
-			final String jumlah_order) {
+			final String jumlah_order,
+			final String jumlah_order1,
+			final String jumlah_order2) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -466,6 +476,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			entity.addPart("kode_product", new StringBody(kode_product));
 			entity.addPart("harga_jual", new StringBody(harga_jual));
 			entity.addPart("jumlah_order", new StringBody(jumlah_order));
+			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
+			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
 
 			httppost.setEntity(entity);
 

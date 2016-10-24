@@ -376,7 +376,7 @@ public class DetailPenjualanActivity extends FragmentActivity {
 		final ListView listview = (ListView) chooseProductDialog
 				.findViewById(R.id.list);
 		final EditText jumlahProduct = (EditText) chooseProductDialog
-				.findViewById(R.id.activity_product_edittext_jumlah);
+				.findViewById(R.id.activity_product_edittext_pieces);
 
 		listview.setItemsCanFocus(false);
 		ArrayList<Product> product_from_db = databaseHandler.getAllProduct();

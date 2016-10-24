@@ -44,6 +44,9 @@ public class Customer {
 	private String isactive;
 	private String description;
 	private String nama_toko;
+	private String ttd1;
+	private String ttd2;
+
 
 	public Customer() {
 
@@ -69,7 +72,9 @@ public class Customer {
 
 					String nama_anak1 ,String nama_anak2,String nama_anak3, String kode_pos,
 
-					int id_depo, String isactive, String description, String nama_toko){
+					int id_depo, String isactive, String description, String nama_toko, String ttd1,
+
+					String ttd2){
 
 
 		this.id_customer = id_customer;
@@ -114,6 +119,8 @@ public class Customer {
 		this.isactive = isactive;
 		this.description = description;
 		this.nama_toko = nama_toko;
+		this.ttd1 = ttd1;
+		this.ttd2 = ttd2;
 
 	}
 
@@ -419,6 +426,20 @@ public class Customer {
 	}
 	public void setNama_toko(String  nama_toko) {
 		this.nama_toko = nama_toko;
+	}
+
+	public String getTtd1() {
+		return ttd1;
+	}
+	public void setTtd1(String  ttd1) {
+		this.ttd1 = ttd1;
+	}
+
+	public String getTtd2() {
+		return ttd2;
+	}
+	public void setTtd2(String  ttd2) {
+		this.ttd2 = ttd2;
 	}
 
 }

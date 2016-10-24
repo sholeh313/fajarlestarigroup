@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -13,55 +14,69 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mahkota_company.android.R;
+import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.utils.CONFIG;
 
 
-public class AndroidCanvas extends Activity
-{
+public class Useless_AndroidCanvas1 extends Activity{
+    private DatabaseHandler databaseHandler;
+    public static final String HASIL_TTD = "HASILTTD";
+    private TextView kode_customer;
+    private TextView hasilttd;
+    private String hasil;
+
 	private CanvasView canvasView;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
-
 		super.onCreate(savedInstanceState);
 		// myDrawView = new MyDrawView(this, null);
 		setContentView(R.layout.canvas_ttd_main_prospect);
 		canvasView = (CanvasView) findViewById(R.id.draw);
+
+        Intent intent = getIntent();
+        String Id_customer = intent.getStringExtra(AddCustomerProspectActivity.KODE_CUSTOMER);
+        kode_customer = (TextView) findViewById(R.id.id_customer);
+        hasilttd=(TextView) findViewById(R.id.hasilttd);
+        kode_customer.setText(Id_customer);
 	}
-    public void onClick(View v)
-    {
-
-
-        File folder = new File(Environment.getExternalStorageDirectory().toString());
+    public void onClick(View v){
+        File folder = new File(CONFIG.getFolderPath() + "/"
+                + CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT);
+                //new File(Environment.getExternalStorageDirectory().toString());
         boolean success = false;
-        if (!folder.exists())
-        {
+
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        /*if (!folder.exists()){
             success = folder.mkdirs();
         }
+        */
 
         System.out.println(success+"folder");
+        File file = new File(folder.getPath() + File.separator +"TTD1_IMG."
+                +kode_customer.getText().toString()+ ".png");
+        //new File(Environment.getExternalStorageDirectory().toString() + "/sample.png");
+        hasil = "TTD1_IMG." +kode_customer.getText().toString()+ ".png";
 
-        File file = new File(Environment.getExternalStorageDirectory().toString() + "/sample.png");
 
-        if ( file.exists() )
-        {
+        if ( file.exists() ){
             try {
                 success = file.createNewFile();
+                //hasilttd.setText(hasil);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
         System.out.println(success+"file");
-
-
-
         FileOutputStream ostream = null;
         try
         {
@@ -117,7 +132,17 @@ public class AndroidCanvas extends Activity
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), "IO error", Toast.LENGTH_SHORT).show();
         }
+        //selesai();
         finish();
+    }
+
+    private void selesai() {
+        String hasil_ttd;
+        hasil_ttd = hasilttd.getText().toString();
+        Intent intentActivity = new Intent(Useless_AndroidCanvas1.this,
+                AddCustomerProspectActivity.class);
+        intentActivity.putExtra(HASIL_TTD, hasil_ttd);
+        startActivity(intentActivity);
     }
 
     public void clearCanvas(View v) {

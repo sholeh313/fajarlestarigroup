@@ -89,6 +89,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	private TextView tvImage1Customer;
 	private TextView tvImage2Customer;
 	private TextView tvImage3Customer;
+	private TextView tvttd1;
+	private TextView tvttd2;
 	private EditText etTelpCustomer;
 	private EditText etno_ktp;
 	private EditText etNama_bank;
@@ -110,6 +112,7 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	private EditText etNama_anak3;
 	private EditText etKode_pos;
 	private EditText etNama_toko;
+
 
 	private Customer customer;
 	private TextView tvHeaderKodeCustomer;
@@ -180,7 +183,6 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		etNo_rekenig = (EditText) findViewById(R.id.activity_customer_prospect_no_rekening_value);
 		etAtas_nama = (EditText) findViewById(R.id.activity_customer_prospect_atas_nama_value);
 		etNpwp = (EditText) findViewById(R.id.activity_customer_prospect_npwp_value);
-
         etNama_pasar = (EditText) findViewById(R.id.activity_customer_prospect_nama_pasar_value);
         //etCluster = (EditText) findViewById(R.id.activity_customer_prospect_cluster_value);
 		spinnerCluster = (Spinner) findViewById(R.id.activity_customer_prospect_cluster);
@@ -190,6 +192,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
         etCara_pembayaran = (EditText) findViewById(R.id.activity_customer_prospect_cara_pembayaran_value);
         etPlafon_kredit = (EditText) findViewById(R.id.activity_customer_prospect_plafon_value);
         etTerm_kredit = (EditText) findViewById(R.id.activity_customer_prospect_term_value);
+		tvttd1 = (TextView) findViewById(R.id.activity_customer_detail_ttd1);
+		tvttd2 = (TextView) findViewById(R.id.activity_customer_detail_ttd2);
 
 		etNama_istri = (EditText) findViewById(R.id.activity_customer_prospect_nama_istri_value);
 		etNama_anak1 = (EditText) findViewById(R.id.activity_customer_prospect_nama_anak1_value);
@@ -216,6 +220,10 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		mButtonCustomerDetailImage3 = (Button) findViewById(R.id.activity_customer_detail_btn_image_3);
 		mButtonCustomerDetailPreview = (Button) findViewById(R.id.activity_customer_detail_btn_preview);
 		mButtonCustomerDetailSave = (Button) findViewById(R.id.activity_customer_detail_btn_save);
+
+		mButtonCustomerDetailImage1.setVisibility(View.INVISIBLE);
+		mButtonCustomerDetailImage2.setVisibility(View.INVISIBLE);
+		mButtonCustomerDetailImage3.setVisibility(View.INVISIBLE);
 
 		//set list cluster
 		clusterList = new ArrayList<Cluster>();
@@ -280,6 +288,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		tvImage1Customer.setTypeface(typefaceSmall);
 		tvImage2Customer.setTypeface(typefaceSmall);
 		tvImage3Customer.setTypeface(typefaceSmall);
+		tvttd1.setTypeface(typefaceSmall);
+		tvttd2.setTypeface(typefaceSmall);
 
 		tvHeaderKodeCustomer.setTypeface(typefaceSmall);
 		tvHeaderNamaCustomer.setTypeface(typefaceSmall);
@@ -568,8 +578,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setId_type_customer(idTypeCustomer);
 		newCustomer.setId_wilayah(customer.getId_wilayah());
 		newCustomer.setKode_customer(tvKodeCustomer.getText().toString());
-		newCustomer.setLats(String.valueOf(latitude));
-		newCustomer.setLongs(String.valueOf(longitude));
+		newCustomer.setLats(customer.getLats());
+		newCustomer.setLongs(customer.getLongs());
 		newCustomer.setNama_lengkap(etNamaCustomer.getText().toString());
 		newCustomer.setNo_telp(etTelpCustomer.getText().toString());
 		newCustomer.setStatus_update(customer.getStatus_update());
@@ -597,6 +607,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setIsactive(customer.getIsactive());
 		newCustomer.setDescription(customer.getDescription());
 		newCustomer.setNama_toko(customer.getNama_toko());
+		newCustomer.setTtd1(customer.getTtd1());
+		newCustomer.setTtd2(customer.getTtd2());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -646,6 +658,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 		newCustomer.setIsactive(customer.getIsactive());
 		newCustomer.setDescription(customer.getDescription());
 		newCustomer.setNama_toko(customer.getNama_toko());
+		newCustomer.setTtd1(customer.getTtd1());
+		newCustomer.setTtd2(customer.getTtd2());
 
 		databaseHandler.updateCustomer(customer.getId_customer(), newCustomer);
 		String msg = getApplicationContext().getResources().getString(
@@ -753,10 +767,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 			etEmailCustomer.setText(customer.getEmail());
 			etAlamatCustomer.setText(customer.getAlamat());
 			tvImage1Customer.setText(customer.getFoto_1());
-			tvImage2Customer.setText(customer.getFoto_2() != null ? String
-					.valueOf(customer.getFoto_2()) : "");
-			tvImage3Customer.setText(customer.getFoto_3() != null ? String
-					.valueOf(customer.getFoto_3()) : "");
+			tvImage2Customer.setText(customer.getFoto_2() != null ? String.valueOf(customer.getFoto_2()) : "");
+			tvImage3Customer.setText(customer.getFoto_3() != null ? String.valueOf(customer.getFoto_3()) : "");
 			etTelpCustomer.setText(customer.getNo_telp());
 			etno_ktp.setText(customer.getNo_ktp());
 			etTanggal_lahir.setText(customer.getTanggal_lahir());
@@ -778,6 +790,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 			etNama_anak3.setText(customer.getNama_anak3());
 			etKode_pos.setText(customer.getKode_pos());
 			etNama_toko.setText(customer.getNama_toko());
+			tvttd1.setText(customer.getTtd1() != null ? String.valueOf(customer.getTtd1()) : "");
+			tvttd2.setText(customer.getTtd2() != null ? String.valueOf(customer.getTtd2()) : "");
 
 			tempLatitude = customer.getLats();
 			tempLongitude = customer.getLongs();

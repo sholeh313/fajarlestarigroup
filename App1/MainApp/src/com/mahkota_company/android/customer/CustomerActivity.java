@@ -834,6 +834,10 @@ public class CustomerActivity extends ActionBarActivity implements
 							: oResponsealue.getString("description");
                     String nama_toko = oResponsealue.isNull("nama_toko") ? null
                             : oResponsealue.getString("nama_toko");
+                    String ttd1 = oResponsealue.isNull("ttd1") ? null
+                            : oResponsealue.getString("ttd1");
+                    String ttd2 = oResponsealue.isNull("ttd2") ? null
+                            : oResponsealue.getString("ttd2");
 
 					Log.d(LOG_TAG, "id_customer:" + id_customer);
 					Log.d(LOG_TAG, "kode_customer:" + kode_customer);
@@ -874,6 +878,8 @@ public class CustomerActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "isactive:" + isactive);
 					Log.d(LOG_TAG, "description:" + description);
                     Log.d(LOG_TAG, "nama_toko:" + nama_toko);
+                    Log.d(LOG_TAG, "ttd1:" + ttd1);
+                    Log.d(LOG_TAG, "ttd2:" + ttd2);
 
 
 
@@ -888,7 +894,7 @@ public class CustomerActivity extends ActionBarActivity implements
 							plafon_kredit,term_kredit, nama_istri, nama_anak1,
 							nama_anak2, nama_anak3, kode_pos, Integer
 							.parseInt(id_depo), isactive,
-							description,nama_toko));
+							description,nama_toko, ttd1, ttd2));
 
 				}
 			} catch (JSONException e) {

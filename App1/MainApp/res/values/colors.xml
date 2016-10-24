@@ -56,6 +56,9 @@
     <color name="marker_rounded">#990000</color>
     <color name="main_blue_theme">#00aeec</color>
     <color name="main_green_theme">#8DC63F</color>
+    <color name="ColorPrimaryDark">#3367d6</color>
+    <color name="ColorPrimary">#4285f4</color>
+
 
     <!-- A light Holo shade of blue -->
     <color name="holo_blue_light">#ff33b5e5</color>
