@@ -72,12 +72,6 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	Bitmap bitmap;
 
 	// Creating Separate Directory for saving Generated Images
-	String DIRECTORY = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.mahkota_company.android/"+"customer_prospect/";
-	String pic_name = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-	String pic_name1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date())+1;
-	String StoredPath = DIRECTORY + pic_name + ".png";
-	String StoredPath1 = DIRECTORY + pic_name1 + ".png";
-
 	private Context act;
 	private ImageView menuBackButton;
 	private DatabaseHandler databaseHandler;
@@ -182,16 +176,6 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_customer_prospect);
-
-		newTTD1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-		newTTD2 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date())+1;
-
-		file = new File(DIRECTORY);
-		if (!file.exists()) {
-			file.mkdir();
-		}
-
-
 
         //Intent intent = getIntent();
         //String hasil_ttd = intent.getStringExtra(Useless_AndroidCanvas1.HASIL_TTD);
@@ -418,7 +402,11 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 			paint.setStrokeWidth(STROKE_WIDTH);
 		}
 
-		public void save(View v, String StoredPath) {
+		public void save(View v, File StoredPath) {
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                    Locale.getDefault()).format(new Date());
+			newTTD1 = "TTD1_IMG."+ tvKodeCustomer.getText().toString() +"_"+timeStamp+ ".png";
+
 			Log.v("log_tag", "Width: " + v.getWidth());
 			Log.v("log_tag", "Height: " + v.getHeight());
 			if (bitmap == null) {
@@ -542,7 +530,11 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 			paint.setStrokeWidth(STROKE_WIDTH);
 		}
 
-		public void save(View v, String StoredPath) {
+		public void save(View v, File StoredPath) {
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                    Locale.getDefault()).format(new Date());
+			newTTD2 = "TTD2_IMG."+ tvKodeCustomer.getText().toString() +"_"+timeStamp+ ".png";
+
 			Log.v("log_tag", "Width: " + v.getWidth());
 			Log.v("log_tag", "Height: " + v.getHeight());
 			if (bitmap == null) {
@@ -952,10 +944,33 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		mGetSign.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				/*
+				file = new File(DIRECTORY);
+				if (!file.exists()) {
+					file.mkdir();
+				}
+
+				String DIRECTORY = Environment.getExternalStorageDirectory().getPath() + "/Android/data/com.mahkota_company.android/"+"customer_prospect/";
+				String pic_name = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+				String pic_name1 = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date())+1;
+				String StoredPath = DIRECTORY + pic_name + ".png";
+				String StoredPath1 = DIRECTORY + pic_name1 + ".png";
+				*/
+
+				File dir = new File(CONFIG.getFolderPath() + "/"+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                        Locale.getDefault()).format(new Date());
+				File mediaFile;
+				mediaFile = new File(dir.getPath() + File.separator +"TTD1_IMG."
+                        + tvKodeCustomer.getText().toString() +"_"+timeStamp+ ".png");
 
 				Log.v("log_tag", "Panel Saved");
 				view.setDrawingCacheEnabled(true);
-				mSignature.save(view, StoredPath);
+				mSignature.save(view, mediaFile);
 				dialog.dismiss();
 				Toast.makeText(getApplicationContext(), "Successfully Saved", Toast.LENGTH_SHORT).show();
 				// Calling the same class
@@ -1012,10 +1027,20 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 		mGetSign.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
+				File dir = new File(CONFIG.getFolderPath() + "/"+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                        Locale.getDefault()).format(new Date());
+				File mediaFile;
+				mediaFile = new File(dir.getPath() + File.separator +"TTD2_IMG."
+						+ tvKodeCustomer.getText().toString() +"_"+timeStamp+ ".png");
 
 				Log.v("log_tag", "Panel Saved");
 				view.setDrawingCacheEnabled(true);
-				mSignature1.save(view, StoredPath1);
+				mSignature1.save(view, mediaFile);
 				//ttd1.setText(newTTD1);
 				dialog.dismiss();
 				Toast.makeText(getApplicationContext(), "Successfully Saved", Toast.LENGTH_SHORT).show();
