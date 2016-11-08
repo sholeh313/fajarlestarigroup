@@ -18,24 +18,25 @@ public class RebootReceiver extends BroadcastReceiver {
 		if (intentReceive.getAction().equals(
 				"android.intent.action.BOOT_COMPLETED")) {
 			Log.d(LOG_TAG, "Initialisasi startMonitoring Success");
-			try {
-				final AlarmManager alarms = (AlarmManager) _context
-						.getSystemService(Context.ALARM_SERVICE);
-				Intent intent = new Intent(_context, AlarmReceiver.class);
-				intent.putExtra(AlarmReceiver.ACTION_ALARM,
-						AlarmReceiver.ACTION_ALARM);
-				intent.putExtra("mahkota", "tracking");
-				final PendingIntent pIntent = PendingIntent.getBroadcast(
-						_context, 1234567, intent,
-						PendingIntent.FLAG_UPDATE_CURRENT);
-
-				tm = 20 * 1000 * 60;
-				alarms.setRepeating(AlarmManager.RTC_WAKEUP,
-						System.currentTimeMillis(), tm, pIntent);
-
-			} catch (Exception e) {
-				Log.d(LOG_TAG, "Initialisasi startMonitoring Error");
-			}
+			_context.startService(new Intent(_context, TrackingService.class));
+//			try {
+//				final AlarmManager alarms = (AlarmManager) _context
+//						.getSystemService(Context.ALARM_SERVICE);
+//				Intent intent = new Intent(_context, AlarmReceiver.class);
+//				intent.putExtra(AlarmReceiver.ACTION_ALARM,
+//						AlarmReceiver.ACTION_ALARM);
+//				intent.putExtra("mahkota", "tracking");
+//				final PendingIntent pIntent = PendingIntent.getBroadcast(
+//						_context, 1234567, intent,
+//						PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//				tm = 20 * 1000 * 60;
+//				alarms.setRepeating(AlarmManager.RTC_WAKEUP,
+//						System.currentTimeMillis(), tm, pIntent);
+//
+//			} catch (Exception e) {
+//				Log.d(LOG_TAG, "Initialisasi startMonitoring Error");
+//			}
 		}
 
 	}

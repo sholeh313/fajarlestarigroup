@@ -1,30 +1,5 @@
 package com.mahkota_company.android.inventory;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -58,25 +33,45 @@ import android.widget.TextView;
 
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
-import com.mahkota_company.android.contact.ContactActivty;
+import com.mahkota_company.android.R;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
-import com.mahkota_company.android.database.Request_load;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
-import com.mahkota_company.android.locator.LocatorActivity;
-import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
-import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
 import com.mahkota_company.android.utils.FileUtils;
 import com.mahkota_company.android.utils.GlobalApp;
 import com.mahkota_company.android.utils.RowItem;
-import com.mahkota_company.android.R;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class InventoryActivity extends ActionBarActivity implements
@@ -101,6 +96,10 @@ public class InventoryActivity extends ActionBarActivity implements
 	private Button btnUnLoadProduct;
 	private Button btnPhysicalCounting;
 	private Button btnSuggestedStock;
+	private Button btnSupplier;
+	private Button btnSalesTO;
+	private Button btnSalesTO1;
+	private Button btnSalesKanvas;
 	private TextView textViewTitle;
 
 	@Override
@@ -140,21 +139,32 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnLoadProduct = (Button) findViewById(R.id.menuLoadProducts);
 		btnUnLoadProduct = (Button) findViewById(R.id.menuUnloadProduct);
 		btnPhysicalCounting = (Button) findViewById(R.id.menuPhysicalCounting);
-		btnSuggestedStock = (Button) findViewById(R.id.menuSuggestedStock);
+		//btnSuggestedStock = (Button) findViewById(R.id.menuSuggestedStock);
+		btnSupplier = (Button) findViewById(R.id.menuSupplier);
+		btnSalesTO = (Button) findViewById(R.id.menuSalesTO);
+		btnSalesKanvas = (Button) findViewById(R.id.menuSalesKanvas);
+		btnSalesTO1 = (Button) findViewById(R.id.menuSalesTO1);
 		btnStockSummary.setTypeface(typefaceSmall);
 		btnRequestLoad.setTypeface(typefaceSmall);
 		btnLoadProduct.setTypeface(typefaceSmall);
 		btnUnLoadProduct.setTypeface(typefaceSmall);
 		btnPhysicalCounting.setTypeface(typefaceSmall);
-		btnSuggestedStock.setTypeface(typefaceSmall);
+		//btnSuggestedStock.setTypeface(typefaceSmall);
+		btnSupplier.setTypeface(typefaceSmall);
+		btnSalesTO.setTypeface(typefaceSmall);
+		btnSalesKanvas.setTypeface(typefaceSmall);
+
+		btnSalesTO1.setVisibility(View.INVISIBLE);
+
 
 		btnRequestLoad.setOnClickListener(requestLoadClickListener);
 		btnStockSummary.setOnClickListener(stockSummaryClickListener);
 		btnLoadProduct.setOnClickListener(loadProductClickListener);
 		btnUnLoadProduct.setOnClickListener(unloadsProductClickListener);
 		btnPhysicalCounting.setOnClickListener(physicalCountingClickListener);
-
-		btnSuggestedStock.setVisibility(View.INVISIBLE);
+		btnSupplier.setOnClickListener(supplierClickListener);
+		btnSalesTO.setOnClickListener(salesTOClickListener);
+		btnSalesKanvas.setOnClickListener(salesKanvasClickListener);
 		//
 		// if (countProduct == 0) {
 		// if (GlobalApp.checkInternetConnection(act)) {
@@ -260,6 +270,68 @@ public class InventoryActivity extends ActionBarActivity implements
 					showCustomDialog(msg);
 				} else {
 					gotoPhysicalCounting();
+				}
+			}
+		}
+	};
+
+
+	/**
+	 * Button Physical Counting Listener
+	 */
+	public View.OnClickListener supplierClickListener = new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			gotoSupplier();
+		}
+	};
+
+
+	/**
+	 * Button Sales TO Listener
+	 */
+	public View.OnClickListener salesTOClickListener = new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			if (isRunningDummyVersion()) {
+				gotoSalesTO();
+			} else {
+				int countProduct = databaseHandler.getCountProduct();
+				if (countProduct == 0) {
+					String msg = getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_inventory_sales_to_no_product);
+					showCustomDialog(msg);
+				} else {
+					gotoSalesTO();
+				}
+			}
+		}
+	};
+
+
+	/**
+	 * Button Sales Kanvas Listener
+	 */
+	public View.OnClickListener salesKanvasClickListener = new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			if (isRunningDummyVersion()) {
+				gotoSalesKanvas();
+			} else {
+				int countProduct = databaseHandler.getCountStockVan();
+				if (countProduct == 0) {
+					String msg = getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_inventory_physical_counting_failed_empty_data_stock_van);
+					showCustomDialog(msg);
+				} else {
+					gotoSalesKanvas();
 				}
 			}
 		}
@@ -811,17 +883,17 @@ public class InventoryActivity extends ActionBarActivity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_refresh:
-			if (GlobalApp.checkInternetConnection(act)) {
-				new DownloadDataProduct().execute();
-			} else {
-				String message = act.getApplicationContext().getResources()
-						.getString(R.string.app_product_processing_empty);
-				showCustomDialog(message);
-			}
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
+			case R.id.menu_refresh:
+				if (GlobalApp.checkInternetConnection(act)) {
+					new DownloadDataProduct().execute();
+				} else {
+					String message = act.getApplicationContext().getResources()
+							.getString(R.string.app_product_processing_empty);
+					showCustomDialog(message);
+				}
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -832,7 +904,7 @@ public class InventoryActivity extends ActionBarActivity implements
 		ArrayList<Product> data = new ArrayList<Product>();
 
 		public ListViewAdapter(Activity act, int layoutResourceId,
-				ArrayList<Product> data) {
+							   ArrayList<Product> data) {
 			super(act, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
 			this.activity = act;
@@ -842,7 +914,7 @@ public class InventoryActivity extends ActionBarActivity implements
 
 		@Override
 		public View getView(final int position, View convertView,
-				ViewGroup parent) {
+							ViewGroup parent) {
 			View row = convertView;
 			UserHolder holder = null;
 
@@ -898,7 +970,7 @@ public class InventoryActivity extends ActionBarActivity implements
 	}
 
 	public void gotoRequestLoad() {
-		Intent i = new Intent(this, RequestLoadActivity.class);
+		Intent i = new Intent(this, AddRequestActivity.class);
 		startActivity(i);
 		finish();
 	}
@@ -917,6 +989,25 @@ public class InventoryActivity extends ActionBarActivity implements
 
 	public void gotoPhysicalCounting() {
 		Intent i = new Intent(this, PhysicalCountingActivity.class);
+		startActivity(i);
+		finish();
+	}
+
+	public void gotoSupplier() {
+		Intent i = new Intent(this, SupplierActivity.class);
+		startActivity(i);
+		finish();
+	}
+
+
+	public void gotoSalesTO() {
+		Intent i = new Intent(this, SalesTOActivity.class);
+		startActivity(i);
+		finish();
+	}
+
+	public void gotoSalesKanvas() {
+		Intent i = new Intent(this, SalesKanvasActivity.class);
 		startActivity(i);
 		finish();
 	}
@@ -976,7 +1067,8 @@ public class InventoryActivity extends ActionBarActivity implements
 							ContactActivty.class);
 					startActivity(intentActivity);
 					finish();
-				}*/else if (position == 10) {
+				}*/
+				/* Note TODO else if (position == 10) {
 					Intent intentActivity = new Intent(this,
 							ReturActivity.class);
 					startActivity(intentActivity);

@@ -4,15 +4,28 @@ import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.GpsStatus;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
 import android.util.Log;
+
+import com.mahkota_company.android.prospect.AddCustomerProspectActivity;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 	// All Static variables
 	// Database Version
 	private static final int DATABASE_VERSION = 1;
+	private double latitude; // latitude
+	private double longitude; // longitude
+
+	private Location location; // location
+	private LocationManager locationManager;
 
 	// Database Name
 	private static final String DATABASE_NAME = "mahkota";
@@ -39,6 +52,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_PRODUCT_TARGET = "product_target";
 	private static final String TABLE_PENJUALAN = "penjualan";
 	private static final String TABLE_PENJUALAN_DETAIL = "penjualan_detail";
+	private static final String LOG_TAG = AddCustomerProspectActivity.class.getSimpleName();
+	private static final String TABLE_TRACKING_LOGS = "tracking_logs";
 
 	// STAFF Table Columns names
 	private static final String KEY_STAFF_ID_STAFF = "id_staff";
@@ -290,6 +305,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_TRACKING_DATE = "date";
 	private static final String KEY_TRACKING_TIME = "time";
 
+	private static final String KEY_TRACKING_LOGS_ID_LOCATOR = "id_locator";
+	private static final String KEY_TRACKING_LOGS_USERNAME = "username";
+	private static final String KEY_TRACKING_LOGS_NAMA_LENGKAP = "nama_lengkap";
+	private static final String KEY_TRACKING_LOGS_LEVEL = "level";
+	private static final String KEY_TRACKING_LOGS_LATS = "lats";
+	private static final String KEY_TRACKING_LOGS_LONGS = "longs";
+	private static final String KEY_TRACKING_LOGS_ADDRESS = "address";
+	private static final String KEY_TRACKING_LOGS_IMEI = "imei";
+	private static final String KEY_TRACKING_LOGS_MCC = "mcc";
+	private static final String KEY_TRACKING_LOGS_MNC = "mnc";
+	private static final String KEY_TRACKING_LOGS_DATE = "date";
+	private static final String KEY_TRACKING_LOGS_TIME = "time";
+
 	private final ArrayList<Staff> staff_list = new ArrayList<Staff>();
 	private final ArrayList<TypeCustomer> type_customer_list = new ArrayList<TypeCustomer>();
 	private final ArrayList<Cluster> cluster_list = new ArrayList<Cluster>();
@@ -314,6 +342,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private final ArrayList<PenjualanDetail> penjualan_detail_list = new ArrayList<PenjualanDetail>();
 	private final ArrayList<Tracking> tracking_list = new ArrayList<Tracking>();
 	private final ArrayList<StaffTemp> staff_temp_list = new ArrayList<StaffTemp>();
+	private final ArrayList<TrackingLogs> tracking_logs_list = new ArrayList<TrackingLogs>();
 
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -584,6 +613,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_PENJUALAN_DETAIL_ID_PRODUCT + " INTEGER,"
 				+ KEY_PENJUALAN_DETAIL_JUMLAH + " INTEGER" + ")";
 		db.execSQL(CREATE_TABLE_PENJUALAN_DETAIL);
+
+		String CREATE_TABLE_TRACKING_LOGS = "CREATE TABLE " + TABLE_TRACKING_LOGS + "("
+				+ KEY_TRACKING_LOGS_ID_LOCATOR + " INTEGER PRIMARY KEY,"
+				+ KEY_TRACKING_LOGS_USERNAME + " TEXT," + KEY_TRACKING_LOGS_NAMA_LENGKAP
+				+ " TEXT," + KEY_TRACKING_LOGS_LEVEL + " INTEGER,"
+				+ KEY_TRACKING_LOGS_LATS + " TEXT," + KEY_TRACKING_LOGS_LONGS + " TEXT,"
+				+ KEY_TRACKING_LOGS_ADDRESS + " TEXT," + KEY_TRACKING_LOGS_IMEI
+				+ " TEXT," + KEY_TRACKING_LOGS_MCC + " TEXT," + KEY_TRACKING_LOGS_MNC
+				+ " TEXT," + KEY_TRACKING_LOGS_DATE + " TEXT," + KEY_TRACKING_LOGS_TIME
+				+ " TEXT" + ")";
+		db.execSQL(CREATE_TABLE_TRACKING_LOGS);
 	}
 
 	// Upgrading database
@@ -610,6 +650,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCT_TARGET);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PENJUALAN);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_PENJUALAN_DETAIL);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRACKING_LOGS);
 		onCreate(db);
 	}
 
@@ -1068,6 +1109,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// Inserting Row
 		db.insert(TABLE_TRACKING, null, values);
 
+
+
+		db.close(); // Closing database connection
+	}
+
+	// Adding new Tracking
+	public void add_TrackingLogs(TrackingLogs tracking) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_TRACKING_LOGS_ID_LOCATOR, tracking.getId_locator());
+		values.put(KEY_TRACKING_LOGS_USERNAME, tracking.getUsername());
+		values.put(KEY_TRACKING_LOGS_NAMA_LENGKAP, tracking.getNama_lengkap());
+		values.put(KEY_TRACKING_LOGS_LEVEL, tracking.getLevel());
+		values.put(KEY_TRACKING_LOGS_LATS, tracking.getLats());
+		values.put(KEY_TRACKING_LOGS_LONGS, tracking.getLongs());
+		values.put(KEY_TRACKING_LOGS_ADDRESS, tracking.getAddress());
+		values.put(KEY_TRACKING_LOGS_IMEI, tracking.getImei());
+		values.put(KEY_TRACKING_LOGS_MCC, tracking.getMcc());
+		values.put(KEY_TRACKING_LOGS_MNC, tracking.getMnc());
+		values.put(KEY_TRACKING_LOGS_DATE, tracking.getDate());
+		values.put(KEY_TRACKING_LOGS_TIME, tracking.getTime());
+		// Inserting Row
+		db.insert(TABLE_TRACKING_LOGS, null, values);
+
 		db.close(); // Closing database connection
 	}
 
@@ -1501,6 +1566,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 		return wilayah;
 	}
+
+
 
 	// Getting ArrayList<Staff> below level
 	public ArrayList<Staff> getAllStaff_Low_Level(int level) {
@@ -2135,6 +2202,78 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return customer_list;
 	}
 
+    public ArrayList<Customer> getAllCustomerProspectUploaded() {
+		try {
+			customer_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+					+ " WHERE blokir ='NO'";
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Customer customer = new Customer();
+					customer.setId_customer(cursor.getInt(0));
+					customer.setKode_customer(cursor.getString(1));
+					customer.setEmail(cursor.getString(2));
+					customer.setAlamat(cursor.getString(3));
+					customer.setLats(cursor.getString(4));
+					customer.setLongs(cursor.getString(5));
+					customer.setNama_lengkap(cursor.getString(6));
+					customer.setNo_telp(cursor.getString(7));
+					customer.setId_wilayah(cursor.getInt(8));
+					customer.setFoto_1(cursor.getString(9));
+					customer.setFoto_2(cursor.getString(10));
+					customer.setFoto_3(cursor.getString(11));
+					customer.setId_type_customer(cursor.getInt(12));
+					customer.setBlokir(cursor.getString(13));
+					customer.setDate(cursor.getString(14));
+					customer.setStatus_update(cursor.getString(15));
+					customer.setId_staff(cursor.getInt(16));
+					customer.setNo_ktp(cursor.getString(17));
+					customer.setTanggal_lahir(cursor.getString(18));
+					customer.setNama_bank(cursor.getString(19));
+					customer.setNo_rekening(cursor.getString(20));
+					customer.setAtas_nama(cursor.getString(21));
+					customer.setNpwp(cursor.getString(22));
+					customer.setNama_pasar(cursor.getString(23));
+					customer.setId_cluster(cursor.getInt(24));
+					customer.setTelp(cursor.getString(25));
+					customer.setFax(cursor.getString(26));
+					customer.setOmset(cursor.getString(27));
+					customer.setCara_pembayaran(cursor.getString(28));
+					customer.setPlafon_kredit(cursor.getString(29));
+					customer.setTerm_kredit(cursor.getString(30));
+					customer.setNama_istri(cursor.getString(31));
+					customer.setNama_anak1(cursor.getString(32));
+					customer.setNama_anak2(cursor.getString(33));
+					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getInt(36));
+					customer.setIsactive(cursor.getString(37));
+					customer.setDescription(cursor.getString(38));
+					customer.setNama_toko(cursor.getString(39));
+					customer.setTtd1(cursor.getString(40));
+					customer.setTtd2(cursor.getString(41));
+					// Adding customer_list to list
+					customer_list.add(customer);
+				} while (cursor.moveToNext());
+			}
+
+			// return customer_list
+			cursor.close();
+			db.close();
+			return customer_list;
+		} catch (Exception e) {
+			Log.e("customer_list", "" + e);
+		}
+
+		return customer_list;
+	}
+
 	// Getting All Customer
 	public ArrayList<Customer> getAllCustomerActive() {
 		try {
@@ -2143,6 +2282,208 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// Select All Query
 			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
 					+ " WHERE blokir ='N'";
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Customer customer = new Customer();
+					customer.setId_customer(cursor.getInt(0));
+					customer.setKode_customer(cursor.getString(1));
+					customer.setEmail(cursor.getString(2));
+					customer.setAlamat(cursor.getString(3));
+					customer.setLats(cursor.getString(4));
+					customer.setLongs(cursor.getString(5));
+					customer.setNama_lengkap(cursor.getString(6));
+					customer.setNo_telp(cursor.getString(7));
+					customer.setId_wilayah(cursor.getInt(8));
+					customer.setFoto_1(cursor.getString(9));
+					customer.setFoto_2(cursor.getString(10));
+					customer.setFoto_3(cursor.getString(11));
+					customer.setId_type_customer(cursor.getInt(12));
+					customer.setBlokir(cursor.getString(13));
+					customer.setDate(cursor.getString(14));
+					customer.setStatus_update(cursor.getString(15));
+					customer.setId_staff(cursor.getInt(16));
+					customer.setNo_ktp(cursor.getString(17));
+					customer.setTanggal_lahir(cursor.getString(18));
+					customer.setNama_bank(cursor.getString(19));
+					customer.setNo_rekening(cursor.getString(20));
+					customer.setAtas_nama(cursor.getString(21));
+					customer.setNpwp(cursor.getString(22));
+					customer.setNama_pasar(cursor.getString(23));
+					customer.setId_cluster(cursor.getInt(24));
+					customer.setTelp(cursor.getString(25));
+					customer.setFax(cursor.getString(26));
+					customer.setOmset(cursor.getString(27));
+					customer.setCara_pembayaran(cursor.getString(28));
+					customer.setPlafon_kredit(cursor.getString(29));
+					customer.setTerm_kredit(cursor.getString(30));
+
+					customer.setNama_istri(cursor.getString(31));
+					customer.setNama_anak1(cursor.getString(32));
+					customer.setNama_anak2(cursor.getString(33));
+					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getInt(36));
+					customer.setIsactive(cursor.getString(37));
+					customer.setDescription(cursor.getString(38));
+					customer.setNama_toko(cursor.getString(39));
+					customer.setTtd1(cursor.getString(40));
+					customer.setTtd2(cursor.getString(41));
+					// Adding customer_list to list
+					customer_list.add(customer);
+				} while (cursor.moveToNext());
+			}
+
+			// return customer_list
+			cursor.close();
+			db.close();
+			return customer_list;
+		} catch (Exception e) {
+			Log.e("customer_list", "" + e);
+		}
+
+		return customer_list;
+	}
+
+
+    public ArrayList<Customer> getAllCustomerActiveUploaded() {
+        try {
+            customer_list.clear();
+
+            // Select All Query
+            String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+                    + " WHERE blokir ='N' and status_update='3' order by date desc";
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Customer customer = new Customer();
+                    customer.setId_customer(cursor.getInt(0));
+                    customer.setKode_customer(cursor.getString(1));
+                    customer.setEmail(cursor.getString(2));
+                    customer.setAlamat(cursor.getString(3));
+                    customer.setLats(cursor.getString(4));
+                    customer.setLongs(cursor.getString(5));
+                    customer.setNama_lengkap(cursor.getString(6));
+                    customer.setNo_telp(cursor.getString(7));
+                    customer.setId_wilayah(cursor.getInt(8));
+                    customer.setFoto_1(cursor.getString(9));
+                    customer.setFoto_2(cursor.getString(10));
+                    customer.setFoto_3(cursor.getString(11));
+                    customer.setId_type_customer(cursor.getInt(12));
+                    customer.setBlokir(cursor.getString(13));
+                    customer.setDate(cursor.getString(14));
+                    customer.setStatus_update(cursor.getString(15));
+                    customer.setId_staff(cursor.getInt(16));
+                    customer.setNo_ktp(cursor.getString(17));
+                    customer.setTanggal_lahir(cursor.getString(18));
+                    customer.setNama_bank(cursor.getString(19));
+                    customer.setNo_rekening(cursor.getString(20));
+                    customer.setAtas_nama(cursor.getString(21));
+                    customer.setNpwp(cursor.getString(22));
+                    customer.setNama_pasar(cursor.getString(23));
+                    customer.setId_cluster(cursor.getInt(24));
+                    customer.setTelp(cursor.getString(25));
+                    customer.setFax(cursor.getString(26));
+                    customer.setOmset(cursor.getString(27));
+                    customer.setCara_pembayaran(cursor.getString(28));
+                    customer.setPlafon_kredit(cursor.getString(29));
+                    customer.setTerm_kredit(cursor.getString(30));
+
+                    customer.setNama_istri(cursor.getString(31));
+                    customer.setNama_anak1(cursor.getString(32));
+                    customer.setNama_anak2(cursor.getString(33));
+                    customer.setNama_anak3(cursor.getString(34));
+                    customer.setKode_pos(cursor.getString(35));
+                    customer.setId_depo(cursor.getInt(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
+                    customer.setNama_toko(cursor.getString(39));
+                    customer.setTtd1(cursor.getString(40));
+                    customer.setTtd2(cursor.getString(41));
+                    // Adding customer_list to list
+                    customer_list.add(customer);
+                } while (cursor.moveToNext());
+            }
+
+            // return customer_list
+            cursor.close();
+            db.close();
+            return customer_list;
+        } catch (Exception e) {
+            Log.e("customer_list", "" + e);
+        }
+
+        return customer_list;
+    }
+	private LocationListener locationListener = new LocationListener() {
+
+		@Override
+		public void onStatusChanged(String provider, int status, Bundle extras) {
+			try {
+				String strStatus = "";
+				switch (status) {
+					case GpsStatus.GPS_EVENT_FIRST_FIX:
+						strStatus = "GPS_EVENT_FIRST_FIX";
+						break;
+					case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
+						strStatus = "GPS_EVENT_SATELLITE_STATUS";
+						break;
+					case GpsStatus.GPS_EVENT_STARTED:
+						strStatus = "GPS_EVENT_STARTED";
+						break;
+					case GpsStatus.GPS_EVENT_STOPPED:
+						strStatus = "GPS_EVENT_STOPPED";
+						break;
+					default:
+						strStatus = String.valueOf(status);
+						break;
+				}
+				Log.i(LOG_TAG, "locationListener " + strStatus);
+			} catch (Exception e) {
+				Log.d(LOG_TAG, "locationListener Error");
+			}
+		}
+
+		@Override
+		public void onProviderEnabled(String provider) {
+		}
+
+		@Override
+		public void onProviderDisabled(String provider) {
+		}
+
+		@Override
+		public void onLocationChanged(Location location) {
+			try {
+				latitude = location.getLatitude();
+				Log.d(LOG_TAG, "latitude " + latitude);
+			} catch (Exception e) {
+				Log.i(LOG_TAG, "onLocationChanged " + e.toString());
+			}
+		}
+	};
+
+
+	public ArrayList<Customer> getAllCustomerActiveUploaded12() {
+		try {
+			customer_list.clear();
+
+			location = locationManager
+					.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			latitude = location.getLatitude();
+			Double latsTambah= latitude+0.01;
+			Double latsKurang= latitude-0.01;
+			// Select All Query
+			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+			//+" where lats between "+ latsTambah+" and "+latsKurang;
+			+" where lats between '-5.732801666666667' and '-5.752801666666667'";
+			//+ " WHERE blokir ='N' and status_update='3' order by date desc";
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -2282,6 +2623,157 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return customer_list;
 	}
 
+    public ArrayList<Customer> getAllCustomerActiveUploaded(int id_depo) {
+        try {
+            customer_list.clear();
+
+            // Select All Query
+            String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+                    + " WHERE blokir ='N' and status_update ='3' AND id_depo=" + id_depo+" order by date desc";
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Customer customer = new Customer();
+                    customer.setId_customer(cursor.getInt(0));
+                    customer.setKode_customer(cursor.getString(1));
+                    customer.setEmail(cursor.getString(2));
+                    customer.setAlamat(cursor.getString(3));
+                    customer.setLats(cursor.getString(4));
+                    customer.setLongs(cursor.getString(5));
+                    customer.setNama_lengkap(cursor.getString(6));
+                    customer.setNo_telp(cursor.getString(7));
+                    customer.setId_wilayah(cursor.getInt(8));
+                    customer.setFoto_1(cursor.getString(9));
+                    customer.setFoto_2(cursor.getString(10));
+                    customer.setFoto_3(cursor.getString(11));
+                    customer.setId_type_customer(cursor.getInt(12));
+                    customer.setBlokir(cursor.getString(13));
+                    customer.setDate(cursor.getString(14));
+                    customer.setStatus_update(cursor.getString(15));
+                    customer.setId_staff(cursor.getInt(16));
+                    customer.setNo_ktp(cursor.getString(17));
+                    customer.setTanggal_lahir(cursor.getString(18));
+                    customer.setNama_bank(cursor.getString(19));
+                    customer.setNo_rekening(cursor.getString(20));
+                    customer.setAtas_nama(cursor.getString(21));
+                    customer.setNpwp(cursor.getString(22));
+                    customer.setNama_pasar(cursor.getString(23));
+                    customer.setId_cluster(cursor.getInt(24));
+                    customer.setTelp(cursor.getString(25));
+                    customer.setFax(cursor.getString(26));
+                    customer.setOmset(cursor.getString(27));
+                    customer.setCara_pembayaran(cursor.getString(28));
+                    customer.setPlafon_kredit(cursor.getString(29));
+                    customer.setTerm_kredit(cursor.getString(30));
+                    customer.setNama_istri(cursor.getString(31));
+                    customer.setNama_anak1(cursor.getString(32));
+                    customer.setNama_anak2(cursor.getString(33));
+                    customer.setNama_anak3(cursor.getString(34));
+                    customer.setKode_pos(cursor.getString(35));
+                    customer.setId_depo(cursor.getInt(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
+                    customer.setNama_toko(cursor.getString(39));
+                    customer.setTtd1(cursor.getString(40));
+                    customer.setTtd2(cursor.getString(41));
+                    // Adding customer_list to list
+                    customer_list.add(customer);
+                } while (cursor.moveToNext());
+            }
+
+            // return customer_list
+            cursor.close();
+            db.close();
+            return customer_list;
+        } catch (Exception e) {
+            Log.e("customer_list", "" + e);
+        }
+
+        return customer_list;
+    }
+
+	public ArrayList<Customer> getAllCustomerActiveUploaded12(int id_depo) {
+		try {
+			customer_list.clear();
+
+			latitude = location.getLatitude();
+			Double latsTambah= latitude+0.01;
+			Double latsKurang= latitude-0.01;
+			// Select All Query
+			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+					+" where lats between "+ latsTambah+" and "+latsKurang;
+			// Select All Query
+			//String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+			//+" where lats between '-5.732801666666667' and '-5.862019999999999'";
+			//+ " WHERE blokir ='N' and status_update ='3' AND id_depo=" + id_depo+" order by date desc";
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Customer customer = new Customer();
+					customer.setId_customer(cursor.getInt(0));
+					customer.setKode_customer(cursor.getString(1));
+					customer.setEmail(cursor.getString(2));
+					customer.setAlamat(cursor.getString(3));
+					customer.setLats(cursor.getString(4));
+					customer.setLongs(cursor.getString(5));
+					customer.setNama_lengkap(cursor.getString(6));
+					customer.setNo_telp(cursor.getString(7));
+					customer.setId_wilayah(cursor.getInt(8));
+					customer.setFoto_1(cursor.getString(9));
+					customer.setFoto_2(cursor.getString(10));
+					customer.setFoto_3(cursor.getString(11));
+					customer.setId_type_customer(cursor.getInt(12));
+					customer.setBlokir(cursor.getString(13));
+					customer.setDate(cursor.getString(14));
+					customer.setStatus_update(cursor.getString(15));
+					customer.setId_staff(cursor.getInt(16));
+					customer.setNo_ktp(cursor.getString(17));
+					customer.setTanggal_lahir(cursor.getString(18));
+					customer.setNama_bank(cursor.getString(19));
+					customer.setNo_rekening(cursor.getString(20));
+					customer.setAtas_nama(cursor.getString(21));
+					customer.setNpwp(cursor.getString(22));
+					customer.setNama_pasar(cursor.getString(23));
+					customer.setId_cluster(cursor.getInt(24));
+					customer.setTelp(cursor.getString(25));
+					customer.setFax(cursor.getString(26));
+					customer.setOmset(cursor.getString(27));
+					customer.setCara_pembayaran(cursor.getString(28));
+					customer.setPlafon_kredit(cursor.getString(29));
+					customer.setTerm_kredit(cursor.getString(30));
+					customer.setNama_istri(cursor.getString(31));
+					customer.setNama_anak1(cursor.getString(32));
+					customer.setNama_anak2(cursor.getString(33));
+					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getInt(36));
+					customer.setIsactive(cursor.getString(37));
+					customer.setDescription(cursor.getString(38));
+					customer.setNama_toko(cursor.getString(39));
+					customer.setTtd1(cursor.getString(40));
+					customer.setTtd2(cursor.getString(41));
+					// Adding customer_list to list
+					customer_list.add(customer);
+				} while (cursor.moveToNext());
+			}
+
+			// return customer_list
+			cursor.close();
+			db.close();
+			return customer_list;
+		} catch (Exception e) {
+			Log.e("customer_list", "" + e);
+		}
+
+		return customer_list;
+	}
+
 	// Getting All Customer
 	public ArrayList<Customer> getAllCustomerActiveAndUpdateByUser() {
 		try {
@@ -2356,8 +2848,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 	// Getting All Customer
-	public ArrayList<Customer> getAllCustomerActiveBaseOnSearch(String search,
-																int id_wilayah) {
+	public ArrayList<Customer> getAllCustomerActiveBaseOnSearch(String search,int id_wilayah) {
 		try {
 			customer_list.clear();
 
@@ -2431,6 +2922,162 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return customer_list;
 	}
 
+    public ArrayList<Customer> getAllCustomerActiveUploadedBaseOnSearch(String search,int id_wilayah) {
+        try {
+            customer_list.clear();
+
+            // Select All Query
+            String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+                    + " WHERE blokir ='N' and status_update='3' AND "
+                    + KEY_CUSTOMER_NAMA_TOKO + " LIKE '" + search
+                    + "%' AND id_depo=" + id_wilayah;
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
+
+            // looping through all rows and adding to list
+            if (cursor.moveToFirst()) {
+                do {
+                    Customer customer = new Customer();
+                    customer.setId_customer(cursor.getInt(0));
+                    customer.setKode_customer(cursor.getString(1));
+                    customer.setEmail(cursor.getString(2));
+                    customer.setAlamat(cursor.getString(3));
+                    customer.setLats(cursor.getString(4));
+                    customer.setLongs(cursor.getString(5));
+                    customer.setNama_lengkap(cursor.getString(6));
+                    customer.setNo_telp(cursor.getString(7));
+                    customer.setId_wilayah(cursor.getInt(8));
+                    customer.setFoto_1(cursor.getString(9));
+                    customer.setFoto_2(cursor.getString(10));
+                    customer.setFoto_3(cursor.getString(11));
+                    customer.setId_type_customer(cursor.getInt(12));
+                    customer.setBlokir(cursor.getString(13));
+                    customer.setDate(cursor.getString(14));
+                    customer.setStatus_update(cursor.getString(15));
+                    customer.setId_staff(cursor.getInt(16));
+                    customer.setNo_ktp(cursor.getString(17));
+                    customer.setTanggal_lahir(cursor.getString(18));
+                    customer.setNama_bank(cursor.getString(19));
+                    customer.setNo_rekening(cursor.getString(20));
+                    customer.setAtas_nama(cursor.getString(21));
+                    customer.setNpwp(cursor.getString(22));
+                    customer.setNama_pasar(cursor.getString(23));
+                    customer.setId_cluster(cursor.getInt(24));
+                    customer.setTelp(cursor.getString(25));
+                    customer.setFax(cursor.getString(26));
+                    customer.setOmset(cursor.getString(27));
+                    customer.setCara_pembayaran(cursor.getString(28));
+                    customer.setPlafon_kredit(cursor.getString(29));
+                    customer.setTerm_kredit(cursor.getString(30));
+
+                    customer.setNama_istri(cursor.getString(31));
+                    customer.setNama_anak1(cursor.getString(32));
+                    customer.setNama_anak2(cursor.getString(33));
+                    customer.setNama_anak3(cursor.getString(34));
+                    customer.setId_depo(cursor.getInt(36));
+                    customer.setIsactive(cursor.getString(37));
+                    customer.setDescription(cursor.getString(38));
+                    customer.setNama_toko(cursor.getString(39));
+                    customer.setTtd1(cursor.getString(40));
+                    customer.setTtd2(cursor.getString(41));
+                    // Adding customer_list to list
+                    customer_list.add(customer);
+                } while (cursor.moveToNext());
+            }
+
+            // return customer_list
+            cursor.close();
+            db.close();
+            return customer_list;
+        } catch (Exception e) {
+            Log.e("customer_list", "" + e);
+        }
+
+        return customer_list;
+    }
+
+
+	public ArrayList<Customer> getAllCustomerActiveUploaded12BaseOnSearch(String search,int id_wilayah) {
+		try {
+			customer_list.clear();
+
+			latitude = location.getLatitude();
+			Double latsTambah= latitude+0.01;
+			Double latsKurang= latitude-0.01;
+			// Select All Query
+			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+					+" where lats between "+ latsTambah+" and "+latsKurang;
+			// Select All Query
+			//String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+			//+" where lats between '-5.732801666666667' and '-5.862019999999999'";
+			//+ " WHERE blokir ='N' and status_update='3' AND "
+					//+ KEY_CUSTOMER_NAMA_TOKO + " LIKE '" + search
+					//+ "%' AND id_depo=" + id_wilayah;
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Customer customer = new Customer();
+					customer.setId_customer(cursor.getInt(0));
+					customer.setKode_customer(cursor.getString(1));
+					customer.setEmail(cursor.getString(2));
+					customer.setAlamat(cursor.getString(3));
+					customer.setLats(cursor.getString(4));
+					customer.setLongs(cursor.getString(5));
+					customer.setNama_lengkap(cursor.getString(6));
+					customer.setNo_telp(cursor.getString(7));
+					customer.setId_wilayah(cursor.getInt(8));
+					customer.setFoto_1(cursor.getString(9));
+					customer.setFoto_2(cursor.getString(10));
+					customer.setFoto_3(cursor.getString(11));
+					customer.setId_type_customer(cursor.getInt(12));
+					customer.setBlokir(cursor.getString(13));
+					customer.setDate(cursor.getString(14));
+					customer.setStatus_update(cursor.getString(15));
+					customer.setId_staff(cursor.getInt(16));
+					customer.setNo_ktp(cursor.getString(17));
+					customer.setTanggal_lahir(cursor.getString(18));
+					customer.setNama_bank(cursor.getString(19));
+					customer.setNo_rekening(cursor.getString(20));
+					customer.setAtas_nama(cursor.getString(21));
+					customer.setNpwp(cursor.getString(22));
+					customer.setNama_pasar(cursor.getString(23));
+					customer.setId_cluster(cursor.getInt(24));
+					customer.setTelp(cursor.getString(25));
+					customer.setFax(cursor.getString(26));
+					customer.setOmset(cursor.getString(27));
+					customer.setCara_pembayaran(cursor.getString(28));
+					customer.setPlafon_kredit(cursor.getString(29));
+					customer.setTerm_kredit(cursor.getString(30));
+
+					customer.setNama_istri(cursor.getString(31));
+					customer.setNama_anak1(cursor.getString(32));
+					customer.setNama_anak2(cursor.getString(33));
+					customer.setNama_anak3(cursor.getString(34));
+					customer.setId_depo(cursor.getInt(36));
+					customer.setIsactive(cursor.getString(37));
+					customer.setDescription(cursor.getString(38));
+					customer.setNama_toko(cursor.getString(39));
+					customer.setTtd1(cursor.getString(40));
+					customer.setTtd2(cursor.getString(41));
+					// Adding customer_list to list
+					customer_list.add(customer);
+				} while (cursor.moveToNext());
+			}
+
+			// return customer_list
+			cursor.close();
+			db.close();
+			return customer_list;
+		} catch (Exception e) {
+			Log.e("customer_list", "" + e);
+		}
+
+		return customer_list;
+	}
+
 	// Getting All Customer
 	public ArrayList<Customer> getAllCustomerProspectBaseOnSearch(String search) {
 		try {
@@ -2439,6 +3086,80 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// Select All Query
 			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
 					+ " WHERE blokir ='Y' AND "
+					+ KEY_CUSTOMER_NAMA_LENGKAP_CUSTOMER + " LIKE '" + search
+					+ "%'";
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					Customer customer = new Customer();
+					customer.setId_customer(cursor.getInt(0));
+					customer.setKode_customer(cursor.getString(1));
+					customer.setEmail(cursor.getString(2));
+					customer.setAlamat(cursor.getString(3));
+					customer.setLats(cursor.getString(4));
+					customer.setLongs(cursor.getString(5));
+					customer.setNama_lengkap(cursor.getString(6));
+					customer.setNo_telp(cursor.getString(7));
+					customer.setId_wilayah(cursor.getInt(8));
+					customer.setFoto_1(cursor.getString(9));
+					customer.setFoto_2(cursor.getString(10));
+					customer.setFoto_3(cursor.getString(11));
+					customer.setId_type_customer(cursor.getInt(12));
+					customer.setBlokir(cursor.getString(13));
+					customer.setDate(cursor.getString(14));
+					customer.setStatus_update(cursor.getString(15));
+					customer.setId_staff(cursor.getInt(16));
+					customer.setNo_ktp(cursor.getString(17));
+					customer.setTanggal_lahir(cursor.getString(18));
+					customer.setNama_bank(cursor.getString(19));
+					customer.setNo_rekening(cursor.getString(20));
+					customer.setAtas_nama(cursor.getString(21));
+					customer.setNpwp(cursor.getString(22));
+					customer.setNama_pasar(cursor.getString(23));
+					customer.setId_cluster(cursor.getInt(24));
+					customer.setTelp(cursor.getString(25));
+					customer.setFax(cursor.getString(26));
+					customer.setOmset(cursor.getString(27));
+					customer.setCara_pembayaran(cursor.getString(28));
+					customer.setPlafon_kredit(cursor.getString(29));
+					customer.setTerm_kredit(cursor.getString(30));
+					customer.setNama_istri(cursor.getString(31));
+					customer.setNama_anak1(cursor.getString(32));
+					customer.setNama_anak2(cursor.getString(33));
+					customer.setNama_anak3(cursor.getString(34));
+					customer.setKode_pos(cursor.getString(35));
+					customer.setId_depo(cursor.getInt(36));
+					customer.setIsactive(cursor.getString(37));
+					customer.setDescription(cursor.getString(38));
+					customer.setNama_toko(cursor.getString(39));
+					customer.setTtd1(cursor.getString(40));
+					customer.setTtd2(cursor.getString(41));
+					// Adding customer_list to list
+					customer_list.add(customer);
+				} while (cursor.moveToNext());
+			}
+
+			// return customer_list
+			cursor.close();
+			db.close();
+			return customer_list;
+		} catch (Exception e) {
+			Log.e("customer_list", "" + e);
+		}
+
+		return customer_list;
+	}
+
+    public ArrayList<Customer> getAllCustomerProspectUploadedBaseOnSearch(String search) {
+		try {
+			customer_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT * FROM " + TABLE_CUSTOMER
+					+ " WHERE blokir ='NO' AND "
 					+ KEY_CUSTOMER_NAMA_LENGKAP_CUSTOMER + " LIKE '" + search
 					+ "%'";
 			SQLiteDatabase db = this.getWritableDatabase();
@@ -3252,6 +3973,50 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return tracking_list;
 	}
 
+	// Getting All Tracking
+	public ArrayList<TrackingLogs> getAllTrackingLogs() {
+		try {
+			tracking_logs_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_TRACKING_LOGS;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					TrackingLogs tracking = new TrackingLogs();
+					tracking.setId_locator(cursor.getInt(0));
+					tracking.setUsername(cursor.getString(1));
+					tracking.setNama_lengkap(cursor.getString(2));
+					tracking.setLevel(cursor.getInt(3));
+					tracking.setLats(cursor.getString(4));
+					tracking.setLongs(cursor.getString(5));
+					tracking.setAddress(cursor.getString(6));
+					tracking.setImei(cursor.getString(7));
+					tracking.setMcc(cursor.getString(8));
+					tracking.setMnc(cursor.getString(9));
+					tracking.setDate(cursor.getString(10));
+					tracking.setTime(cursor.getString(11));
+					// Adding tracking_logs_list to list
+					tracking_logs_list.add(tracking);
+				} while (cursor.moveToNext());
+			}
+
+			// return tracking_logs_list
+			cursor.close();
+			db.close();
+			return tracking_logs_list;
+		} catch (Exception e) {
+			Log.e("tracking_logs_list", "" + e);
+		}
+
+		return tracking_logs_list;
+	}
+
+
 	// Update StockVan
 	public int updateStockVanJumlahSisa(int id, int jumlah_sisa) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -3998,6 +4763,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return count;
 	}
 
+	public int getCountTrackingLogs() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db
+				.rawQuery("select count(*) from " + TABLE_TRACKING_LOGS, null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
 	public int getCountStaffTemp() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db
@@ -4043,8 +4818,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public int getCountCustomerWhereValidAndUpdate() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_CUSTOMER
+				//+ " WHERE status_update='2'", null);
 				+ " WHERE " + KEY_CUSTOMER_BLOKIR
 				+ "='N' AND status_update='2'", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountCustomerWhereValidAndUpdateAll() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_CUSTOMER
+				+ " WHERE status_update='2'", null);
+				//+ KEY_CUSTOMER_BLOKIR
+				//+ "='N' AND status_update='2'", null);
 		mCount.moveToFirst();
 		int count = mCount.getInt(0);
 		mCount.close();
@@ -4404,6 +5192,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.execSQL("DELETE FROM " + TABLE_TRACKING);
 	}
 
+	public void deleteTableTrackingLogs() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_TRACKING_LOGS);
+	}
+
 	// Deleting single Table Customer
 	public void deleteTableCustomer(int id) {
 		SQLiteDatabase db = this.getWritableDatabase();
@@ -4556,7 +5349,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	public void updateStatus() {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.execSQL("update customer set status_update='1' where status_update='2'");
+		db.execSQL("update customer set status_update='3' where status_update='2' and blokir='N'");
+	}
+	public void updateStatusProspect() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.execSQL("update customer set status_update='1',blokir='NO' where status_update='2' and blokir='Y'");
 	}
 
 }

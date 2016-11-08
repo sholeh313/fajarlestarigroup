@@ -1,4 +1,5 @@
 package com.mahkota_company.android.prospect;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import android.app.Dialog;
 import android.view.MotionEvent;
@@ -476,7 +477,6 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
                             && etCara_pembayaran.getText().length() > 0
                             && etPlafon_kredit.getText().length() > 0
                             && etTerm_kredit.getText().length() > 0
-
                             && etNama_istri.getText().length() > 0
                             && etNama_anak1.getText().length() > 0
                             && etNama_anak2.getText().length() > 0
@@ -495,7 +495,8 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 											R.string.MSG_DLG_LABEL_FAILED_GPS_DIALOG);
 							showCustomDialog(msg);
 						} else {
-							showConfirmationUpdateCustomerProspect();
+							saveGPSandProfile();
+							//showConfirmationUpdateCustomerProspect();
 						}
 					} else {
 						String msg = getApplicationContext()
@@ -566,11 +567,18 @@ public class DetailCustomerProspectActivity extends FragmentActivity {
 	}
 
 	protected void saveGPSandProfile() {
+		final String date = "yyyy-MM-dd";
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat(
+				date);
+		final String checkDate = dateFormat.format(calendar
+				.getTime());
+
 		Customer newCustomer = new Customer();
 		newCustomer.setId_customer(customer.getId_customer());
 		newCustomer.setAlamat(etAlamatCustomer.getText().toString());
 		newCustomer.setBlokir(customer.getBlokir());
-		newCustomer.setDate(customer.getDate());
+		newCustomer.setDate(checkDate);
 		newCustomer.setEmail(etEmailCustomer.getText().toString());
 		newCustomer.setFoto_1(customer.getFoto_1());
 		newCustomer.setFoto_2(customer.getFoto_2());

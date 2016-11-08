@@ -784,7 +784,22 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 				if (etAlamatCustomer.getText().length() > 0
 						&& etEmailCustomer.getText().length() > 0
 						&& etNamaCustomer.getText().length() > 0
-						&& etTelpCustomer.getText().length() > 0) {
+						&& etTelpCustomer.getText().length() > 0
+						&& etNoKtp.getText().length() > 0
+						&& etTanggalLahir.getText().length() > 0
+						&& etNama_toko.getText().length() > 0
+						&& etNamaCustomer.getText().length() > 0
+						&& etKode_pos.getText().length() > 3
+						&& etAlamatCustomer.getText().length() > 0
+						&& etNamaPasar.getText().length() > 0
+						&& idCluster!=0
+						&& etTelpCustomer.getText().length() > 0
+						&& idWilayah != 0
+						&& idTypeCustomer!=0
+						&& etOmset.getText().length() >0
+						&& etCaraPembayaran.getText().length()>0
+						&& etPlafonKredit.getText().length()>0
+						&& etTermKredit.getText().length()>0) {
 					String curLatitude = String.valueOf((int) latitude);
 					String curLongitude = String.valueOf((int) longitude);
 					if (curLatitude.equalsIgnoreCase("0")
@@ -795,7 +810,10 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 										R.string.MSG_DLG_LABEL_FAILED_GPS_DIALOG);
 						showCustomDialog(msg);
 					} else {
-						if (tvImage1Customer.getText().length()!=0 && tvImage2Customer.getText().length()!=0) {
+						if (tvImage1Customer.getText().length()!=0
+								&& tvImage2Customer.getText().length()!=0
+								&& ttd1.getText().length()>0
+								&& ttd2.getText().length()>0) {
 							SharedPreferences spPreferences = getSharedPrefereces();
 							String idDepo = spPreferences.getString(
 									CONFIG.SHARED_PREFERENCES_STAFF_ID_WILAYAH,
@@ -834,7 +852,7 @@ public class AddCustomerProspectActivity extends FragmentActivity {
 									.getText().toString());
 							newCustomer.setNo_telp(etTelpCustomer.getText()
 									.toString());
-							newCustomer.setStatus_update("1");
+							newCustomer.setStatus_update("2");
 							newCustomer.setId_staff(Integer.parseInt(idStaff));
 							newCustomer.setNo_ktp(etNoKtp.getText().toString());
 							newCustomer.setTanggal_lahir(etTanggalLahir.getText().toString());

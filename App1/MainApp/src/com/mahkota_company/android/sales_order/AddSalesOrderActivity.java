@@ -384,7 +384,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 
 	private void BukaTTD() {
 		/*Intent intentActivity = new Intent(
-				AddSalesOrderActivity.this,
+				AddRequestActivity.this,
 				AndroidCanvasExample.class);
 		startActivity(intentActivity);
 		*/

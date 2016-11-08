@@ -58,6 +58,12 @@
     </string-array>
 
     <!-- Inventory -->
+    <string name="app_inventory_menu_supplier_logs">Supplier</string>
+    <string name="app_inventory_menu_sales_to">Sales TO</string>
+    <string name="app_inventory_menu_sales_kanvas">Sales Kanvas</string>
+    <string name="app_inventory_sales_nomer_nota">Nomer NOTA</string>
+    <string name="app_inventory_sales_alamat">Alamat</string>
+    <string name="app_inventory_sales_keterangan">Keterangan</string>
     <string name="app_inventory_retur_stok_save_error">Retur Stok gagal, mohon hubungi head office !</string>
     <string name="app_inventory_retur_stok_processing_upload_retur_stok_failed">Proses upload retur stok ke server gagal !</string>
     <string name="app_inventory_retur_stok_processing_upload_retur_stok_failed_2">Anda sudah melakukan Proses upload retur stok, mohon menunggu konfirmasi dari admin !</string>
@@ -65,6 +71,7 @@
     <string name="app_inventory_retur_stok_processing_upload_retur_stok">Proses upload retur stok</string>
     <string name="app_inventory_menu_stock_summary">Stock Summary</string>
     <string name="app_inventory_menu_stock_retur">Retur Stock</string>
+    <string name="app_inventory_sales_to_no_product">Mohon mendownload data stok gudang !</string>
     <string name="app_inventory_retur_stok_textview_kode_customer">Kode Customer</string>
     <string name="app_inventory_retur_stok_textview_nama_customer">Nama Customer</string>
     <string name="app_inventory_menu_stock_request_load">Request Load</string>
@@ -179,7 +186,8 @@
     <string name="menu_10">Inventory</string>
     <string name="menu_11">Retur</string>
     <string name="menu_12">Merchandise</string>
-    <string name="menu_13">Retur</string>
+    <string name="menu_13">Check Customer Uploaded</string>
+    <string name="menu_14">Check Prospect Uploaded</string>
     <!-- Customer -->
     <string name="app_customer_hint_search_customer">Search Customer</string>
     <string name="app_customer_hint_kode_customer">Kode Customer</string>
@@ -198,11 +206,11 @@
     <string name="app_customer_status_update_unuploaded">Upload pembaharuan data customer terlebih dahulu</string>
     <string name="app_customer_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload customer</string>
     <string name="app_customer_processing_upload_no_data">Tidak ada customer yang di perbarui oleh user !</string>
-    <string name="app_customer_processing_refresh_failed">Terdapat data yang belum di upload, silahkan upload terlebih dahulu!</string>
+    <string name="app_customer_processing_refresh_failed">Upload data pada menu Customer atau menu New Prospect terlebih dahulu!</string>
     <string name="app_customer_processing_download_content">Proses download content customer.</string>
     <string name="app_customer_processing_download_success">Proses download content customer berhasil.</string>
     <string name="app_customer_kode_customer">Kode</string>
-    <string name="app_customer_nama_customer">Nama Customer</string>
+    <string name="app_customer_nama_customer">Nama Penanggung Jawab</string>
     <string name="app_customer_nama_toko">Nama Toko</string>
     <string name="app_customer_noktp">No KTP</string>
     <string name="app_customer_npwp">NPWP</string>
@@ -276,7 +284,7 @@
     <string name="app_customer_prospect_save_success">Customer Prospect berhasil di tambah !</string>
     <string name="app_customer_prospect_update_success">Customer Prospect berhasil di ubah !</string>
     <string name="app_customer_update_success">Data Customer berhasil diperbarui, silahkan Upload perubahan ke server</string>
-    <string name="app_customer_prospect_save_failed_no_image">Mohon mengambil foto customer prospect !</string>
+    <string name="app_customer_prospect_save_failed_no_image">Mohon mengambil foto dan TTD lengkap customer prospect !</string>
     <string name="app_customer_prospect_save_failed_no_image_old">Silahkan mengupdate lokasi dan gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_no_image_new">Perbaharui gambar terlebih dahulu</string>
     <string name="app_customer_prospect_save_failed_empty_box">Mohon mengisi seluruh data customer prospect !</string>
@@ -507,5 +515,33 @@
     <string name="app_login_konfirmasi_logout">Apakah anda yakin ingin logout dari aplikasi ?</string>
     <string name="app_login_processing">Proses login mohon tunggu...</string>
     <string name="app_login_processing_error">Proses login error</string>
+
+    <!-- Supplier -->
+    <string name="app_supplier_title">Supplier</string>
+    <string name="app_supplier_keterangan">Keterangan</string>
+    <string name="app_supplier_btn_upload">Upload</string>
+    <string name="app_supplier_processing">Proses upload supplier mohon tunggu...</string>
+    <string name="app_supplier_processing_error">Proses upload supplier error</string>
+    <string name="app_supplier_processing_failed">Proses upload supplier gagal</string>
+    <string name="app_supplier_processing_sukses">Proses upload supplier sukses</string>
+    <string name="app_supplier_button_foto_1">Foto 1</string>
+    <string name="app_supplier_button_foto_2">Foto 2</string>
+    <string name="app_supplier_button_foto_3">Foto 3</string>
+    <string name="app_supplier_button_foto_4">Foto 4</string>
+    <string name="app_supplier_failed_no_keterangan">Mohon masukkan keterangan</string>
+    <string name="app_supplier_already_take_foto_1">Anda sudah mengambil Foto 1, apakah anda ingin mengganti dengan gambar baru ?</string>
+    <string name="app_supplier_already_take_foto_2">Anda sudah mengambil Foto 2, apakah anda ingin mengganti dengan gambar baru ?</string>
+    <string name="app_supplier_already_take_foto_3">Anda sudah mengambil Foto 3, apakah anda ingin mengganti dengan gambar baru ?</string>
+    <string name="app_supplier_already_take_foto_4">Anda sudah mengambil Foto 4, apakah anda ingin mengganti dengan gambar baru ?</string>
+
+    <!-- Supplier -->
+    <string name="app_sales_to_title">Sales TO</string>
+    <string name="app_sales_to_processing">Proses upload sales penjualan mohon tunggu...</string>
+    <string name="app_sales_to_processing_error">Proses upload sales penjualan error</string>
+    <string name="app_sales_to_processing_failed">Proses upload sales penjualan gagal</string>
+    <string name="app_sales_to_processing_sukses">Proses upload sales penjualan sukses</string>
+    <string name="app_sales_to_failed_no_nama">Mohon masukkan nama</string>
+    <string name="app_sales_to_failed_no_alamat">Mohon masukkan alamat</string>
+    <string name="app_sales_to_failed_no_keterangan">Mohon masukkan keterangan</string>
 
 </resources>

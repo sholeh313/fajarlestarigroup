@@ -27,6 +27,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
+import com.mahkota_company.android.check_customer.CheckCustomer;
+import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
@@ -1451,6 +1453,16 @@ public class LocatorActivity extends ActionBarActivity implements
 				}else if (position == 11) {
 					Intent intentActivity = new Intent(this,
 							CustomerMerchandiseActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 12) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomer.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 13) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomerProspectActivity.class);
 					startActivity(intentActivity);
 					finish();
 				}

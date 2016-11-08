@@ -20,6 +20,8 @@ import org.json.JSONObject;
 
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
+import com.mahkota_company.android.check_customer.CheckCustomer;
+import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
@@ -685,18 +687,26 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_1);
 			if (sourceFoto1.exists() && foto_1 != null)
 				entity.addPart("image", new FileBody(sourceFoto1));
+
+
 			File sourceFoto2 = new File(CONFIG.getFolderPath() + "/"
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_2);
 			if (sourceFoto2.exists() && foto_2 != null)
 				entity.addPart("image2", new FileBody(sourceFoto2));
+
+
 			File sourceFoto3 = new File(CONFIG.getFolderPath() + "/"
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + foto_3);
 			if (sourceFoto3.exists() && foto_3 != null)
 				entity.addPart("image3", new FileBody(sourceFoto3));
+
+
 			File sourceTtd1 = new File(CONFIG.getFolderPath() + "/"
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + ttd1);
 			if (sourceTtd1.exists() && ttd1 != null)
 				entity.addPart("ttd_1", new FileBody(sourceTtd1));
+
+
 			File sourceTtd2 = new File(CONFIG.getFolderPath() + "/"
 					+ CONFIG.CONFIG_APP_FOLDER_CUSTOMER_PROSPECT + "/" + ttd2);
 			if (sourceTtd2.exists() && ttd2 != null)
@@ -862,7 +872,7 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 			int countData = dataAddCustomerProspectUpload.size();
 			if (countData > 0) {
 				try {
-					Thread.sleep(dataAddCustomerProspectUpload.size() * 1024 * 10);
+					Thread.sleep(dataAddCustomerProspectUpload.size() * 2048 * 10);//1024
 				} catch (final InterruptedException e) {
 					Log.d(LOG_TAG, "InterruptedException " + e.getMessage());
 					handler.post(new Runnable() {
@@ -965,7 +975,8 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								databaseHandler.deleteTableCustomerProspect();
+								databaseHandler.updateStatusProspect();
+								//databaseHandler.deleteTableCustomerProspect();
 								finish();
 								startActivity(getIntent());
 							}
@@ -1163,7 +1174,17 @@ public class CustomerProspectActivity extends ActionBarActivity implements
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
+				}*/else if (position == 12) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomer.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 13) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomerProspectActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
 			}
 		}
 

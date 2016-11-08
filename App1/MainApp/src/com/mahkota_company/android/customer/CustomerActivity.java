@@ -35,6 +35,8 @@ import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.chat.Splashscreen;
+import com.mahkota_company.android.check_customer.CheckCustomer;
+import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
@@ -1386,8 +1388,7 @@ public class CustomerActivity extends ActionBarActivity implements
 		switch (item.getItemId()) {
 		case R.id.menu_refresh:
 			if (GlobalApp.checkInternetConnection(act)) {
-				int countUpload = databaseHandler
-						.getCountCustomerWhereValidAndUpdate();
+				int countUpload = databaseHandler.getCountCustomerWhereValidAndUpdateAll();
 				if(countUpload == 0){
 					new DownloadDataCustomer().execute();
 				}else{
@@ -1841,7 +1842,17 @@ public class CustomerActivity extends ActionBarActivity implements
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
+				}*/else if (position == 12) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomer.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 13) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomerProspectActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
 			}
 		}
 	}

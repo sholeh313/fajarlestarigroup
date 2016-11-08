@@ -89,7 +89,7 @@ public class RequestLoadActivity extends FragmentActivity {
 		progressDialog.setCanceledOnTouchOutside(false);
 		databaseHandler = new DatabaseHandler(this);
 		listView = (ListView) findViewById(R.id.list);
-		listView.setItemsCanFocus(false);
+		listView.setItemsCanFocus(true);
 
 		buttonCancel = (Button) findViewById(R.id.activity_request_load_btn_cancel);
 		buttonRequest = (Button) findViewById(R.id.activity_request_load_btn_save);
@@ -395,92 +395,7 @@ public class RequestLoadActivity extends FragmentActivity {
 
 	public void showListRequestLoad() {
 		stockVan_list.clear();
-		if (isRunningDummyVersion()) {
-			ArrayList<Product> requeststockvan_from_db = new ArrayList<Product>();
-			requeststockvan_from_db.add(new Product(1, "product a", "0001",
-					"100000", "10", "1", "", "test 01"));
-			requeststockvan_from_db.add(new Product(2, "product b", "0002",
-					"100000", "20", "1", "", "test 02"));
-			requeststockvan_from_db.add(new Product(3, "product c", "0003",
-					"100000", "30", "1", "", "test 03"));
-			requeststockvan_from_db.add(new Product(4, "product d", "0004",
-					"100000", "40", "1", "", "test 04"));
-			requeststockvan_from_db.add(new Product(5, "product e", "0005",
-					"100000", "50", "1", "", "test 05"));
-			requeststockvan_from_db.add(new Product(6, "product f", "0006",
-					"100000", "60", "1", "", "test 06"));
-			requeststockvan_from_db.add(new Product(7, "product g", "0007",
-					"100000", "70", "1", "", "test 07"));
-			requeststockvan_from_db.add(new Product(8, "product h", "0008",
-					"100000", "80", "1", "", "test 08"));
-			requeststockvan_from_db.add(new Product(9, "product i", "0009",
-					"100000", "90", "1", "", "test 09"));
-			requeststockvan_from_db.add(new Product(10, "product j", "0010",
-					"100000", "100", "1", "", "test 10"));
-			requeststockvan_from_db.add(new Product(11, "product k", "0011",
-					"100000", "110", "1", "", "test 11"));
-			requeststockvan_from_db.add(new Product(12, "product l", "0012",
-					"100000", "10", "1", "", "test 12"));
-			requeststockvan_from_db.add(new Product(13, "product m", "0013",
-					"100000", "20", "1", "", "test 13"));
-			requeststockvan_from_db.add(new Product(14, "product n", "0014",
-					"100000", "30", "1", "", "test 14"));
-			requeststockvan_from_db.add(new Product(15, "product o", "0015",
-					"100000", "40", "1", "", "test 15"));
-			requeststockvan_from_db.add(new Product(16, "product p", "0016",
-					"100000", "50", "1", "", "test 16"));
-			requeststockvan_from_db.add(new Product(17, "product q", "0017",
-					"100000", "60", "1", "", "test 17"));
-			requeststockvan_from_db.add(new Product(18, "product r", "0018",
-					"100000", "70", "1", "", "test 18"));
-			requeststockvan_from_db.add(new Product(19, "product s", "0019",
-					"100000", "80", "1", "", "test 19"));
-			requeststockvan_from_db.add(new Product(20, "product t", "0020",
-					"100000", "90", "1", "", "test 20"));
-			if (requeststockvan_from_db.size() > 0) {
-				listView.setVisibility(View.VISIBLE);
-				for (int i = 0; i < requeststockvan_from_db.size(); i++) {
-					int id_product = requeststockvan_from_db.get(i)
-							.getId_product();
-					String nama_product = requeststockvan_from_db.get(i)
-							.getNama_product();
-					String kode_product = requeststockvan_from_db.get(i)
-							.getKode_product();
-					String harga_jual = requeststockvan_from_db.get(i)
-							.getHarga_jual();
-					// String stock = requeststockvan_from_db.get(i).getStock();
-					String id_kemasan = requeststockvan_from_db.get(i)
-							.getId_kemasan();
-					String foto = requeststockvan_from_db.get(i).getFoto();
-					String deskripsi = requeststockvan_from_db.get(i)
-							.getDeskripsi();
-
-					/****
-					 * Make temp request stokvan Nantinya defaultnya 0,
-					 * sedangkan apabila requestnya nol, tidak perlu di proses
-					 */
-					StockVan stockVan = new StockVan();
-					stockVan.setId_product(id_product);
-					stockVan.setNama_product(nama_product);
-					stockVan.setKode_product(kode_product);
-					stockVan.setHarga_jual(harga_jual);
-					stockVan.setJumlahRequest(0);
-					stockVan.setIdKemasan(id_kemasan);
-					stockVan.setFoto(foto);
-					stockVan.setDeskripsi(deskripsi);
-					stockVan_list.add(stockVan);
-				}
-
-				cAdapter = new ListViewAdapter(this,
-						R.layout.list_item_request_load, stockVan_list);
-				listView.setAdapter(cAdapter);
-				listView.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
-				cAdapter.notifyDataSetChanged();
-			} else {
-				listView.setVisibility(View.INVISIBLE);
-			}
-
-		} else {
+		if(!isRunningDummyVersion()) {
 			ArrayList<Product> requeststockvan_from_db = databaseHandler
 					.getAllProduct();
 			if (requeststockvan_from_db.size() > 0) {
@@ -525,9 +440,7 @@ public class RequestLoadActivity extends FragmentActivity {
 			} else {
 				listView.setVisibility(View.INVISIBLE);
 			}
-
 		}
-
 	}
 
 	public void showCustomDialog(String msg) {
@@ -595,9 +508,9 @@ public class RequestLoadActivity extends FragmentActivity {
 					.getKode_product());
 			holder.titleNamaProduct.setText(data.get(position)
 					.getNama_product());
-			// holder.edtStock.setText("0");
-			// holder.edtStock.setFocusable(true);
-			// holder.edtStock.setEnabled(true);
+			 //holder.edtStock.setText("0");
+			 holder.edtStock.setFocusable(true);
+			 holder.edtStock.setEnabled(true);
 			holder.titleKodeProduct.setTypeface(typefaceSmall);
 			holder.titleNamaProduct.setTypeface(typefaceSmall);
 
@@ -621,8 +534,11 @@ public class RequestLoadActivity extends FragmentActivity {
 					} else
 						data.get(position).setJumlahRequest(
 								Integer.parseInt(arg0.toString()));
+
 				}
+
 			});
+
 
 			return row;
 

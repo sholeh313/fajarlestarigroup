@@ -20,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mahkota_company.android.common.AlarmReceiver;
+import com.mahkota_company.android.common.TrackingService;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Branch;
 import com.mahkota_company.android.database.Cluster;
@@ -1406,7 +1407,8 @@ public class LoginActivity extends Activity {
 	}
 
 	public void startMonitoring() {
-		try {
+		act.startService(new Intent(act, TrackingService.class));
+		/*try {
 			final AlarmManager alarms = (AlarmManager) this
 					.getSystemService(Context.ALARM_SERVICE);
 			Intent intent = new Intent(getApplicationContext(),
@@ -1424,7 +1426,7 @@ public class LoginActivity extends Activity {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			Log.d(LOG_TAG, "Initialisasi startMonitoring Error");
-		}
+		}*/
 	}
 
 	public void saveAppDataStaffUsername(String responsedata) {

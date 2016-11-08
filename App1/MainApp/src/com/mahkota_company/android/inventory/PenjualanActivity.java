@@ -632,9 +632,9 @@ public class PenjualanActivity extends ActionBarActivity implements
 	}
 
 	public void gotoDetailSalesOrder() {
-		Intent i = new Intent(this, DetailRemPenjualanActivity.class);
-		startActivity(i);
-		finish();
+		// I ntent i = new Intent(this, DetailRemPenjualanActivity.class);
+		// startActivity(i);
+		// finish();
 	}
 
 	// show edit delete dialog

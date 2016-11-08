@@ -159,16 +159,89 @@
                             android:orientation="vertical" >
 
                             <Button
-                                android:id="@+id/menuSuggestedStock"
+                                android:id="@+id/menuSalesTO"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/transparent"
                                 android:drawableTop="@drawable/inventory_stock_summary"
-                                android:text="@string/app_inventory_menu_stock_suggested"
+                                android:text="@string/app_sales_to_title"
                                 android:textColor="@color/dark_grey"
                                 android:textSize="@dimen/txtsize_btn_inventory" />
                         </LinearLayout>
                     </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_btn_inventory"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal" >
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:baselineAligned="false"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/menuSupplier"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent"
+                                android:drawableTop="@drawable/inventory_unload_product"
+                                android:text="@string/app_inventory_menu_supplier_logs"
+                                android:textColor="@color/dark_grey"
+                                android:textSize="@dimen/txtsize_btn_inventory" />
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:baselineAligned="false"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/menuSalesKanvas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent"
+                                android:drawableTop="@drawable/inventory_unload_product"
+                                android:text="@string/app_inventory_menu_sales_kanvas"
+                                android:textColor="@color/dark_grey"
+                                android:textSize="@dimen/txtsize_btn_inventory" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:baselineAligned="false"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/menuSalesTO1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/transparent"
+                                android:drawableTop="@drawable/inventory_unload_product"
+                                android:text="@string/app_inventory_menu_sales_to"
+                                android:textColor="@color/dark_grey"
+                                android:textSize="@dimen/txtsize_btn_inventory" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
             </ScrollView>
         </FrameLayout>
