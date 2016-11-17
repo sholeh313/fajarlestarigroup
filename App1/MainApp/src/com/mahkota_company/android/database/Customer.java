@@ -139,7 +139,7 @@ public class Customer {
 	}
 
 	public void setKode_customer(String kode_customer) {
-		this.kode_customer = kode_customer;
+		this.kode_customer=kode_customer;
 	}
 
 	public String getEmail() {

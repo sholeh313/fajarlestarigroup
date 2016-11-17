@@ -3,16 +3,20 @@ package com.mahkota_company.android.inventory;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,13 +36,29 @@ import com.mahkota_company.android.R;
 import com.mahkota_company.android.database.Branch;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.database.DetailReqLoad;
 import com.mahkota_company.android.database.DetailSalesOrder;
 import com.mahkota_company.android.database.Jadwal;
 import com.mahkota_company.android.database.Product;
+import com.mahkota_company.android.database.ReqLoad;
 import com.mahkota_company.android.database.SalesOrder;
 import com.mahkota_company.android.utils.CONFIG;
+import com.mahkota_company.android.utils.GlobalApp;
 import com.mahkota_company.android.utils.SpinnerAdapter;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -57,14 +77,19 @@ public class AddRequestActivity extends FragmentActivity {
 	private Button mButtonSave;
 	private Button mButtonCancel;
 	private Button mButtonTTD;
+	private Handler handler = new Handler();
+	private static final String LOG_TAG = RequestActivity.class
+			.getSimpleName();
+	private ProgressDialog progressDialog;
 	public ArrayList<Customer> customerList;
 	public ArrayList<String> customerStringList;
 	private String kodeCustomer;
 	private Spinner spinnerPromosi;
 	public ArrayList<String> promosiStringList;
 	private int idPromosi = -1;
+	private String response_data;
 	private ListViewChooseAdapter cAdapterChooseAdapter;
-	public ArrayList<DetailSalesOrder> detailSalesOrderList = new ArrayList<DetailSalesOrder>();
+	public ArrayList<DetailReqLoad> detailReqLoadList = new ArrayList<DetailReqLoad>();
 	private ListView listview;
 	private ListViewAdapter cAdapter;
 	private Jadwal jadwal;
@@ -79,13 +104,13 @@ public class AddRequestActivity extends FragmentActivity {
 		menuBackButton = (ImageView) findViewById(R.id.menuBackButton);
 		menuBackButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				gotoSalesOrder();
+				gotoInventory();
 			}
 		});
 		mButtonCancel = (Button) findViewById(R.id.activity_sales_order_btn_cancel);
 		mButtonCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				gotoSalesOrder();
+				gotoInventory();
 			}
 		});
 		typefaceSmall = Typeface.createFromAsset(getAssets(),
@@ -128,7 +153,7 @@ public class AddRequestActivity extends FragmentActivity {
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								gotoSalesOrder();
+								gotoInventory();
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();
@@ -171,7 +196,7 @@ public class AddRequestActivity extends FragmentActivity {
 					final String dateOutput = dateFormat.format(calendar
                             .getTime());
 
-					int countData = databaseHandler.getCountSalesOrder();
+					int countData = databaseHandler.getCountReqLoad();
 					countData = countData + 1;
 					String datetime = dateOutput + timeStamp + countData;
 
@@ -197,51 +222,51 @@ public class AddRequestActivity extends FragmentActivity {
 					int sec = now.get(Calendar.SECOND);
 					final String time = zero(hrs) + zero(min) + zero(sec);
 
-					ArrayList<SalesOrder> tempSales_order_list = databaseHandler
-							.getAllSalesOrder();
+					ArrayList<ReqLoad> tempReq_load_list = databaseHandler
+							.getAllReqLoad();
 					int tempIndex = 0;
-					for (SalesOrder salesOrder : tempSales_order_list) {
-						tempIndex = salesOrder.getId_sales_order();
+					for (ReqLoad reqLoad : tempReq_load_list) {
+						tempIndex = reqLoad.getId_sales_order();
 						}
 					int index = 1;
-					for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
-                        SalesOrder salesOrder = new SalesOrder();
-					    salesOrder.setId_sales_order(tempIndex + index);
-						salesOrder.setDate_order(checkDate);
-						salesOrder.setHarga_jual(detailSalesOrder
+					for (DetailReqLoad detailReqLoad : detailReqLoadList) {
+                        ReqLoad reqLoad = new ReqLoad();
+					    reqLoad.setId_sales_order(tempIndex + index);
+						reqLoad.setDate_order(checkDate);
+						reqLoad.setHarga_jual(detailReqLoad
 								.getHarga_jual());
-						if(detailSalesOrder.getJumlah_order().equals(null)){
-							salesOrder.setJumlah_order("0");
+						if(detailReqLoad.getJumlah_order().equals(null)){
+							reqLoad.setJumlah_order("0");
 						}else{
-							salesOrder.setJumlah_order(detailSalesOrder.getJumlah_order());
+							reqLoad.setJumlah_order(detailReqLoad.getJumlah_order());
 						}
 
-						if(detailSalesOrder.getJumlah_order1().equals(null)){
-							salesOrder.setJumlah_order1("0");
+						if(detailReqLoad.getJumlah_order1().equals(null)){
+							reqLoad.setJumlah_order1("0");
 						}else{
-							salesOrder.setJumlah_order1(detailSalesOrder.getJumlah_order1());
+							reqLoad.setJumlah_order1(detailReqLoad.getJumlah_order1());
 						}
 
-						if(detailSalesOrder.getJumlah_order2().equals(null)){
-							salesOrder.setJumlah_order2("0");
+						if(detailReqLoad.getJumlah_order2().equals(null)){
+							reqLoad.setJumlah_order2("0");
 						}else{
-							salesOrder.setJumlah_order2(detailSalesOrder.getJumlah_order2());
+							reqLoad.setJumlah_order2(detailReqLoad.getJumlah_order2());
 						}
-						salesOrder.setNama_product(detailSalesOrder
+						reqLoad.setNama_product(detailReqLoad
 								.getNama_product());
-						salesOrder.setNomer_order(nomerOrder);
-						salesOrder.setNomer_order_detail(nomerOrder
+						reqLoad.setNomer_order(nomerOrder);
+						reqLoad.setNomer_order_detail(nomerOrder
 								+ String.valueOf(countData));
-						salesOrder.setTime_order(time);
-						salesOrder.setUsername(username);
-						databaseHandler.add_SalesOrder(salesOrder);
+						reqLoad.setTime_order(time);
+						reqLoad.setUsername(username);
+						databaseHandler.add_ReqLoad(reqLoad);
 						index += 1;
 						}
 						String msg = getApplicationContext().getResources()
 								.getString(R.string.app_sales_order_save_success);
 						showCustomDialogSaveSuccess(msg);
 
-
+				UploadHasil();
 
 				break;
 			default:
@@ -250,6 +275,284 @@ public class AddRequestActivity extends FragmentActivity {
 		}
 
 	};
+
+	private void UploadHasil() {
+		if (GlobalApp.checkInternetConnection(act)) {
+			int countUpload = databaseHandler.getCountReqLoad();
+			if (countUpload == 0) {
+				String message = act
+						.getApplicationContext()
+						.getResources()
+						.getString(
+								R.string.app_sales_order_processing_upload_no_data);
+				showCustomDialog(message);
+			} else {
+				new UploadData().execute();
+			}
+		} else {
+			String message = act
+					.getApplicationContext()
+					.getResources()
+					.getString(
+							R.string.app_sales_order_processing_upload_empty);
+			showCustomDialog(message);
+		}
+	}
+
+	public class UploadData extends AsyncTask<String, Integer, String> {
+		@Override
+		protected void onPreExecute() {
+			progressDialog.setMessage(getApplicationContext().getResources()
+					.getString(R.string.app_sales_order_processing_upload));
+			progressDialog.show();
+			progressDialog
+					.setOnCancelListener(new DialogInterface.OnCancelListener() {
+						@Override
+						public void onCancel(DialogInterface dialog) {
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_CANCEL);
+							showCustomDialog(msg);
+						}
+					});
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			String url_add_sales_order = CONFIG.CONFIG_APP_URL_PUBLIC
+					+ CONFIG.CONFIG_APP_URL_UPLOAD_REQ_LOAD;
+
+			List<ReqLoad> dataReqLoad = databaseHandler
+					.getAllReqLoad();
+			for (ReqLoad reqLoad : dataReqLoad) {
+				if (reqLoad.getId_promosi() == -1) {
+					response_data = uploadReqLoad(url_add_sales_order,
+							reqLoad.getNomer_order(),
+							reqLoad.getNomer_order_detail(),
+							reqLoad.getDate_order(),
+							reqLoad.getTime_order(),
+							//reqLoad.getDeskripsi(),
+							String.valueOf("0"),
+							reqLoad.getUsername(),
+							//reqLoad.getKode_customer(),
+							//reqLoad.getAlamat(),
+							//reqLoad.getNama_lengkap(),
+							reqLoad.getNama_product(),
+							//reqLoad.getKode_product(),
+							String.valueOf(reqLoad.getHarga_jual()),
+							String.valueOf(reqLoad.getJumlah_order()),
+							String.valueOf(reqLoad.getJumlah_order1()),
+							String.valueOf(reqLoad.getJumlah_order2()));
+
+				} else {
+					response_data = uploadReqLoad(url_add_sales_order,
+							reqLoad.getNomer_order(),
+							reqLoad.getNomer_order_detail(),
+							reqLoad.getDate_order(),
+							reqLoad.getTime_order(),
+							//reqLoad.getDeskripsi(),
+							String.valueOf(reqLoad.getId_promosi()),
+							reqLoad.getUsername(),
+							//reqLoad.getKode_customer(),
+							//reqLoad.getAlamat(),
+							//reqLoad.getNama_lengkap(),
+							reqLoad.getNama_product(),
+							//reqLoad.getKode_product(),
+							String.valueOf(reqLoad.getHarga_jual()),
+							String.valueOf(reqLoad.getJumlah_order()),
+							String.valueOf(reqLoad.getJumlah_order1()),
+							String.valueOf(reqLoad.getJumlah_order2()));
+				}
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			List<ReqLoad> dataAddReqLoad = databaseHandler
+					.getAllReqLoad();
+			int countData = dataAddReqLoad.size();
+			if (countData > 0) {
+				try {
+					Thread.sleep(dataAddReqLoad.size() * 1000 * 3);
+				} catch (final InterruptedException e) {
+					Log.d(LOG_TAG, "InterruptedException " + e.getMessage());
+					handler.post(new Runnable() {
+						public void run() {
+							showCustomDialog(e.getMessage());
+						}
+					});
+				}
+				if (response_data != null && response_data.length() > 0) {
+					if (response_data.startsWith("Error occurred")) {
+						final String msg = act
+								.getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_processing_upload_failed);
+						handler.post(new Runnable() {
+							public void run() {
+								showCustomDialog(msg);
+							}
+						});
+					} else {
+						handler.post(new Runnable() {
+							public void run() {
+								initUploadReqLoad();
+							}
+						});
+					}
+				}
+			} else {
+				final String msg = act
+						.getApplicationContext()
+						.getResources()
+						.getString(
+								R.string.app_sales_order_processing_upload_failed);
+				handler.post(new Runnable() {
+					public void run() {
+						showCustomDialog(msg);
+					}
+				});
+			}
+		}
+	}
+
+	private String uploadReqLoad(final String url, final String nomer_order,
+									final String nomer_order_detail, final String date_order,
+									final String time_order, //final String deskripsi,
+									final String id_promosi, final String username,
+									//final String kode_customer, final String alamat,
+									//final String nama_lengkap,
+								 	final String nama_product,
+									//final String kode_product,
+								 	final String harga_jual,
+									final String jumlah_order,
+									final String jumlah_order1,
+									final String jumlah_order2) {
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(url);
+		String responseString = null;
+		try {
+			if (android.os.Build.VERSION.SDK_INT > 9) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+						.permitAll().build();
+				StrictMode.setThreadPolicy(policy);
+			}
+
+			MultipartEntity entity = new MultipartEntity();
+
+			entity.addPart("nomer_order", new StringBody(nomer_order));
+			entity.addPart("nomer_order_detail", new StringBody(
+					nomer_order_detail));
+			entity.addPart("date_order", new StringBody(date_order));
+			entity.addPart("time_order", new StringBody(time_order));
+			//entity.addPart("deskripsi", new StringBody(deskripsi));
+			entity.addPart("id_promosi", new StringBody(id_promosi));
+			entity.addPart("username", new StringBody(username));
+			//entity.addPart("kode_customer", new StringBody(kode_customer));
+			//entity.addPart("alamat", new StringBody(alamat));
+			//entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
+			entity.addPart("nama_product", new StringBody(nama_product));
+			//entity.addPart("kode_product", new StringBody(kode_product));
+			entity.addPart("harga_jual", new StringBody(harga_jual));
+			entity.addPart("jumlah_order", new StringBody(jumlah_order));
+			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
+			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
+
+			httppost.setEntity(entity);
+
+			// Making server call
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity r_entity = response.getEntity();
+
+			int statusCode = response.getStatusLine().getStatusCode();
+			if (statusCode == 200) {
+				// Server response
+				responseString = EntityUtils.toString(r_entity);
+			} else {
+				responseString = "Error occurred! Http Status Code: "
+						+ statusCode;
+			}
+
+		} catch (ClientProtocolException e) {
+			responseString = e.toString();
+		} catch (IOException e) {
+			responseString = e.toString();
+		}
+		return responseString;
+	}
+
+	public void initUploadReqLoad() {
+		JSONObject oResponse;
+		try {
+			oResponse = new JSONObject(response_data);
+			String status = oResponse.isNull("error") ? "True" : oResponse
+					.getString("error");
+			if (response_data.isEmpty()) {
+				final String msg = act
+						.getApplicationContext()
+						.getResources()
+						.getString(
+								R.string.app_sales_order_processing_upload_failed);
+				showCustomDialog(msg);
+			} else {
+				Log.d(LOG_TAG, "status=" + status);
+				if (status.equalsIgnoreCase("True")) {
+					final String msg = act
+							.getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_sales_order_processing_upload_failed);
+					showCustomDialog(msg);
+				} else {
+					final String msg = act
+							.getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_sales_order_processing_upload_success);
+					CustomDialogUploadSuccess(msg);
+				}
+
+			}
+
+		} catch (JSONException e) {
+			final String message = e.toString();
+			showCustomDialog(message);
+
+		}
+	}
+
+	public void CustomDialogUploadSuccess(String msg) {
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+		final android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(
+				act);
+		alertDialogBuilder
+				.setMessage(msg)
+				.setCancelable(false)
+				.setPositiveButton(
+						act.getApplicationContext().getResources()
+								.getString(R.string.MSG_DLG_LABEL_OK),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder
+										.create();
+								alertDialog.dismiss();
+								databaseHandler.deleteTableReqLoad();
+								finish();
+								startActivity(getIntent());
+							}
+						});
+		android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+
+	}
 
 	private void BukaTTD() {
 		/*Intent intentActivity = new Intent(
@@ -449,22 +752,22 @@ public class AddRequestActivity extends FragmentActivity {
 		});
 	}
 
-	private void updateListViewDetailOrder(DetailSalesOrder detailSalesOrder) {
-		detailSalesOrderList.add(detailSalesOrder);
+	private void updateListViewDetailOrder(DetailReqLoad detailReqLoad) {
+		detailReqLoadList.add(detailReqLoad);
 		cAdapter = new ListViewAdapter(AddRequestActivity.this,
-				R.layout.list_item_detail_sales_order, detailSalesOrderList);
+				R.layout.list_item_detail_sales_order, detailReqLoadList);
 		listview.setAdapter(cAdapter);
 		cAdapter.notifyDataSetChanged();
 	}
 
-	public class ListViewAdapter extends ArrayAdapter<DetailSalesOrder> {
+	public class ListViewAdapter extends ArrayAdapter<DetailReqLoad> {
 		Activity activity;
 		int layoutResourceId;
-		DetailSalesOrder productData;
-		ArrayList<DetailSalesOrder> data = new ArrayList<DetailSalesOrder>();
+		DetailReqLoad productData;
+		ArrayList<DetailReqLoad> data = new ArrayList<DetailReqLoad>();
 
 		public ListViewAdapter(Activity act, int layoutResourceId,
-				ArrayList<DetailSalesOrder> data) {
+				ArrayList<DetailReqLoad> data) {
 			super(act, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
 			this.activity = act;
@@ -635,8 +938,8 @@ public class AddRequestActivity extends FragmentActivity {
 						if (jumlahProduct.getText().toString().length() > 0 || jumlahProduct1.getText().toString().length() > 0 ||
 								jumlahProduct2.getText().toString().length() > 0) {
 							boolean containSameProduct = false;
-							for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
-								if (detailSalesOrder.getKode_product()
+							for (DetailReqLoad detailReqLoad : detailReqLoadList) {
+								if (detailReqLoad.getKode_product()
 										.equalsIgnoreCase(
 												data.get(position)
 														.getKode_product())) {
@@ -651,8 +954,8 @@ public class AddRequestActivity extends FragmentActivity {
 												R.string.app_sales_order_failed_please_add_another_item);
 								showCustomDialog(msg);
 							} else {
-								int count = detailSalesOrderList.size() + 1;
-								updateListViewDetailOrder(new DetailSalesOrder(
+								int count = detailReqLoadList.size() + 1;
+								updateListViewDetailOrder(new DetailReqLoad(
 										count,
 										data.get(position).getNama_product(),
 										data.get(position).getKode_product(),
@@ -722,7 +1025,7 @@ public class AddRequestActivity extends FragmentActivity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	public void gotoSalesOrder() {
+	public void gotoInventory() {
 		Intent i = new Intent(this, InventoryActivity.class);
 		startActivity(i);
 		finish();

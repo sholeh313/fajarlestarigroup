@@ -419,8 +419,8 @@ public class DetailEditCustomerUploaded extends FragmentActivity {
                         if (location != null) {
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
-                            tvGpsCustomer.setText(String.valueOf(latitude)
-                                    + "/" + String.valueOf(longitude));
+                            tvGpsCustomer.setText(customer.getLats()
+                                    + "/" + customer.getLongs());
 
                         }
                     }

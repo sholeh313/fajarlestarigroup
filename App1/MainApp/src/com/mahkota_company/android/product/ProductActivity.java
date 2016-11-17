@@ -317,6 +317,14 @@ public class ProductActivity extends ActionBarActivity implements
 							: oResponsealue.getString("foto");
 					String deskripsi = oResponsealue.isNull("deskripsi") ? null
 							: oResponsealue.getString("deskripsi");
+					String uomqtyl1 = oResponsealue.isNull("uomqtyl1") ? null
+							: oResponsealue.getString("uomqtyl1");
+					String uomqtyl2 = oResponsealue.isNull("uomqtyl2") ? null
+							: oResponsealue.getString("uomqtyl2");
+					String uomqtyl3 = oResponsealue.isNull("uomqtyl3") ? null
+							: oResponsealue.getString("uomqtyl3");
+					String uomqtyl4 = oResponsealue.isNull("uomqtyl4") ? null
+							: oResponsealue.getString("uomqtyl4");
 					Log.d(LOG_TAG, "id_product:" + id_product);
 					Log.d(LOG_TAG, "nama_product:" + nama_product);
 					Log.d(LOG_TAG, "kode_product:" + kode_product);
@@ -325,9 +333,14 @@ public class ProductActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "id_kemasan:" + id_kemasan);
 					Log.d(LOG_TAG, "foto:" + foto);
 					Log.d(LOG_TAG, "deskripsi:" + deskripsi);
+					Log.d(LOG_TAG, "uomqtyl1:" + uomqtyl1);
+					Log.d(LOG_TAG, "uomqtyl2:" + uomqtyl2);
+					Log.d(LOG_TAG, "uomqtyl3:" + uomqtyl3);
+					Log.d(LOG_TAG, "uomqtyl4:" + uomqtyl4);
 					databaseHandler.add_Product(new Product(Integer
 							.parseInt(id_product), nama_product, kode_product,
-							harga_jual, stock, id_kemasan, foto, deskripsi));
+							harga_jual, stock, id_kemasan, foto, deskripsi,
+							uomqtyl1, uomqtyl2,uomqtyl3,uomqtyl4));
 				}
 			} catch (JSONException e) {
 				final String message = e.toString();
@@ -383,6 +396,10 @@ public class ProductActivity extends ActionBarActivity implements
 				String id_kemasan = product_from_db.get(i).getId_kemasan();
 				String foto = product_from_db.get(i).getFoto();
 				String deskripsi = product_from_db.get(i).getDeskripsi();
+				String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -393,6 +410,10 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setId_kemasan(id_kemasan);
 				product.setFoto(foto);
 				product.setDeskripsi(deskripsi);
+				product.setUomqtyl1(uomqtyl1);
+				product.setUomqtyl2(uomqtyl2);
+				product.setUomqtyl3(uomqtyl3);
+				product.setUomqtyl4(uomqtyl4);
 				File dir = new File(CONFIG.getFolderPath() + "/"
 						+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/" + foto);
 				if (!dir.exists()) {
@@ -432,6 +453,10 @@ public class ProductActivity extends ActionBarActivity implements
 				String id_kemasan = product_from_db.get(i).getId_kemasan();
 				String foto = product_from_db.get(i).getFoto();
 				String deskripsi = product_from_db.get(i).getDeskripsi();
+				String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -442,6 +467,10 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setId_kemasan(id_kemasan);
 				product.setFoto(foto);
 				product.setDeskripsi(deskripsi);
+				product.setUomqtyl1(uomqtyl1);
+				product.setUomqtyl2(uomqtyl2);
+				product.setUomqtyl3(uomqtyl3);
+				product.setUomqtyl4(uomqtyl4);
 				File dir = new File(CONFIG.getFolderPath() + "/"
 						+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/" + foto);
 				if (dir.exists()) {
@@ -586,6 +615,10 @@ public class ProductActivity extends ActionBarActivity implements
 				String id_kemasan = product_from_db.get(i).getId_kemasan();
 				String foto = product_from_db.get(i).getFoto();
 				String deskripsi = product_from_db.get(i).getDeskripsi();
+				String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -596,6 +629,10 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setId_kemasan(id_kemasan);
 				product.setFoto(foto);
 				product.setDeskripsi(deskripsi);
+				product.setUomqtyl1(uomqtyl1);
+				product.setUomqtyl2(uomqtyl2);
+				product.setUomqtyl3(uomqtyl3);
+				product.setUomqtyl4(uomqtyl4);
 
 				product_list.add(product);
 			}

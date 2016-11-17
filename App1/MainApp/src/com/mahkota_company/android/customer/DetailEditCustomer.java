@@ -563,7 +563,7 @@ public class DetailEditCustomer extends FragmentActivity {
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE) {
             mediaFile = new File(dir.getPath() + File.separator
-                    + tvKodeCustomer.getText().toString() + kodeBranch + "_"
+                    + tvKodeCustomer.getText().toString()+kodeBranch+"_"
                     + "IMG_" + timeStamp + ".png");
             newImageName1 = tvKodeCustomer.getText().toString() + kodeBranch
                     + "_" + "IMG_" + timeStamp + ".png";

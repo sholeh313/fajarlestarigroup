@@ -341,6 +341,7 @@
     <string name="app_sales_order_hint_kode_customer">Kode Customer</string>
     <string name="app_sales_order_hint_nama_customer">Nama Customer</string>
     <string name="app_sales_order_hint_add_sales_order">Tambah Sales Order</string>
+    <string name="app_sales_Req_van">Tambah Req Van</string>
     <string name="app_sales_order_hint_add_retur">Buat Retur</string>
     <string name="app_sales_order_kode_customer">Kode Customer</string>
     <string name="app_sales_order_total_bayar">Total Bayar</string>
@@ -371,6 +372,7 @@
     <string name="app_sales_order_failed_please_add_dus">Jumlah dus harus diisi</string>
     <string name="app_sales_order_failed_please_add_another_item">Mohon masukkan item yang lain !</string>
     <string name="app_sales_order_save_success">Sales Order berhasil di tambah !</string>
+    <string name="app_req_load_save_success">Request Stock VAN berhasil di tambah !</string>
     <string name="app_sales_order_update_success">Sales Order berhasil di ubah !</string>
     <string name="app_sales_order_processing_upload_empty">Mohon periksa koneksi internet anda, untuk mengupload sales order customer !</string>
     <string name="app_sales_order_processing_upload_no_data">Tidak ada data Sales Order yang di input oleh user !</string>

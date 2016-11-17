@@ -37,6 +37,7 @@ import com.mahkota_company.android.R;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
+import com.mahkota_company.android.database.ReqLoad;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.product.ProductActivity;
@@ -552,6 +553,14 @@ public class InventoryActivity extends ActionBarActivity implements
 							: oResponsealue.getString("foto");
 					String deskripsi = oResponsealue.isNull("deskripsi") ? null
 							: oResponsealue.getString("deskripsi");
+					String uomqtyl1 = oResponsealue.isNull("uomqtyl1") ? null
+							: oResponsealue.getString("uomqtyl1");
+					String uomqtyl2 = oResponsealue.isNull("uomqtyl2") ? null
+							: oResponsealue.getString("uomqtyl2");
+					String uomqtyl3 = oResponsealue.isNull("uomqtyl3") ? null
+							: oResponsealue.getString("uomqtyl3");
+					String uomqtyl4 = oResponsealue.isNull("uomqtyl4") ? null
+							: oResponsealue.getString("uomqtyl4");
 					Log.d(LOG_TAG, "id_product:" + id_product);
 					Log.d(LOG_TAG, "nama_product:" + nama_product);
 					Log.d(LOG_TAG, "kode_product:" + kode_product);
@@ -560,9 +569,14 @@ public class InventoryActivity extends ActionBarActivity implements
 					Log.d(LOG_TAG, "id_kemasan:" + id_kemasan);
 					Log.d(LOG_TAG, "foto:" + foto);
 					Log.d(LOG_TAG, "deskripsi:" + deskripsi);
+					Log.d(LOG_TAG, "uomqtyl1:" + uomqtyl1);
+					Log.d(LOG_TAG, "uomqtyl2:" + uomqtyl2);
+					Log.d(LOG_TAG, "uomqtyl3:" + uomqtyl3);
+					Log.d(LOG_TAG, "uomqtyl4:" + uomqtyl4);
 					databaseHandler.add_Product(new Product(Integer
 							.parseInt(id_product), nama_product, kode_product,
-							harga_jual, stock, id_kemasan, foto, deskripsi));
+							harga_jual, stock, id_kemasan, foto, deskripsi,
+							uomqtyl1,uomqtyl2,uomqtyl3,uomqtyl4));
 				}
 			} catch (JSONException e) {
 				final String message = e.toString();

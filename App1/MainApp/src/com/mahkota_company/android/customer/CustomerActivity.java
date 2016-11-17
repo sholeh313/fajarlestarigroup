@@ -189,7 +189,7 @@ public class CustomerActivity extends ActionBarActivity implements
 						for (int i = 0; i < customer_from_db.size(); i++) {
 							int id_customer = customer_from_db.get(i)
 									.getId_customer();
-							String kode_customer = customer_from_db.get(i)
+							String kode_customer= customer_from_db.get(i)
 									.getKode_customer();
 							String email = customer_from_db.get(i).getEmail();
 							String alamat = customer_from_db.get(i).getAlamat();

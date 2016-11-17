@@ -737,7 +737,6 @@
                             android:layout_marginBottom="5dp"
                             android:layout_weight="0.3"
                             android:gravity="left|center"
-                            android:text=""
                             android:textAppearance="?android:attr/textAppearanceSmall"
                             android:textColor="@color/black"
                             android:textSize="16sp" />

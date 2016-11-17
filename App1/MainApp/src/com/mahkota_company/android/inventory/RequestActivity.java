@@ -37,6 +37,7 @@ import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Jadwal;
+import com.mahkota_company.android.database.ReqLoad;
 import com.mahkota_company.android.database.SalesOrder;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
@@ -72,7 +73,7 @@ public class RequestActivity extends ActionBarActivity implements
 	private NavigationDrawerFragment mNavigationDrawerFragment;
 	private DatabaseHandler databaseHandler;
 	private ListView listview;
-	private ArrayList<SalesOrder> sales_order_list = new ArrayList<SalesOrder>();
+	private ArrayList<ReqLoad> req_load_list = new ArrayList<ReqLoad>();
 	private ListViewAdapter cAdapter;
 	private ProgressDialog progressDialog;
 	private Handler handler = new Handler();
@@ -88,7 +89,7 @@ public class RequestActivity extends ActionBarActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_sales_order);
+		setContentView(R.layout.activity_main_req_load);
 		mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
 		typefaceSmall = Typeface.createFromAsset(getAssets(),
 				"fonts/AliquamREG.ttf");
@@ -118,7 +119,7 @@ public class RequestActivity extends ActionBarActivity implements
 		mNavigationDrawerFragment.selectItem(5);
 		listview = (ListView) findViewById(R.id.list);
 		listview.setItemsCanFocus(false);
-		showSalesOrder();
+		showReqLoad();
 		addSalesOrder.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -127,57 +128,17 @@ public class RequestActivity extends ActionBarActivity implements
 				String main_app_staff_username = spPreferences.getString(
 						CONFIG.SHARED_PREFERENCES_STAFF_USERNAME, null);
 				if (main_app_staff_username.length() > 0) {
-					int countData = databaseHandler.getCountJadwal();
-					if (countData == 0) {
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_no_data_jadwal);
-						showCustomDialog(msg);
-					} else {
-						List<Jadwal> dataJadwal = databaseHandler
-								.getAllJadwalWhereKodeStaffAndGroupByCustomer(main_app_staff_username);
-						List<Customer> dataCustomer = new ArrayList<Customer>();
-						for (Jadwal jadwal : dataJadwal) {
-							Customer customer = new Customer(0, jadwal
-									.getKode_customer(), null, null, null,
-									null, jadwal.getNama_lengkap(), null,
-									jadwal.getId_wilayah(), null, null, null,
-									0, null, null, null, 0, null, null, null,
-									null, null, null, null, 0, null, null, null,
-									null, null, null, null, null, null, null,null,
-									0,null,null,null,null,null);
-							dataCustomer.add(customer);
 
-						}
 
-						boolean containCustomer = false;
-						for (Customer customer : dataCustomer) {
-							int countJadwal = databaseHandler
-									.getCountSalesOrder(customer
-											.getKode_customer());
-							if (countJadwal == 0) {
-								containCustomer = true;
-								break;
-							}
-						}
-						if (containCustomer) {
-							gotoTambahSalesOrder();
-						} else {
-							String msg = getApplicationContext()
-									.getResources()
-									.getString(
-											R.string.app_sales_order_failed_to_add);
-							showCustomDialog(msg);
-						}
-					}
+						gotoTambahReqLoad();
+
 				}
 			}
 		});
 
 	}
 
-	public void gotoTambahSalesOrder() {
+	public void gotoTambahReqLoad() {
 		Intent i = new Intent(this, AddRequestActivity.class);
 		startActivity(i);
 		finish();
@@ -188,10 +149,10 @@ public class RequestActivity extends ActionBarActivity implements
 				Context.MODE_PRIVATE);
 	}
 
-	public void showSalesOrder() {
-		sales_order_list.clear();
-		ArrayList<SalesOrder> sales_order_from_db = databaseHandler
-				.getAllSalesOrderGroupByNomerOrder();
+	public void showReqLoad() {
+		req_load_list.clear();
+		ArrayList<ReqLoad> sales_order_from_db = databaseHandler
+				.getAllReqLoadGroupByNomerOrder();
 		if (sales_order_from_db.size() > 0) {
 			listview.setVisibility(View.VISIBLE);
 			for (int i = 0; i < sales_order_from_db.size(); i++) {
@@ -203,49 +164,46 @@ public class RequestActivity extends ActionBarActivity implements
 						.getNomer_order_detail();
 				String date_order = sales_order_from_db.get(i).getDate_order();
 				String time_order = sales_order_from_db.get(i).getTime_order();
-				String deskripsi = sales_order_from_db.get(i).getDeskripsi();
+				//String deskripsi = sales_order_from_db.get(i).getDeskripsi();
 				int id_promosi = sales_order_from_db.get(i).getId_promosi();
 				String username = sales_order_from_db.get(i).getUsername();
-				String kode_customer = sales_order_from_db.get(i)
-						.getKode_customer();
-				String alamat = sales_order_from_db.get(i).getAlamat();
-				String nama_lengkap = sales_order_from_db.get(i)
-						.getNama_lengkap();
+				//String kode_customer = sales_order_from_db.get(i).getKode_customer();
+				//String alamat = sales_order_from_db.get(i).getAlamat();
+				//String nama_lengkap = sales_order_from_db.get(i).getNama_lengkap();
 				String nama_product = sales_order_from_db.get(i)
 						.getNama_product();
-				String kode_product = sales_order_from_db.get(i)
-						.getKode_product();
+				//String kode_product = sales_order_from_db.get(i).getKode_product();
 				String harga_jual = sales_order_from_db.get(i).getHarga_jual();
 				String jumlah_order = sales_order_from_db.get(i).getJumlah_order();
 				String jumlah_order1 = sales_order_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = sales_order_from_db.get(i).getJumlah_order2();
 
-				SalesOrder salesOrder = new SalesOrder();
-				salesOrder.setId_sales_order(id_sales_order);
-				salesOrder.setNomer_order(nomer_order);
-				salesOrder.setNomer_order_detail(nomer_order_detail);
-				salesOrder.setDate_order(date_order);
-				salesOrder.setTime_order(time_order);
-				salesOrder.setDeskripsi(deskripsi);
-				salesOrder.setId_promosi(id_promosi);
-				salesOrder.setUsername(username);
-				salesOrder.setKode_customer(kode_customer);
-				salesOrder.setAlamat(alamat);
-				salesOrder.setNama_lengkap(nama_lengkap);
-				salesOrder.setNama_product(nama_product);
-				salesOrder.setKode_product(kode_product);
-				salesOrder.setHarga_jual(harga_jual);
-				salesOrder.setJumlah_order(jumlah_order);
-				salesOrder.setJumlah_order1(jumlah_order1);
-				salesOrder.setJumlah_order2(jumlah_order2);
-				sales_order_list.add(salesOrder);
+				ReqLoad reqLoad = new ReqLoad();
+				reqLoad.setId_sales_order(id_sales_order);
+				reqLoad.setNomer_order(nomer_order);
+				reqLoad.setNomer_order_detail(nomer_order_detail);
+				reqLoad.setDate_order(date_order);
+				reqLoad.setTime_order(time_order);
+				//reqLoad.setDeskripsi(deskripsi);
+				reqLoad.setId_promosi(id_promosi);
+				reqLoad.setUsername(username);
+				//reqLoad.setKode_customer(kode_customer);
+				//reqLoad.setAlamat(alamat);
+				//reqLoad.setNama_lengkap(nama_lengkap);
+				reqLoad.setNama_product(nama_product);
+				//reqLoad.setKode_product(kode_product);
+				reqLoad.setHarga_jual(harga_jual);
+				reqLoad.setJumlah_order(jumlah_order);
+				reqLoad.setJumlah_order1(jumlah_order1);
+				reqLoad.setJumlah_order2(jumlah_order2);
+				req_load_list.add(reqLoad);
 			}
 			cAdapter = new ListViewAdapter(this,
-					R.layout.list_item_sales_order, sales_order_list);
+					R.layout.list_item_sales_order, req_load_list);
 			listview.setAdapter(cAdapter);
 			cAdapter.notifyDataSetChanged();
 		} else {
-			listview.setVisibility(View.INVISIBLE);
+			//listview.setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -290,7 +248,7 @@ public class RequestActivity extends ActionBarActivity implements
 		switch (item.getItemId()) {
 		case R.id.menu_upload:
 			if (GlobalApp.checkInternetConnection(act)) {
-				int countUpload = databaseHandler.getCountSalesOrder();
+				int countUpload = databaseHandler.getCountReqLoad();
 				if (countUpload == 0) {
 					String message = act
 							.getApplicationContext()
@@ -337,47 +295,48 @@ public class RequestActivity extends ActionBarActivity implements
 		@Override
 		protected String doInBackground(String... params) {
 			String url_add_sales_order = CONFIG.CONFIG_APP_URL_PUBLIC
-					+ CONFIG.CONFIG_APP_URL_UPLOAD_SALES_ORDER;
+					+ CONFIG.CONFIG_APP_URL_UPLOAD_REQ_LOAD;
 
-			List<SalesOrder> dataSalesOrder = databaseHandler
-					.getAllSalesOrder();
-			for (SalesOrder salesOrder : dataSalesOrder) {
-				if (salesOrder.getId_promosi() == -1) {
-					response_data = uploadSalesOrder(url_add_sales_order,
-							salesOrder.getNomer_order(),
-							salesOrder.getNomer_order_detail(),
-							salesOrder.getDate_order(),
-							salesOrder.getTime_order(),
-							salesOrder.getDeskripsi(), String.valueOf("0"),
-							salesOrder.getUsername(),
-							salesOrder.getKode_customer(),
-							salesOrder.getAlamat(),
-							salesOrder.getNama_lengkap(),
-							salesOrder.getNama_product(),
-							salesOrder.getKode_product(),
-							String.valueOf(salesOrder.getHarga_jual()),
-							String.valueOf(salesOrder.getJumlah_order()),
-							String.valueOf(salesOrder.getJumlah_order1()),
-							String.valueOf(salesOrder.getJumlah_order2()));
+			List<ReqLoad> dataReqLoad = databaseHandler
+					.getAllReqLoad();
+			for (ReqLoad reqLoad : dataReqLoad) {
+				if (reqLoad.getId_promosi() == -1) {
+					response_data = uploadReqLoad(url_add_sales_order,
+							reqLoad.getNomer_order(),
+							reqLoad.getNomer_order_detail(),
+							reqLoad.getDate_order(),
+							reqLoad.getTime_order(),
+							//reqLoad.getDeskripsi(),
+							String.valueOf("0"),
+							reqLoad.getUsername(),
+							//reqLoad.getKode_customer(),
+							//reqLoad.getAlamat(),
+							//reqLoad.getNama_lengkap(),
+							reqLoad.getNama_product(),
+							//reqLoad.getKode_product(),
+							String.valueOf(reqLoad.getHarga_jual()),
+							String.valueOf(reqLoad.getJumlah_order()),
+							String.valueOf(reqLoad.getJumlah_order1()),
+							String.valueOf(reqLoad.getJumlah_order2()));
 
 				} else {
-					response_data = uploadSalesOrder(url_add_sales_order,
-							salesOrder.getNomer_order(),
-							salesOrder.getNomer_order_detail(),
-							salesOrder.getDate_order(),
-							salesOrder.getTime_order(),
-							salesOrder.getDeskripsi(),
-							String.valueOf(salesOrder.getId_promosi()),
-							salesOrder.getUsername(),
-							salesOrder.getKode_customer(),
-							salesOrder.getAlamat(),
-							salesOrder.getNama_lengkap(),
-							salesOrder.getNama_product(),
-							salesOrder.getKode_product(),
-							String.valueOf(salesOrder.getHarga_jual()),
-							String.valueOf(salesOrder.getJumlah_order()),
-							String.valueOf(salesOrder.getJumlah_order1()),
-							String.valueOf(salesOrder.getJumlah_order2()));
+					response_data = uploadReqLoad(url_add_sales_order,
+							reqLoad.getNomer_order(),
+							reqLoad.getNomer_order_detail(),
+							reqLoad.getDate_order(),
+							reqLoad.getTime_order(),
+							//reqLoad.getDeskripsi(),
+							String.valueOf(reqLoad.getId_promosi()),
+							reqLoad.getUsername(),
+							//reqLoad.getKode_customer(),
+							//reqLoad.getAlamat(),
+							//reqLoad.getNama_lengkap(),
+							reqLoad.getNama_product(),
+							//reqLoad.getKode_product(),
+							String.valueOf(reqLoad.getHarga_jual()),
+							String.valueOf(reqLoad.getJumlah_order()),
+							String.valueOf(reqLoad.getJumlah_order1()),
+							String.valueOf(reqLoad.getJumlah_order2()));
 				}
 			}
 			return null;
@@ -386,12 +345,12 @@ public class RequestActivity extends ActionBarActivity implements
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-			List<SalesOrder> dataAddSalesOrder = databaseHandler
-					.getAllSalesOrder();
-			int countData = dataAddSalesOrder.size();
+			List<ReqLoad> dataAddReqLoad = databaseHandler
+					.getAllReqLoad();
+			int countData = dataAddReqLoad.size();
 			if (countData > 0) {
 				try {
-					Thread.sleep(dataAddSalesOrder.size() * 1000 * 3);
+					Thread.sleep(dataAddReqLoad.size() * 1000 * 3);
 				} catch (final InterruptedException e) {
 					Log.d(LOG_TAG, "InterruptedException " + e.getMessage());
 					handler.post(new Runnable() {
@@ -415,7 +374,7 @@ public class RequestActivity extends ActionBarActivity implements
 					} else {
 						handler.post(new Runnable() {
 							public void run() {
-								initUploadSalesOrder();
+								initUploadReqLoad();
 							}
 						});
 					}
@@ -435,13 +394,15 @@ public class RequestActivity extends ActionBarActivity implements
 		}
 	}
 
-	private String uploadSalesOrder(final String url, final String nomer_order,
+	private String uploadReqLoad(final String url, final String nomer_order,
 			final String nomer_order_detail, final String date_order,
-			final String time_order, final String deskripsi,
+			final String time_order, //final String deskripsi,
 			final String id_promosi, final String username,
-			final String kode_customer, final String alamat,
-			final String nama_lengkap, final String nama_product,
-			final String kode_product, final String harga_jual,
+			//final String kode_customer, final String alamat,
+			//final String nama_lengkap,
+			final String nama_product,
+			//final String kode_product,
+			final String harga_jual,
 			final String jumlah_order,
 			final String jumlah_order1,
 			final String jumlah_order2) {
@@ -463,14 +424,14 @@ public class RequestActivity extends ActionBarActivity implements
 					nomer_order_detail));
 			entity.addPart("date_order", new StringBody(date_order));
 			entity.addPart("time_order", new StringBody(time_order));
-			entity.addPart("deskripsi", new StringBody(deskripsi));
+			//entity.addPart("deskripsi", new StringBody(deskripsi));
 			entity.addPart("id_promosi", new StringBody(id_promosi));
 			entity.addPart("username", new StringBody(username));
-			entity.addPart("kode_customer", new StringBody(kode_customer));
-			entity.addPart("alamat", new StringBody(alamat));
-			entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
+			//entity.addPart("kode_customer", new StringBody(kode_customer));
+			//entity.addPart("alamat", new StringBody(alamat));
+			//entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
 			entity.addPart("nama_product", new StringBody(nama_product));
-			entity.addPart("kode_product", new StringBody(kode_product));
+			//entity.addPart("kode_product", new StringBody(kode_product));
 			entity.addPart("harga_jual", new StringBody(harga_jual));
 			entity.addPart("jumlah_order", new StringBody(jumlah_order));
 			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
@@ -501,7 +462,7 @@ public class RequestActivity extends ActionBarActivity implements
 
 	}
 
-	public void initUploadSalesOrder() {
+	public void initUploadReqLoad() {
 		JSONObject oResponse;
 		try {
 			oResponse = new JSONObject(response_data);
@@ -559,7 +520,7 @@ public class RequestActivity extends ActionBarActivity implements
 								AlertDialog alertDialog = alertDialogBuilder
 										.create();
 								alertDialog.dismiss();
-								databaseHandler.deleteTableSalesOrder();
+								databaseHandler.deleteTableReqLoad();
 								finish();
 								startActivity(getIntent());
 							}
@@ -578,14 +539,14 @@ public class RequestActivity extends ActionBarActivity implements
 		editor.commit();
 	}
 
-	public class ListViewAdapter extends ArrayAdapter<SalesOrder> {
+	public class ListViewAdapter extends ArrayAdapter<ReqLoad> {
 		Activity activity;
 		int layoutResourceId;
-		SalesOrder salesOrderData;
-		ArrayList<SalesOrder> data = new ArrayList<SalesOrder>();
+		ReqLoad reqLoadData;
+		ArrayList<ReqLoad> data = new ArrayList<ReqLoad>();
 
 		public ListViewAdapter(Activity act, int layoutResourceId,
-				ArrayList<SalesOrder> data) {
+				ArrayList<ReqLoad> data) {
 			super(act, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
 			this.activity = act;
@@ -615,11 +576,10 @@ public class RequestActivity extends ActionBarActivity implements
 			} else {
 				holder = (UserHolder) row.getTag();
 			}
-			salesOrderData = data.get(position);
-			holder.list_kodeCustomer.setText(salesOrderData.getKode_customer());
-			holder.list_namaCustomer.setText(salesOrderData.getNama_lengkap());
-			holder.list_kode_sales_order.setText(salesOrderData
-					.getNomer_order());
+			reqLoadData = data.get(position);
+			holder.list_kodeCustomer.setText(reqLoadData.getDate_order());
+			holder.list_namaCustomer.setText(reqLoadData.getTime_order());
+			holder.list_kode_sales_order.setText(reqLoadData.getNomer_order());
 
 			holder.list_kodeCustomer.setTypeface(typefaceSmall);
 			holder.list_namaCustomer.setTypeface(typefaceSmall);
@@ -646,9 +606,9 @@ public class RequestActivity extends ActionBarActivity implements
 	}
 
 	public void gotoDetailSalesOrder() {
-		Intent i = new Intent(this, DetailSalesOrderActivity.class);
-		startActivity(i);
-		finish();
+		//Intent i = new Intent(this, DetailSalesOrderActivity.class);
+		//startActivity(i);
+		//finish();
 	}
 
 	// show edit delete dialog

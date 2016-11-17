@@ -9,6 +9,10 @@ public class Product {
 	private String id_kemasan;
 	private String foto;
 	private String deskripsi;
+	private String uomqtyl1;
+	private String uomqtyl2;
+	private String uomqtyl3;
+	private String uomqtyl4;
 
 	public Product() {
 
@@ -16,7 +20,8 @@ public class Product {
 
 	public Product(int id_product, String nama_product, String kode_product,
 			String harga_jual, String stock, String id_kemasan, String foto,
-			String deskripsi) {
+			String deskripsi, String uomqtyl1, String uomqtyl2, String uomqtyl3,
+			String uomqtyl4) {
 		this.id_product = id_product;
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
@@ -25,6 +30,10 @@ public class Product {
 		this.id_kemasan = id_kemasan;
 		this.foto = foto;
 		this.deskripsi = deskripsi;
+		this.uomqtyl1 = uomqtyl1;
+		this.uomqtyl2 = uomqtyl2;
+		this.uomqtyl3 = uomqtyl3;
+		this.uomqtyl4 = uomqtyl4;
 
 	}
 
@@ -87,8 +96,35 @@ public class Product {
 	public String getDeskripsi() {
 		return deskripsi;
 	}
-
 	public void setDeskripsi(String deskripsi) {
 		this.deskripsi = deskripsi;
+	}
+
+	public String getUomqtyl1() {
+		return uomqtyl1;
+	}
+	public void setUomqtyl1(String uomqtyl1) {
+		this.uomqtyl1 = uomqtyl1;
+	}
+
+	public String getUomqtyl2() {
+		return uomqtyl2;
+	}
+	public void setUomqtyl2(String uomqtyl2) {
+		this.uomqtyl2 = uomqtyl2;
+	}
+
+	public String getUomqtyl3() {
+		return uomqtyl3;
+	}
+	public void setUomqtyl3(String uomqtyl3) {
+		this.uomqtyl3 = uomqtyl3;
+	}
+
+	public String getUomqtyl4() {
+		return uomqtyl4;
+	}
+	public void setUomqtyl4(String uomqtyl4) {
+		this.uomqtyl4 = uomqtyl4;
 	}
 }
