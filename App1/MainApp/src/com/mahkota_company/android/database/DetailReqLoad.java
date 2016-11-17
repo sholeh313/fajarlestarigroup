@@ -8,6 +8,7 @@ public class DetailReqLoad {
 	private String jumlah_order;
 	private String jumlah_order1;
 	private String jumlah_order2;
+	private String jumlah_order3;
 
 	public DetailReqLoad(int count, String nama_product, String kode_product, String harga_jual, String stock) {
 
@@ -16,7 +17,7 @@ public class DetailReqLoad {
 	// constructor
 	public DetailReqLoad(int id_sales_order, String nama_product,
 						 String kode_product, String harga_jual, String jumlah_order,
-						 String jumlah_order1, String jumlah_order2) {
+						 String jumlah_order1, String jumlah_order2, String jumlah_order3) {
 		this.setId_sales_order(id_sales_order);
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
@@ -24,6 +25,7 @@ public class DetailReqLoad {
 		this.jumlah_order = jumlah_order;
 		this.jumlah_order1 = jumlah_order1;
 		this.jumlah_order2 = jumlah_order2;
+		this.jumlah_order3 = jumlah_order3;
 
 	}
 
@@ -81,6 +83,14 @@ public class DetailReqLoad {
 
 	public void setJumlah_order2(String jumlah_order2) {
 		this.jumlah_order2 = jumlah_order2;
+	}
+
+	public String getJumlah_order3() {
+		return jumlah_order3;
+	}
+
+	public void setJumlah_order3(String jumlah_order3) {
+		this.jumlah_order3 = jumlah_order3;
 	}
 
 }

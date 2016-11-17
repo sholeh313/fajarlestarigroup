@@ -360,6 +360,7 @@
     <string name="app_sales_order_title_harga_product">Harga</string>
     <string name="app_sales_order_title_action">Action</string>
     <string name="app_sales_order_title_pcs">pcs</string>
+    <string name="app_sales_order_title_renceng">renceng</string>
     <string name="app_sales_order_title_pck">pck</string>
     <string name="app_sales_order_title_dus">dus</string>
     <string name="app_sales_order_add_item">Add Item</string>
@@ -368,6 +369,7 @@
     <string name="app_sales_order_Pcs">Pieces</string>
     <string name="app_sales_order_failed_please_add_jumlah">Mohon memasukkan jumlah item yang di inginkan !</string>
     <string name="app_sales_order_failed_please_add_pcs">Jumlah pieces harus diisi</string>
+    <string name="app_sales_order_failed_please_add_renceng">Jumlah renceng harus diisi</string>
     <string name="app_sales_order_failed_please_add_pck">Jumlah pack harus diisi</string>
     <string name="app_sales_order_failed_please_add_dus">Jumlah dus harus diisi</string>
     <string name="app_sales_order_failed_please_add_another_item">Mohon masukkan item yang lain !</string>

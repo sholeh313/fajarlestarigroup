@@ -279,6 +279,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER = "jumlah_order";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER1 = "jumlah_order1";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER2 = "jumlah_order2";
+	private static final String KEY_SALES_ORDER_JUMLAH_ORDER3 = "jumlah_order3";
 
 	// RETUR Table Columns names
 	private static final String KEY_RETUR_ID_RETUR = "id_retur";
@@ -562,7 +563,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_HARGA_JUAL + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER1 + " TEXT,"
-				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT" + ")";
+				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT,"
+				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT"
+				+ ")";
 		db.execSQL(CREATE_TABLE_SALES_ORDER);
 
 		String CREATE_TABLE_REQLOAD = "CREATE TABLE " + TABLE_REQLOAD
@@ -583,7 +586,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_HARGA_JUAL + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER1 + " TEXT,"
-				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT" + ")";
+				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT,"
+				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT"
+				+ ")";
 		db.execSQL(CREATE_TABLE_REQLOAD);
 
 		String CREATE_TABLE_RETUR = "CREATE TABLE " + TABLE_RETUR
@@ -1063,6 +1068,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER, salesOrder.getJumlah_order());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER1, salesOrder.getJumlah_order1());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER2, salesOrder.getJumlah_order2());
+		values.put(KEY_SALES_ORDER_JUMLAH_ORDER3, salesOrder.getJumlah_order3());
 		// Inserting Row
 		db.insert(TABLE_SALES_ORDER, null, values);
 		db.close(); // Closing database connection
@@ -1088,6 +1094,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER, reqLoad.getJumlah_order());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER1, reqLoad.getJumlah_order1());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER2, reqLoad.getJumlah_order2());
+		values.put(KEY_SALES_ORDER_JUMLAH_ORDER3, reqLoad.getJumlah_order3());
 		// Inserting Row
 		db.insert(TABLE_REQLOAD, null, values);
 		db.close(); // Closing database connection
@@ -3733,6 +3740,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order(cursor.getString(14));
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
+					salesOrder.setJumlah_order3(cursor.getString(17));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -3782,6 +3790,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setJumlah_order(cursor.getString(14));
 					reqLoad.setJumlah_order1(cursor.getString(15));
 					reqLoad.setJumlah_order2(cursor.getString(16));
+					reqLoad.setJumlah_order3(cursor.getString(17));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);
@@ -3881,6 +3890,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order(cursor.getString(14));
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
+					salesOrder.setJumlah_order3(cursor.getString(17));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -3931,6 +3941,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setJumlah_order(cursor.getString(14));
 					reqLoad.setJumlah_order1(cursor.getString(15));
 					reqLoad.setJumlah_order2(cursor.getString(16));
+					reqLoad.setJumlah_order3(cursor.getString(17));
 
 					// Adding sales_order_list to list
 					reqload_list.add(reqLoad);
@@ -4031,6 +4042,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order(cursor.getString(14));
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
+					salesOrder.setJumlah_order3(cursor.getString(17));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -4083,6 +4095,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setJumlah_order(cursor.getString(14));
 					reqLoad.setJumlah_order1(cursor.getString(15));
 					reqLoad.setJumlah_order2(cursor.getString(16));
+					reqLoad.setJumlah_order3(cursor.getString(17));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);

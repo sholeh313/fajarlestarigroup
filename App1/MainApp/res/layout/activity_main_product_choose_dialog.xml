@@ -69,6 +69,39 @@
             android:id="@+id/tl2"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:text="Renceng"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/activity_product_edittext_renceng"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:background="@drawable/description_back_shape"
+            android:hint="@string/app_sales_order_Pcs"
+            android:text="0"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@color/Ivory3" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/activity_customer_linear_count3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_customer_linear_count2"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tl3"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:text="Pack"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"/>
@@ -90,15 +123,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/activity_customer_linear_count"
+        android:id="@+id/activity_customer_linear_count4"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_customer_linear_count2"
+        android:layout_below="@+id/activity_customer_linear_count3"
         android:focusableInTouchMode="true"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/t3"
+            android:id="@+id/tl4"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Dus"
@@ -126,7 +159,7 @@
         android:id="@+id/activity_customer_linear_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_customer_linear_count"
+        android:layout_below="@+id/activity_customer_linear_count4"
         android:orientation="horizontal"
         android:padding="7dip" >
 

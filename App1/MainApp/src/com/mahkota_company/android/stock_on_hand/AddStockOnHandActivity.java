@@ -578,6 +578,7 @@ public class AddStockOnHandActivity extends FragmentActivity {
 		EditText jumlahProduct;
 		EditText jumlahProduct1;
 		EditText jumlahProduct2;
+		EditText jumlahProduct3;
 		Dialog chooseProductDialog;
 
 		public ListViewChooseAdapter(Activity mainActivity,
@@ -659,7 +660,8 @@ public class AddStockOnHandActivity extends FragmentActivity {
 									data.get(position).getHarga_jual(),
 									jumlahProduct.getText().toString(),
 									jumlahProduct1.getText().toString(),
-									jumlahProduct2.getText().toString()));
+									jumlahProduct2.getText().toString(),
+									jumlahProduct3.getText().toString()));
 							chooseProductDialog.hide();
 						}
 					} else {

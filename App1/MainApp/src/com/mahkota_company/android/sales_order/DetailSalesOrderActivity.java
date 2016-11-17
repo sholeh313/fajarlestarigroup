@@ -190,7 +190,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 						salesOrder.getHarga_jual(),
 						salesOrder.getJumlah_order(),
 						salesOrder.getJumlah_order1(),
-						salesOrder.getJumlah_order2()));
+						salesOrder.getJumlah_order2(),
+						salesOrder.getJumlah_order3()));
 				count += 1;
 			}
 			updateTotalBayar();
@@ -287,6 +288,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 						salesOrder.setJumlah_order(detailSalesOrder.getJumlah_order());
 						salesOrder.setJumlah_order1(detailSalesOrder.getJumlah_order1());
 						salesOrder.setJumlah_order2(detailSalesOrder.getJumlah_order2());
+						salesOrder.setJumlah_order3(detailSalesOrder.getJumlah_order3());
 						salesOrder.setKode_customer(etKodeCustomer.getText()
 								.toString());
 						salesOrder.setNama_lengkap(etNamaCustomer.getText()
@@ -579,6 +581,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 						.findViewById(R.id.sales_order_title_jumlah_order1);
                 holder.list_jumlah_order2 = (TextView) row
 						.findViewById(R.id.sales_order_title_jumlah_order2);
+				holder.list_jumlah_order3 = (TextView) row
+						.findViewById(R.id.sales_order_title_jumlah_order3);
 
 
 				row.setTag(holder);
@@ -587,23 +591,15 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			}
 			productData = data.get(position);
 			holder.list_kode_product.setText(productData.getKode_product());
-            if(productData.getJumlah_order().equals(null)){
-                holder.list_jumlah_order.setText(0);
-            }else{
+
                 holder.list_jumlah_order.setText(productData.getJumlah_order());
-            }
 
-            if(productData.getJumlah_order1().equals(null)){
-                holder.list_jumlah_order1.setText(0);
-            }else{
                 holder.list_jumlah_order1.setText(productData.getJumlah_order1());
-            }
 
-            if(productData.getJumlah_order1().equals(null)){
-                holder.list_jumlah_order2.setText(0);
-            }else{
                 holder.list_jumlah_order2.setText(productData.getJumlah_order2());
-            }
+
+				holder.list_jumlah_order3.setText(productData.getJumlah_order3());
+
             //holder.list_jumlah_order.setText(productData.getJumlah_order());
 			//holder.list_jumlah_order1.setText(productData.getJumlah_order1());
 			//holder.list_jumlah_order2.setText(productData.getJumlah_order2());
@@ -618,6 +614,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			holder.list_jumlah_order.setTypeface(typefaceSmall);
 			holder.list_jumlah_order1.setTypeface(typefaceSmall);
 			holder.list_jumlah_order2.setTypeface(typefaceSmall);
+			holder.list_jumlah_order3.setTypeface(typefaceSmall);
 			holder.list_harga_jual.setTypeface(typefaceSmall);
 			row.setOnClickListener(new OnClickListener() {
 
@@ -635,6 +632,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			TextView list_jumlah_order;
 			TextView list_jumlah_order1;
 			TextView list_jumlah_order2;
+			TextView list_jumlah_order3;
 			TextView list_harga_jual;
 		}
 
@@ -685,6 +683,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 		EditText jumlahProduct;
 		EditText jumlahProduct1;
 		EditText jumlahProduct2;
+		EditText jumlahProduct3;
 		Dialog chooseProductDialog;
 
 		public ListViewChooseAdapter(Activity mainActivity,
@@ -699,6 +698,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 			this.jumlahProduct = jumlahProduct;
 			this.jumlahProduct1 = jumlahProduct1;
 			this.jumlahProduct2 = jumlahProduct2;
+			this.jumlahProduct3 = jumlahProduct3;
 			notifyDataSetChanged();
 		}
 
@@ -752,17 +752,23 @@ public class DetailSalesOrderActivity extends FragmentActivity {
                         String msg = getApplicationContext()
                                 .getResources()
                                 .getString(
-                                        R.string.app_sales_order_failed_please_add_pck);
+                                        R.string.app_sales_order_failed_please_add_renceng);
                         showCustomDialog(msg);
                     } else if(jumlahProduct2.getText().length()==0){
                         String msg = getApplicationContext()
                                 .getResources()
                                 .getString(
-                                        R.string.app_sales_order_failed_please_add_dus);
+                                        R.string.app_sales_order_failed_please_add_pck);
                         showCustomDialog(msg);
-                    }else {
+                    }else if(jumlahProduct3.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_dus);
+						showCustomDialog(msg);
+					}else {
                         if (jumlahProduct.getText().toString().length() > 0 || jumlahProduct1.getText().toString().length() > 0 ||
-                                jumlahProduct2.getText().toString().length() > 0) {
+                                jumlahProduct2.getText().toString().length() > 0||jumlahProduct3.getText().toString().length() > 0) {
                             boolean containSameProduct = false;
                             for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
                                 if (detailSalesOrder.getKode_product()
@@ -788,7 +794,8 @@ public class DetailSalesOrderActivity extends FragmentActivity {
                                         data.get(position).getHarga_jual(),
                                         jumlahProduct.getText().toString(),
                                         jumlahProduct1.getText().toString(),
-                                        jumlahProduct2.getText().toString()));
+                                        jumlahProduct2.getText().toString(),
+                                        jumlahProduct3.getText().toString()));
                                 chooseProductDialog.hide();
                             }
                         } else {

@@ -346,6 +346,16 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/activity_add_sales_order_title_jumlahrenceng"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:text="@string/app_sales_order_title_renceng"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/activity_add_sales_order_title_jumlahpck"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"

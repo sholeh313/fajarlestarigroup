@@ -224,6 +224,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				String jumlah_order = sales_order_from_db.get(i).getJumlah_order();
 				String jumlah_order1 = sales_order_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = sales_order_from_db.get(i).getJumlah_order2();
+				String jumlah_order3 = sales_order_from_db.get(i).getJumlah_order3();
 
 				SalesOrder salesOrder = new SalesOrder();
 				salesOrder.setId_sales_order(id_sales_order);
@@ -243,6 +244,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				salesOrder.setJumlah_order(jumlah_order);
 				salesOrder.setJumlah_order1(jumlah_order1);
 				salesOrder.setJumlah_order2(jumlah_order2);
+				salesOrder.setJumlah_order3(jumlah_order3);
 				sales_order_list.add(salesOrder);
 			}
 			cAdapter = new ListViewAdapter(this,
@@ -363,7 +365,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							String.valueOf(salesOrder.getHarga_jual()),
 							String.valueOf(salesOrder.getJumlah_order()),
 							String.valueOf(salesOrder.getJumlah_order1()),
-							String.valueOf(salesOrder.getJumlah_order2()));
+							String.valueOf(salesOrder.getJumlah_order2()),
+							String.valueOf(salesOrder.getJumlah_order3()));
 
 				} else {
 					response_data = uploadSalesOrder(url_add_sales_order,
@@ -382,7 +385,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							String.valueOf(salesOrder.getHarga_jual()),
 							String.valueOf(salesOrder.getJumlah_order()),
 							String.valueOf(salesOrder.getJumlah_order1()),
-							String.valueOf(salesOrder.getJumlah_order2()));
+							String.valueOf(salesOrder.getJumlah_order2()),
+							String.valueOf(salesOrder.getJumlah_order3()));
 				}
 			}
 			return null;
@@ -449,7 +453,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			final String kode_product, final String harga_jual,
 			final String jumlah_order,
 			final String jumlah_order1,
-			final String jumlah_order2) {
+			final String jumlah_order2,
+			final String jumlah_order3) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -480,6 +485,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			entity.addPart("jumlah_order", new StringBody(jumlah_order));
 			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
 			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
+			entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
 
 			httppost.setEntity(entity);
 
