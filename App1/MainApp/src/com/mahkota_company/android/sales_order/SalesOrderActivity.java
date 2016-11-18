@@ -629,8 +629,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			salesOrderData = data.get(position);
 			holder.list_kodeCustomer.setText(salesOrderData.getKode_customer());
 			holder.list_namaCustomer.setText(salesOrderData.getNama_lengkap());
-			holder.list_kode_sales_order.setText(salesOrderData
-					.getNomer_order());
+			holder.list_kode_sales_order.setText(salesOrderData.getNomer_order());
 
 			holder.list_kodeCustomer.setTypeface(typefaceSmall);
 			holder.list_namaCustomer.setTypeface(typefaceSmall);

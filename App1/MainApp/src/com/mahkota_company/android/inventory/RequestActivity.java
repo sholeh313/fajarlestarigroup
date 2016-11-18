@@ -151,32 +151,32 @@ public class RequestActivity extends ActionBarActivity implements
 
 	public void showReqLoad() {
 		req_load_list.clear();
-		ArrayList<ReqLoad> sales_order_from_db = databaseHandler
+		ArrayList<ReqLoad> req_load_from_db = databaseHandler
 				.getAllReqLoadGroupByNomerOrder();
-		if (sales_order_from_db.size() > 0) {
+		if (req_load_from_db.size() > 0) {
 			listview.setVisibility(View.VISIBLE);
-			for (int i = 0; i < sales_order_from_db.size(); i++) {
-				int id_sales_order = sales_order_from_db.get(i)
+			for (int i = 0; i < req_load_from_db.size(); i++) {
+				int id_sales_order = req_load_from_db.get(i)
 						.getId_sales_order();
-				String nomer_order = sales_order_from_db.get(i)
+				String nomer_order = req_load_from_db.get(i)
 						.getNomer_order();
-				String nomer_order_detail = sales_order_from_db.get(i)
+				String nomer_order_detail = req_load_from_db.get(i)
 						.getNomer_order_detail();
-				String date_order = sales_order_from_db.get(i).getDate_order();
-				String time_order = sales_order_from_db.get(i).getTime_order();
-				//String deskripsi = sales_order_from_db.get(i).getDeskripsi();
-				int id_promosi = sales_order_from_db.get(i).getId_promosi();
-				String username = sales_order_from_db.get(i).getUsername();
-				//String kode_customer = sales_order_from_db.get(i).getKode_customer();
-				//String alamat = sales_order_from_db.get(i).getAlamat();
-				//String nama_lengkap = sales_order_from_db.get(i).getNama_lengkap();
-				String nama_product = sales_order_from_db.get(i)
+				String date_order = req_load_from_db.get(i).getDate_order();
+				String time_order = req_load_from_db.get(i).getTime_order();
+				//String deskripsi = req_load_from_db.get(i).getDeskripsi();
+				int id_promosi = req_load_from_db.get(i).getId_promosi();
+				String username = req_load_from_db.get(i).getUsername();
+				//String kode_customer = req_load_from_db.get(i).getKode_customer();
+				//String alamat = req_load_from_db.get(i).getAlamat();
+				//String nama_lengkap = req_load_from_db.get(i).getNama_lengkap();
+				String nama_product = req_load_from_db.get(i)
 						.getNama_product();
-				//String kode_product = sales_order_from_db.get(i).getKode_product();
-				String harga_jual = sales_order_from_db.get(i).getHarga_jual();
-				String jumlah_order = sales_order_from_db.get(i).getJumlah_order();
-				String jumlah_order1 = sales_order_from_db.get(i).getJumlah_order1();
-				String jumlah_order2 = sales_order_from_db.get(i).getJumlah_order2();
+				//String kode_product = req_load_from_db.get(i).getKode_product();
+				String harga_jual = req_load_from_db.get(i).getHarga_jual();
+				String jumlah_order = req_load_from_db.get(i).getJumlah_order();
+				String jumlah_order1 = req_load_from_db.get(i).getJumlah_order1();
+				String jumlah_order2 = req_load_from_db.get(i).getJumlah_order2();
 
 				ReqLoad reqLoad = new ReqLoad();
 				reqLoad.setId_sales_order(id_sales_order);
@@ -294,14 +294,14 @@ public class RequestActivity extends ActionBarActivity implements
 
 		@Override
 		protected String doInBackground(String... params) {
-			String url_add_sales_order = CONFIG.CONFIG_APP_URL_PUBLIC
+			String url_add_req_load = CONFIG.CONFIG_APP_URL_PUBLIC
 					+ CONFIG.CONFIG_APP_URL_UPLOAD_REQ_LOAD;
 
 			List<ReqLoad> dataReqLoad = databaseHandler
 					.getAllReqLoad();
 			for (ReqLoad reqLoad : dataReqLoad) {
 				if (reqLoad.getId_promosi() == -1) {
-					response_data = uploadReqLoad(url_add_sales_order,
+					response_data = uploadReqLoad(url_add_req_load,
 							reqLoad.getNomer_order(),
 							reqLoad.getNomer_order_detail(),
 							reqLoad.getDate_order(),
@@ -320,7 +320,7 @@ public class RequestActivity extends ActionBarActivity implements
 							String.valueOf(reqLoad.getJumlah_order2()));
 
 				} else {
-					response_data = uploadReqLoad(url_add_sales_order,
+					response_data = uploadReqLoad(url_add_req_load,
 							reqLoad.getNomer_order(),
 							reqLoad.getNomer_order_detail(),
 							reqLoad.getDate_order(),

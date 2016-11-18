@@ -360,9 +360,11 @@ public class DetailSalesOrderActivity extends FragmentActivity {
         final EditText jumlahProduct = (EditText) chooseProductDialog
                 .findViewById(R.id.activity_product_edittext_pieces);
         final EditText jumlahProduct1 = (EditText) chooseProductDialog
-                .findViewById(R.id.activity_product_edittext_pack);
+                .findViewById(R.id.activity_product_edittext_renceng);
         final EditText jumlahProduct2 = (EditText) chooseProductDialog
-                .findViewById(R.id.activity_product_edittext_dus);
+                .findViewById(R.id.activity_product_edittext_pack);
+		final EditText jumlahProduct3 = (EditText) chooseProductDialog
+				.findViewById(R.id.activity_product_edittext_dus);
 
 		listview.setItemsCanFocus(false);
 		ArrayList<Product> product_from_db = databaseHandler.getAllProduct();
@@ -391,7 +393,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 				cAdapterChooseAdapter = new ListViewChooseAdapter(
 						DetailSalesOrderActivity.this,
 						R.layout.list_item_product_sales_order, jumlahProduct,
-						jumlahProduct1, jumlahProduct2,
+						jumlahProduct1, jumlahProduct2,jumlahProduct3,
 						product_list, chooseProductDialog);
 				listview.setAdapter(cAdapterChooseAdapter);
 				cAdapterChooseAdapter.notifyDataSetChanged();
@@ -440,7 +442,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									DetailSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct, jumlahProduct1, jumlahProduct2,  product_list,
+									jumlahProduct, jumlahProduct1, jumlahProduct2,jumlahProduct3,  product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
@@ -483,7 +485,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									DetailSalesOrderActivity.this,
 									R.layout.list_item_product_sales_order,
-									jumlahProduct,jumlahProduct1, jumlahProduct2, product_list,
+									jumlahProduct,jumlahProduct1, jumlahProduct2,jumlahProduct3, product_list,
 									chooseProductDialog);
 							listview.setAdapter(cAdapterChooseAdapter);
 							cAdapterChooseAdapter.notifyDataSetChanged();
@@ -688,7 +690,7 @@ public class DetailSalesOrderActivity extends FragmentActivity {
 
 		public ListViewChooseAdapter(Activity mainActivity,
 				int layoutResourceId, EditText jumlahProduct,
-                EditText jumlahProduct1,EditText jumlahProduct2,
+                EditText jumlahProduct1,EditText jumlahProduct2,EditText jumlahProduct3,
 				ArrayList<Product> data, Dialog chooseProductDialog) {
 			super(mainActivity, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
