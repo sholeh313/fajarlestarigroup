@@ -205,9 +205,11 @@ public class AddRequestActivity extends FragmentActivity {
                             CONFIG.SHARED_PREFERENCES_STAFF_KODE_BRANCH, null);
 					String username = spPreferences.getString(
                             CONFIG.SHARED_PREFERENCES_STAFF_USERNAME, null);
+					String main_app_id_staff = spPreferences.getString(
+						CONFIG.SHARED_PREFERENCES_STAFF_ID_STAFF, null);
 					Branch branch = databaseHandler.getBranch(Integer
 							.parseInt(kodeBranch));
-					String nomerOrder = CONFIG.CONFIG_APP_KODE_SO_HEADER
+					String nomerRequestLoad = CONFIG.CONFIG_APP_KODE_RL_HEADER
 							+ branch.getKode_branch() + "." + datetime
 							+ countData;
 
@@ -222,7 +224,7 @@ public class AddRequestActivity extends FragmentActivity {
 					int sec = now.get(Calendar.SECOND);
 					final String time = zero(hrs) + zero(min) + zero(sec);
 
-					ArrayList<ReqLoad> tempReq_load_list = databaseHandler
+				ArrayList<ReqLoad> tempReq_load_list = databaseHandler
 							.getAllReqLoad();
 					int tempIndex = 0;
 					for (ReqLoad reqLoad : tempReq_load_list) {
@@ -233,30 +235,49 @@ public class AddRequestActivity extends FragmentActivity {
                         ReqLoad reqLoad = new ReqLoad();
 					    reqLoad.setId_sales_order(tempIndex + index);
 						reqLoad.setDate_order(checkDate);
-						reqLoad.setHarga_jual(detailReqLoad
-								.getHarga_jual());
+						reqLoad.setHarga_jual(detailReqLoad.getHarga_jual());
 
-							reqLoad.setJumlah_order(detailReqLoad.getJumlah_order());
-							reqLoad.setJumlah_order1(detailReqLoad.getJumlah_order1());
-							reqLoad.setJumlah_order2(detailReqLoad.getJumlah_order2());
-							reqLoad.setJumlah_order3(detailReqLoad.getJumlah_order3());
-
+						reqLoad.setJumlah_order(detailReqLoad.getJumlah_order());
+						reqLoad.setJumlah_order1(detailReqLoad.getJumlah_order1());
+						reqLoad.setJumlah_order2(detailReqLoad.getJumlah_order2());
+						reqLoad.setJumlah_order3(detailReqLoad.getJumlah_order3());
 
 						reqLoad.setNama_product(detailReqLoad
 								.getNama_product());
-						reqLoad.setNomer_order(nomerOrder);
-						reqLoad.setNomer_order_detail(nomerOrder
-								+ String.valueOf(countData));
+						reqLoad.setId_product(detailReqLoad
+								.getId_product());
+						double st1 = Double.parseDouble(detailReqLoad.getJumlah_order());
+						double st2 = Double.parseDouble(detailReqLoad.getJumlah_order1());
+						double st3 = Double.parseDouble(detailReqLoad.getJumlah_order2());
+						double st4 = Double.parseDouble(detailReqLoad.getJumlah_order3());
+
+						String uom1= detailReqLoad.getUomqtyl1();
+						String uom2= detailReqLoad.getUomqtyl2();
+						String uom3= detailReqLoad.getUomqtyl3();
+						String uom4= detailReqLoad.getUomqtyl4();
+
+						double uomqtyl1 = Double.parseDouble(uom1);
+						double uomqtyl2 = Double.parseDouble(uom2);
+						double uomqtyl3 = Double.parseDouble(uom3);
+						double uomqtyl4 = Double.parseDouble(uom4);
+
+						Double jumlah =
+							st1*uomqtyl4 +
+							st2*uomqtyl3*uomqtyl4+
+							st3*uomqtyl2*uomqtyl3*uomqtyl4+
+							st4*uomqtyl1*uomqtyl2*uomqtyl3*uomqtyl4;
+
+						reqLoad.setSatuan_terkecil(jumlah.toString());
+						reqLoad.setNomer_request_load(nomerRequestLoad);
 						reqLoad.setTime_order(time);
 						reqLoad.setUsername(username);
+						reqLoad.setId_staff(Integer.parseInt(main_app_id_staff));
 						databaseHandler.add_ReqLoad(reqLoad);
 						index += 1;
 						}
 						String msg = getApplicationContext().getResources()
 								.getString(R.string.app_req_load_save_success);
 						showCustomDialogSaveSuccess(msg);
-
-				//UploadHasil();
 
 				break;
 			default:
@@ -265,288 +286,6 @@ public class AddRequestActivity extends FragmentActivity {
 		}
 
 	};
-
-	private void UploadHasil() {
-		if (GlobalApp.checkInternetConnection(act)) {
-			int countUpload = databaseHandler.getCountReqLoad();
-			if (countUpload == 0) {
-				String message = act
-						.getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_sales_order_processing_upload_no_data);
-				showCustomDialog(message);
-			} else {
-				new UploadData().execute();
-			}
-		} else {
-			String message = act
-					.getApplicationContext()
-					.getResources()
-					.getString(
-							R.string.app_sales_order_processing_upload_empty);
-			showCustomDialog(message);
-		}
-	}
-
-	public class UploadData extends AsyncTask<String, Integer, String> {
-		@Override
-		protected void onPreExecute() {
-			progressDialog.setMessage(getApplicationContext().getResources()
-					.getString(R.string.app_sales_order_processing_upload));
-			progressDialog.show();
-			progressDialog
-					.setOnCancelListener(new DialogInterface.OnCancelListener() {
-						@Override
-						public void onCancel(DialogInterface dialog) {
-							String msg = getApplicationContext()
-									.getResources()
-									.getString(
-											R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_CANCEL);
-							showCustomDialog(msg);
-						}
-					});
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			String url_add_sales_order = CONFIG.CONFIG_APP_URL_PUBLIC
-					+ CONFIG.CONFIG_APP_URL_UPLOAD_REQ_LOAD;
-
-			List<ReqLoad> dataReqLoad = databaseHandler
-					.getAllReqLoad();
-			for (ReqLoad reqLoad : dataReqLoad) {
-				if (reqLoad.getId_promosi() == -1) {
-					response_data = uploadReqLoad(url_add_sales_order,
-							reqLoad.getNomer_order(),
-							reqLoad.getNomer_order_detail(),
-							reqLoad.getDate_order(),
-							reqLoad.getTime_order(),
-							//reqLoad.getDeskripsi(),
-							String.valueOf("0"),
-							reqLoad.getUsername(),
-							//reqLoad.getKode_customer(),
-							//reqLoad.getAlamat(),
-							//reqLoad.getNama_lengkap(),
-							reqLoad.getNama_product(),
-							//reqLoad.getKode_product(),
-							String.valueOf(reqLoad.getHarga_jual()),
-							String.valueOf(reqLoad.getJumlah_order()),
-							String.valueOf(reqLoad.getJumlah_order1()),
-							String.valueOf(reqLoad.getJumlah_order2()),
-							String.valueOf(reqLoad.getJumlah_order3()));
-
-				} else {
-					response_data = uploadReqLoad(url_add_sales_order,
-							reqLoad.getNomer_order(),
-							reqLoad.getNomer_order_detail(),
-							reqLoad.getDate_order(),
-							reqLoad.getTime_order(),
-							//reqLoad.getDeskripsi(),
-							String.valueOf(reqLoad.getId_promosi()),
-							reqLoad.getUsername(),
-							//reqLoad.getKode_customer(),
-							//reqLoad.getAlamat(),
-							//reqLoad.getNama_lengkap(),
-							reqLoad.getNama_product(),
-							//reqLoad.getKode_product(),
-							String.valueOf(reqLoad.getHarga_jual()),
-							String.valueOf(reqLoad.getJumlah_order()),
-							String.valueOf(reqLoad.getJumlah_order1()),
-							String.valueOf(reqLoad.getJumlah_order2()),
-							String.valueOf(reqLoad.getJumlah_order3()));
-				}
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
-			List<ReqLoad> dataAddReqLoad = databaseHandler
-					.getAllReqLoad();
-			int countData = dataAddReqLoad.size();
-			if (countData > 0) {
-				try {
-					Thread.sleep(dataAddReqLoad.size() * 1000 * 3);
-				} catch (final InterruptedException e) {
-					Log.d(LOG_TAG, "InterruptedException " + e.getMessage());
-					handler.post(new Runnable() {
-						public void run() {
-							showCustomDialog(e.getMessage());
-						}
-					});
-				}
-				if (response_data != null && response_data.length() > 0) {
-					if (response_data.startsWith("Error occurred")) {
-						final String msg = act
-								.getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_processing_upload_failed);
-						handler.post(new Runnable() {
-							public void run() {
-								showCustomDialog(msg);
-							}
-						});
-					} else {
-						handler.post(new Runnable() {
-							public void run() {
-								initUploadReqLoad();
-							}
-						});
-					}
-				}
-			} else {
-				final String msg = act
-						.getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_sales_order_processing_upload_failed);
-				handler.post(new Runnable() {
-					public void run() {
-						showCustomDialog(msg);
-					}
-				});
-			}
-		}
-	}
-
-	private String uploadReqLoad(final String url, final String nomer_order,
-									final String nomer_order_detail, final String date_order,
-									final String time_order, //final String deskripsi,
-									final String id_promosi, final String username,
-									//final String kode_customer, final String alamat,
-									//final String nama_lengkap,
-								 	final String nama_product,
-									//final String kode_product,
-								 	final String harga_jual,
-									final String jumlah_order,
-									final String jumlah_order1,
-									final String jumlah_order2,
-									final String jumlah_order3) {
-
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost(url);
-		String responseString = null;
-		try {
-			if (android.os.Build.VERSION.SDK_INT > 9) {
-				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-						.permitAll().build();
-				StrictMode.setThreadPolicy(policy);
-			}
-
-			MultipartEntity entity = new MultipartEntity();
-
-			entity.addPart("nomer_order", new StringBody(nomer_order));
-			entity.addPart("nomer_order_detail", new StringBody(
-					nomer_order_detail));
-			entity.addPart("date_order", new StringBody(date_order));
-			entity.addPart("time_order", new StringBody(time_order));
-			//entity.addPart("deskripsi", new StringBody(deskripsi));
-			entity.addPart("id_promosi", new StringBody(id_promosi));
-			entity.addPart("username", new StringBody(username));
-			//entity.addPart("kode_customer", new StringBody(kode_customer));
-			//entity.addPart("alamat", new StringBody(alamat));
-			//entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
-			entity.addPart("nama_product", new StringBody(nama_product));
-			//entity.addPart("kode_product", new StringBody(kode_product));
-			entity.addPart("harga_jual", new StringBody(harga_jual));
-			entity.addPart("jumlah_order", new StringBody(jumlah_order));
-			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
-			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
-			entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
-
-			httppost.setEntity(entity);
-
-			// Making server call
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity r_entity = response.getEntity();
-
-			int statusCode = response.getStatusLine().getStatusCode();
-			if (statusCode == 200) {
-				// Server response
-				responseString = EntityUtils.toString(r_entity);
-			} else {
-				responseString = "Error occurred! Http Status Code: "
-						+ statusCode;
-			}
-
-		} catch (ClientProtocolException e) {
-			responseString = e.toString();
-		} catch (IOException e) {
-			responseString = e.toString();
-		}
-		return responseString;
-	}
-
-	public void initUploadReqLoad() {
-		JSONObject oResponse;
-		try {
-			oResponse = new JSONObject(response_data);
-			String status = oResponse.isNull("error") ? "True" : oResponse
-					.getString("error");
-			if (response_data.isEmpty()) {
-				final String msg = act
-						.getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_sales_order_processing_upload_failed);
-				showCustomDialog(msg);
-			} else {
-				Log.d(LOG_TAG, "status=" + status);
-				if (status.equalsIgnoreCase("True")) {
-					final String msg = act
-							.getApplicationContext()
-							.getResources()
-							.getString(
-									R.string.app_sales_order_processing_upload_failed);
-					showCustomDialog(msg);
-				} else {
-					final String msg = act
-							.getApplicationContext()
-							.getResources()
-							.getString(
-									R.string.app_sales_order_processing_upload_success);
-					CustomDialogUploadSuccess(msg);
-				}
-
-			}
-
-		} catch (JSONException e) {
-			final String message = e.toString();
-			showCustomDialog(message);
-
-		}
-	}
-
-	public void CustomDialogUploadSuccess(String msg) {
-		if (progressDialog != null) {
-			progressDialog.dismiss();
-		}
-		final android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(
-				act);
-		alertDialogBuilder
-				.setMessage(msg)
-				.setCancelable(false)
-				.setPositiveButton(
-						act.getApplicationContext().getResources()
-								.getString(R.string.MSG_DLG_LABEL_OK),
-						new DialogInterface.OnClickListener() {
-							@Override
-							public void onClick(DialogInterface dialog, int id) {
-								android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder
-										.create();
-								alertDialog.dismiss();
-								databaseHandler.deleteTableReqLoad();
-								finish();
-								startActivity(getIntent());
-							}
-						});
-		android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
-
-	}
 
 	private void BukaTTD() {
 		/*Intent intentActivity = new Intent(
@@ -611,6 +350,10 @@ public class AddRequestActivity extends FragmentActivity {
 				String id_kemasan = product_from_db.get(i).getId_kemasan();
 				String foto = product_from_db.get(i).getFoto();
 				String deskripsi = product_from_db.get(i).getDeskripsi();
+				String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -621,6 +364,10 @@ public class AddRequestActivity extends FragmentActivity {
 				product.setId_kemasan(id_kemasan);
 				product.setFoto(foto);
 				product.setDeskripsi(deskripsi);
+				product.setUomqtyl1(uomqtyl1);
+				product.setUomqtyl2(uomqtyl2);
+				product.setUomqtyl3(uomqtyl3);
+				product.setUomqtyl4(uomqtyl4);
 				product_list.add(product);
 				cAdapterChooseAdapter = new ListViewChooseAdapter(
 						AddRequestActivity.this,
@@ -660,6 +407,10 @@ public class AddRequestActivity extends FragmentActivity {
 							String foto = product_from_db.get(i).getFoto();
 							String deskripsi = product_from_db.get(i)
 									.getDeskripsi();
+							String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+							String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+							String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+							String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 							Product product = new Product();
 							product.setId_product(id_product);
@@ -670,6 +421,10 @@ public class AddRequestActivity extends FragmentActivity {
 							product.setId_kemasan(id_kemasan);
 							product.setFoto(foto);
 							product.setDeskripsi(deskripsi);
+							product.setUomqtyl1(uomqtyl1);
+							product.setUomqtyl2(uomqtyl2);
+							product.setUomqtyl3(uomqtyl3);
+							product.setUomqtyl4(uomqtyl4);
 							product_list.add(product);
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									AddRequestActivity.this,
@@ -703,6 +458,10 @@ public class AddRequestActivity extends FragmentActivity {
 							String foto = product_from_db.get(i).getFoto();
 							String deskripsi = product_from_db.get(i)
 									.getDeskripsi();
+							String uomqtyl1 = product_from_db.get(i).getUomqtyl1();
+							String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
+							String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
+							String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
 
 							Product product = new Product();
 							product.setId_product(id_product);
@@ -713,6 +472,10 @@ public class AddRequestActivity extends FragmentActivity {
 							product.setId_kemasan(id_kemasan);
 							product.setFoto(foto);
 							product.setDeskripsi(deskripsi);
+							product.setUomqtyl1(uomqtyl1);
+							product.setUomqtyl2(uomqtyl2);
+							product.setUomqtyl3(uomqtyl3);
+							product.setUomqtyl4(uomqtyl4);
 							product_list.add(product);
 							cAdapterChooseAdapter = new ListViewChooseAdapter(
 									AddRequestActivity.this,
@@ -800,8 +563,7 @@ public class AddRequestActivity extends FragmentActivity {
 				holder = (UserHolder) row.getTag();
 			}
 			productData = data.get(position);
-			holder.list_kode_product.setText(productData.getKode_product());
-
+				holder.list_kode_product.setText(productData.getKode_product());
 				holder.list_jumlah_order.setText(productData.getJumlah_order());
 				holder.list_jumlah_order1.setText(productData.getJumlah_order1());
 				holder.list_jumlah_order2.setText(productData.getJumlah_order2());
@@ -955,7 +717,13 @@ public class AddRequestActivity extends FragmentActivity {
 										jumlahProduct.getText().toString(),
 										jumlahProduct1.getText().toString(),
 										jumlahProduct2.getText().toString(),
-										jumlahProduct3.getText().toString()));
+										jumlahProduct3.getText().toString(),
+										data.get(position).getUomqtyl1(),
+										data.get(position).getUomqtyl2(),
+										data.get(position).getUomqtyl3(),
+										data.get(position).getUomqtyl4(),
+										data.get(position).getId_product()
+								));
 								chooseProductDialog.hide();
 							}
 						} else {
@@ -1019,7 +787,7 @@ public class AddRequestActivity extends FragmentActivity {
 	}
 
 	public void gotoInventory() {
-		Intent i = new Intent(this, InventoryActivity.class);
+		Intent i = new Intent(this, RequestActivity.class);
 		startActivity(i);
 		finish();
 	}

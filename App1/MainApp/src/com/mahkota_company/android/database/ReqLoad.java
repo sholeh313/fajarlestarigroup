@@ -3,8 +3,8 @@ package com.mahkota_company.android.database;
 public class ReqLoad {
 
 	private int id_sales_order;
-	private String nomer_order;
-	private String nomer_order_detail;
+	private String nomer_request_load;
+	private int id_staff;
 	private String date_order;
 	private String time_order;
 	//private String deskripsi;
@@ -12,7 +12,7 @@ public class ReqLoad {
 	private String username;
 	//private String kode_customer;
 	//private String alamat;
-	//private String nama_lengkap;
+	private String satuan_terkecil;
 	private String nama_product;
 	//private String kode_product;
 	private String harga_jual;
@@ -20,32 +20,39 @@ public class ReqLoad {
 	private String jumlah_order1;
 	private String jumlah_order2;
 	private String jumlah_order3;
+	private String uomqtyl1;
+	private String uomqtyl2;
+	private String uomqtyl3;
+	private String uomqtyl4;
+	private int id_product;
 
 	public ReqLoad() {
 
 	}
 
 	// constructor
-	public ReqLoad(int id_sales_order, String nomer_order,
-				   String nomer_order_detail, String date_order,
-				   String time_order, int id_promosi, //String deskripsi,
+	public ReqLoad(int id_sales_order, String nomer_request_load,
+				   String date_order,
+				   String time_order, int id_promosi, int id_staff,
 				   String username, //String kode_customer, String alamat,
-				   //String nama_lengkap,
+				   String satuan_terkecil,
 				   String nama_product,
 				   //String kode_product,
 				   String harga_jual, String jumlah_order, String jumlah_order1,
-				   String jumlah_order2, String jumlah_order3) {
+				   String jumlah_order2, String jumlah_order3
+			       ,String uomqtyl1, String uomqtyl2, String uomqtyl3, String uomqtyl4,
+				   int id_product
+				   ) {
 		this.id_sales_order = id_sales_order;
-		this.nomer_order = nomer_order;
-		this.nomer_order_detail = nomer_order_detail;
+		this.nomer_request_load = nomer_request_load;
 		this.date_order = date_order;
 		this.time_order = time_order;
-		//this.deskripsi = deskripsi;
+		this.id_staff = id_staff;
 		this.id_promosi = id_promosi;
 		this.username = username;
 		//this.kode_customer = kode_customer;
 		//this.alamat = alamat;
-		//this.nama_lengkap = nama_lengkap;
+		this.satuan_terkecil = satuan_terkecil;
 		this.nama_product = nama_product;
 		//this.kode_product = kode_product;
 		this.harga_jual = harga_jual;
@@ -53,6 +60,11 @@ public class ReqLoad {
 		this.jumlah_order1 = jumlah_order1;
 		this.jumlah_order2 = jumlah_order2;
 		this.jumlah_order3 = jumlah_order3;
+		this.uomqtyl1 = uomqtyl1;
+		this.uomqtyl2 = uomqtyl2;
+		this.uomqtyl3 = uomqtyl3;
+		this.uomqtyl4 = uomqtyl4;
+		this.id_product = id_product;
 
 	}
 
@@ -64,20 +76,20 @@ public class ReqLoad {
 		this.id_sales_order = id_sales_order;
 	}
 
-	public String getNomer_order() {
-		return nomer_order;
+	public String getNomer_request_load() {
+		return nomer_request_load;
 	}
 
-	public void setNomer_order(String nomer_order) {
-		this.nomer_order = nomer_order;
+	public void setNomer_request_load(String nomer_request_load) {
+		this.nomer_request_load = nomer_request_load;
 	}
 
-	public String getNomer_order_detail() {
-		return nomer_order_detail;
+	public int getId_staff() {
+		return id_staff;
 	}
 
-	public void setNomer_order_detail(String nomer_order_detail) {
-		this.nomer_order_detail = nomer_order_detail;
+	public void setId_staff(int id_staff) {
+		this.id_staff = id_staff;
 	}
 
 	public String getDate_order() {
@@ -136,13 +148,13 @@ public class ReqLoad {
 	//	this.alamat = alamat;
 	//}
 
-//	public String getNama_lengkap() {
-//		return nama_lengkap;
-//	}
+	public String getSatuan_terkecil() {
+		return satuan_terkecil;
+	}
 
-//	public void setNama_lengkap(String nama_lengkap) {
-//		this.nama_lengkap = nama_lengkap;
-//	}
+	public void setSatuan_terkecil(String satuan_terkecil) {
+		this.satuan_terkecil = satuan_terkecil;
+	}
 
 	public String getNama_product() {
 		return nama_product;
@@ -198,5 +210,45 @@ public class ReqLoad {
 
 	public void setJumlah_order3(String jumlah_order3) {
 		this.jumlah_order3 = jumlah_order3;
+	}
+
+	public String getUomqtyl1() {
+		return uomqtyl1;
+	}
+
+	public void setUomqtyl1(String uomqtyl1) {
+		this.uomqtyl1 = uomqtyl1;
+	}
+
+	public String getUomqtyl2() {
+		return uomqtyl2;
+	}
+
+	public void setUomqtyl2(String uomqtyl2) {
+		this.uomqtyl2 = uomqtyl2;
+	}
+
+	public String getUomqtyl3() {
+		return uomqtyl3;
+	}
+
+	public void setUomqtyl3(String uomqtyl3) {
+		this.uomqtyl3 = uomqtyl3;
+	}
+
+	public String getUomqtyl4() {
+		return uomqtyl4;
+	}
+
+	public void setUomqtyl4(String uomqtyl4) {
+		this.uomqtyl4 = uomqtyl4;
+	}
+
+	public int getId_product() {
+		return id_product;
+	}
+
+	public void setId_product(int id_product) {
+		this.id_product = id_product;
 	}
 }

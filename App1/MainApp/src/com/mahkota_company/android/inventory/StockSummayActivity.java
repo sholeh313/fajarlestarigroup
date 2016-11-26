@@ -300,26 +300,21 @@ public class StockSummayActivity extends FragmentActivity {
 					JSONArray jsonarr = oResponse.getJSONArray("request_load");
 					for (int i = 0; i < jsonarr.length(); i++) {
 						JSONObject oResponsealue = jsonarr.getJSONObject(i);
-						/***
-						 * Note TODO Di sisi Android yang di butuhkan hanya id
-						 * Product dan Jumlah Item yang di Approve oleh admin
+						/* Note TODO Di sisi Android yang di butuhkan hanya id
+						  Product dan Jumlah Item yang di Approve oleh admin
 						 */
 						String id_product = oResponsealue.isNull("id_product") ? null
 								: oResponsealue.getString("id_product");
-						String nomer_request_load = oResponsealue
-								.isNull("nomer_request_load") ? null
+						String nomer_request_load = oResponsealue.isNull("nomer_request_load") ? null
 								: oResponsealue.getString("nomer_request_load");
 						saveAppDataNoRequestLoad(nomer_request_load);
-						String jumlah_request = oResponsealue
-								.isNull("jumlah_request") ? null
+						String jumlah_request = oResponsealue.isNull("jumlah_request") ? null
 								: oResponsealue.getString("jumlah_request");
-						String jumlah_accept = oResponsealue
-								.isNull("jumlah_accept") ? null : oResponsealue
-								.getString("jumlah_accept");
+						String jumlah_accept = oResponsealue.isNull("jumlah_accept") ? null
+								: oResponsealue.getString("jumlah_accept");
 
 						Log.d(LOG_TAG, "id_product:" + id_product);
-						Log.d(LOG_TAG, "nomer_request_load:"
-								+ nomer_request_load);
+						Log.d(LOG_TAG, "nomer_request_load:"+ nomer_request_load);
 						Log.d(LOG_TAG, "jumlah_request:" + jumlah_request);
 						Log.d(LOG_TAG, "jumlah_accept:" + jumlah_accept);
 						try {
@@ -327,16 +322,16 @@ public class StockSummayActivity extends FragmentActivity {
 									.getProduct(Integer.parseInt(id_product));
 							if (tempProduct != null)
 								databaseHandler.addStockVan(new StockVan(
-										tempProduct.getId_product(),
+										Integer.parseInt(id_product),
 										tempProduct.getNama_product(),
 										tempProduct.getKode_product(),
-										tempProduct.getHarga_jual(), Integer
-												.parseInt(jumlah_request),
+										tempProduct.getHarga_jual(),
+										Integer.parseInt(jumlah_request),
 										Integer.parseInt(jumlah_accept),
-										Integer.parseInt(jumlah_accept),
-										tempProduct.getId_kemasan(), tempProduct
-												.getFoto(), tempProduct
-												.getDeskripsi()));
+										0,
+										tempProduct.getId_kemasan(),
+										tempProduct.getFoto(),
+										tempProduct.getDeskripsi()));
 
 						} catch (Exception ex) {
 							Log.d(LOG_TAG, "exception:" + ex.getMessage());
@@ -388,7 +383,7 @@ public class StockSummayActivity extends FragmentActivity {
 
 	public void showListStockSummary() {
 		productStockVan_list.clear();
-//		int countData = databaseHandler.getCountStockVan();
+		int countData = databaseHandler.getCountStockVan();
 		productStockVan_list = databaseHandler.getAllProductStokVan();
 		if (productStockVan_list.size() > 0) {
 			listview.setVisibility(View.VISIBLE);

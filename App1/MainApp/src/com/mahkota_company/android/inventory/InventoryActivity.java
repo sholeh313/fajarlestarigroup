@@ -34,6 +34,8 @@ import android.widget.TextView;
 import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
+import com.mahkota_company.android.check_customer.CheckCustomer;
+import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
@@ -99,7 +101,7 @@ public class InventoryActivity extends ActionBarActivity implements
 	private Button btnSuggestedStock;
 	private Button btnSupplier;
 	private Button btnSalesTO;
-	private Button btnSalesTO1;
+	private Button btnPrice;
 	private Button btnSalesKanvas;
 	private TextView textViewTitle;
 
@@ -144,7 +146,7 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnSupplier = (Button) findViewById(R.id.menuSupplier);
 		btnSalesTO = (Button) findViewById(R.id.menuSalesTO);
 		btnSalesKanvas = (Button) findViewById(R.id.menuSalesKanvas);
-		btnSalesTO1 = (Button) findViewById(R.id.menuSalesTO1);
+		btnPrice = (Button) findViewById(R.id.menuSalesTO1);
 		btnStockSummary.setTypeface(typefaceSmall);
 		btnRequestLoad.setTypeface(typefaceSmall);
 		btnLoadProduct.setTypeface(typefaceSmall);
@@ -154,8 +156,7 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnSupplier.setTypeface(typefaceSmall);
 		btnSalesTO.setTypeface(typefaceSmall);
 		btnSalesKanvas.setTypeface(typefaceSmall);
-
-		btnSalesTO1.setVisibility(View.INVISIBLE);
+		btnPrice.setTypeface(typefaceSmall);
 
 
 		btnRequestLoad.setOnClickListener(requestLoadClickListener);
@@ -165,6 +166,7 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnPhysicalCounting.setOnClickListener(physicalCountingClickListener);
 		btnSupplier.setOnClickListener(supplierClickListener);
 		btnSalesTO.setOnClickListener(salesTOClickListener);
+		btnPrice.setOnClickListener(PriceDownload);
 		btnSalesKanvas.setOnClickListener(salesKanvasClickListener);
 		//
 		// if (countProduct == 0) {
@@ -310,6 +312,17 @@ public class InventoryActivity extends ActionBarActivity implements
 					gotoSalesTO();
 				}
 			}
+		}
+	};
+
+	/**
+	 * Button price Listener
+	 */
+	public View.OnClickListener PriceDownload = new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+					gotoPriceDownload();
 		}
 	};
 
@@ -984,7 +997,8 @@ public class InventoryActivity extends ActionBarActivity implements
 	}
 
 	public void gotoRequestLoad() {
-		Intent i = new Intent(this, RequestActivity.class);
+		Intent i = new Intent(this,
+				RequestLoadActivity.class);
 		startActivity(i);
 		finish();
 	}
@@ -1002,9 +1016,9 @@ public class InventoryActivity extends ActionBarActivity implements
 	}
 
 	public void gotoPhysicalCounting() {
-		Intent i = new Intent(this, PhysicalCountingActivity.class);
-		startActivity(i);
-		finish();
+		//Intent i = new Intent(this, PhysicalCountingActivity.class);
+		//startActivity(i);
+		//finish();
 	}
 
 	public void gotoSupplier() {
@@ -1016,6 +1030,12 @@ public class InventoryActivity extends ActionBarActivity implements
 
 	public void gotoSalesTO() {
 		Intent i = new Intent(this, SalesTOActivity.class);
+		startActivity(i);
+		finish();
+	}
+
+	public void gotoPriceDownload() {
+		Intent i = new Intent(this, ProductPriceActivity.class);
 		startActivity(i);
 		finish();
 	}
@@ -1082,7 +1102,7 @@ public class InventoryActivity extends ActionBarActivity implements
 					startActivity(intentActivity);
 					finish();
 				}*/
-				/* Note TODO else if (position == 10) {
+				/*  else if (position == 10) {
 					Intent intentActivity = new Intent(this,
 							ReturActivity.class);
 					startActivity(intentActivity);
@@ -1092,7 +1112,22 @@ public class InventoryActivity extends ActionBarActivity implements
 							CustomerMerchandiseActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
+				}*/else if (position == 12) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomer.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 13) {
+					Intent intentActivity = new Intent(this,
+							CheckCustomerProspectActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 14) {
+					Intent intentActivity = new Intent(this,
+							RequestActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}
 			}
 		}
 	}

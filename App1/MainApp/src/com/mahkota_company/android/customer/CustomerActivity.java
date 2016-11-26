@@ -44,6 +44,7 @@ import com.mahkota_company.android.database.Request_load;
 import com.mahkota_company.android.display_product.DisplayProductActivity;
 
 import com.mahkota_company.android.inventory.InventoryActivity;
+import com.mahkota_company.android.inventory.RequestActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
@@ -1850,6 +1851,11 @@ public class CustomerActivity extends ActionBarActivity implements
 				}else if (position == 13) {
 					Intent intentActivity = new Intent(this,
 							CheckCustomerProspectActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 14) {
+					Intent intentActivity = new Intent(this,
+							RequestActivity.class);
 					startActivity(intentActivity);
 					finish();
 				}

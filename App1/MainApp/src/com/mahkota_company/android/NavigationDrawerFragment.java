@@ -195,6 +195,8 @@ public class NavigationDrawerFragment extends Fragment implements
 				getResources().getDrawable(R.drawable.center_direction)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_6),
 				getResources().getDrawable(R.drawable.salesorder)));
+		//items.add(new NavigationItem(getResources().getString(R.string.menu_15),
+		//		getResources().getDrawable(R.drawable.kanvas)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_7),
 				getResources().getDrawable(R.drawable.scan_stock)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_8),
@@ -211,6 +213,10 @@ public class NavigationDrawerFragment extends Fragment implements
 				getResources().getDrawable(R.drawable.customer)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_14),
 				getResources().getDrawable(R.drawable.customeradd)));
+		items.add(new NavigationItem(getResources().getString(R.string.menu_15),
+				getResources().getDrawable(R.drawable.req)));
+		//items.add(new NavigationItem(getResources().getString(R.string.menu_15),
+		//		getResources().getDrawable(R.drawable.price_tag)));
 
 		return items;
 	}

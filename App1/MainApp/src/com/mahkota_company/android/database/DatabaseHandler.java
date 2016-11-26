@@ -39,6 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_WILAYAH = "wilayah";
 	private static final String TABLE_KEMASAN = "kemasan";
 	private static final String TABLE_PRODUCT = "product";
+	private static final String TABLE_PRODUCT_PRICE = "product_price";
 	private static final String TABLE_STOCK_VAN = "stok_van";
 	private static final String TABLE_CUSTOMER = "customer";
 	private static final String TABLE_JADWAL = "jadwal";
@@ -137,6 +138,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_PRODUCT_UOMQTYL2 = "uomqtyl2";
 	private static final String KEY_PRODUCT_UOMQTYL3 = "uomqtyl3";
 	private static final String KEY_PRODUCT_UOMQTYL4 = "uomqtyl4";
+
+	// PRODUCT_PRICE Table Columns names
+	private static final String KEY_PRODUCT_ID = "id";
+	private static final String KEY_PRODUCT_PRICELIST = "pricelist";
+	private static final String KEY_PRODUCT_PRICESTD = "pricestd";
+	private static final String KEY_PRODUCT_PRICELIMIT = "pricelimit";
+
 
 	// STOK VAN Table Columns names
 	private static final String KEY_STOCK_VAN_ID_PRODUCT = "id_product";
@@ -264,15 +272,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// SALES_ORDER Table Columns names
 	private static final String KEY_SALES_ORDER_ID_SALES_ORDER = "id_sales_order";
 	private static final String KEY_SALES_ORDER_NOMER_ORDER = "nomer_order";
+	private static final String KEY_SALES_ORDER_NOMER_REQUEST_LOAD = "nomer_request_load";
 	private static final String KEY_SALES_ORDER_NOMER_ORDER_DETAIL = "nomer_order_detail";
 	private static final String KEY_SALES_ORDER_DATE_STOCK_ON_HAND = "date_order";
 	private static final String KEY_SALES_ORDER_TIME_STOCK_ON_HAND = "time_order";
 	private static final String KEY_SALES_ORDER_DESKRIPSI = "deskripsi";
 	private static final String KEY_SALES_ORDER_ID_PROMOSI = "id_promosi";
+	private static final String KEY_SALES_ORDER_ID_STAFF = "id_staff";
 	private static final String KEY_SALES_ORDER_USERNAME = "username";
 	private static final String KEY_SALES_ORDER_KODE_CUSTOMER = "kode_customer";
 	private static final String KEY_SALES_ORDER_ALAMAT = "alamat";
 	private static final String KEY_SALES_ORDER_NAMA_LENGKAP = "nama_lengkap";
+	private static final String KEY_SALES_ORDER_SATUAN_TERKECIL = "satuan_terkecil";
 	private static final String KEY_SALES_ORDER_NAMA_PRODUCT = "nama_product";
 	private static final String KEY_SALES_ORDER_KODE_PRODUCT = "kode_product";
 	private static final String KEY_SALES_ORDER_HARGA_JUAL = "harga_jual";
@@ -280,6 +291,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER1 = "jumlah_order1";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER2 = "jumlah_order2";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER3 = "jumlah_order3";
+	private static final String KEY_SALES_ORDER_ID_PRODUCT = "id_product";
+	private static final String KEY_SALES_ORDER_UOMQTYL1 = "uomqtyl1";
+	private static final String KEY_SALES_ORDER_UOMQTYL2 = "uomqtyl2";
+	private static final String KEY_SALES_ORDER_UOMQTYL3 = "uomqtyl3";
+	private static final String KEY_SALES_ORDER_UOMQTYL4 = "uomqtyl4";
 
 	// RETUR Table Columns names
 	private static final String KEY_RETUR_ID_RETUR = "id_retur";
@@ -333,6 +349,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private final ArrayList<Kemasan> kemasan_list = new ArrayList<Kemasan>();
 	private final ArrayList<Wilayah> wilayah_list = new ArrayList<Wilayah>();
 	private final ArrayList<Product> product_list = new ArrayList<Product>();
+	private final ArrayList<ProductPrice> product_price_list = new ArrayList<ProductPrice>();
 	private final ArrayList<ProductStockVan> productStockVanList = new ArrayList<ProductStockVan>();
 	private final ArrayList<StockVan> stock_van_list = new ArrayList<StockVan>();
 
@@ -426,6 +443,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_PRODUCT_UOMQTYL4 + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_TABLE_PRODUCT);
+
+		String CREATE_TABLE_PRODUCT_PRICE = "CREATE TABLE " + TABLE_PRODUCT_PRICE + "("
+				+ KEY_PRODUCT_ID + " INTEGER PRIMARY KEY,"
+				+ KEY_PRODUCT_ID_PRODUCT + " TEXT,"
+				+ KEY_PRODUCT_PRICELIST + " TEXT,"
+				+ KEY_PRODUCT_PRICESTD + " TEXT,"
+				+ KEY_PRODUCT_PRICELIMIT + " TEXT"
+				+ ")";
+		db.execSQL(CREATE_TABLE_PRODUCT_PRICE);
 
 		String CREATE_TABLE_STOK_VAN = "CREATE TABLE " + TABLE_STOCK_VAN + "("
 				+ KEY_STOCK_VAN_ID_PRODUCT + " INTEGER PRIMARY KEY,"
@@ -571,23 +597,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		String CREATE_TABLE_REQLOAD = "CREATE TABLE " + TABLE_REQLOAD
 				+ "("
 				+ KEY_SALES_ORDER_ID_SALES_ORDER+ " INTEGER PRIMARY KEY,"
-				+ KEY_SALES_ORDER_NOMER_ORDER+ " TEXT,"
-				+ KEY_SALES_ORDER_NOMER_ORDER_DETAIL + " TEXT,"
+				+ KEY_SALES_ORDER_NOMER_REQUEST_LOAD+ " TEXT,"
 				+ KEY_SALES_ORDER_DATE_STOCK_ON_HAND + " TEXT,"
 				+ KEY_SALES_ORDER_TIME_STOCK_ON_HAND + " TEXT,"
-				//+ KEY_SALES_ORDER_DESKRIPSI + " TEXT,"
 				+ KEY_SALES_ORDER_ID_PROMOSI + " INTEGER,"
 				+ KEY_SALES_ORDER_USERNAME + " TEXT,"
 				//+ KEY_SALES_ORDER_KODE_CUSTOMER + " TEXT,"
 				//+ KEY_SALES_ORDER_ALAMAT + " TEXT,"
-				//+ KEY_SALES_ORDER_NAMA_LENGKAP + " TEXT,"
+				+ KEY_SALES_ORDER_SATUAN_TERKECIL + " TEXT,"
 				+ KEY_SALES_ORDER_NAMA_PRODUCT + " TEXT,"
 				//+ KEY_SALES_ORDER_KODE_PRODUCT + " TEXT,"
 				+ KEY_SALES_ORDER_HARGA_JUAL + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER1 + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT,"
-				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT"
+				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT,"
+				+ KEY_SALES_ORDER_ID_STAFF + " TEXT,"
+				+ KEY_SALES_ORDER_ID_PRODUCT + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_TABLE_REQLOAD);
 
@@ -830,6 +856,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_PRODUCT_UOMQTYL4, product.getUomqtyl4());
 		// Inserting Row
 		db.insert(TABLE_PRODUCT, null, values);
+		db.close(); // Closing database connection
+	}
+
+	// Adding new product
+	public void add_ProductPrice(ProductPrice productprice) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PRODUCT_ID, productprice.getId());
+		values.put(KEY_PRODUCT_ID_PRODUCT, productprice.getId_product());
+		values.put(KEY_PRODUCT_PRICELIST, productprice.getPricelist());
+		values.put(KEY_PRODUCT_PRICESTD, productprice.getPricestd());
+		values.put(KEY_PRODUCT_PRICELIMIT, productprice.getPricelimit());
+		// Inserting Row
+		db.insert(TABLE_PRODUCT_PRICE, null, values);
 		db.close(); // Closing database connection
 	}
 
@@ -1078,16 +1118,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(KEY_SALES_ORDER_ID_SALES_ORDER, reqLoad.getId_sales_order());
-		values.put(KEY_SALES_ORDER_NOMER_ORDER, reqLoad.getNomer_order());
-		values.put(KEY_SALES_ORDER_NOMER_ORDER_DETAIL, reqLoad.getNomer_order_detail());
+		values.put(KEY_SALES_ORDER_NOMER_REQUEST_LOAD, reqLoad.getNomer_request_load());
 		values.put(KEY_SALES_ORDER_DATE_STOCK_ON_HAND, reqLoad.getDate_order());
 		values.put(KEY_SALES_ORDER_TIME_STOCK_ON_HAND, reqLoad.getTime_order());
-		//values.put(KEY_SALES_ORDER_DESKRIPSI, reqLoad.getDeskripsi());
 		values.put(KEY_SALES_ORDER_ID_PROMOSI, reqLoad.getId_promosi());
 		values.put(KEY_SALES_ORDER_USERNAME, reqLoad.getUsername());
 		//values.put(KEY_SALES_ORDER_KODE_CUSTOMER, reqLoad.getKode_customer());
 		//values.put(KEY_SALES_ORDER_ALAMAT, reqLoad.getAlamat());
-		//values.put(KEY_SALES_ORDER_NAMA_LENGKAP, reqLoad.getNama_lengkap());
+		values.put(KEY_SALES_ORDER_SATUAN_TERKECIL, reqLoad.getSatuan_terkecil());
 		values.put(KEY_SALES_ORDER_NAMA_PRODUCT, reqLoad.getNama_product());
 		//values.put(KEY_SALES_ORDER_KODE_PRODUCT, reqLoad.getKode_product());
 		values.put(KEY_SALES_ORDER_HARGA_JUAL, reqLoad.getHarga_jual());
@@ -1095,6 +1133,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER1, reqLoad.getJumlah_order1());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER2, reqLoad.getJumlah_order2());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER3, reqLoad.getJumlah_order3());
+		values.put(KEY_SALES_ORDER_ID_STAFF, reqLoad.getId_staff());
+		values.put(KEY_SALES_ORDER_ID_PRODUCT, reqLoad.getId_product());
 		// Inserting Row
 		db.insert(TABLE_REQLOAD, null, values);
 		db.close(); // Closing database connection
@@ -1434,6 +1474,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close();
 
 		return product;
+	}
+
+	// Getting single ProductPrice
+	public ProductPrice getProductPrice(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_PRODUCT_PRICE, new String[] {
+						KEY_PRODUCT_ID, KEY_PRODUCT_ID_PRODUCT, KEY_PRODUCT_PRICELIST,
+						KEY_PRODUCT_PRICESTD, KEY_PRODUCT_PRICELIMIT}, KEY_PRODUCT_ID + "=?",
+				new String[] { String.valueOf(id) }, null, null, null, null);
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		ProductPrice productPrice = new ProductPrice(cursor.getInt(0), cursor.getString(1),
+				cursor.getString(2), cursor.getString(3), cursor.getString(4));
+		// return staff
+		cursor.close();
+		db.close();
+
+		return productPrice;
 	}
 
 
@@ -3774,23 +3834,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				do {
 					ReqLoad reqLoad = new ReqLoad();
 					reqLoad.setId_sales_order(cursor.getInt(0));
-					reqLoad.setNomer_order(cursor.getString(1));
-					reqLoad.setNomer_order_detail(cursor.getString(2));
-					reqLoad.setDate_order(cursor.getString(3));
-					reqLoad.setTime_order(cursor.getString(4));
+					reqLoad.setNomer_request_load(cursor.getString(1));
+					reqLoad.setDate_order(cursor.getString(2));
+					reqLoad.setTime_order(cursor.getString(3));
 					//reqLoad.setDeskripsi(cursor.getString(5));
-					reqLoad.setId_promosi(cursor.getInt(6));
-					reqLoad.setUsername(cursor.getString(7));
+					reqLoad.setId_promosi(cursor.getInt(4));
+					reqLoad.setUsername(cursor.getString(5));
 					//reqLoad.setKode_customer(cursor.getString(8));
 					//reqLoad.setAlamat(cursor.getString(9));
-					//reqLoad.setNama_lengkap(cursor.getString(10));
-					reqLoad.setNama_product(cursor.getString(11));
+					reqLoad.setSatuan_terkecil(cursor.getString(6));
+					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(13));
-					reqLoad.setJumlah_order(cursor.getString(14));
-					reqLoad.setJumlah_order1(cursor.getString(15));
-					reqLoad.setJumlah_order2(cursor.getString(16));
-					reqLoad.setJumlah_order3(cursor.getString(17));
+					reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(9));
+					reqLoad.setJumlah_order1(cursor.getString(10));
+					reqLoad.setJumlah_order2(cursor.getString(11));
+					reqLoad.setJumlah_order3(cursor.getString(12));
+					reqLoad.setId_staff(cursor.getInt(13));
+					reqLoad.setId_product(cursor.getInt(14));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);
@@ -3915,7 +3976,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 			// Select All Query
 			String selectQuery = "SELECT  * FROM " + TABLE_REQLOAD
-					+ " GROUP BY " + KEY_SALES_ORDER_NOMER_ORDER;
+					+ " GROUP BY " + KEY_SALES_ORDER_NOMER_REQUEST_LOAD;
 
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
@@ -3925,23 +3986,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				do {
 					ReqLoad reqLoad = new ReqLoad();
 					reqLoad.setId_sales_order(cursor.getInt(0));
-					reqLoad.setNomer_order(cursor.getString(1));
-					reqLoad.setNomer_order_detail(cursor.getString(2));
-					reqLoad.setDate_order(cursor.getString(3));
-					reqLoad.setTime_order(cursor.getString(4));
+					reqLoad.setNomer_request_load(cursor.getString(1));
+					reqLoad.setDate_order(cursor.getString(2));
+					reqLoad.setTime_order(cursor.getString(3));
 					//reqLoad.setDeskripsi(cursor.getString(5));
-					reqLoad.setId_promosi(cursor.getInt(6));
-					reqLoad.setUsername(cursor.getString(7));
+					reqLoad.setId_promosi(cursor.getInt(4));
+					reqLoad.setUsername(cursor.getString(5));
 					//reqLoad.setKode_customer(cursor.getString(8));
 					//reqLoad.setAlamat(cursor.getString(9));
-					//reqLoad.setNama_lengkap(cursor.getString(10));
-					reqLoad.setNama_product(cursor.getString(11));
+					reqLoad.setSatuan_terkecil(cursor.getString(6));
+					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(13));
-					reqLoad.setJumlah_order(cursor.getString(14));
-					reqLoad.setJumlah_order1(cursor.getString(15));
-					reqLoad.setJumlah_order2(cursor.getString(16));
-					reqLoad.setJumlah_order3(cursor.getString(17));
+					reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(9));
+					reqLoad.setJumlah_order1(cursor.getString(10));
+					reqLoad.setJumlah_order2(cursor.getString(11));
+					reqLoad.setJumlah_order3(cursor.getString(12));
+					reqLoad.setId_staff(cursor.getInt(13));
+					reqLoad.setId_product(cursor.getInt(14));
 
 					// Adding sales_order_list to list
 					reqload_list.add(reqLoad);
@@ -4079,23 +4141,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				do {
 					ReqLoad reqLoad = new ReqLoad();
 					reqLoad.setId_sales_order(cursor.getInt(0));
-					reqLoad.setNomer_order(cursor.getString(1));
-					reqLoad.setNomer_order_detail(cursor.getString(2));
-					reqLoad.setDate_order(cursor.getString(3));
-					reqLoad.setTime_order(cursor.getString(4));
+					reqLoad.setNomer_request_load(cursor.getString(1));
+					reqLoad.setDate_order(cursor.getString(2));
+					reqLoad.setTime_order(cursor.getString(3));
 					//reqLoad.setDeskripsi(cursor.getString(5));
-					reqLoad.setId_promosi(cursor.getInt(6));
-					reqLoad.setUsername(cursor.getString(7));
+					reqLoad.setId_promosi(cursor.getInt(4));
+					reqLoad.setUsername(cursor.getString(5));
 					//reqLoad.setKode_customer(cursor.getString(8));
 					//reqLoad.setAlamat(cursor.getString(9));
-				//	reqLoad.setNama_lengkap(cursor.getString(10));
-					reqLoad.setNama_product(cursor.getString(11));
+					reqLoad.setSatuan_terkecil(cursor.getString(6));
+					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(13));
-					reqLoad.setJumlah_order(cursor.getString(14));
-					reqLoad.setJumlah_order1(cursor.getString(15));
-					reqLoad.setJumlah_order2(cursor.getString(16));
-					reqLoad.setJumlah_order3(cursor.getString(17));
+					reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(9));
+					reqLoad.setJumlah_order1(cursor.getString(10));
+					reqLoad.setJumlah_order2(cursor.getString(11));
+					reqLoad.setJumlah_order3(cursor.getString(12));
+					reqLoad.setId_staff(cursor.getInt(13));
+					reqLoad.setId_product(cursor.getInt(14));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);
@@ -4620,6 +4683,44 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return product_list;
 	}
 
+
+	// Getting All Product
+	public ArrayList<ProductPrice> getAllProductPrice() {
+		try {
+			product_list.clear();
+
+			// Select All Query
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCT_PRICE;
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					ProductPrice productPrice = new ProductPrice();
+					productPrice.setId(cursor.getInt(0));
+					productPrice.setId_product(cursor.getString(1));
+					productPrice.setPricelist(cursor.getString(2));
+					productPrice.setPricestd(cursor.getString(3));
+					productPrice.setPricelimit(cursor.getString(4));
+
+					// Adding product to list
+					product_price_list.add(productPrice);
+				} while (cursor.moveToNext());
+			}
+
+			// return product_list
+			cursor.close();
+			db.close();
+			return product_price_list;
+		} catch (Exception e) {
+			Log.e("product_price_list", "" + e);
+		}
+
+		return product_price_list;
+	}
+
 	// Getting All StockVan
 	public ArrayList<StockVan> getAllStockVanBaseOnSearch(String search) {
 		try {
@@ -5114,6 +5215,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public int getCountProduct() {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PRODUCT,
+				null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountProductPrice() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PRODUCT_PRICE,
 				null);
 		mCount.moveToFirst();
 		int count = mCount.getInt(0);

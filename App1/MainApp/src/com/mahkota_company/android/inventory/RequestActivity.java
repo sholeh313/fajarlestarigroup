@@ -158,10 +158,8 @@ public class RequestActivity extends ActionBarActivity implements
 			for (int i = 0; i < req_load_from_db.size(); i++) {
 				int id_sales_order = req_load_from_db.get(i)
 						.getId_sales_order();
-				String nomer_order = req_load_from_db.get(i)
-						.getNomer_order();
-				String nomer_order_detail = req_load_from_db.get(i)
-						.getNomer_order_detail();
+				String nomer_request_load = req_load_from_db.get(i)
+						.getNomer_request_load();
 				String date_order = req_load_from_db.get(i).getDate_order();
 				String time_order = req_load_from_db.get(i).getTime_order();
 				//String deskripsi = req_load_from_db.get(i).getDeskripsi();
@@ -169,7 +167,7 @@ public class RequestActivity extends ActionBarActivity implements
 				String username = req_load_from_db.get(i).getUsername();
 				//String kode_customer = req_load_from_db.get(i).getKode_customer();
 				//String alamat = req_load_from_db.get(i).getAlamat();
-				//String nama_lengkap = req_load_from_db.get(i).getNama_lengkap();
+				String satuan_terkecil = req_load_from_db.get(i).getSatuan_terkecil();
 				String nama_product = req_load_from_db.get(i)
 						.getNama_product();
 				//String kode_product = req_load_from_db.get(i).getKode_product();
@@ -177,11 +175,13 @@ public class RequestActivity extends ActionBarActivity implements
 				String jumlah_order = req_load_from_db.get(i).getJumlah_order();
 				String jumlah_order1 = req_load_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = req_load_from_db.get(i).getJumlah_order2();
+				String jumlah_order3 = req_load_from_db.get(i).getJumlah_order3();
+				int id_staff = req_load_from_db.get(i).getId_staff();
+				int id_product = req_load_from_db.get(i).getId_product();
 
 				ReqLoad reqLoad = new ReqLoad();
 				reqLoad.setId_sales_order(id_sales_order);
-				reqLoad.setNomer_order(nomer_order);
-				reqLoad.setNomer_order_detail(nomer_order_detail);
+				reqLoad.setNomer_request_load(nomer_request_load);
 				reqLoad.setDate_order(date_order);
 				reqLoad.setTime_order(time_order);
 				//reqLoad.setDeskripsi(deskripsi);
@@ -189,13 +189,16 @@ public class RequestActivity extends ActionBarActivity implements
 				reqLoad.setUsername(username);
 				//reqLoad.setKode_customer(kode_customer);
 				//reqLoad.setAlamat(alamat);
-				//reqLoad.setNama_lengkap(nama_lengkap);
+				reqLoad.setSatuan_terkecil(satuan_terkecil);
 				reqLoad.setNama_product(nama_product);
 				//reqLoad.setKode_product(kode_product);
 				reqLoad.setHarga_jual(harga_jual);
 				reqLoad.setJumlah_order(jumlah_order);
 				reqLoad.setJumlah_order1(jumlah_order1);
 				reqLoad.setJumlah_order2(jumlah_order2);
+				reqLoad.setJumlah_order3(jumlah_order3);
+				reqLoad.setId_staff(id_staff);
+				reqLoad.setId_product(id_product);
 				req_load_list.add(reqLoad);
 			}
 			cAdapter = new ListViewAdapter(this,
@@ -302,8 +305,7 @@ public class RequestActivity extends ActionBarActivity implements
 			for (ReqLoad reqLoad : dataReqLoad) {
 				if (reqLoad.getId_promosi() == -1) {
 					response_data = uploadReqLoad(url_add_req_load,
-							reqLoad.getNomer_order(),
-							reqLoad.getNomer_order_detail(),
+							reqLoad.getNomer_request_load(),
 							reqLoad.getDate_order(),
 							reqLoad.getTime_order(),
 							//reqLoad.getDeskripsi(),
@@ -311,18 +313,20 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getUsername(),
 							//reqLoad.getKode_customer(),
 							//reqLoad.getAlamat(),
-							//reqLoad.getNama_lengkap(),
+							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
 							//reqLoad.getKode_product(),
 							String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
-							String.valueOf(reqLoad.getJumlah_order2()));
+							String.valueOf(reqLoad.getJumlah_order2()),
+							String.valueOf(reqLoad.getJumlah_order3()),
+							String.valueOf(reqLoad.getId_staff()),
+							String.valueOf(reqLoad.getId_product()));
 
 				} else {
 					response_data = uploadReqLoad(url_add_req_load,
-							reqLoad.getNomer_order(),
-							reqLoad.getNomer_order_detail(),
+							reqLoad.getNomer_request_load(),
 							reqLoad.getDate_order(),
 							reqLoad.getTime_order(),
 							//reqLoad.getDeskripsi(),
@@ -330,13 +334,16 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getUsername(),
 							//reqLoad.getKode_customer(),
 							//reqLoad.getAlamat(),
-							//reqLoad.getNama_lengkap(),
+							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
 							//reqLoad.getKode_product(),
 							String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
-							String.valueOf(reqLoad.getJumlah_order2()));
+							String.valueOf(reqLoad.getJumlah_order2()),
+							String.valueOf(reqLoad.getJumlah_order3()),
+							String.valueOf(reqLoad.getId_staff()),
+							String.valueOf(reqLoad.getId_product()));
 				}
 			}
 			return null;
@@ -394,18 +401,21 @@ public class RequestActivity extends ActionBarActivity implements
 		}
 	}
 
-	private String uploadReqLoad(final String url, final String nomer_order,
-			final String nomer_order_detail, final String date_order,
+	private String uploadReqLoad(final String url, final String nomer_request_load,
+			final String date_order,
 			final String time_order, //final String deskripsi,
 			final String id_promosi, final String username,
 			//final String kode_customer, final String alamat,
-			//final String nama_lengkap,
+			final String satuan_terkecil,
 			final String nama_product,
 			//final String kode_product,
 			final String harga_jual,
 			final String jumlah_order,
 			final String jumlah_order1,
-			final String jumlah_order2) {
+			final String jumlah_order2,
+			final String jumlah_order3,
+			final String id_staff,
+			final String id_product) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -419,23 +429,24 @@ public class RequestActivity extends ActionBarActivity implements
 
 			MultipartEntity entity = new MultipartEntity();
 
-			entity.addPart("nomer_order", new StringBody(nomer_order));
-			entity.addPart("nomer_order_detail", new StringBody(
-					nomer_order_detail));
+			entity.addPart("nomer_request_load", new StringBody(nomer_request_load));
 			entity.addPart("date_order", new StringBody(date_order));
 			entity.addPart("time_order", new StringBody(time_order));
 			//entity.addPart("deskripsi", new StringBody(deskripsi));
-			entity.addPart("id_promosi", new StringBody(id_promosi));
-			entity.addPart("username", new StringBody(username));
+			//entity.addPart("id_promosi", new StringBody(id_promosi));
+			//entity.addPart("username", new StringBody(username));
 			//entity.addPart("kode_customer", new StringBody(kode_customer));
 			//entity.addPart("alamat", new StringBody(alamat));
-			//entity.addPart("nama_lengkap", new StringBody(nama_lengkap));
-			entity.addPart("nama_product", new StringBody(nama_product));
+			entity.addPart("satuan_terkecil", new StringBody(satuan_terkecil));
+			//entity.addPart("nama_product", new StringBody(nama_product));
 			//entity.addPart("kode_product", new StringBody(kode_product));
-			entity.addPart("harga_jual", new StringBody(harga_jual));
-			entity.addPart("jumlah_order", new StringBody(jumlah_order));
-			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
-			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
+			//entity.addPart("harga_jual", new StringBody(harga_jual));
+			//entity.addPart("jumlah_order", new StringBody(jumlah_order));
+			//entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
+			//entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
+			//entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
+			entity.addPart("id_staff", new StringBody(id_staff));
+			entity.addPart("id_product", new StringBody(id_product));
 
 			httppost.setEntity(entity);
 
@@ -579,7 +590,7 @@ public class RequestActivity extends ActionBarActivity implements
 			reqLoadData = data.get(position);
 			holder.list_kodeCustomer.setText(reqLoadData.getDate_order());
 			holder.list_namaCustomer.setText(reqLoadData.getTime_order());
-			holder.list_kode_sales_order.setText(reqLoadData.getNomer_order());
+			holder.list_kode_sales_order.setText(reqLoadData.getNomer_request_load());
 
 			holder.list_kodeCustomer.setTypeface(typefaceSmall);
 			holder.list_namaCustomer.setTypeface(typefaceSmall);
@@ -588,9 +599,9 @@ public class RequestActivity extends ActionBarActivity implements
 
 				@Override
 				public void onClick(View v) {
-					String nomerOrder = String.valueOf(data.get(position)
-							.getNomer_order());
-					showEditDeleteDialog(nomerOrder);
+					String nomerReqLoad = String.valueOf(data.get(position)
+							.getNomer_request_load());
+					showEditDeleteDialog(nomerReqLoad);
 				}
 			});
 			return row;
@@ -612,7 +623,7 @@ public class RequestActivity extends ActionBarActivity implements
 	}
 
 	// show edit delete dialog
-	public void showEditDeleteDialog(final String nomer_order) {
+	public void showEditDeleteDialog(final String nomer_request_load) {
 		String msg = getApplicationContext().getResources().getString(
 				R.string.MSG_DLG_LABEL_DATA_EDIT_DELETE_DIALOG);
 		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -625,7 +636,7 @@ public class RequestActivity extends ActionBarActivity implements
 								R.string.MSG_DLG_LABEL_HAPUS),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								saveAppDataSalesOrderNomerSalesOrder(nomer_order);
+								saveAppDataSalesOrderNomerSalesOrder(nomer_request_load);
 								gotoDetailSalesOrder();
 							}
 						})

@@ -66,9 +66,13 @@ public class CONFIG {
 	// "http://mahkota.com/mahkota/imgLib/product/";
 	public static final String CONFIG_APP_URL_DIR_IMG_PRODUCT = "http://186.132.0.58:8081/mahkota/imgLib/product/";
 	public static final String CONFIG_APP_URL_DOWNLOAD_PRODUCT = "mahkota/ws/get_product.php";
+	public static final String CONFIG_APP_URL_DOWNLOAD_PRODUCT_PRICE = "mahkota/ws/get_product_price.php";
 	public static final String SHARED_PREFERENCES_TABLE_PRODUCT = "mahkota_table_product";
+	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_PRICE = "mahkota_table_product_price";
 	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_SAME_DATA = "mahkota_table_product_same_data";
+	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_PRICE_SAME_DATA = "mahkota_table_product_price_same_data";
 	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_ID_PRODUCT = "mahkota_table_product_id_product";
+	public static final String SHARED_PREFERENCES_TABLE_PRODUCT_PRICE_ID_PRODUCT = "mahkota_table_product_id_product";
 
 	// public static final String CONFIG_APP_URL_DIR_IMG_PROMOSI =
 	// "http://mahkota.com/mahkota/imgLib/promosi/";
@@ -108,6 +112,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_URL_UPLOAD_LOCATOR = "mahkota/ws/update_locator_sales.php";
 	public static final String CONFIG_APP_KODE_CUSTOMER_HEADER = "CST.";
 	public static final String CONFIG_APP_KODE_SO_HEADER = "SO.";
+	public static final String CONFIG_APP_KODE_RL_HEADER = "RL.";
 	public static final String CONFIG_APP_KODE_SHO_HEADER = "SOH.";
 	public static final String CONFIG_APP_KODE_TP_HEADER = "TP.";
 	public static final String CONFIG_APP_KODE_RT_HEADER = "RT.";

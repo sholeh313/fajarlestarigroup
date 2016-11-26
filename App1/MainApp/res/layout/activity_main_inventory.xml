@@ -234,8 +234,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/transparent"
-                                android:drawableTop="@drawable/inventory_unload_product"
-                                android:text="@string/app_inventory_menu_sales_to"
+                                android:drawableTop="@drawable/price_tag"
+                                android:text="Harga Produk Kanvas"
                                 android:textColor="@color/dark_grey"
                                 android:textSize="@dimen/txtsize_btn_inventory" />
                         </LinearLayout>
