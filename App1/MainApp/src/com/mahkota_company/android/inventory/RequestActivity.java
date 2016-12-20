@@ -171,7 +171,7 @@ public class RequestActivity extends ActionBarActivity implements
 				String nama_product = req_load_from_db.get(i)
 						.getNama_product();
 				//String kode_product = req_load_from_db.get(i).getKode_product();
-				String harga_jual = req_load_from_db.get(i).getHarga_jual();
+				//String harga_jual = req_load_from_db.get(i).getHarga_jual();
 				String jumlah_order = req_load_from_db.get(i).getJumlah_order();
 				String jumlah_order1 = req_load_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = req_load_from_db.get(i).getJumlah_order2();
@@ -192,7 +192,7 @@ public class RequestActivity extends ActionBarActivity implements
 				reqLoad.setSatuan_terkecil(satuan_terkecil);
 				reqLoad.setNama_product(nama_product);
 				//reqLoad.setKode_product(kode_product);
-				reqLoad.setHarga_jual(harga_jual);
+				//reqLoad.setHarga_jual(harga_jual);
 				reqLoad.setJumlah_order(jumlah_order);
 				reqLoad.setJumlah_order1(jumlah_order1);
 				reqLoad.setJumlah_order2(jumlah_order2);
@@ -316,7 +316,7 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
 							//reqLoad.getKode_product(),
-							String.valueOf(reqLoad.getHarga_jual()),
+							//String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
 							String.valueOf(reqLoad.getJumlah_order2()),
@@ -337,7 +337,7 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
 							//reqLoad.getKode_product(),
-							String.valueOf(reqLoad.getHarga_jual()),
+							//String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
 							String.valueOf(reqLoad.getJumlah_order2()),
@@ -409,7 +409,7 @@ public class RequestActivity extends ActionBarActivity implements
 			final String satuan_terkecil,
 			final String nama_product,
 			//final String kode_product,
-			final String harga_jual,
+			//final String harga_jual,
 			final String jumlah_order,
 			final String jumlah_order1,
 			final String jumlah_order2,
@@ -433,18 +433,18 @@ public class RequestActivity extends ActionBarActivity implements
 			entity.addPart("date_order", new StringBody(date_order));
 			entity.addPart("time_order", new StringBody(time_order));
 			//entity.addPart("deskripsi", new StringBody(deskripsi));
-			//entity.addPart("id_promosi", new StringBody(id_promosi));
-			//entity.addPart("username", new StringBody(username));
+			entity.addPart("id_promosi", new StringBody(id_promosi));
+			entity.addPart("username", new StringBody(username));
 			//entity.addPart("kode_customer", new StringBody(kode_customer));
 			//entity.addPart("alamat", new StringBody(alamat));
 			entity.addPart("satuan_terkecil", new StringBody(satuan_terkecil));
-			//entity.addPart("nama_product", new StringBody(nama_product));
+			entity.addPart("nama_product", new StringBody(nama_product));
 			//entity.addPart("kode_product", new StringBody(kode_product));
 			//entity.addPart("harga_jual", new StringBody(harga_jual));
-			//entity.addPart("jumlah_order", new StringBody(jumlah_order));
-			//entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
-			//entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
-			//entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
+			entity.addPart("jumlah_order", new StringBody(jumlah_order));
+			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
+			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
+			entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
 			entity.addPart("id_staff", new StringBody(id_staff));
 			entity.addPart("id_product", new StringBody(id_product));
 

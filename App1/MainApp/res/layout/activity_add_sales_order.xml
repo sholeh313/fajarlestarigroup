@@ -232,6 +232,18 @@
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textColorHint="@color/Ivory3" />
+
+                        <EditText
+                            android:id="@+id/activity_sales_order_id_wilayah_value"
+                            android:layout_width="0dip"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/input_field_style"
+                            android:imeOptions="actionDone"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/Ivory3" />
                     </LinearLayout>
 
                     <LinearLayout

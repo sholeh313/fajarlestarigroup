@@ -998,7 +998,7 @@ public class InventoryActivity extends ActionBarActivity implements
 
 	public void gotoRequestLoad() {
 		Intent i = new Intent(this,
-				RequestLoadActivity.class);
+				RequestActivity.class);
 		startActivity(i);
 		finish();
 	}

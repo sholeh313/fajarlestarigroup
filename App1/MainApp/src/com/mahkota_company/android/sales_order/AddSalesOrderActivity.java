@@ -55,6 +55,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 	private Typeface typefaceSmall;
 	private EditText etNamaCustomer;
 	private EditText etAlamatCustomer;
+	private EditText etid_wilayah;
 	private EditText etDeskripsiSalesOrder;
 	private TextView tvHeaderKodeCustomer;
 	private TextView tvTotalbayarValue;
@@ -81,6 +82,9 @@ public class AddSalesOrderActivity extends FragmentActivity {
 	private ListViewAdapter cAdapter;
 	private Jadwal jadwal;
 	private String status_update;
+	private double tempCheckInLatitude;
+	private double tempCheckInLongitude;
+	private Customer customer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -108,6 +112,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		spinnerPromosi = (Spinner) findViewById(R.id.activity_sales_order_promosi_value);
 		etNamaCustomer = (EditText) findViewById(R.id.activity_sales_order_nama_customer_value);
 		etAlamatCustomer = (EditText) findViewById(R.id.activity_sales_order_alamat_value);
+		etid_wilayah = (EditText) findViewById(R.id.activity_sales_order_id_wilayah_value);
 		etDeskripsiSalesOrder = (EditText) findViewById(R.id.activity_sales_order_deskripsi_value);
 		tvHeaderKodeCustomer = (TextView) findViewById(R.id.activity_app_sales_order_kode_customer_title);
 		tvHeaderNamaCustomer = (TextView) findViewById(R.id.activity_app_sales_order_nama_customer_title);
@@ -123,6 +128,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 
 		etNamaCustomer.setTypeface(typefaceSmall);
 		etAlamatCustomer.setTypeface(typefaceSmall);
+		etid_wilayah.setTypeface(typefaceSmall);
 		etDeskripsiSalesOrder.setTypeface(typefaceSmall);
 		tvTotalDiskonValue.setTypeface(typefaceSmall);
 		tvHeaderTotalDiskonTitle.setTypeface(typefaceSmall);
@@ -164,6 +170,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		}
 		etNamaCustomer.setEnabled(false);
 		etAlamatCustomer.setEnabled(false);
+		//etid_wilayah.setEnabled(false);
 		promosiStringList = new ArrayList<String>();
 		promosiStringList.add("Tidak Ada");
 
@@ -204,8 +211,9 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						Customer customer = databaseHandler
 								.getCustomerByKodeCustomer(customerStringList
 										.get(position));
-						etNamaCustomer.setText(customer.getNama_lengkap());
+						etNamaCustomer.setText(customer.getNama_toko());
 						etAlamatCustomer.setText(customer.getAlamat());
+						etid_wilayah.setText(String.valueOf(customer.getId_wilayah()));
 						kodeCustomer = customerStringList.get(position);
 					}
 
@@ -217,12 +225,12 @@ public class AddSalesOrderActivity extends FragmentActivity {
 			tvTotalDiskonValue.setText("0%");
 		Customer customer = databaseHandler
 				.getCustomerByKodeCustomer(customerStringList.get(0));
-		etNamaCustomer.setText(customer.getNama_lengkap());
-		etAlamatCustomer.setText(customer.getAlamat());
+		etNamaCustomer.setText(customer.getNama_toko());
+		etAlamatCustomer.setText(String.valueOf(customer.getId_wilayah()));
+		etid_wilayah.setText(String.valueOf(customer.getId_wilayah()));
 		mButtonSave.setOnClickListener(maddSalesOrderButtonOnClickListener);
 		mButtonTTD.setOnClickListener(maddSalesOrderButtonOnClickListener);
-		mButtonAddProduct
-				.setOnClickListener(maddSalesOrderButtonOnClickListener);
+		mButtonAddProduct.setOnClickListener(maddSalesOrderButtonOnClickListener);
 
 	}
 
@@ -321,8 +329,8 @@ public class AddSalesOrderActivity extends FragmentActivity {
 					for (DetailSalesOrder detailSalesOrder : detailSalesOrderList) {
                         SalesOrder salesOrder = new SalesOrder();
 					    salesOrder.setId_sales_order(tempIndex + index);
-					    salesOrder.setAlamat(etAlamatCustomer.getText()
-								.toString());
+					    salesOrder.setAlamat(etAlamatCustomer.getText().toString());
+					    salesOrder.setId_wilayah(Integer.parseInt(etid_wilayah.getText().toString()));
 						salesOrder.setDate_order(checkDate);
 						salesOrder.setDeskripsi(etDeskripsiSalesOrder.getText()
 								.toString());
@@ -379,6 +387,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 									R.string.app_photo_purchase_save_failed_no_data);
 					showCustomDialog(msg);
 				}
+
 
 				break;
 			default:

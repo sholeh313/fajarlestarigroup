@@ -235,17 +235,15 @@ public class AddRequestActivity extends FragmentActivity {
                         ReqLoad reqLoad = new ReqLoad();
 					    reqLoad.setId_sales_order(tempIndex + index);
 						reqLoad.setDate_order(checkDate);
-						reqLoad.setHarga_jual(detailReqLoad.getHarga_jual());
+						//reqLoad.setHarga_jual(detailReqLoad.getHarga_jual());
 
 						reqLoad.setJumlah_order(detailReqLoad.getJumlah_order());
 						reqLoad.setJumlah_order1(detailReqLoad.getJumlah_order1());
 						reqLoad.setJumlah_order2(detailReqLoad.getJumlah_order2());
 						reqLoad.setJumlah_order3(detailReqLoad.getJumlah_order3());
 
-						reqLoad.setNama_product(detailReqLoad
-								.getNama_product());
-						reqLoad.setId_product(detailReqLoad
-								.getId_product());
+						reqLoad.setNama_product(detailReqLoad.getNama_product());
+						reqLoad.setId_product(detailReqLoad.getId_product());
 						double st1 = Double.parseDouble(detailReqLoad.getJumlah_order());
 						double st2 = Double.parseDouble(detailReqLoad.getJumlah_order1());
 						double st3 = Double.parseDouble(detailReqLoad.getJumlah_order2());

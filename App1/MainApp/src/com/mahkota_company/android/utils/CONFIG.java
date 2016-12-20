@@ -116,6 +116,7 @@ public class CONFIG {
 	public static final String CONFIG_APP_KODE_SHO_HEADER = "SOH.";
 	public static final String CONFIG_APP_KODE_TP_HEADER = "TP.";
 	public static final String CONFIG_APP_KODE_RT_HEADER = "RT.";
+	public static final String CONFIG_APP_KODE_SK_HEADER = "SK.";
 	public static final String CONFIG_APP_ERROR_MESSAGE_ADDRESS_FAILED = "Alamat Tidak Terdeteksi";
 
 	public static final String SHARED_PREFERENCES_TABLE_PHOTO_PURCHASE_ID_PHOTO_PURCHASE = "mahkota_table_photo_purchase";

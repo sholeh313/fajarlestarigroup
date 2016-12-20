@@ -79,11 +79,10 @@ public class StockSummayActivity extends FragmentActivity {
 		progressDialog = new ProgressDialog(this);
 		progressDialog.setTitle(getApplicationContext().getResources()
 				.getString(R.string.app_name));
-		progressDialog
-				.setMessage(getApplicationContext()
-						.getResources()
-						.getString(
-								R.string.app_inventory_processing_download_stock_summary));
+		progressDialog.setMessage(getApplicationContext()
+				.getResources()
+				.getString(
+						R.string.app_inventory_processing_download_stock_summary));
 		progressDialog.setCancelable(true);
 		progressDialog.setCanceledOnTouchOutside(false);
 		databaseHandler = new DatabaseHandler(this);
@@ -300,38 +299,47 @@ public class StockSummayActivity extends FragmentActivity {
 					JSONArray jsonarr = oResponse.getJSONArray("request_load");
 					for (int i = 0; i < jsonarr.length(); i++) {
 						JSONObject oResponsealue = jsonarr.getJSONObject(i);
-						/* Note TODO Di sisi Android yang di butuhkan hanya id
-						  Product dan Jumlah Item yang di Approve oleh admin
+						/***
+						 * Note TODO Di sisi Android yang di butuhkan hanya id
+						 * Product dan Jumlah Item yang di Approve oleh admin
 						 */
 						String id_product = oResponsealue.isNull("id_product") ? null
 								: oResponsealue.getString("id_product");
-						String nomer_request_load = oResponsealue.isNull("nomer_request_load") ? null
+						String nomer_request_load = oResponsealue
+								.isNull("nomer_request_load") ? null
 								: oResponsealue.getString("nomer_request_load");
 						saveAppDataNoRequestLoad(nomer_request_load);
-						String jumlah_request = oResponsealue.isNull("jumlah_request") ? null
+						String date_request_load = oResponsealue
+								.isNull("date_request_load") ? null
+								: oResponsealue.getString("date_request_load");
+						String jumlah_request = oResponsealue
+								.isNull("jumlah_request") ? null
 								: oResponsealue.getString("jumlah_request");
-						String jumlah_accept = oResponsealue.isNull("jumlah_accept") ? null
-								: oResponsealue.getString("jumlah_accept");
+						String jumlah_accept = oResponsealue
+								.isNull("jumlah_accept") ? null : oResponsealue
+								.getString("jumlah_accept");
 
 						Log.d(LOG_TAG, "id_product:" + id_product);
-						Log.d(LOG_TAG, "nomer_request_load:"+ nomer_request_load);
+						Log.d(LOG_TAG, "nomer_request_load:"
+								+ nomer_request_load);
 						Log.d(LOG_TAG, "jumlah_request:" + jumlah_request);
 						Log.d(LOG_TAG, "jumlah_accept:" + jumlah_accept);
+						Log.d(LOG_TAG, "date_request_load:" + date_request_load);
 						try {
 							Product tempProduct = databaseHandler
 									.getProduct(Integer.parseInt(id_product));
 							if (tempProduct != null)
 								databaseHandler.addStockVan(new StockVan(
-										Integer.parseInt(id_product),
+										tempProduct.getId_product(),
 										tempProduct.getNama_product(),
 										tempProduct.getKode_product(),
-										tempProduct.getHarga_jual(),
-										Integer.parseInt(jumlah_request),
+										tempProduct.getHarga_jual(), Integer
+										.parseInt(jumlah_request),
 										Integer.parseInt(jumlah_accept),
-										0,
-										tempProduct.getId_kemasan(),
-										tempProduct.getFoto(),
-										tempProduct.getDeskripsi()));
+										Integer.parseInt(jumlah_accept),
+										tempProduct.getId_kemasan(), tempProduct
+										.getFoto(), tempProduct
+										.getDeskripsi()));
 
 						} catch (Exception ex) {
 							Log.d(LOG_TAG, "exception:" + ex.getMessage());
@@ -383,7 +391,7 @@ public class StockSummayActivity extends FragmentActivity {
 
 	public void showListStockSummary() {
 		productStockVan_list.clear();
-		int countData = databaseHandler.getCountStockVan();
+//		int countData = databaseHandler.getCountStockVan();
 		productStockVan_list = databaseHandler.getAllProductStokVan();
 		if (productStockVan_list.size() > 0) {
 			listview.setVisibility(View.VISIBLE);
@@ -428,7 +436,7 @@ public class StockSummayActivity extends FragmentActivity {
 		ArrayList<ProductStockVan> data = new ArrayList<ProductStockVan>();
 
 		public ListViewAdapter(Activity act, int layoutResourceId,
-				ArrayList<ProductStockVan> data) {
+							   ArrayList<ProductStockVan> data) {
 			super(act, layoutResourceId, data);
 			this.layoutResourceId = layoutResourceId;
 			this.activity = act;
@@ -438,7 +446,7 @@ public class StockSummayActivity extends FragmentActivity {
 
 		@Override
 		public View getView(final int position, View convertView,
-				ViewGroup parent) {
+							ViewGroup parent) {
 			View row = convertView;
 			UserHolder holder = null;
 

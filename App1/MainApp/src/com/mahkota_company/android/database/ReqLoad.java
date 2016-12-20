@@ -33,7 +33,8 @@ public class ReqLoad {
 	// constructor
 	public ReqLoad(int id_sales_order, String nomer_request_load,
 				   String date_order,
-				   String time_order, int id_promosi, int id_staff,
+				   String time_order, int id_promosi,
+				   int id_staff,
 				   String username, //String kode_customer, String alamat,
 				   String satuan_terkecil,
 				   String nama_product,

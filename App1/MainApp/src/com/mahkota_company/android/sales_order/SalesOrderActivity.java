@@ -226,6 +226,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				String jumlah_order1 = sales_order_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = sales_order_from_db.get(i).getJumlah_order2();
 				String jumlah_order3 = sales_order_from_db.get(i).getJumlah_order3();
+				int id_wilayah = sales_order_from_db.get(i).getId_wilayah();
 
 				SalesOrder salesOrder = new SalesOrder();
 				salesOrder.setId_sales_order(id_sales_order);
@@ -246,6 +247,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 				salesOrder.setJumlah_order1(jumlah_order1);
 				salesOrder.setJumlah_order2(jumlah_order2);
 				salesOrder.setJumlah_order3(jumlah_order3);
+				salesOrder.setId_wilayah(id_wilayah);
 				sales_order_list.add(salesOrder);
 			}
 			cAdapter = new ListViewAdapter(this,
@@ -367,7 +369,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							String.valueOf(salesOrder.getJumlah_order()),
 							String.valueOf(salesOrder.getJumlah_order1()),
 							String.valueOf(salesOrder.getJumlah_order2()),
-							String.valueOf(salesOrder.getJumlah_order3()));
+							String.valueOf(salesOrder.getJumlah_order3()),
+							String.valueOf(salesOrder.getId_wilayah()));
 
 				} else {
 					response_data = uploadSalesOrder(url_add_sales_order,
@@ -387,7 +390,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 							String.valueOf(salesOrder.getJumlah_order()),
 							String.valueOf(salesOrder.getJumlah_order1()),
 							String.valueOf(salesOrder.getJumlah_order2()),
-							String.valueOf(salesOrder.getJumlah_order3()));
+							String.valueOf(salesOrder.getJumlah_order3()),
+							String.valueOf(salesOrder.getId_wilayah()));
 				}
 			}
 			return null;
@@ -455,7 +459,8 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			final String jumlah_order,
 			final String jumlah_order1,
 			final String jumlah_order2,
-			final String jumlah_order3) {
+			final String jumlah_order3,
+			final String id_wilayah) {
 
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(url);
@@ -487,6 +492,7 @@ public class SalesOrderActivity extends ActionBarActivity implements
 			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
 			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
 			entity.addPart("jumlah_order3", new StringBody(jumlah_order3));
+			entity.addPart("id_wilayah", new StringBody(id_wilayah));
 
 			httppost.setEntity(entity);
 

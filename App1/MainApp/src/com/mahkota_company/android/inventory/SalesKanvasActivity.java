@@ -9,6 +9,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.location.GpsStatus;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,15 +76,17 @@ public class SalesKanvasActivity extends FragmentActivity {
 	private EditText etNamaCustomer;
 	private EditText etAlamat;
 	private EditText etKeterangan;
-
+	private Location location;
+	private double latitude; // latitude
+	private double longitude; // longitude
 	private TextView tvNoNotaValue;
 	private TextView tvTotalbayarValue;
 	private TextView tvHeaderTotalbayarTitle;
-
-
+	private LocationManager locationManager;
+	private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
 	private Button mButtonAddProduct;
 	private Button mButtonSave;
-
+	private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
 	private ListViewChooseAdapter cAdapterChooseAdapter;
 	private ArrayList<NewDetailPenjualan> detailPenjualanList = new ArrayList<NewDetailPenjualan>();
 	private ArrayList<Penjualan> penjualanList = new ArrayList<Penjualan>();
@@ -104,6 +110,8 @@ public class SalesKanvasActivity extends FragmentActivity {
 	private String message;
 	private String response_data;
 	private String no_penjualan;
+	private String lats;
+	private String longs;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -154,12 +162,101 @@ public class SalesKanvasActivity extends FragmentActivity {
 				null);
 		String unNota = new SimpleDateFormat("yyyyMMddHHmmss",
 				Locale.getDefault()).format(new Date());
-		tvNoNotaValue.setText(unNota+main_app_id_staff);
- 		mButtonSave.setOnClickListener(buttonOnClickListener);
+		tvNoNotaValue.setText(CONFIG.CONFIG_APP_KODE_SK_HEADER+"."+unNota+"."+main_app_id_staff);
+		mButtonSave.setOnClickListener(buttonOnClickListener);
 		mButtonAddProduct.setOnClickListener(buttonOnClickListener);
-
+		checkGPS();
 	}
 
+	private LocationListener locationListener = new LocationListener() {
+
+		@Override
+		public void onStatusChanged(String provider, int status, Bundle extras) {
+			try {
+				String strStatus = "";
+				switch (status) {
+					case GpsStatus.GPS_EVENT_FIRST_FIX:
+						strStatus = "GPS_EVENT_FIRST_FIX";
+						break;
+					case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
+						strStatus = "GPS_EVENT_SATELLITE_STATUS";
+						break;
+					case GpsStatus.GPS_EVENT_STARTED:
+						strStatus = "GPS_EVENT_STARTED";
+						break;
+					case GpsStatus.GPS_EVENT_STOPPED:
+						strStatus = "GPS_EVENT_STOPPED";
+						break;
+					default:
+						strStatus = String.valueOf(status);
+						break;
+				}
+				Log.i(LOG_TAG, "locationListener " + strStatus);
+			} catch (Exception e) {
+				Log.d(LOG_TAG, "locationListener Error");
+			}
+		}
+
+		@Override
+		public void onProviderEnabled(String provider) {
+		}
+
+		@Override
+		public void onProviderDisabled(String provider) {
+		}
+
+		@Override
+		public void onLocationChanged(Location location) {
+			try {
+				latitude = location.getLatitude();
+				longitude = location.getLongitude();
+				Log.d(LOG_TAG, "latitude " + latitude);
+				Log.d(LOG_TAG, "longitude " + longitude);
+			} catch (Exception e) {
+				Log.i(LOG_TAG, "onLocationChanged " + e.toString());
+			}
+		}
+	};
+
+	private void checkGPS() {
+		locationManager = (LocationManager) getApplicationContext()
+				.getSystemService(Context.LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+				1000L, 1.0f, locationListener);
+		boolean isGPSEnabled = locationManager
+				.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+		if (!isGPSEnabled) {
+			startActivityForResult(new Intent(
+							android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS),
+					0);
+		} else {
+			// if GPS Enabled get lat/long using GPS Services
+			if (isGPSEnabled) {
+				if (location == null) {
+					locationManager.requestLocationUpdates(
+							LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES,
+							MIN_DISTANCE_CHANGE_FOR_UPDATES, locationListener);
+					Log.d(LOG_TAG, "GPS Enabled");
+					if (locationManager != null) {
+						location = locationManager
+								.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+						if (location != null) {
+							latitude = location.getLatitude();
+							longitude = location.getLongitude();
+
+						}
+					}
+				}
+			} else {
+				Intent intentGps = new Intent(
+						"android.location.GPS_ENABLED_CHANGE");
+				intentGps.putExtra("enabled", true);
+				act.sendBroadcast(intentGps);
+			}
+
+		}
+	}
 
 	public void showCustomDialogSaveSuccess(String msg) {
 		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -250,6 +347,8 @@ public class SalesKanvasActivity extends FragmentActivity {
 						alamat = etAlamat.getText().toString();
 						keterangan = etKeterangan.getText().toString();
 						no_penjualan = tvNoNotaValue.getText().toString();
+						lats = String.valueOf(latitude);
+						longs = String.valueOf(longitude);
 						if (GlobalApp.checkInternetConnection(act)) {
 							new UploadPenjualanKeServer().execute();
 						} else {
@@ -310,6 +409,9 @@ public class SalesKanvasActivity extends FragmentActivity {
 		nameValuePairs.add(new BasicNameValuePair("alamat", alamat));
 		nameValuePairs.add(new BasicNameValuePair("id_staff", main_app_id_staff));
 		nameValuePairs.add(new BasicNameValuePair("keterangan", keterangan));
+		nameValuePairs.add(new BasicNameValuePair("lats", lats));
+		nameValuePairs.add(new BasicNameValuePair("longs", longs));
+
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(textUrl);
 		String responseString = null;
@@ -612,8 +714,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 	private void ChooseProductDialog() {
 		final Dialog chooseProductDialog = new Dialog(act);
 		chooseProductDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-		chooseProductDialog
-				.setContentView(R.layout.activity_main_product_choose_dialog);
+		chooseProductDialog.setContentView(R.layout.activity_main_product_choose_dialog);
 		chooseProductDialog.setCanceledOnTouchOutside(false);
 		chooseProductDialog.setCancelable(true);
 		chooseProductDialog
@@ -941,7 +1042,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 									.get(position).getKode_product(),
 									data.get(position).getHarga_jual(), Integer
 									.parseInt(jumlahPieces.getText()
-											.toString()), "Pcs"));
+											.toString()), "Renceng"));
 							chooseProductDialog.hide();
 						}
 					}

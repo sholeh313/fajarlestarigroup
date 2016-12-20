@@ -292,6 +292,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER2 = "jumlah_order2";
 	private static final String KEY_SALES_ORDER_JUMLAH_ORDER3 = "jumlah_order3";
 	private static final String KEY_SALES_ORDER_ID_PRODUCT = "id_product";
+	private static final String KEY_SALES_ORDER_ID_WILAYAH = "id_wilayah";
 	private static final String KEY_SALES_ORDER_UOMQTYL1 = "uomqtyl1";
 	private static final String KEY_SALES_ORDER_UOMQTYL2 = "uomqtyl2";
 	private static final String KEY_SALES_ORDER_UOMQTYL3 = "uomqtyl3";
@@ -590,7 +591,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER1 + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT,"
-				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT"
+				+ KEY_SALES_ORDER_JUMLAH_ORDER3 + " TEXT,"
+				+ KEY_SALES_ORDER_ID_WILAYAH + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_TABLE_SALES_ORDER);
 
@@ -1109,11 +1111,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER1, salesOrder.getJumlah_order1());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER2, salesOrder.getJumlah_order2());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER3, salesOrder.getJumlah_order3());
+		values.put(KEY_SALES_ORDER_ID_WILAYAH, salesOrder.getId_wilayah());
 		// Inserting Row
 		db.insert(TABLE_SALES_ORDER, null, values);
 		db.close(); // Closing database connection
 	}
-	// Adding new SalesOrder
+	// Adding new reqload
 	public void add_ReqLoad(ReqLoad reqLoad) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -3801,6 +3804,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
 					salesOrder.setJumlah_order3(cursor.getString(17));
+					salesOrder.setId_wilayah(cursor.getInt(18));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -3845,13 +3849,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(8));
-					reqLoad.setJumlah_order(cursor.getString(9));
-					reqLoad.setJumlah_order1(cursor.getString(10));
-					reqLoad.setJumlah_order2(cursor.getString(11));
-					reqLoad.setJumlah_order3(cursor.getString(12));
-					reqLoad.setId_staff(cursor.getInt(13));
-					reqLoad.setId_product(cursor.getInt(14));
+					//reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(8));
+					reqLoad.setJumlah_order1(cursor.getString(9));
+					reqLoad.setJumlah_order2(cursor.getString(10));
+					reqLoad.setJumlah_order3(cursor.getString(11));
+					reqLoad.setId_staff(cursor.getInt(12));
+					reqLoad.setId_product(cursor.getInt(13));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);
@@ -3952,6 +3956,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
 					salesOrder.setJumlah_order3(cursor.getString(17));
+					salesOrder.setId_wilayah(cursor.getInt(18));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -3997,13 +4002,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(8));
-					reqLoad.setJumlah_order(cursor.getString(9));
-					reqLoad.setJumlah_order1(cursor.getString(10));
-					reqLoad.setJumlah_order2(cursor.getString(11));
-					reqLoad.setJumlah_order3(cursor.getString(12));
-					reqLoad.setId_staff(cursor.getInt(13));
-					reqLoad.setId_product(cursor.getInt(14));
+					//reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(8));
+					reqLoad.setJumlah_order1(cursor.getString(9));
+					reqLoad.setJumlah_order2(cursor.getString(10));
+					reqLoad.setJumlah_order3(cursor.getString(11));
+					reqLoad.setId_staff(cursor.getInt(12));
+					reqLoad.setId_product(cursor.getInt(13));
 
 					// Adding sales_order_list to list
 					reqload_list.add(reqLoad);
@@ -4105,6 +4110,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					salesOrder.setJumlah_order1(cursor.getString(15));
 					salesOrder.setJumlah_order2(cursor.getString(16));
 					salesOrder.setJumlah_order3(cursor.getString(17));
+					salesOrder.setId_wilayah(cursor.getInt(18));
 
 					// Adding sales_order_list to list
 					sales_order_list.add(salesOrder);
@@ -4152,13 +4158,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
 					//reqLoad.setKode_product(cursor.getString(12));
-					reqLoad.setHarga_jual(cursor.getString(8));
-					reqLoad.setJumlah_order(cursor.getString(9));
-					reqLoad.setJumlah_order1(cursor.getString(10));
-					reqLoad.setJumlah_order2(cursor.getString(11));
-					reqLoad.setJumlah_order3(cursor.getString(12));
-					reqLoad.setId_staff(cursor.getInt(13));
-					reqLoad.setId_product(cursor.getInt(14));
+					//reqLoad.setHarga_jual(cursor.getString(8));
+					reqLoad.setJumlah_order(cursor.getString(8));
+					reqLoad.setJumlah_order1(cursor.getString(9));
+					reqLoad.setJumlah_order2(cursor.getString(10));
+					reqLoad.setJumlah_order3(cursor.getString(11));
+					reqLoad.setId_staff(cursor.getInt(12));
+					reqLoad.setId_product(cursor.getInt(13));
 
 					// Adding reqload_list to list
 					reqload_list.add(reqLoad);
@@ -5748,6 +5754,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		db.execSQL("DELETE FROM " + TABLE_WILAYAH);
 	}
+
+	public void deleteTableProductPrice() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		db.execSQL("DELETE FROM " + TABLE_PRODUCT_PRICE);
+	}
+
 
 	public void updateStatus() {
 		SQLiteDatabase db = this.getWritableDatabase();

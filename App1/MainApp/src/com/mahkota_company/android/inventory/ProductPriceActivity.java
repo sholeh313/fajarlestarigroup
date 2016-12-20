@@ -130,7 +130,7 @@ public class ProductPriceActivity extends ActionBarActivity implements
 				showCustomDialog(message);
 			}
 		} else {
-			showListProduct();
+			showListProductPrice();
 		}
 	}
 
@@ -203,13 +203,13 @@ public class ProductPriceActivity extends ActionBarActivity implements
 									.getApplicationContext().getResources()
 									.getString(R.string.app_value_true));
 						} else {
-							databaseHandler.deleteTableProduct();
+							databaseHandler.deleteTableProductPrice();
 							saveAppDataProductPriceSameData(act
 									.getApplicationContext().getResources()
 									.getString(R.string.app_value_false));
 						}
 					} else {
-						databaseHandler.deleteTableProduct();
+						databaseHandler.deleteTableProductPrice();
 						saveAppDataProductPriceSameData(act.getApplicationContext()
 								.getResources()
 								.getString(R.string.app_value_false));
@@ -360,7 +360,7 @@ public class ProductPriceActivity extends ActionBarActivity implements
 				Context.MODE_PRIVATE);
 	}
 
-	public void showListProduct() {
+	public void showListProductPrice() {
 		product_price_list.clear();
 		ArrayList<ProductPrice> price_from_db = databaseHandler.getAllProductPrice();
 		if (price_from_db.size() > 0) {
@@ -382,7 +382,7 @@ public class ProductPriceActivity extends ActionBarActivity implements
 				product_price_list.add(productPrice);
 			}
 
-			cAdapter = new ListViewAdapter(this, R.layout.list_item_product,
+			cAdapter = new ListViewAdapter(this, R.layout.list_item_product_price,
 					product_price_list);
 			listview.setAdapter(cAdapter);
 			cAdapter.notifyDataSetChanged();

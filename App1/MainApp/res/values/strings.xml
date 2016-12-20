@@ -344,14 +344,14 @@
     <string name="app_sales_order_hint_kode_customer">Kode Customer</string>
     <string name="app_sales_order_hint_date">Tanggal</string>
     <string name="app_sales_order_hint_time">Waktu</string>
-    <string name="app_sales_order_hint_nama_customer">Nama Customer</string>
+    <string name="app_sales_order_hint_nama_customer">Nama Toko</string>
     <string name="app_sales_order_hint_add_sales_order">Tambah Sales Order</string>
     <string name="app_sales_Req_van">Tambah Req Van</string>
     <string name="app_sales_order_hint_add_retur">Buat Retur</string>
     <string name="app_sales_order_kode_customer">Kode Customer</string>
     <string name="app_sales_order_total_bayar">Total Bayar</string>
     <string name="app_sales_order_total_diskon">Total Diskon</string>
-    <string name="app_sales_order_nama_customer">Nama Customer</string>
+    <string name="app_sales_order_nama_customer">Nama Toko</string>
     <string name="app_sales_order_alamat_customer">Alamat Customer</string>
     <string name="app_sales_order_kode_promo">Kode Promo</string>
     <string name="app_sales_order_tidak_ada">Tidak Ada</string>
