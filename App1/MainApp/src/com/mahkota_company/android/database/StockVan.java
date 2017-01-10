@@ -5,9 +5,9 @@ public class StockVan {
 	private String nama_product;
 	private String kode_product;
 	private String harga_jual;
-	private int jumlahRequest;
-	private int jumlahAccept;
-	private int jumlahSisa;
+	private String jumlahRequest;
+	private String jumlahAccept;
+	private String jumlahSisa;
 	private String idKemasan;
 	private String foto;
 	private String deskripsi;
@@ -17,8 +17,8 @@ public class StockVan {
 	}
 
 	public StockVan(int id_product, String nama_product, String kode_product,
-			String harga_jual, int jumlahRequest, int jumlahAccept,
-			int jumlahSisa, String id_kemasan, String foto, String deskripsi) {
+			String harga_jual, String jumlahRequest, String jumlahAccept,
+			String jumlahSisa, String id_kemasan, String foto, String deskripsi) {
 		this.id_product = id_product;
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
@@ -64,27 +64,27 @@ public class StockVan {
 		this.harga_jual = harga_jual;
 	}
 
-	public int getJumlahRequest() {
+	public String getJumlahRequest() {
 		return jumlahRequest;
 	}
 
-	public void setJumlahRequest(int jumlahRequest) {
+	public void setJumlahRequest(String jumlahRequest) {
 		this.jumlahRequest = jumlahRequest;
 	}
 
-	public int getJumlahAccept() {
+	public String getJumlahAccept() {
 		return jumlahAccept;
 	}
 
-	public void setJumlahAccept(int jumlahAccept) {
+	public void setJumlahAccept(String jumlahAccept) {
 		this.jumlahAccept = jumlahAccept;
 	}
 
-	public int getJumlahSisa() {
+	public String getJumlahSisa() {
 		return jumlahSisa;
 	}
 
-	public void setJumlahSisa(int jumlahSisa) {
+	public void setJumlahSisa(String jumlahSisa) {
 		this.jumlahSisa = jumlahSisa;
 	}
 

@@ -1,37 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".contact.MyActivity">
 
-    <include
-        android:id="@+id/toolbar_actionbar"
+    <EditText
+        android:id="@+id/latitudeEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/toolbar_default" />
+        android:hint="@string/latitude"
+        android:inputType="numberDecimal|numberSigned"/>
 
-    <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/drawer"
+    <EditText
+        android:id="@+id/longitudeEdit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_actionbar" >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/latitudeEdit"
+        android:hint="@string/longitude"
+        android:inputType="numberDecimal|numberSigned"/>
 
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="true" />
+    <EditText
+        android:id="@+id/addressEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/longitudeEdit"
+        android:gravity="top"
+        android:minLines="4"
+        android:hint="@string/address"
+        android:scrollHorizontally="false"
+        android:scrollbars="vertical"
+        android:enabled="false"/>
 
-        <!-- android:layout_marginTop="?android:attr/actionBarSize" -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressEdit"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
 
-        <fragment
-            android:id="@+id/fragment_drawer"
-            android:name="com.mahkota_company.android.NavigationDrawerFragment"
-            android:layout_width="@dimen/navigation_drawer_width"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:layout="@layout/fragment_navigation_drawer" />
-    </android.support.v4.widget.DrawerLayout>
+        <RadioButton
+            android:id="@+id/radioLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/use_location"
+            android:checked="true"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/radioAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/use_address"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/actionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:text="@string/fetch"
+        android:onClick="onButtonClicked"/>
+
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionButton"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/actionButton"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

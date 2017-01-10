@@ -108,7 +108,7 @@ public class RequestLoadActivity extends FragmentActivity {
 				reqLoadStockVanList.clear();
 				ArrayList<StockVan> stockVanlist = cAdapter.getDataList();
 				for (StockVan stockVan : stockVanlist) {
-					if (stockVan.getJumlahRequest() != 0) {
+					if (stockVan.getJumlahRequest() != "0") {
 						Log.d(LOG_TAG,
 								"jumlah req:" + stockVan.getJumlahRequest());
 						reqLoadStockVanList.add(stockVan);
@@ -425,7 +425,7 @@ public class RequestLoadActivity extends FragmentActivity {
 					stockVan.setNama_product(nama_product);
 					stockVan.setKode_product(kode_product);
 					stockVan.setHarga_jual(harga_jual);
-					stockVan.setJumlahRequest(0);
+					stockVan.setJumlahRequest("0");
 					stockVan.setIdKemasan(id_kemasan);
 					stockVan.setFoto(foto);
 					stockVan.setDeskripsi(deskripsi);
@@ -530,10 +530,10 @@ public class RequestLoadActivity extends FragmentActivity {
 				@Override
 				public void afterTextChanged(Editable arg0) {
 					if (arg0.toString().length() == 0) {
-						data.get(position).setJumlahRequest(0);
+						data.get(position).setJumlahRequest("0");
 					} else
 						data.get(position).setJumlahRequest(
-								Integer.parseInt(arg0.toString()));
+								arg0.toString());
 
 				}
 

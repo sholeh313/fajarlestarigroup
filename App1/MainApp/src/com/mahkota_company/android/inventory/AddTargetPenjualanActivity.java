@@ -200,8 +200,8 @@ public class AddTargetPenjualanActivity extends FragmentActivity {
 				String nama_product = stockvan_from_db.get(i).getNama_product();
 				String kode_product = stockvan_from_db.get(i).getKode_product();
 				String harga_jual = stockvan_from_db.get(i).getHarga_jual();
-				int jumlahAccept = stockvan_from_db.get(i).getJumlahAccept();
-				int jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
+				String jumlahAccept = stockvan_from_db.get(i).getJumlahAccept();
+				String jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
 				String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
 				String foto = stockvan_from_db.get(i).getFoto();
 				String deskripsi = stockvan_from_db.get(i).getDeskripsi();
@@ -394,8 +394,7 @@ public class AddTargetPenjualanActivity extends FragmentActivity {
 						data.get(position).setJumlah_target(0);
 					} else {
 						int tempCurentValue = Integer.parseInt(arg0.toString());
-						int tempMaxValue = data.get(position)
-								.getJumlah_stok_van();
+						int tempMaxValue = Integer.parseInt(data.get(position).getJumlah_stok_van());
 						if (tempCurentValue > tempMaxValue) {
 							String msg = getApplicationContext()
 									.getResources()

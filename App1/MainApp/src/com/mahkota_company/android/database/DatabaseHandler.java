@@ -138,6 +138,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_PRODUCT_UOMQTYL2 = "uomqtyl2";
 	private static final String KEY_PRODUCT_UOMQTYL3 = "uomqtyl3";
 	private static final String KEY_PRODUCT_UOMQTYL4 = "uomqtyl4";
+	private static final String KEY_PRODUCT_STATUS = "status";
 
 	// PRODUCT_PRICE Table Columns names
 	private static final String KEY_PRODUCT_ID = "id";
@@ -441,7 +442,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_PRODUCT_UOMQTYL1 + " TEXT,"
 				+ KEY_PRODUCT_UOMQTYL2 + " TEXT,"
 				+ KEY_PRODUCT_UOMQTYL3 + " TEXT,"
-				+ KEY_PRODUCT_UOMQTYL4 + " TEXT"
+				+ KEY_PRODUCT_UOMQTYL4 + " TEXT,"
+				+ KEY_PRODUCT_STATUS + " TEXT"
 				+ ")";
 		db.execSQL(CREATE_TABLE_PRODUCT);
 
@@ -609,7 +611,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_SALES_ORDER_SATUAN_TERKECIL + " TEXT,"
 				+ KEY_SALES_ORDER_NAMA_PRODUCT + " TEXT,"
 				//+ KEY_SALES_ORDER_KODE_PRODUCT + " TEXT,"
-				+ KEY_SALES_ORDER_HARGA_JUAL + " TEXT,"
+				//+ KEY_SALES_ORDER_HARGA_JUAL + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER1 + " TEXT,"
 				+ KEY_SALES_ORDER_JUMLAH_ORDER2 + " TEXT,"
@@ -856,6 +858,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_PRODUCT_UOMQTYL2, product.getUomqtyl2());
 		values.put(KEY_PRODUCT_UOMQTYL3, product.getUomqtyl3());
 		values.put(KEY_PRODUCT_UOMQTYL4, product.getUomqtyl4());
+		values.put(KEY_PRODUCT_STATUS, product.getStatus());
 		// Inserting Row
 		db.insert(TABLE_PRODUCT, null, values);
 		db.close(); // Closing database connection
@@ -1126,12 +1129,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(KEY_SALES_ORDER_TIME_STOCK_ON_HAND, reqLoad.getTime_order());
 		values.put(KEY_SALES_ORDER_ID_PROMOSI, reqLoad.getId_promosi());
 		values.put(KEY_SALES_ORDER_USERNAME, reqLoad.getUsername());
-		//values.put(KEY_SALES_ORDER_KODE_CUSTOMER, reqLoad.getKode_customer());
-		//values.put(KEY_SALES_ORDER_ALAMAT, reqLoad.getAlamat());
 		values.put(KEY_SALES_ORDER_SATUAN_TERKECIL, reqLoad.getSatuan_terkecil());
 		values.put(KEY_SALES_ORDER_NAMA_PRODUCT, reqLoad.getNama_product());
-		//values.put(KEY_SALES_ORDER_KODE_PRODUCT, reqLoad.getKode_product());
-		values.put(KEY_SALES_ORDER_HARGA_JUAL, reqLoad.getHarga_jual());
+		//values.put(KEY_SALES_ORDER_HARGA_JUAL, reqLoad.getHarga_jual());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER, reqLoad.getJumlah_order());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER1, reqLoad.getJumlah_order1());
 		values.put(KEY_SALES_ORDER_JUMLAH_ORDER2, reqLoad.getJumlah_order2());
@@ -1462,7 +1462,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 						KEY_PRODUCT_KODE_PRODUCT, KEY_PRODUCT_HARGA_JUAL,
 						KEY_PRODUCT_STOCK, KEY_PRODUCT_ID_KEMASAN, KEY_PRODUCT_FOTO,
 						KEY_PRODUCT_DESKRIPSI, KEY_PRODUCT_UOMQTYL1, KEY_PRODUCT_UOMQTYL2,
-						KEY_PRODUCT_UOMQTYL3, KEY_PRODUCT_UOMQTYL4}, KEY_PRODUCT_ID_PRODUCT + "=?",
+						KEY_PRODUCT_UOMQTYL3, KEY_PRODUCT_UOMQTYL4,KEY_PRODUCT_STATUS}, KEY_PRODUCT_ID_PRODUCT + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null)
 			cursor.moveToFirst();
@@ -1471,7 +1471,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				cursor.getString(2), cursor.getString(3), cursor.getString(4),
 				cursor.getString(5), cursor.getString(6), cursor.getString(7),
 				cursor.getString(8), cursor.getString(9), cursor.getString(10),
-				cursor.getString(11));
+				cursor.getString(11),cursor.getString(12));
 		// return staff
 		cursor.close();
 		db.close();
@@ -1516,8 +1516,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			cursor.moveToFirst();
 
 		StockVan stockvan = new StockVan(cursor.getInt(0), cursor.getString(1),
-				cursor.getString(2), cursor.getString(3), cursor.getInt(4),
-				cursor.getInt(5), cursor.getInt(6), cursor.getString(7),
+				cursor.getString(2), cursor.getString(3), cursor.getString(4),
+				cursor.getString(5), cursor.getString(6), cursor.getString(7),
 				cursor.getString(8), cursor.getString(9));
 		// return staff
 		cursor.close();
@@ -2912,6 +2912,48 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return customer_list;
 	}
 
+	// Getting All Product
+	public ArrayList<Product> getAllProductActiveAndUpdateByUser() {
+		try {
+			product_list.clear();
+
+			String selectQuery = "SELECT  * FROM " + TABLE_PRODUCT
+					+" WHERE status = 2";
+
+			SQLiteDatabase db = this.getWritableDatabase();
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			if (cursor.moveToFirst()) {
+				do {
+					Product product = new Product();
+					product.setId_product(cursor.getInt(0));
+					product.setNama_product(cursor.getString(1));
+					product.setKode_product(cursor.getString(2));
+					product.setHarga_jual(cursor.getString(3));
+					product.setStock(cursor.getString(4));
+					product.setId_kemasan(cursor.getString(5));
+					product.setFoto(cursor.getString(6));
+					product.setDeskripsi(cursor.getString(7));
+					product.setUomqtyl1(cursor.getString(8));
+					product.setUomqtyl2(cursor.getString(9));
+					product.setUomqtyl3(cursor.getString(10));
+					product.setUomqtyl4(cursor.getString(11));
+					product.setStatus(cursor.getString(12));
+
+					product_list.add(product);
+				} while (cursor.moveToNext());
+			}
+
+			cursor.close();
+			db.close();
+			return product_list;
+		} catch (Exception e) {
+			Log.e("product_list", "" + e);
+		}
+
+		return product_list;
+	}
+
 	// Getting All Customer
 	public ArrayList<Customer> getAllCustomerActiveAndUpdateByUser() {
 		try {
@@ -3841,15 +3883,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setNomer_request_load(cursor.getString(1));
 					reqLoad.setDate_order(cursor.getString(2));
 					reqLoad.setTime_order(cursor.getString(3));
-					//reqLoad.setDeskripsi(cursor.getString(5));
 					reqLoad.setId_promosi(cursor.getInt(4));
 					reqLoad.setUsername(cursor.getString(5));
-					//reqLoad.setKode_customer(cursor.getString(8));
-					//reqLoad.setAlamat(cursor.getString(9));
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
-					//reqLoad.setKode_product(cursor.getString(12));
-					//reqLoad.setHarga_jual(cursor.getString(8));
 					reqLoad.setJumlah_order(cursor.getString(8));
 					reqLoad.setJumlah_order1(cursor.getString(9));
 					reqLoad.setJumlah_order2(cursor.getString(10));
@@ -3994,15 +4031,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setNomer_request_load(cursor.getString(1));
 					reqLoad.setDate_order(cursor.getString(2));
 					reqLoad.setTime_order(cursor.getString(3));
-					//reqLoad.setDeskripsi(cursor.getString(5));
 					reqLoad.setId_promosi(cursor.getInt(4));
 					reqLoad.setUsername(cursor.getString(5));
-					//reqLoad.setKode_customer(cursor.getString(8));
-					//reqLoad.setAlamat(cursor.getString(9));
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
-					//reqLoad.setKode_product(cursor.getString(12));
-					//reqLoad.setHarga_jual(cursor.getString(8));
 					reqLoad.setJumlah_order(cursor.getString(8));
 					reqLoad.setJumlah_order1(cursor.getString(9));
 					reqLoad.setJumlah_order2(cursor.getString(10));
@@ -4150,15 +4182,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					reqLoad.setNomer_request_load(cursor.getString(1));
 					reqLoad.setDate_order(cursor.getString(2));
 					reqLoad.setTime_order(cursor.getString(3));
-					//reqLoad.setDeskripsi(cursor.getString(5));
 					reqLoad.setId_promosi(cursor.getInt(4));
 					reqLoad.setUsername(cursor.getString(5));
-					//reqLoad.setKode_customer(cursor.getString(8));
-					//reqLoad.setAlamat(cursor.getString(9));
 					reqLoad.setSatuan_terkecil(cursor.getString(6));
 					reqLoad.setNama_product(cursor.getString(7));
-					//reqLoad.setKode_product(cursor.getString(12));
-					//reqLoad.setHarga_jual(cursor.getString(8));
 					reqLoad.setJumlah_order(cursor.getString(8));
 					reqLoad.setJumlah_order1(cursor.getString(9));
 					reqLoad.setJumlah_order2(cursor.getString(10));
@@ -4407,6 +4434,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return db.update(TABLE_CUSTOMER, values, KEY_CUSTOMER_ID_CUSTOMER
 				+ " = ?", new String[] { String.valueOf(id) });
 	}
+	// Update product
+	public int updateProduct(int id, Product product) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_PRODUCT_NAMA_PRODUCT, product.getNama_product());
+		values.put(KEY_PRODUCT_KODE_PRODUCT, product.getKode_product());
+		values.put(KEY_PRODUCT_HARGA_JUAL, product.getHarga_jual());
+		values.put(KEY_PRODUCT_STOCK, product.getStock());
+		values.put(KEY_KEMASAN_ID_KEMASAN, product.getId_kemasan());
+		values.put(KEY_PRODUCT_FOTO, product.getFoto());
+		values.put(KEY_PRODUCT_DESKRIPSI, product.getDeskripsi());
+		values.put(KEY_PRODUCT_UOMQTYL1, product.getUomqtyl1());
+		values.put(KEY_PRODUCT_UOMQTYL2, product.getUomqtyl2());
+		values.put(KEY_PRODUCT_UOMQTYL3, product.getUomqtyl3());
+		values.put(KEY_PRODUCT_UOMQTYL4, product.getUomqtyl4());
+		values.put(KEY_PRODUCT_STATUS, "2");
+
+		// updating row
+		return db.update(TABLE_PRODUCT, values, KEY_PRODUCT_ID_PRODUCT
+				+ " = ?", new String[] { String.valueOf(id) });
+	}
 
 	//update status update customer
 	public int updateCustomer1(int id, Customer customer) {
@@ -4529,10 +4577,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			// + TABLE_STOCK_VAN + "." + KEY_STOCK_VAN_JUMLAH_ACCEPT
 			// + " WHERE " + TABLE_PRODUCT + "." + KEY_PRODUCT_ID_PRODUCT
 			// + "=" + TABLE_STOCK_VAN + "." + KEY_STOCK_VAN_ID_PRODUCT;
+
+
 			String selectQuery = "SELECT * FROM " + TABLE_PRODUCT + ", "
 					+ TABLE_STOCK_VAN + " WHERE " + TABLE_PRODUCT + "."
 					+ KEY_PRODUCT_ID_PRODUCT + "=" + TABLE_STOCK_VAN + "."
 					+ KEY_STOCK_VAN_ID_PRODUCT;
+
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
 			// looping through all rows and adding to list
@@ -4543,13 +4594,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					productStockVan.setNama_product(cursor.getString(1));
 					productStockVan.setKode_product(cursor.getString(2));
 					productStockVan.setHarga_jual(cursor.getString(3));
-					productStockVan.setStockGudang(Integer.parseInt(cursor
-							.getString(4)));
+					productStockVan.setStockGudang(Integer.parseInt(cursor.getString(4)));
 					productStockVan.setIdKemasan(cursor.getString(5));
 					productStockVan.setFoto(cursor.getString(6));
 					productStockVan.setDeskripsi(cursor.getString(7));
-					productStockVan.setStockVan(Integer.parseInt(cursor
-							.getString(13)));
+					productStockVan.setStockVan(cursor.getString(17));
 					// Adding productStockVanList to list
 					productStockVanList.add(productStockVan);
 				} while (cursor.moveToNext());
@@ -4579,9 +4628,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					stockVan.setNama_product(cursor.getString(1));
 					stockVan.setKode_product(cursor.getString(2));
 					stockVan.setHarga_jual(cursor.getString(3));
-					stockVan.setJumlahRequest(cursor.getInt(4));
-					stockVan.setJumlahAccept(cursor.getInt(5));
-					stockVan.setJumlahSisa(cursor.getInt(6));
+					stockVan.setJumlahRequest(cursor.getString(4));
+					stockVan.setJumlahAccept(cursor.getString(5));
+					stockVan.setJumlahSisa(cursor.getString(6));
 					stockVan.setIdKemasan(cursor.getString(7));
 					stockVan.setFoto(cursor.getString(8));
 					stockVan.setDeskripsi(cursor.getString(9));
@@ -4626,6 +4675,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					product.setUomqtyl2(cursor.getString(9));
 					product.setUomqtyl3(cursor.getString(10));
 					product.setUomqtyl4(cursor.getString(11));
+					product.setStatus(cursor.getString(12));
 
 					// Adding product to list
 					product_list.add(product);
@@ -4672,6 +4722,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					product.setUomqtyl2(cursor.getString(9));
 					product.setUomqtyl3(cursor.getString(10));
 					product.setUomqtyl4(cursor.getString(11));
+					product.setStatus(cursor.getString(12));
 
 					// Adding product to list
 					product_list.add(product);
@@ -4733,7 +4784,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			stock_van_list.clear();
 			// Select All Query
 			String selectQuery = "SELECT  * FROM " + TABLE_STOCK_VAN
-					+ " WHERE " + KEY_STOCK_VAN_KODE_PRODUCT + " LIKE '"
+					+ " WHERE " + KEY_STOCK_VAN_NAMA_PRODUCT + " LIKE '"
 					+ search + "%'";
 			SQLiteDatabase db = this.getWritableDatabase();
 			Cursor cursor = db.rawQuery(selectQuery, null);
@@ -4745,9 +4796,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 					stockVan.setNama_product(cursor.getString(1));
 					stockVan.setKode_product(cursor.getString(2));
 					stockVan.setHarga_jual(cursor.getString(3));
-					stockVan.setJumlahRequest(cursor.getInt(4));
-					stockVan.setJumlahAccept(cursor.getInt(5));
-					stockVan.setJumlahSisa(cursor.getInt(6));
+					stockVan.setJumlahRequest(cursor.getString(4));
+					stockVan.setJumlahAccept(cursor.getString(5));
+					stockVan.setJumlahSisa(cursor.getString(6));
 					stockVan.setIdKemasan(cursor.getString(7));
 					stockVan.setFoto(cursor.getString(8));
 					stockVan.setDeskripsi(cursor.getString(9));
@@ -5168,6 +5219,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				//+ " WHERE status_update='2'", null);
 				+ " WHERE " + KEY_CUSTOMER_BLOKIR
 				+ "='N' AND status_update='2'", null);
+		mCount.moveToFirst();
+		int count = mCount.getInt(0);
+		mCount.close();
+		return count;
+	}
+
+	public int getCountProductWhereValidAndUpdate() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor mCount = db.rawQuery("select count(*) from " + TABLE_PRODUCT
+				+ " WHERE " + "status='2'", null);
 		mCount.moveToFirst();
 		int count = mCount.getInt(0);
 		mCount.close();
@@ -5764,6 +5825,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void updateStatus() {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.execSQL("update customer set status_update='3' where status_update='2' and blokir='N'");
+	}
+
+	public void updateStatusProduct() {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.execSQL("update product set status='1' where status='2'");
 	}
 	public void updateStatusProspect() {
 		SQLiteDatabase db = this.getWritableDatabase();

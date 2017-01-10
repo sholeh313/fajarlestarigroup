@@ -391,45 +391,9 @@ public class PhysicalCountingActivity extends FragmentActivity {
 		if (isRunningDummyVersion()) {
 			ArrayList<StockVan> stockvan_from_db = new ArrayList<StockVan>();
 			stockvan_from_db.add(new StockVan(1, "product a", "0001", "100000",
-					10, 10, 10, "1", "", "test 01"));
+					"10", "10", "10", "1", "", "test 01"));
 			stockvan_from_db.add(new StockVan(2, "product b", "0002", "100000",
-					20, 20, 20, "1", "", "test 02"));
-			stockvan_from_db.add(new StockVan(3, "product c", "0003", "100000",
-					30, 30, 30, "1", "", "test 03"));
-			stockvan_from_db.add(new StockVan(4, "product d", "0004", "100000",
-					40, 40, 40, "1", "", "test 04"));
-			stockvan_from_db.add(new StockVan(5, "product e", "0005", "100000",
-					50, 50, 50, "1", "", "test 05"));
-			stockvan_from_db.add(new StockVan(6, "product f", "0006", "100000",
-					60, 60, 60, "1", "", "test 06"));
-			stockvan_from_db.add(new StockVan(7, "product g", "0007", "100000",
-					70, 70, 70, "1", "", "test 07"));
-			stockvan_from_db.add(new StockVan(8, "product h", "0008", "100000",
-					80, 80, 80, "1", "", "test 08"));
-			stockvan_from_db.add(new StockVan(9, "product i", "0009", "100000",
-					90, 90, 90, "1", "", "test 09"));
-			stockvan_from_db.add(new StockVan(10, "product j", "0010",
-					"100000", 100, 100, 100, "1", "", "test 10"));
-			stockvan_from_db.add(new StockVan(11, "product k", "0011",
-					"100000", 110, 110, 110, "1", "", "test 11"));
-			stockvan_from_db.add(new StockVan(12, "product l", "0012",
-					"100000", 10, 10, 10, "1", "", "test 12"));
-			stockvan_from_db.add(new StockVan(13, "product m", "0013",
-					"100000", 20, 20, 20, "1", "", "test 13"));
-			stockvan_from_db.add(new StockVan(14, "product n", "0014",
-					"100000", 30, 30, 30, "1", "", "test 14"));
-			stockvan_from_db.add(new StockVan(15, "product o", "0015",
-					"100000", 40, 40, 40, "1", "", "test 15"));
-			stockvan_from_db.add(new StockVan(16, "product p", "0016",
-					"100000", 50, 50, 50, "1", "", "test 16"));
-			stockvan_from_db.add(new StockVan(17, "product q", "0017",
-					"100000", 60, 60, 60, "1", "", "test 17"));
-			stockvan_from_db.add(new StockVan(18, "product r", "0018",
-					"100000", 70, 70, 70, "1", "", "test 18"));
-			stockvan_from_db.add(new StockVan(19, "product s", "0019",
-					"100000", 80, 80, 80, "1", "", "test 19"));
-			stockvan_from_db.add(new StockVan(20, "product t", "0020",
-					"100000", 90, 90, 90, "1", "", "test 20"));
+					"20", "20", "20", "1", "", "test 02"));
 			if (stockvan_from_db.size() > 0) {
 				listView.setVisibility(View.VISIBLE);
 				for (int i = 0; i < stockvan_from_db.size(); i++) {
@@ -439,9 +403,9 @@ public class PhysicalCountingActivity extends FragmentActivity {
 					String kode_product = stockvan_from_db.get(i)
 							.getKode_product();
 					String harga_jual = stockvan_from_db.get(i).getHarga_jual();
-					int jumlahAccept = stockvan_from_db.get(i)
+					String jumlahAccept = stockvan_from_db.get(i)
 							.getJumlahAccept();
-					int jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
+					String jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
 					String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
 					String foto = stockvan_from_db.get(i).getFoto();
 					String deskripsi = stockvan_from_db.get(i).getDeskripsi();
@@ -485,9 +449,9 @@ public class PhysicalCountingActivity extends FragmentActivity {
 					String kode_product = stockvan_from_db.get(i)
 							.getKode_product();
 					String harga_jual = stockvan_from_db.get(i).getHarga_jual();
-					int jumlahAccept = stockvan_from_db.get(i)
+					String jumlahAccept = stockvan_from_db.get(i)
 							.getJumlahAccept();
-					int jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
+					String jumlahSisa = stockvan_from_db.get(i).getJumlahSisa();
 					String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
 					String foto = stockvan_from_db.get(i).getFoto();
 					String deskripsi = stockvan_from_db.get(i).getDeskripsi();
@@ -613,7 +577,7 @@ public class PhysicalCountingActivity extends FragmentActivity {
 						 * report
 						 */
 						try {
-							data.get(position).setJumlahSisa(0);
+							data.get(position).setJumlahSisa("0");
 							databaseHandler.updateStockVanJumlahSisa(
 									data.get(position).getId_product(), 0);
 						} catch (Exception ex) {
@@ -626,7 +590,7 @@ public class PhysicalCountingActivity extends FragmentActivity {
 						 */
 						try {
 							data.get(position).setJumlahSisa(
-									Integer.parseInt(arg0.toString()));
+									arg0.toString());
 							databaseHandler.updateStockVanJumlahSisa(
 									data.get(position).getId_product(),
 									Integer.parseInt(arg0.toString()));

@@ -1,5 +1,6 @@
 package com.mahkota_company.android.sales_order;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -414,8 +416,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		chooseProductDialog.setCancelable(true);
 
 
-		chooseProductDialog
-				.setOnCancelListener(new DialogInterface.OnCancelListener() {
+		chooseProductDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 					@Override
 					public void onCancel(DialogInterface dialog) {
 						chooseProductDialog.dismiss();
@@ -425,13 +426,13 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				.findViewById(R.id.activity_sales_order_title_kode_product);
 		TextView tvHeaderNamaProduct = (TextView) chooseProductDialog
 				.findViewById(R.id.activity_sales_order_title_nama_product);
-		TextView tvHeaderHargaProduct = (TextView) chooseProductDialog
-				.findViewById(R.id.activity_sales_order_title_harga_product);
+		//TextView tvHeaderHargaProduct = (TextView) chooseProductDialog
+		//		.findViewById(R.id.activity_sales_order_title_harga_product);
 		TextView tvHeaderAction = (TextView) chooseProductDialog
 				.findViewById(R.id.activity_sales_order_title_action);
 		tvHeaderKodeProduct.setTypeface(typefaceSmall);
 		tvHeaderNamaProduct.setTypeface(typefaceSmall);
-		tvHeaderHargaProduct.setTypeface(typefaceSmall);
+		//tvHeaderHargaProduct.setTypeface(typefaceSmall);
 		tvHeaderAction.setTypeface(typefaceSmall);
 		EditText searchProduct = (EditText) chooseProductDialog
 				.findViewById(R.id.activity_product_edittext_search);
@@ -660,7 +661,6 @@ public class AddSalesOrderActivity extends FragmentActivity {
 						.findViewById(R.id.sales_order_title_kode_product);
 				holder.list_harga_jual = (TextView) row
 						.findViewById(R.id.sales_order_title_harga);
-
 				holder.list_jumlah_order = (TextView) row
 						.findViewById(R.id.sales_order_title_jumlah_order);
 				holder.list_jumlah_order1 = (TextView) row
@@ -754,6 +754,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 
 				row = inflater.inflate(layoutResourceId, parent, false);
 				holder = new UserHolder();
+				holder.list_img = (ImageView) row.findViewById(R.id.image);
 				holder.list_kodeProduct = (TextView) row
 						.findViewById(R.id.sales_order_title_kode_product);
 				holder.list_namaProduct = (TextView) row
@@ -768,7 +769,12 @@ public class AddSalesOrderActivity extends FragmentActivity {
 				holder = (UserHolder) row.getTag();
 			}
 			productData = data.get(position);
-			holder.list_kodeProduct.setText(productData.getKode_product());
+			File dir = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/"
+					+ data.get(position).getFoto());
+			holder.list_img.setImageBitmap(BitmapFactory.decodeFile(dir.getAbsolutePath()));
+			//holder.list_img.setOnClickListener();
+			//holder.list_kodeProduct.setText(productData.getKode_product());
 			holder.list_namaProduct.setText(productData.getNama_product());
 			Float priceIDR = Float.valueOf(productData.getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
@@ -776,10 +782,10 @@ public class AddSalesOrderActivity extends FragmentActivity {
 			otherSymbols.setGroupingSeparator('.');
 
 			DecimalFormat df = new DecimalFormat("#,##0", otherSymbols);
-			holder.list_harga.setText("Rp. " + df.format(priceIDR));
-			holder.list_kodeProduct.setTypeface(getTypefaceSmall());
+			//holder.list_harga.setText("Rp. " + df.format(priceIDR));
+			//holder.list_kodeProduct.setTypeface(getTypefaceSmall());
 			holder.list_namaProduct.setTypeface(getTypefaceSmall());
-			holder.list_harga.setTypeface(getTypefaceSmall());
+			//holder.list_harga.setTypeface(getTypefaceSmall());
 			holder.mButtonAddItem.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -856,6 +862,7 @@ public class AddSalesOrderActivity extends FragmentActivity {
 		}
 
 		class UserHolder {
+			ImageView list_img;
 			TextView list_kodeProduct;
 			TextView list_namaProduct;
 			TextView list_harga;

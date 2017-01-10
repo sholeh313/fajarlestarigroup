@@ -6,7 +6,7 @@ public class DetailProductTarget {
 	private String kode_product;
 	private String nama_product;
 	private int jumlah_target;
-	private int jumlah_stok_van;
+	private String jumlah_stok_van;
 
 	public DetailProductTarget() {
 
@@ -15,7 +15,7 @@ public class DetailProductTarget {
 	// constructor
 	public DetailProductTarget(int id_product_target, int id_product,
 			String kode_product, String nama_product, int jumlah_target,
-			int jumlah_stok_van) {
+			String jumlah_stok_van) {
 		this.id_product_target = id_product_target;
 		this.id_product = id_product;
 		this.kode_product = kode_product;
@@ -64,11 +64,11 @@ public class DetailProductTarget {
 		this.jumlah_target = jumlah_target;
 	}
 
-	public int getJumlah_stok_van() {
+	public String getJumlah_stok_van() {
 		return jumlah_stok_van;
 	}
 
-	public void setJumlah_stok_van(int jumlah_stok_van) {
+	public void setJumlah_stok_van(String jumlah_stok_van) {
 		this.jumlah_stok_van = jumlah_stok_van;
 	}
 

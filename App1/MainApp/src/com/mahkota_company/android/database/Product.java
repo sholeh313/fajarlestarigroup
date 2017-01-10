@@ -13,6 +13,7 @@ public class Product {
 	private String uomqtyl2;
 	private String uomqtyl3;
 	private String uomqtyl4;
+	private String status;
 
 	public Product() {
 
@@ -21,7 +22,7 @@ public class Product {
 	public Product(int id_product, String nama_product, String kode_product,
 			String harga_jual, String stock, String id_kemasan, String foto,
 			String deskripsi, String uomqtyl1, String uomqtyl2, String uomqtyl3,
-			String uomqtyl4) {
+			String uomqtyl4,String status) {
 		this.id_product = id_product;
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
@@ -34,6 +35,7 @@ public class Product {
 		this.uomqtyl2 = uomqtyl2;
 		this.uomqtyl3 = uomqtyl3;
 		this.uomqtyl4 = uomqtyl4;
+		this.status= status;
 
 	}
 
@@ -126,5 +128,11 @@ public class Product {
 	}
 	public void setUomqtyl4(String uomqtyl4) {
 		this.uomqtyl4 = uomqtyl4;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

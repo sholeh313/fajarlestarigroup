@@ -36,6 +36,7 @@ import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.check_customer.CheckCustomer;
 import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
@@ -44,6 +45,7 @@ import com.mahkota_company.android.display_product.DisplayProductActivity;
 import com.mahkota_company.android.jadwal.JadwalActivity;
 import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
+import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
@@ -143,7 +145,6 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnUnLoadProduct = (Button) findViewById(R.id.menuUnloadProduct);
 		btnPhysicalCounting = (Button) findViewById(R.id.menuPhysicalCounting);
 		//btnSuggestedStock = (Button) findViewById(R.id.menuSuggestedStock);
-		btnSupplier = (Button) findViewById(R.id.menuSupplier);
 		btnSalesTO = (Button) findViewById(R.id.menuSalesTO);
 		btnSalesKanvas = (Button) findViewById(R.id.menuSalesKanvas);
 		btnPrice = (Button) findViewById(R.id.menuSalesTO1);
@@ -153,10 +154,12 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnUnLoadProduct.setTypeface(typefaceSmall);
 		btnPhysicalCounting.setTypeface(typefaceSmall);
 		//btnSuggestedStock.setTypeface(typefaceSmall);
-		btnSupplier.setTypeface(typefaceSmall);
 		btnSalesTO.setTypeface(typefaceSmall);
 		btnSalesKanvas.setTypeface(typefaceSmall);
 		btnPrice.setTypeface(typefaceSmall);
+
+		btnPhysicalCounting.setVisibility(View.INVISIBLE);
+		btnSalesTO.setVisibility(View.INVISIBLE);
 
 
 		btnRequestLoad.setOnClickListener(requestLoadClickListener);
@@ -164,8 +167,8 @@ public class InventoryActivity extends ActionBarActivity implements
 		btnLoadProduct.setOnClickListener(loadProductClickListener);
 		btnUnLoadProduct.setOnClickListener(unloadsProductClickListener);
 		btnPhysicalCounting.setOnClickListener(physicalCountingClickListener);
-		btnSupplier.setOnClickListener(supplierClickListener);
-		btnSalesTO.setOnClickListener(salesTOClickListener);
+		//btnSupplier.setOnClickListener(supplierClickListener);
+		//btnSalesTO.setOnClickListener(salesTOClickListener);
 		btnPrice.setOnClickListener(PriceDownload);
 		btnSalesKanvas.setOnClickListener(salesKanvasClickListener);
 		//
@@ -287,31 +290,6 @@ public class InventoryActivity extends ActionBarActivity implements
 		@Override
 		public void onClick(View v) {
 			gotoSupplier();
-		}
-	};
-
-
-	/**
-	 * Button Sales TO Listener
-	 */
-	public View.OnClickListener salesTOClickListener = new View.OnClickListener() {
-
-		@Override
-		public void onClick(View v) {
-			if (isRunningDummyVersion()) {
-				gotoSalesTO();
-			} else {
-				int countProduct = databaseHandler.getCountProduct();
-				if (countProduct == 0) {
-					String msg = getApplicationContext()
-							.getResources()
-							.getString(
-									R.string.app_inventory_sales_to_no_product);
-					showCustomDialog(msg);
-				} else {
-					gotoSalesTO();
-				}
-			}
 		}
 	};
 
@@ -589,7 +567,7 @@ public class InventoryActivity extends ActionBarActivity implements
 					databaseHandler.add_Product(new Product(Integer
 							.parseInt(id_product), nama_product, kode_product,
 							harga_jual, stock, id_kemasan, foto, deskripsi,
-							uomqtyl1,uomqtyl2,uomqtyl3,uomqtyl4));
+							uomqtyl1,uomqtyl2,uomqtyl3,uomqtyl4,"1"));
 				}
 			} catch (JSONException e) {
 				final String message = e.toString();
@@ -1027,13 +1005,6 @@ public class InventoryActivity extends ActionBarActivity implements
 		finish();
 	}
 
-
-	public void gotoSalesTO() {
-		Intent i = new Intent(this, SalesTOActivity.class);
-		startActivity(i);
-		finish();
-	}
-
 	public void gotoPriceDownload() {
 		Intent i = new Intent(this, ProductPriceActivity.class);
 		startActivity(i);
@@ -1096,13 +1067,12 @@ public class InventoryActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}/*else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
-				/*  else if (position == 10) {
+				}else if (position == 10) {
 					Intent intentActivity = new Intent(this,
 							ReturActivity.class);
 					startActivity(intentActivity);

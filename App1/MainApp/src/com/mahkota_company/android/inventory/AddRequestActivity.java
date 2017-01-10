@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -297,13 +299,12 @@ public class AddRequestActivity extends FragmentActivity {
 		final Dialog chooseProductDialog = new Dialog(act);
 		chooseProductDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		chooseProductDialog
-				.setContentView(R.layout.activity_main_product_choose_dialog);
+				.setContentView(R.layout.activity_main_product_choose_dialog_req_load);
 		chooseProductDialog.setCanceledOnTouchOutside(false);
 		chooseProductDialog.setCancelable(true);
 
 
-		chooseProductDialog
-				.setOnCancelListener(new DialogInterface.OnCancelListener() {
+		chooseProductDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 					@Override
 					public void onCancel(DialogInterface dialog) {
 						chooseProductDialog.dismiss();
@@ -632,6 +633,7 @@ public class AddRequestActivity extends FragmentActivity {
 
 				row = inflater.inflate(layoutResourceId, parent, false);
 				holder = new UserHolder();
+				holder.list_img = (ImageView) row.findViewById(R.id.image);
 				holder.list_kodeProduct = (TextView) row
 						.findViewById(R.id.sales_order_title_kode_product);
 				holder.list_namaProduct = (TextView) row
@@ -646,7 +648,11 @@ public class AddRequestActivity extends FragmentActivity {
 				holder = (UserHolder) row.getTag();
 			}
 			productData = data.get(position);
-			holder.list_kodeProduct.setText(productData.getKode_product());
+			File dir = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/"
+					+ data.get(position).getFoto());
+			holder.list_img.setImageBitmap(BitmapFactory.decodeFile(dir.getAbsolutePath()));
+			//holder.list_kodeProduct.setText(productData.getKode_product());
 			holder.list_namaProduct.setText(productData.getNama_product());
 			Float priceIDR = Float.valueOf(productData.getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
@@ -662,33 +668,31 @@ public class AddRequestActivity extends FragmentActivity {
 
 				@Override
 				public void onClick(View v) {
-					if (jumlahProduct.getText().length()==0){
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_failed_please_add_pcs);
-						showCustomDialog(msg);
-					}else if(jumlahProduct1.getText().length()==0){
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_failed_please_add_renceng);
-						showCustomDialog(msg);
-					} else if(jumlahProduct2.getText().length()==0){
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_failed_please_add_pck);
-						showCustomDialog(msg);
-					}else if(jumlahProduct3.getText().length()==0){
-						String msg = getApplicationContext()
-								.getResources()
-								.getString(
-										R.string.app_sales_order_failed_please_add_dus);
-						showCustomDialog(msg);
-					}else {
-						if (jumlahProduct.getText().toString().length() > 0 || jumlahProduct1.getText().toString().length() > 0 ||
-								jumlahProduct2.getText().toString().length() > 0||jumlahProduct3.getText().toString().length() > 0) {
+
+						if (jumlahProduct.getText().length()==0&&jumlahProduct1.getText().length()==0&&
+							jumlahProduct2.getText().length()==0&&jumlahProduct3.getText().length()==0) {
+
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.app_sales_order_failed_please_add_jumlah);
+							showCustomDialog(msg);
+						} else if(jumlahProduct.getText().length()==0||jumlahProduct1.getText().length()==0||
+								jumlahProduct2.getText().length()==0||jumlahProduct3.getText().length()==0){
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.app_sales_order_failed_please_add_0);
+							showCustomDialog(msg);
+						}else if(jumlahProduct.getText().toString().equals("0")&&jumlahProduct1.getText().toString().equals("0")&&
+							jumlahProduct2.getText().toString().equals("0")&&jumlahProduct3.getText().toString().equals("0")){
+
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.app_sales_order_failed_please_add_jumlah);
+							showCustomDialog(msg);
+						}else{
 							boolean containSameProduct = false;
 							for (DetailReqLoad detailReqLoad : detailReqLoadList) {
 								if (detailReqLoad.getKode_product()
@@ -722,17 +726,95 @@ public class AddRequestActivity extends FragmentActivity {
 										data.get(position).getUomqtyl4(),
 										data.get(position).getId_product()
 								));
+								/*
+								if (jumlahProduct.getText().toString().length()!=0 && jumlahProduct1.getText().toString().length()!=0&&
+										jumlahProduct2.getText().toString().length()!=0&&jumlahProduct3.getText().toString().length()!=0)
+									updateListViewDetailOrder(new DetailReqLoad(
+											count,
+											data.get(position).getNama_product(),
+											data.get(position).getKode_product(),
+											data.get(position).getHarga_jual(),
+											jumlahProduct.getText().toString(),
+											jumlahProduct1.getText().toString(),
+											jumlahProduct2.getText().toString(),
+											jumlahProduct3.getText().toString(),
+											data.get(position).getUomqtyl1(),
+											data.get(position).getUomqtyl2(),
+											data.get(position).getUomqtyl3(),
+											data.get(position).getUomqtyl4(),
+											data.get(position).getId_product()
+									));
+								else if(jumlahProduct1.getText().toString().length()!=0&&
+										jumlahProduct2.getText().toString().length()!=0&&jumlahProduct3.getText().toString().length()!=0){
+									updateListViewDetailOrder(new DetailReqLoad(
+											count,
+											data.get(position).getNama_product(),
+											data.get(position).getKode_product(),
+											data.get(position).getHarga_jual(),
+											"0",
+											jumlahProduct1.getText().toString(),
+											jumlahProduct2.getText().toString(),
+											jumlahProduct3.getText().toString(),
+											data.get(position).getUomqtyl1(),
+											data.get(position).getUomqtyl2(),
+											data.get(position).getUomqtyl3(),
+											data.get(position).getUomqtyl4(),
+											data.get(position).getId_product()
+									));
+								}else if (jumlahProduct2.getText().toString().length()!=0&&jumlahProduct3.getText().toString().length()!=0){
+									updateListViewDetailOrder(new DetailReqLoad(
+											count,
+											data.get(position).getNama_product(),
+											data.get(position).getKode_product(),
+											data.get(position).getHarga_jual(),
+											"0",
+											"0",
+											jumlahProduct2.getText().toString(),
+											jumlahProduct3.getText().toString(),
+											data.get(position).getUomqtyl1(),
+											data.get(position).getUomqtyl2(),
+											data.get(position).getUomqtyl3(),
+											data.get(position).getUomqtyl4(),
+											data.get(position).getId_product()
+									));
+								}else if (jumlahProduct3.getText().toString().length()!=0){
+									updateListViewDetailOrder(new DetailReqLoad(
+											count,
+											data.get(position).getNama_product(),
+											data.get(position).getKode_product(),
+											data.get(position).getHarga_jual(),
+											"0",
+											"0",
+											"0",
+											jumlahProduct3.getText().toString(),
+											data.get(position).getUomqtyl1(),
+											data.get(position).getUomqtyl2(),
+											data.get(position).getUomqtyl3(),
+											data.get(position).getUomqtyl4(),
+											data.get(position).getId_product()
+									));
+								}else if(jumlahProduct.getText().toString().length()!=0 && jumlahProduct1.getText().toString().length()!=0&&
+										jumlahProduct2.getText().toString().length()!=0){
+									updateListViewDetailOrder(new DetailReqLoad(
+											count,
+											data.get(position).getNama_product(),
+											data.get(position).getKode_product(),
+											data.get(position).getHarga_jual(),
+											jumlahProduct.getText().toString(),
+											jumlahProduct1.getText().toString(),
+											jumlahProduct2.getText().toString(),
+											"0",
+											data.get(position).getUomqtyl1(),
+											data.get(position).getUomqtyl2(),
+											data.get(position).getUomqtyl3(),
+											data.get(position).getUomqtyl4(),
+											data.get(position).getId_product()
+									));
+								}*/
 								chooseProductDialog.hide();
 							}
-						} else {
-							String msg = getApplicationContext()
-									.getResources()
-									.getString(
-											R.string.app_sales_order_failed_please_add_jumlah);
-							showCustomDialog(msg);
-
 						}
-					}
+
 				}
 			});
 			return row;
@@ -740,6 +822,7 @@ public class AddRequestActivity extends FragmentActivity {
 		}
 
 		class UserHolder {
+			ImageView list_img;
 			TextView list_kodeProduct;
 			TextView list_namaProduct;
 			TextView list_harga;

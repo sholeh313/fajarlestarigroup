@@ -6,7 +6,7 @@ public class ProductStockVan {
 	private String kode_product;
 	private String harga_jual;
 	private int stockGudang;
-	private int stockVan;
+	private String stockVan;
 	private String idKemasan;
 	private String foto;
 	private String deskripsi;
@@ -17,7 +17,7 @@ public class ProductStockVan {
 
 	public ProductStockVan(int id_product, String nama_product,
 			String kode_product, String harga_jual, int stockGudang,
-			int stockVan, String id_kemasan, String foto, String deskripsi) {
+			String stockVan, String id_kemasan, String foto, String deskripsi) {
 		this.id_product = id_product;
 		this.nama_product = nama_product;
 		this.kode_product = kode_product;
@@ -70,11 +70,11 @@ public class ProductStockVan {
 		this.stockGudang = stockGudang;
 	}
 
-	public int getStockVan() {
+	public String getStockVan() {
 		return stockVan;
 	}
 
-	public void setStockVan(int stockVan) {
+	public void setStockVan(String stockVan) {
 		this.stockVan = stockVan;
 	}
 

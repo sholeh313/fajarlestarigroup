@@ -202,7 +202,7 @@ public class NavigationDrawerFragment extends Fragment implements
 		items.add(new NavigationItem(getResources().getString(R.string.menu_8),
 				getResources().getDrawable(R.drawable.do_not_drop)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_9),
-				getResources().getDrawable(R.drawable.contact)));
+				getResources().getDrawable(R.drawable.spv)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_10),
 				getResources().getDrawable(R.drawable.inventori)));
 		items.add(new NavigationItem(getResources().getString(R.string.menu_11),

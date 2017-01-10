@@ -25,6 +25,7 @@ import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.check_customer.CheckCustomer;
 import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Jadwal;
@@ -732,8 +733,7 @@ public class JadwalActivity extends ActionBarActivity implements
 
 				@Override
 				public void onClick(View v) {
-					String kode_jadwal = String.valueOf(data.get(position)
-							.getKode_jadwal());
+					String kode_jadwal = String.valueOf(data.get(position).getKode_jadwal());
 					saveAppDataKodeJadwal(kode_jadwal);
 					gotoJadwalCustomer();
 				}
@@ -803,12 +803,12 @@ public class JadwalActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}/*else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
-				}*/else if (position == 9) {
+				}else if (position == 9) {
 					Intent intentActivity = new Intent(this,
 							InventoryActivity.class);
 					startActivity(intentActivity);

@@ -35,6 +35,7 @@ import com.mahkota_company.android.NavigationDrawerCallbacks;
 import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.check_customer.CheckCustomer;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
@@ -1135,13 +1136,12 @@ public class CheckCustomerProspectActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}/*else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
-				else if (position == 9) {
+				}else if (position == 9) {
 					Intent intentActivity = new Intent(this,
 							InventoryActivity.class);
 					startActivity(intentActivity);

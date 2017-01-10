@@ -7,14 +7,10 @@ public class ReqLoad {
 	private int id_staff;
 	private String date_order;
 	private String time_order;
-	//private String deskripsi;
 	private int id_promosi;
 	private String username;
-	//private String kode_customer;
-	//private String alamat;
 	private String satuan_terkecil;
 	private String nama_product;
-	//private String kode_product;
 	private String harga_jual;
 	private String jumlah_order;
 	private String jumlah_order1;
@@ -30,15 +26,13 @@ public class ReqLoad {
 
 	}
 
-	// constructor
 	public ReqLoad(int id_sales_order, String nomer_request_load,
 				   String date_order,
 				   String time_order, int id_promosi,
 				   int id_staff,
-				   String username, //String kode_customer, String alamat,
+				   String username,
 				   String satuan_terkecil,
 				   String nama_product,
-				   //String kode_product,
 				   String harga_jual, String jumlah_order, String jumlah_order1,
 				   String jumlah_order2, String jumlah_order3
 			       ,String uomqtyl1, String uomqtyl2, String uomqtyl3, String uomqtyl4,
@@ -51,11 +45,8 @@ public class ReqLoad {
 		this.id_staff = id_staff;
 		this.id_promosi = id_promosi;
 		this.username = username;
-		//this.kode_customer = kode_customer;
-		//this.alamat = alamat;
 		this.satuan_terkecil = satuan_terkecil;
 		this.nama_product = nama_product;
-		//this.kode_product = kode_product;
 		this.harga_jual = harga_jual;
 		this.jumlah_order = jumlah_order;
 		this.jumlah_order1 = jumlah_order1;

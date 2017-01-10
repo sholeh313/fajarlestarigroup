@@ -58,7 +58,8 @@
     </string-array>
 
     <!-- Inventory -->
-    <string name="app_inventory_menu_supplier_logs">Supplier</string>
+    <string name="hello_world">Hello Geo Location world!</string>
+    <string name="app_inventory_menu_supplier_logs">Perbaikan</string>
     <string name="app_inventory_menu_sales_to">Sales TO</string>
     <string name="app_inventory_menu_sales_kanvas">Sales Kanvas</string>
     <string name="app_inventory_sales_nomer_nota">Nomer NOTA</string>
@@ -94,7 +95,7 @@
     <string name="app_inventory_processing_upload_physical_counting_load_success">Proses update physical counting berhasil !</string>
     <string name="app_inventory_stock_summary_failed_empty_data_product">Mohon mendownload data product !</string>
     <string name="app_inventory_stock_summary_textview_kode_product">Kode Product</string>
-    <string name="app_inventory_stock_summary_textview_nama_product">Nama Product</string>
+    <string name="app_inventory_stock_summary_textview_nama_product">Product</string>
     <string name="app_inventory_stock_summary_textview_stock_gudang">Stock Gudang</string>
     <string name="app_inventory_stock_summary_textview_stock_van">Stock Van</string>
     <string name="app_inventory_processing_download_stock_summary">Proses download stock summary...</string>
@@ -109,6 +110,17 @@
     <string name="app_inventory_unload_product_target_penjualan_processing">Proses download target penjualan...</string>
     <string name="app_inventory_unload_product_target_penjualan_processing_download_failed">Mohon periksa koneksi internet anda, untuk download data target penjualan dari server !</string>
     <string name="app_inventory_unload_product_target_penjualan_button_add_target_penjualan">Add TP</string>
+
+    <string name="pause">Pause Location Updates</string>
+    <string name="resume">Resume Location Updates</string>
+
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="address">Address</string>
+    <string name="use_address">Use Address</string>
+    <string name="use_location">Use Latitude/Longitude</string>
+    <string name="get_address">Get Address</string>
+    <string name="fetch">Fetch</string>
 
     <string name="app_inventory_unload_product_target_penjualan_button_upload_target_penjualan">Upload TP</string>
     <string name="app_inventory_unload_product_target_penjualan_hint_search_customer">Search Customer</string>
@@ -177,14 +189,14 @@
     <string name="menu_1">Customer</string>
     <string name="menu_2">Jadwal</string>
     <string name="menu_3">Product</string>
-    <string name="menu_4">New Prospect</string>
+    <string name="menu_4">New Open Outlet (NOO)</string>
     <string name="menu_5">Lokasi Customer</string>
     <string name="menu_6">Sales Order</string>
     <string name="menu_15">Request Load</string>
     <string name="menu_16">Master Harga</string>
     <string name="menu_7">Stock On Hand</string>
     <string name="menu_8">Photo Display Product</string>
-    <string name="menu_9">Kontak Customer</string>
+    <string name="menu_9">Supervisor</string>
     <string name="menu_10">Inventory</string>
     <string name="menu_11">Retur</string>
     <string name="menu_12">Merchandise</string>
@@ -202,12 +214,15 @@
     <string name="app_customer_warning">Seluruh foto customer terhapus, mohon lakukan sinkronisasi data customer !</string>
     <string name="app_customer_processing">Proses download customer</string>
     <string name="app_customer_processing_upload">Proses upload customer</string>
+    <string name="app_product_processing_upload">Proses upload product</string>
     <string name="app_customer_processing_upload_failed">Proses upload customer gagal !</string>
     <string name="app_customer_processing_upload_success">Proses upload customer berhasil !</string>
+    <string name="app_product_processing_upload_success">Proses upload product berhasil !</string>
     <string name="app_customer_processing_empty">Mohon periksa koneksi internet anda, untuk download customer</string>
     <string name="app_customer_status_update_unuploaded">Upload pembaharuan data customer terlebih dahulu</string>
     <string name="app_customer_processing_upload_empty">Mohon periksa koneksi internet anda, untuk upload customer</string>
     <string name="app_customer_processing_upload_no_data">Tidak ada customer yang di perbarui oleh user !</string>
+    <string name="app_product_processing_upload_no_data">Tidak ada product yang di perbarui oleh user !</string>
     <string name="app_customer_processing_refresh_failed">Upload data pada menu Customer atau menu New Prospect terlebih dahulu!</string>
     <string name="app_customer_processing_download_content">Proses download content customer.</string>
     <string name="app_customer_processing_download_success">Proses download content customer berhasil.</string>
@@ -361,6 +376,7 @@
     <string name="app_sales_order_no_data_product">Mohon download data product terlebih dahulu !</string>
     <string name="app_sales_order_search_product">Search Product</string>
     <string name="app_sales_order_title_kode_product">Kode Product</string>
+    <string name="app_sales_order_title_gambar_product">Gambar Sample</string>
     <string name="app_sales_order_title_nama_product">Nama Product</string>
     <string name="app_sales_order_title_harga_product">Harga</string>
     <string name="app_sales_order_title_action">Action</string>
@@ -373,6 +389,7 @@
     <string name="app_sales_order_Pack">Pack</string>
     <string name="app_sales_order_Pcs">Pieces</string>
     <string name="app_sales_order_failed_please_add_jumlah">Mohon memasukkan jumlah item yang di inginkan !</string>
+    <string name="app_sales_order_failed_please_add_0">Field tidak boleh kosong, isikan angka 0 untuk melanjutkan</string>
     <string name="app_sales_order_failed_please_add_pcs">Jumlah pieces harus diisi</string>
     <string name="app_sales_order_failed_please_add_renceng">Jumlah renceng harus diisi</string>
     <string name="app_sales_order_failed_please_add_pck">Jumlah pack harus diisi</string>

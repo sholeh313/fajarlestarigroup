@@ -15,10 +15,16 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
@@ -43,6 +49,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -51,6 +59,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,7 +69,9 @@ import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.check_customer.CheckCustomer;
 import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
+import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
 import com.mahkota_company.android.database.Product;
 import com.mahkota_company.android.database.Request_load;
@@ -72,6 +83,7 @@ import com.mahkota_company.android.locator.LocatorActivity;
 import com.mahkota_company.android.merchandise.CustomerMerchandiseActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
 import com.mahkota_company.android.retur.ReturActivity;
+import com.mahkota_company.android.sales_order.AddSalesOrderActivity;
 import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
@@ -94,8 +106,11 @@ public class ProductActivity extends ActionBarActivity implements
 	private Handler handler = new Handler();
 	private String message;
 	private String response_data;
+	private ListViewAdapter cAdapterChooseAdapter;
+	private EditText searchproduct;
 	private static final String LOG_TAG = ProductActivity.class.getSimpleName();
 	private Typeface typefaceSmall;
+	private String response;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +122,7 @@ public class ProductActivity extends ActionBarActivity implements
 		act = this;
 		setSupportActionBar(mToolbar);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
+		searchproduct = (EditText) findViewById(R.id.activity_product_edittext_search);
 		progressDialog = new ProgressDialog(this);
 		progressDialog.setTitle(getApplicationContext().getResources()
 				.getString(R.string.app_name));
@@ -135,6 +151,113 @@ public class ProductActivity extends ActionBarActivity implements
 		} else {
 			updateContentProduct();
 		}
+
+		searchproduct.addTextChangedListener(new TextWatcher() {
+
+
+			@Override
+			public void onTextChanged(CharSequence cs, int arg1, int arg2,
+									  int arg3) {
+				if (cs.toString().length() > 0) {
+					product_list.clear();
+					ArrayList<Product> product_from_db = databaseHandler.getAllProductBaseOnSearch(
+							cs.toString());
+					if (product_from_db.size() > 0) {
+						listview.setVisibility(View.VISIBLE);
+						for (int i = 0; i < product_from_db.size(); i++) {
+							int id_product = product_from_db.get(i)
+									.getId_product();
+							String nama_product = product_from_db.get(i)
+									.getNama_product();
+							String kode_product = product_from_db.get(i)
+									.getKode_product();
+							String harga_jual = product_from_db.get(i)
+									.getHarga_jual();
+							String stock = product_from_db.get(i).getStock();
+							String id_kemasan = product_from_db.get(i)
+									.getId_kemasan();
+							String foto = product_from_db.get(i).getFoto();
+							String deskripsi = product_from_db.get(i)
+									.getDeskripsi();
+
+							Product product = new Product();
+							product.setId_product(id_product);
+							product.setNama_product(nama_product);
+							product.setKode_product(kode_product);
+							product.setHarga_jual(harga_jual);
+							product.setStock(stock);
+							product.setId_kemasan(id_kemasan);
+							product.setFoto(foto);
+							product.setDeskripsi(deskripsi);
+							product_list.add(product);
+							cAdapterChooseAdapter = new ListViewAdapter(
+									ProductActivity.this,
+									R.layout.list_item_product,
+									product_list);
+							listview.setAdapter(cAdapterChooseAdapter);
+							cAdapterChooseAdapter.notifyDataSetChanged();
+						}
+					} else {
+						listview.setVisibility(View.INVISIBLE);
+					}
+
+				} else {
+					product_list.clear();
+					ArrayList<Product> product_from_db = databaseHandler
+							.getAllProduct();
+					if (product_from_db.size() > 0) {
+						listview.setVisibility(View.VISIBLE);
+						for (int i = 0; i < product_from_db.size(); i++) {
+							int id_product = product_from_db.get(i)
+									.getId_product();
+							String nama_product = product_from_db.get(i)
+									.getNama_product();
+							String kode_product = product_from_db.get(i)
+									.getKode_product();
+							String harga_jual = product_from_db.get(i)
+									.getHarga_jual();
+							String stock = product_from_db.get(i).getStock();
+							String id_kemasan = product_from_db.get(i)
+									.getId_kemasan();
+							String foto = product_from_db.get(i).getFoto();
+							String deskripsi = product_from_db.get(i)
+									.getDeskripsi();
+
+							Product product = new Product();
+							product.setId_product(id_product);
+							product.setNama_product(nama_product);
+							product.setKode_product(kode_product);
+							product.setHarga_jual(harga_jual);
+							product.setStock(stock);
+							product.setId_kemasan(id_kemasan);
+							product.setFoto(foto);
+							product.setDeskripsi(deskripsi);
+							product_list.add(product);
+							cAdapterChooseAdapter = new ListViewAdapter(
+									ProductActivity.this,
+									R.layout.list_item_product,
+									product_list);
+							listview.setAdapter(cAdapterChooseAdapter);
+							cAdapterChooseAdapter.notifyDataSetChanged();
+
+						}
+					} else {
+						listview.setVisibility(View.INVISIBLE);
+					}
+				}
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1,
+										  int arg2, int arg3) {
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable arg0) {
+
+			}
+		});
 	}
 
 	public HttpResponse getDownloadData(String url) {
@@ -341,7 +464,7 @@ public class ProductActivity extends ActionBarActivity implements
 					databaseHandler.add_Product(new Product(Integer
 							.parseInt(id_product), nama_product, kode_product,
 							harga_jual, stock, id_kemasan, foto, deskripsi,
-							uomqtyl1, uomqtyl2,uomqtyl3,uomqtyl4));
+							uomqtyl1, uomqtyl2,uomqtyl3,uomqtyl4,"1"));
 				}
 			} catch (JSONException e) {
 				final String message = e.toString();
@@ -401,6 +524,7 @@ public class ProductActivity extends ActionBarActivity implements
 				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
 				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
 				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
+				String status = product_from_db.get(i).getStatus();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -415,6 +539,7 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setUomqtyl2(uomqtyl2);
 				product.setUomqtyl3(uomqtyl3);
 				product.setUomqtyl4(uomqtyl4);
+				product.setStatus(status);
 				File dir = new File(CONFIG.getFolderPath() + "/"
 						+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/" + foto);
 				if (!dir.exists()) {
@@ -458,6 +583,7 @@ public class ProductActivity extends ActionBarActivity implements
 				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
 				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
 				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
+				String status = product_from_db.get(i).getStatus();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -472,6 +598,7 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setUomqtyl2(uomqtyl2);
 				product.setUomqtyl3(uomqtyl3);
 				product.setUomqtyl4(uomqtyl4);
+				product.setStatus(status);
 				File dir = new File(CONFIG.getFolderPath() + "/"
 						+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/" + foto);
 				if (dir.exists()) {
@@ -620,6 +747,7 @@ public class ProductActivity extends ActionBarActivity implements
 				String uomqtyl2 = product_from_db.get(i).getUomqtyl2();
 				String uomqtyl3 = product_from_db.get(i).getUomqtyl3();
 				String uomqtyl4 = product_from_db.get(i).getUomqtyl4();
+				String status = product_from_db.get(i).getStatus();
 
 				Product product = new Product();
 				product.setId_product(id_product);
@@ -634,6 +762,7 @@ public class ProductActivity extends ActionBarActivity implements
 				product.setUomqtyl2(uomqtyl2);
 				product.setUomqtyl3(uomqtyl3);
 				product.setUomqtyl4(uomqtyl4);
+				product.setStatus(status);
 
 				product_list.add(product);
 			}
@@ -676,10 +805,6 @@ public class ProductActivity extends ActionBarActivity implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_main, menu);
-		MenuItem item = menu.findItem(R.id.menu_upload);
-		if (item != null) {
-			item.setVisible(false);
-		}
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -695,9 +820,181 @@ public class ProductActivity extends ActionBarActivity implements
 				showCustomDialog(message);
 			}
 			return true;
+			case R.id.menu_upload:
+				if (GlobalApp.checkInternetConnection(act)) {
+					int countUpload = databaseHandler.getCountProductWhereValidAndUpdate();
+					if (countUpload == 0) {
+						String message = act
+								.getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_product_processing_upload_no_data);
+						showCustomDialog(message);
+					} else {
+						new UploadData().execute();
+					}
+				} else {
+					String message = act
+							.getApplicationContext()
+							.getResources()
+							.getString(
+									R.string.app_customer_processing_upload_empty);
+					showCustomDialog(message);
+				}
+				return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	public void CustomDialogUploadSuccess(String msg) {
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				act);
+		alertDialogBuilder
+				.setMessage(msg)
+				.setCancelable(false)
+				.setPositiveButton(
+						act.getApplicationContext().getResources()
+								.getString(R.string.MSG_DLG_LABEL_OK),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int id) {
+								AlertDialog alertDialog = alertDialogBuilder
+										.create();
+								alertDialog.dismiss();
+								databaseHandler.updateStatusProduct();
+							}
+						});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+
+	}
+
+	public class UploadData extends AsyncTask<String, Integer, String> {
+		@Override
+		protected void onPreExecute() {
+			progressDialog.setMessage(getApplicationContext().getResources()
+					.getString(R.string.app_product_processing_upload));
+			progressDialog.show();
+			progressDialog
+					.setOnCancelListener(new DialogInterface.OnCancelListener() {
+						@Override
+						public void onCancel(DialogInterface dialog) {
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.MSG_DLG_LABEL_SYNRONISASI_DATA_CANCEL);
+							showCustomDialog(msg);
+						}
+					});
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			String upload_url = CONFIG.CONFIG_APP_URL_PUBLIC
+					+ CONFIG.CONFIG_APP_URL_UPLOAD_PRODUCT ;
+
+			List<Product> dataUpload = databaseHandler
+					.getAllProductActiveAndUpdateByUser();
+			for (Product product : dataUpload) {
+				response = uploadProduct(upload_url,
+						product.getNama_product(),
+						product.getKode_product(),
+						product.getHarga_jual(),
+						product.getStock(),
+						String.valueOf(product.getId_kemasan()),
+						product.getFoto(),
+						product.getDeskripsi(),
+						product.getUomqtyl1(),
+						product.getUomqtyl2(),
+						product.getUomqtyl3(),
+						product.getUomqtyl4());
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+
+
+			super.onPostExecute(result);
+			if (response_data != null) {
+				//initUploadCustomer();
+			} else {
+				final String msg = act
+						.getApplicationContext()
+						.getResources()
+						.getString(
+								R.string.app_product_processing_upload_success);
+				CustomDialogUploadSuccess(msg);
+
+			}
+		}
+
+	}
+
+	private String uploadProduct(final String url,
+								 final String nama_product, final String kode_product,
+								 final String harga_jual, final String stock,
+								 final String id_kemasan, final String foto,
+								 final String deskripsi, final String uomqtyl1,
+								 final String uomqtyl2, final String uomqtyl3,
+								 final String uomqtyl4) {
+
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpPost httppost = new HttpPost(url);
+		String responseString = null;
+		try {
+			if (android.os.Build.VERSION.SDK_INT > 9) {
+				StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+						.permitAll().build();
+				StrictMode.setThreadPolicy(policy);
+			}
+
+			MultipartEntity entity = new MultipartEntity();
+
+			File sourceFoto = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/" + foto);
+			if (sourceFoto.exists() && foto != null)
+				entity.addPart("image", new FileBody(sourceFoto));
+
+			entity.addPart("kode_product", new StringBody(kode_product));
+			entity.addPart("nama_product", new StringBody(nama_product));
+			entity.addPart("harga_jual", new StringBody(harga_jual));
+			entity.addPart("stock", new StringBody(stock));
+			entity.addPart("id_kemasan", new StringBody(id_kemasan));
+			entity.addPart("foto", new StringBody(foto));
+			entity.addPart("deskripsi", new StringBody(deskripsi));
+			entity.addPart("uomqtyl1", new StringBody(uomqtyl1));
+			entity.addPart("uomqtyl2", new StringBody(uomqtyl2));
+			entity.addPart("uomqtyl3", new StringBody(uomqtyl3));
+			entity.addPart("uomqtyl4", new StringBody(uomqtyl4));
+
+			httppost.setEntity(entity);
+
+			// Making server call
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity r_entity = response.getEntity();
+
+			int statusCode = response.getStatusLine().getStatusCode();
+			if (statusCode == 200) {
+				// Server response
+				responseString = EntityUtils.toString(r_entity);
+			} else {
+				responseString = "Error occurred! Http Status Code: "
+						+ statusCode;
+			}
+
+		} catch (ClientProtocolException e) {
+			responseString = e.toString();
+		} catch (IOException e) {
+			responseString = e.toString();
+		}
+
+		return responseString;
 	}
 
 	public class ListViewAdapter extends ArrayAdapter<Product> {
@@ -817,12 +1114,12 @@ public class ProductActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}/*else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
-				}*/else if (position == 9) {
+				}else if (position == 9) {
 					Intent intentActivity = new Intent(this,
 							InventoryActivity.class);
 					startActivity(intentActivity);

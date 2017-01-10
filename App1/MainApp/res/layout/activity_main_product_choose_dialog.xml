@@ -167,8 +167,8 @@
             android:id="@+id/activity_sales_order_title_kode_product"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/app_sales_order_title_kode_product"
+            android:layout_weight="2.2"
+            android:text="@string/app_sales_order_title_gambar_product"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -185,16 +185,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/activity_sales_order_title_harga_product"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/app_sales_order_title_harga_product"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_sales_order_title_action"

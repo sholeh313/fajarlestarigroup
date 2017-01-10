@@ -8,11 +8,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,11 +40,13 @@ import android.widget.TextView;
 
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.database.DatabaseHandler;
+import com.mahkota_company.android.database.DetailSalesOrder;
 import com.mahkota_company.android.database.NewDetailPenjualan;
 import com.mahkota_company.android.database.Penjualan;
 import com.mahkota_company.android.database.PenjualanDetail;
 import com.mahkota_company.android.database.Product;
 import com.mahkota_company.android.database.StockVan;
+import com.mahkota_company.android.sales_order.AddSalesOrderActivity;
 import com.mahkota_company.android.utils.CONFIG;
 import com.mahkota_company.android.utils.GlobalApp;
 
@@ -58,6 +62,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
@@ -162,7 +167,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 				null);
 		String unNota = new SimpleDateFormat("yyyyMMddHHmmss",
 				Locale.getDefault()).format(new Date());
-		tvNoNotaValue.setText(CONFIG.CONFIG_APP_KODE_SK_HEADER+"."+unNota+"."+main_app_id_staff);
+		tvNoNotaValue.setText(CONFIG.CONFIG_APP_KODE_SK_HEADER+unNota+"."+main_app_id_staff);
 		mButtonSave.setOnClickListener(buttonOnClickListener);
 		mButtonAddProduct.setOnClickListener(buttonOnClickListener);
 		checkGPS();
@@ -401,11 +406,9 @@ public class SalesKanvasActivity extends FragmentActivity {
 		}
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		HttpResponse response;
-		nameValuePairs.add(new BasicNameValuePair("no_penjualan",
-				no_penjualan));
+		nameValuePairs.add(new BasicNameValuePair("no_penjualan", no_penjualan));
 		nameValuePairs.add(new BasicNameValuePair("type_penjualan", "0"));
-		nameValuePairs.add(new BasicNameValuePair("nama_customer",
-				nama));
+		nameValuePairs.add(new BasicNameValuePair("nama_customer",nama));
 		nameValuePairs.add(new BasicNameValuePair("alamat", alamat));
 		nameValuePairs.add(new BasicNameValuePair("id_staff", main_app_id_staff));
 		nameValuePairs.add(new BasicNameValuePair("keterangan", keterangan));
@@ -536,7 +539,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 	 * @return
 	 */
 	public String postDataForPenjualanDetail(String no_penjualan, String id_product,
-											 String jumlah,  String unit) {
+											 String jumlah,String jumlah1,String jumlah2,String jumlah3) {
 		String textUrl = prepareUrlForPenjualanDetail();
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -548,7 +551,9 @@ public class SalesKanvasActivity extends FragmentActivity {
 		nameValuePairs.add(new BasicNameValuePair("no_penjualan", no_penjualan));
 		nameValuePairs.add(new BasicNameValuePair("id_product", id_product));
 		nameValuePairs.add(new BasicNameValuePair("jumlah", jumlah));
-		nameValuePairs.add(new BasicNameValuePair("unit", unit));
+		nameValuePairs.add(new BasicNameValuePair("jumlah1", jumlah1));
+		nameValuePairs.add(new BasicNameValuePair("jumlah2", jumlah2));
+		nameValuePairs.add(new BasicNameValuePair("jumlah3", jumlah3));
 		HttpClient httpclient = new DefaultHttpClient();
 		HttpPost httppost = new HttpPost(textUrl);
 		String responseString = null;
@@ -590,7 +595,8 @@ public class SalesKanvasActivity extends FragmentActivity {
 			for (NewDetailPenjualan detailPenjualan : detailPenjualanList) {
 				response_data = postDataForPenjualanDetail(
 						no_penjualan, String.valueOf(detailPenjualan.getId_product()),
-						String.valueOf(detailPenjualan.getJumlah_order()), detailPenjualan.getUnit());
+						String.valueOf(detailPenjualan.getJumlah_order()),String.valueOf(detailPenjualan.getJumlah_order1()),
+						String.valueOf(detailPenjualan.getJumlah_order2()),String.valueOf(detailPenjualan.getJumlah_order3()));
 				if (response_data.startsWith("Error occurred")) {
 					break;
 				}
@@ -717,61 +723,79 @@ public class SalesKanvasActivity extends FragmentActivity {
 		chooseProductDialog.setContentView(R.layout.activity_main_product_choose_dialog);
 		chooseProductDialog.setCanceledOnTouchOutside(false);
 		chooseProductDialog.setCancelable(true);
-		chooseProductDialog
-				.setOnCancelListener(new DialogInterface.OnCancelListener() {
-					@Override
-					public void onCancel(DialogInterface dialog) {
-						chooseProductDialog.dismiss();
-					}
-				});
+
+
+		chooseProductDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				chooseProductDialog.dismiss();
+			}
+		});
 		TextView tvHeaderKodeProduct = (TextView) chooseProductDialog
 				.findViewById(R.id.activity_sales_order_title_kode_product);
 		TextView tvHeaderNamaProduct = (TextView) chooseProductDialog
 				.findViewById(R.id.activity_sales_order_title_nama_product);
-		TextView tvHeaderHargaProduct = (TextView) chooseProductDialog
-				.findViewById(R.id.activity_sales_order_title_harga_product);
+		//TextView tvHeaderHargaProduct = (TextView) chooseProductDialog
+		//		.findViewById(R.id.activity_sales_order_title_harga_product);
 		TextView tvHeaderAction = (TextView) chooseProductDialog
 				.findViewById(R.id.activity_sales_order_title_action);
 		tvHeaderKodeProduct.setTypeface(typefaceSmall);
 		tvHeaderNamaProduct.setTypeface(typefaceSmall);
-		tvHeaderHargaProduct.setTypeface(typefaceSmall);
+		//tvHeaderHargaProduct.setTypeface(typefaceSmall);
 		tvHeaderAction.setTypeface(typefaceSmall);
 		EditText searchProduct = (EditText) chooseProductDialog
 				.findViewById(R.id.activity_product_edittext_search);
+		final ArrayList<StockVan> stockvan_list = new ArrayList<StockVan>();
 		final ListView listview = (ListView) chooseProductDialog
 				.findViewById(R.id.list);
+
 		final EditText jumlahPieces = (EditText) chooseProductDialog
 				.findViewById(R.id.activity_product_edittext_pieces);
+		final EditText jumlahRenceng = (EditText) chooseProductDialog
+				.findViewById(R.id.activity_product_edittext_renceng);
 		final EditText jumlahPack = (EditText) chooseProductDialog
 				.findViewById(R.id.activity_product_edittext_pack);
 		final EditText jumlahDus = (EditText) chooseProductDialog
 				.findViewById(R.id.activity_product_edittext_dus);
 
 		listview.setItemsCanFocus(false);
-
-		stokvan_from_db.clear();
-		if(isRunningDummyVersion()) {
-			stokvan_from_db.add(new StockVan(1, "Item 1", "MASFA1",
-					"30000", 10, 10, 10, "1", "",""));
-			stokvan_from_db.add(new StockVan(2, "Item 3", "MASFA3",
-					"50000", 20, 20,20,"1", "",""));
-			stokvan_from_db.add(new StockVan(3, "Item 5", "MASFA5",
-					"150000", 70, 70, 70, "1", "",""));
-		}
-		else {
-			stokvan_from_db = databaseHandler.getAllStockVan();
-		}
-
-		if (stokvan_from_db.size() > 0) {
+		ArrayList<StockVan> stockvan_from_db = databaseHandler.getAllStockVan();
+		if (stockvan_from_db.size() > 0) {
 			listview.setVisibility(View.VISIBLE);
-			cAdapterChooseAdapter = new ListViewChooseAdapter(
-					SalesKanvasActivity.this,
-					R.layout.list_item_product_sales_order, jumlahPieces,
-					jumlahPack,
-					jumlahDus,
-					stokvan_from_db, chooseProductDialog);
-			listview.setAdapter(cAdapterChooseAdapter);
-			cAdapterChooseAdapter.notifyDataSetChanged();
+			for (int i = 0; i < stockvan_from_db.size(); i++) {
+				int id_product = stockvan_from_db.get(i).getId_product();
+				String nama_product = stockvan_from_db.get(i).getNama_product();
+				String kode_product = stockvan_from_db.get(i).getKode_product();
+				String harga_jual = stockvan_from_db.get(i).getHarga_jual();
+				String jumlah_request = stockvan_from_db.get(i).getJumlahRequest();
+				String jumlah_accept = stockvan_from_db.get(i).getJumlahAccept();
+				String jumlah_sisa = stockvan_from_db.get(i).getJumlahSisa();
+				String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
+				String foto = stockvan_from_db.get(i).getFoto();
+				String deskripsi = stockvan_from_db.get(i).getDeskripsi();
+
+				StockVan stockvan = new StockVan();
+				stockvan.setId_product(id_product);
+				stockvan.setNama_product(nama_product);
+				stockvan.setKode_product(kode_product);
+				stockvan.setHarga_jual(harga_jual);
+				stockvan.setJumlahRequest(jumlah_request);
+				stockvan.setJumlahAccept(jumlah_accept);
+				stockvan.setJumlahSisa(jumlah_sisa);
+				stockvan.setIdKemasan(id_kemasan);
+				stockvan.setFoto(foto);
+				stockvan.setDeskripsi(deskripsi);
+				stockvan_list.add(stockvan);
+				cAdapterChooseAdapter = new ListViewChooseAdapter(
+						SalesKanvasActivity.this,
+						R.layout.list_item_product_sales_order,
+						jumlahPieces,
+						jumlahRenceng,
+						jumlahPack,
+						jumlahDus, stockvan_list, chooseProductDialog);
+				listview.setAdapter(cAdapterChooseAdapter);
+				cAdapterChooseAdapter.notifyDataSetChanged();
+			}
 		} else {
 			listview.setVisibility(View.INVISIBLE);
 		}
@@ -782,39 +806,89 @@ public class SalesKanvasActivity extends FragmentActivity {
 			public void onTextChanged(CharSequence cs, int arg1, int arg2,
 									  int arg3) {
 				if (cs.toString().length() > 0) {
-					stokvan_from_db.clear();
-					stokvan_from_db = databaseHandler
+					stockvan_list.clear();
+					ArrayList<StockVan> stockvan_from_db = databaseHandler
 							.getAllStockVanBaseOnSearch(cs.toString());
-					if (stokvan_from_db.size() > 0) {
+					if (stockvan_from_db.size() > 0) {
 						listview.setVisibility(View.VISIBLE);
-						cAdapterChooseAdapter = new ListViewChooseAdapter(
-								SalesKanvasActivity.this,
-								R.layout.list_item_product_sales_order,
-								jumlahPieces,
-								jumlahPack,
-								jumlahDus, stokvan_from_db,
-								chooseProductDialog);
-						listview.setAdapter(cAdapterChooseAdapter);
-						cAdapterChooseAdapter.notifyDataSetChanged();
+						for (int i = 0; i < stockvan_from_db.size(); i++) {
+							int id_product = stockvan_from_db.get(i).getId_product();
+							String nama_product = stockvan_from_db.get(i).getNama_product();
+							String kode_product = stockvan_from_db.get(i).getKode_product();
+							String harga_jual = stockvan_from_db.get(i).getHarga_jual();
+							String jumlah_request = stockvan_from_db.get(i).getJumlahRequest();
+							String jumlah_accept = stockvan_from_db.get(i).getJumlahAccept();
+							String jumlah_sisa = stockvan_from_db.get(i).getJumlahSisa();
+							String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
+							String foto = stockvan_from_db.get(i).getFoto();
+							String deskripsi = stockvan_from_db.get(i).getDeskripsi();
+
+							StockVan stockvan = new StockVan();
+							stockvan.setId_product(id_product);
+							stockvan.setNama_product(nama_product);
+							stockvan.setKode_product(kode_product);
+							stockvan.setHarga_jual(harga_jual);
+							stockvan.setJumlahRequest(jumlah_request);
+							stockvan.setJumlahAccept(jumlah_accept);
+							stockvan.setJumlahSisa(jumlah_sisa);
+							stockvan.setIdKemasan(id_kemasan);
+							stockvan.setFoto(foto);
+							stockvan.setDeskripsi(deskripsi);
+							stockvan_list.add(stockvan);
+							cAdapterChooseAdapter = new ListViewChooseAdapter(
+									SalesKanvasActivity.this,
+									R.layout.list_item_product_sales_order,
+									jumlahPieces,
+									jumlahRenceng,
+									jumlahPack,
+									jumlahDus, stockvan_list, chooseProductDialog);
+							listview.setAdapter(cAdapterChooseAdapter);
+							cAdapterChooseAdapter.notifyDataSetChanged();
+						}
 					} else {
 						listview.setVisibility(View.INVISIBLE);
 					}
 
 				} else {
-					stokvan_from_db.clear();
-					stokvan_from_db = databaseHandler
+					ArrayList<StockVan> stockvan_from_db = databaseHandler
 							.getAllStockVan();
-					if (stokvan_from_db.size() > 0) {
+					if (stockvan_from_db.size() > 0) {
 						listview.setVisibility(View.VISIBLE);
-						cAdapterChooseAdapter = new ListViewChooseAdapter(
-								SalesKanvasActivity.this,
-								R.layout.list_item_product_sales_order,
-								jumlahPieces,
-								jumlahPack,
-								jumlahDus, stokvan_from_db,
-								chooseProductDialog);
-						listview.setAdapter(cAdapterChooseAdapter);
-						cAdapterChooseAdapter.notifyDataSetChanged();
+						for (int i = 0; i < stockvan_from_db.size(); i++) {
+							int id_product = stockvan_from_db.get(i).getId_product();
+							String nama_product = stockvan_from_db.get(i).getNama_product();
+							String kode_product = stockvan_from_db.get(i).getKode_product();
+							String harga_jual = stockvan_from_db.get(i).getHarga_jual();
+							String jumlah_request = stockvan_from_db.get(i).getJumlahRequest();
+							String jumlah_accept = stockvan_from_db.get(i).getJumlahAccept();
+							String jumlah_sisa = stockvan_from_db.get(i).getJumlahSisa();
+							String id_kemasan = stockvan_from_db.get(i).getIdKemasan();
+							String foto = stockvan_from_db.get(i).getFoto();
+							String deskripsi = stockvan_from_db.get(i).getDeskripsi();
+
+							StockVan stockvan = new StockVan();
+							stockvan.setId_product(id_product);
+							stockvan.setNama_product(nama_product);
+							stockvan.setKode_product(kode_product);
+							stockvan.setHarga_jual(harga_jual);
+							stockvan.setJumlahRequest(jumlah_request);
+							stockvan.setJumlahAccept(jumlah_accept);
+							stockvan.setJumlahSisa(jumlah_sisa);
+							stockvan.setIdKemasan(id_kemasan);
+							stockvan.setFoto(foto);
+							stockvan.setDeskripsi(deskripsi);
+							stockvan_list.add(stockvan);
+							cAdapterChooseAdapter = new ListViewChooseAdapter(
+									SalesKanvasActivity.this,
+									R.layout.list_item_product_sales_order,
+									jumlahPieces,
+									jumlahRenceng,
+									jumlahPack,
+									jumlahDus, stockvan_list, chooseProductDialog);
+							listview.setAdapter(cAdapterChooseAdapter);
+							cAdapterChooseAdapter.notifyDataSetChanged();
+
+						}
 					} else {
 						listview.setVisibility(View.INVISIBLE);
 					}
@@ -907,21 +981,23 @@ public class SalesKanvasActivity extends FragmentActivity {
 				holder = new UserHolder();
 				holder.list_kode_product = (TextView) row
 						.findViewById(R.id.sales_kode_product);
-				holder.list_jumlah_order = (TextView) row
-						.findViewById(R.id.sales_jumlah_order);
 				holder.list_harga_jual = (TextView) row
 						.findViewById(R.id.sales_harga);
-				holder.list_unit = (TextView) row
-						.findViewById(R.id.sales_unit);
+				holder.list_jumlah_order = (TextView) row
+						.findViewById(R.id.sales_jumlah_order);
+				holder.list_jumlah_order1 = (TextView) row
+						.findViewById(R.id.sales_jumlah_order1);
+				holder.list_jumlah_order2 = (TextView) row
+						.findViewById(R.id.sales_jumlah_order2);
+				holder.list_jumlah_order3 = (TextView) row
+						.findViewById(R.id.sales_jumlah_order3);
 
 				row.setTag(holder);
 			} else {
 				holder = (UserHolder) row.getTag();
 			}
-			holder.list_kode_product.setText(data.get(position)
-					.getKode_product());
-			holder.list_jumlah_order.setText(String.valueOf(data.get(position)
-					.getJumlah_order()));
+			holder.list_kode_product.setText(data.get(position).getKode_product());
+			holder.list_jumlah_order.setText(String.valueOf(data.get(position).getJumlah_order()));
 			Float priceIDR = Float.valueOf(data.get(position).getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
 			otherSymbols.setDecimalSeparator(',');
@@ -929,12 +1005,16 @@ public class SalesKanvasActivity extends FragmentActivity {
 
 			DecimalFormat df = new DecimalFormat("#,##0", otherSymbols);
 			holder.list_harga_jual.setText("Rp. " + df.format(priceIDR));
-			holder.list_unit.setText(String.valueOf(data.get(position)
-					.getUnit()));
+			holder.list_jumlah_order1.setText(String.valueOf(data.get(position).getJumlah_order1()));
+			holder.list_jumlah_order2.setText(String.valueOf(data.get(position).getJumlah_order2()));
+			holder.list_jumlah_order3.setText(String.valueOf(data.get(position).getJumlah_order3()));
 			holder.list_kode_product.setTypeface(typefaceSmall);
 			holder.list_jumlah_order.setTypeface(typefaceSmall);
 			holder.list_harga_jual.setTypeface(typefaceSmall);
-			holder.list_unit.setTypeface(typefaceSmall);
+			holder.list_jumlah_order.setTypeface(typefaceSmall);
+			holder.list_jumlah_order1.setTypeface(typefaceSmall);
+			holder.list_jumlah_order2.setTypeface(typefaceSmall);
+			holder.list_jumlah_order3.setTypeface(typefaceSmall);
 
 			return row;
 
@@ -942,9 +1022,11 @@ public class SalesKanvasActivity extends FragmentActivity {
 
 		class UserHolder {
 			TextView list_kode_product;
-			TextView list_jumlah_order;
 			TextView list_harga_jual;
-			TextView list_unit;
+			TextView list_jumlah_order;
+			TextView list_jumlah_order1;
+			TextView list_jumlah_order2;
+			TextView list_jumlah_order3;
 		}
 
 	}
@@ -955,6 +1037,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 		ArrayList<StockVan> data = new ArrayList<StockVan>();
 		Activity mainActivity;
 		EditText jumlahPieces;
+		EditText jumlahRenceng;
 		EditText jumlahPack;
 		EditText jumlahDus;
 		Dialog chooseProductDialog;
@@ -962,6 +1045,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 		public ListViewChooseAdapter(Activity mainActivity,
 									 int layoutResourceId,
 									 EditText jumlahPieces,
+									 EditText jumlahRenceng,
 									 EditText jumlahPack,
 									 EditText jumlahDus,
 									 ArrayList<StockVan> data, Dialog chooseProductDialog) {
@@ -971,6 +1055,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 			this.chooseProductDialog = chooseProductDialog;
 			this.mainActivity = mainActivity;
 			this.jumlahPieces = jumlahPieces;
+			this.jumlahRenceng = jumlahRenceng;
 			this.jumlahPack = jumlahPack;
 			this.jumlahDus = jumlahDus;
 			notifyDataSetChanged();
@@ -984,9 +1069,9 @@ public class SalesKanvasActivity extends FragmentActivity {
 
 			if (row == null) {
 				LayoutInflater inflater = LayoutInflater.from(mainActivity);
-
 				row = inflater.inflate(layoutResourceId, parent, false);
 				holder = new UserHolder();
+				holder.list_img = (ImageView) row.findViewById(R.id.image);
 				holder.list_kodeProduct = (TextView) row
 						.findViewById(R.id.sales_order_title_kode_product);
 				holder.list_namaProduct = (TextView) row
@@ -1001,7 +1086,12 @@ public class SalesKanvasActivity extends FragmentActivity {
 				holder = (UserHolder) row.getTag();
 			}
 			productData = data.get(position);
-			holder.list_kodeProduct.setText(productData.getKode_product());
+			File dir = new File(CONFIG.getFolderPath() + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/"
+					+ CONFIG.CONFIG_APP_FOLDER_PRODUCT + "/"
+					+ data.get(position).getFoto());
+			holder.list_img.setImageBitmap(BitmapFactory.decodeFile(dir.getAbsolutePath()));
+			//holder.list_kodeProduct.setText(productData.getKode_product());
 			holder.list_namaProduct.setText(productData.getNama_product());
 			Float priceIDR = Float.valueOf(productData.getHarga_jual());
 			DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols();
@@ -1009,10 +1099,81 @@ public class SalesKanvasActivity extends FragmentActivity {
 			otherSymbols.setGroupingSeparator('.');
 
 			DecimalFormat df = new DecimalFormat("#,##0", otherSymbols);
-			holder.list_harga.setText("Rp. " + df.format(priceIDR));
-			holder.list_kodeProduct.setTypeface(getTypefaceSmall());
+			//holder.list_harga.setText("Rp. " + df.format(priceIDR));
+			//holder.list_kodeProduct.setTypeface(getTypefaceSmall());
 			holder.list_namaProduct.setTypeface(getTypefaceSmall());
-			holder.list_harga.setTypeface(getTypefaceSmall());
+			//holder.list_harga.setTypeface(getTypefaceSmall());
+			holder.mButtonAddItem.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (jumlahPieces.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_pcs);
+						showCustomDialog(msg);
+					}else if(jumlahRenceng.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_pck);
+						showCustomDialog(msg);
+					} else if(jumlahPack.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_dus);
+						showCustomDialog(msg);
+					}else if(jumlahDus.getText().length()==0){
+						String msg = getApplicationContext()
+								.getResources()
+								.getString(
+										R.string.app_sales_order_failed_please_add_dus);
+						showCustomDialog(msg);
+					}else{
+						if (jumlahPieces.getText().toString().length() > 0 || jumlahRenceng.getText().toString().length() > 0 ||
+								jumlahPack.getText().toString().length() > 0 || jumlahDus.getText().toString().length() > 0) {
+							boolean containSameProduct = false;
+							for (NewDetailPenjualan detailPenjualan : detailPenjualanList) {
+								if (detailPenjualan.getKode_product().equalsIgnoreCase(
+												data.get(position).getKode_product())) {
+									containSameProduct = true;
+									break;
+								}
+							}
+							if (containSameProduct) {
+								String msg = getApplicationContext()
+										.getResources()
+										.getString(
+												R.string.app_sales_order_failed_please_add_another_item);
+								showCustomDialog(msg);
+							} else {
+								int count = detailPenjualanList.size() + 1;
+								updateListViewDetailOrder(new NewDetailPenjualan(
+										count,
+										data.get(position).getId_product(),
+										data.get(position).getNama_product(),
+										data.get(position).getKode_product(),
+										data.get(position).getHarga_jual(),
+										Integer.parseInt(jumlahPieces.getText().toString()),
+										Integer.parseInt(jumlahRenceng.getText().toString()),
+										Integer.parseInt(jumlahPack.getText().toString()),
+										Integer.parseInt(jumlahDus.getText().toString())));
+								chooseProductDialog.hide();
+							}
+						} else {
+							String msg = getApplicationContext()
+									.getResources()
+									.getString(
+											R.string.app_sales_order_failed_please_add_jumlah);
+							showCustomDialog(msg);
+
+						}
+					}
+				}
+			});
+			/*
 			holder.mButtonAddItem.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -1115,6 +1276,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 					}
 				}
 			});
+			*/
 			return row;
 
 		}
@@ -1122,6 +1284,7 @@ public class SalesKanvasActivity extends FragmentActivity {
 		class UserHolder {
 			TextView list_kodeProduct;
 			TextView list_namaProduct;
+			ImageView list_img;
 			TextView list_harga;
 			Button mButtonAddItem;
 		}

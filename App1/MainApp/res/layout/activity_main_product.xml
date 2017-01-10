@@ -17,6 +17,25 @@
             android:layout_height="wrap_content"
             layout="@layout/toolbar_default" />
 
+        <LinearLayout
+            android:id="@+id/activity_customer_linear_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            android:padding="15dip" >
+
+            <EditText
+                android:id="@+id/activity_product_edittext_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/description_back_shape"
+                android:hint="Search Product"
+                android:imeOptions="actionDone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/Ivory3" />
+        </LinearLayout>
+
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"

@@ -7,26 +7,12 @@
     android:padding="10dip" >
 
     <TextView
-        android:id="@+id/stock_summary_textview_kode_product"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
-        android:layout_marginRight="5dip"
-        android:layout_weight="1"
-        android:maxLines="5"
-        android:minLines="1"
-        android:padding="10dip"
-        android:text="@string/app_inventory_stock_summary_textview_kode_product"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
-    <TextView
         android:id="@+id/stock_summary_nama_product"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"
         android:layout_marginRight="5dip"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:maxLines="5"
         android:minLines="1"
         android:padding="10dip"
@@ -40,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"
         android:layout_marginRight="5dip"
-        android:layout_weight="0.5"
+        android:layout_weight="0.23"
         android:maxLines="5"
         android:minLines="1"
         android:padding="10dip"
@@ -54,8 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dip"
         android:layout_marginRight="5dip"
-        android:layout_weight="0.5"
-        android:maxLines="5"
+        android:layout_weight="1"
         android:minLines="1"
         android:padding="10dip"
         android:text="@string/app_inventory_stock_summary_textview_stock_van"

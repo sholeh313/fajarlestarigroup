@@ -30,6 +30,7 @@ import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.check_customer.CheckCustomer;
 import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
 import com.mahkota_company.android.contact.ContactActivty;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
@@ -1437,7 +1438,7 @@ public class LocatorActivity extends ActionBarActivity implements
 					finish();
 				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
 				}

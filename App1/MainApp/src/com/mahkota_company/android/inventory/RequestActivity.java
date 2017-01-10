@@ -33,6 +33,7 @@ import com.mahkota_company.android.NavigationDrawerFragment;
 import com.mahkota_company.android.R;
 import com.mahkota_company.android.check_customer.CheckCustomer;
 import com.mahkota_company.android.check_new_prospect.CheckCustomerProspectActivity;
+import com.mahkota_company.android.contact.SuperVisor;
 import com.mahkota_company.android.customer.CustomerActivity;
 import com.mahkota_company.android.database.Customer;
 import com.mahkota_company.android.database.DatabaseHandler;
@@ -45,6 +46,7 @@ import com.mahkota_company.android.product.ProductActivity;
 import com.mahkota_company.android.prospect.CustomerProspectActivity;
 import com.mahkota_company.android.retur.ReturActivity;
 import com.mahkota_company.android.sales_order.DetailSalesOrderActivity;
+import com.mahkota_company.android.sales_order.SalesOrderActivity;
 import com.mahkota_company.android.stock_on_hand.StockOnHandActivity;
 import com.mahkota_company.android.utils.CONFIG;
 import com.mahkota_company.android.utils.GlobalApp;
@@ -116,7 +118,7 @@ public class RequestActivity extends ActionBarActivity implements
 				(DrawerLayout) findViewById(R.id.drawer), mToolbar);
 		addSalesOrder = (Button) findViewById(R.id.activity_sales_order_btn_add);
 		databaseHandler = new DatabaseHandler(this);
-		mNavigationDrawerFragment.selectItem(5);
+		mNavigationDrawerFragment.selectItem(14);
 		listview = (ListView) findViewById(R.id.list);
 		listview.setItemsCanFocus(false);
 		showReqLoad();
@@ -158,20 +160,13 @@ public class RequestActivity extends ActionBarActivity implements
 			for (int i = 0; i < req_load_from_db.size(); i++) {
 				int id_sales_order = req_load_from_db.get(i)
 						.getId_sales_order();
-				String nomer_request_load = req_load_from_db.get(i)
-						.getNomer_request_load();
+				String nomer_request_load = req_load_from_db.get(i).getNomer_request_load();
 				String date_order = req_load_from_db.get(i).getDate_order();
 				String time_order = req_load_from_db.get(i).getTime_order();
-				//String deskripsi = req_load_from_db.get(i).getDeskripsi();
 				int id_promosi = req_load_from_db.get(i).getId_promosi();
 				String username = req_load_from_db.get(i).getUsername();
-				//String kode_customer = req_load_from_db.get(i).getKode_customer();
-				//String alamat = req_load_from_db.get(i).getAlamat();
 				String satuan_terkecil = req_load_from_db.get(i).getSatuan_terkecil();
-				String nama_product = req_load_from_db.get(i)
-						.getNama_product();
-				//String kode_product = req_load_from_db.get(i).getKode_product();
-				//String harga_jual = req_load_from_db.get(i).getHarga_jual();
+				String nama_product = req_load_from_db.get(i).getNama_product();
 				String jumlah_order = req_load_from_db.get(i).getJumlah_order();
 				String jumlah_order1 = req_load_from_db.get(i).getJumlah_order1();
 				String jumlah_order2 = req_load_from_db.get(i).getJumlah_order2();
@@ -184,15 +179,10 @@ public class RequestActivity extends ActionBarActivity implements
 				reqLoad.setNomer_request_load(nomer_request_load);
 				reqLoad.setDate_order(date_order);
 				reqLoad.setTime_order(time_order);
-				//reqLoad.setDeskripsi(deskripsi);
 				reqLoad.setId_promosi(id_promosi);
 				reqLoad.setUsername(username);
-				//reqLoad.setKode_customer(kode_customer);
-				//reqLoad.setAlamat(alamat);
 				reqLoad.setSatuan_terkecil(satuan_terkecil);
 				reqLoad.setNama_product(nama_product);
-				//reqLoad.setKode_product(kode_product);
-				//reqLoad.setHarga_jual(harga_jual);
 				reqLoad.setJumlah_order(jumlah_order);
 				reqLoad.setJumlah_order1(jumlah_order1);
 				reqLoad.setJumlah_order2(jumlah_order2);
@@ -308,15 +298,10 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getNomer_request_load(),
 							reqLoad.getDate_order(),
 							reqLoad.getTime_order(),
-							//reqLoad.getDeskripsi(),
 							String.valueOf("0"),
 							reqLoad.getUsername(),
-							//reqLoad.getKode_customer(),
-							//reqLoad.getAlamat(),
 							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
-							//reqLoad.getKode_product(),
-							//String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
 							String.valueOf(reqLoad.getJumlah_order2()),
@@ -329,15 +314,10 @@ public class RequestActivity extends ActionBarActivity implements
 							reqLoad.getNomer_request_load(),
 							reqLoad.getDate_order(),
 							reqLoad.getTime_order(),
-							//reqLoad.getDeskripsi(),
 							String.valueOf(reqLoad.getId_promosi()),
 							reqLoad.getUsername(),
-							//reqLoad.getKode_customer(),
-							//reqLoad.getAlamat(),
 							reqLoad.getSatuan_terkecil(),
 							reqLoad.getNama_product(),
-							//reqLoad.getKode_product(),
-							//String.valueOf(reqLoad.getHarga_jual()),
 							String.valueOf(reqLoad.getJumlah_order()),
 							String.valueOf(reqLoad.getJumlah_order1()),
 							String.valueOf(reqLoad.getJumlah_order2()),
@@ -401,15 +381,14 @@ public class RequestActivity extends ActionBarActivity implements
 		}
 	}
 
-	private String uploadReqLoad(final String url, final String nomer_request_load,
+	private String uploadReqLoad(final String url,
+			final String nomer_request_load,
 			final String date_order,
-			final String time_order, //final String deskripsi,
-			final String id_promosi, final String username,
-			//final String kode_customer, final String alamat,
+			final String time_order,
+			final String id_promosi,
+			final String username,
 			final String satuan_terkecil,
 			final String nama_product,
-			//final String kode_product,
-			//final String harga_jual,
 			final String jumlah_order,
 			final String jumlah_order1,
 			final String jumlah_order2,
@@ -432,15 +411,10 @@ public class RequestActivity extends ActionBarActivity implements
 			entity.addPart("nomer_request_load", new StringBody(nomer_request_load));
 			entity.addPart("date_order", new StringBody(date_order));
 			entity.addPart("time_order", new StringBody(time_order));
-			//entity.addPart("deskripsi", new StringBody(deskripsi));
 			entity.addPart("id_promosi", new StringBody(id_promosi));
 			entity.addPart("username", new StringBody(username));
-			//entity.addPart("kode_customer", new StringBody(kode_customer));
-			//entity.addPart("alamat", new StringBody(alamat));
 			entity.addPart("satuan_terkecil", new StringBody(satuan_terkecil));
 			entity.addPart("nama_product", new StringBody(nama_product));
-			//entity.addPart("kode_product", new StringBody(kode_product));
-			//entity.addPart("harga_jual", new StringBody(harga_jual));
 			entity.addPart("jumlah_order", new StringBody(jumlah_order));
 			entity.addPart("jumlah_order1", new StringBody(jumlah_order1));
 			entity.addPart("jumlah_order2", new StringBody(jumlah_order2));
@@ -684,7 +658,7 @@ public class RequestActivity extends ActionBarActivity implements
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		if (mNavigationDrawerFragment != null) {
-			if (mNavigationDrawerFragment.getCurrentSelectedPosition() != 5) {
+			if (mNavigationDrawerFragment.getCurrentSelectedPosition() != 14) {
 				if (position == 0) {
 					Intent intentActivity = new Intent(this,
 							CustomerActivity.class);
@@ -710,7 +684,12 @@ public class RequestActivity extends ActionBarActivity implements
 							LocatorActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}*/ else if (position == 6) {
+				}*/else if (position == 5) {
+					Intent intentActivity = new Intent(this,
+							SalesOrderActivity.class);
+					startActivity(intentActivity);
+					finish();
+				}else if (position == 6) {
 					Intent intentActivity = new Intent(this,
 							StockOnHandActivity.class);
 					startActivity(intentActivity);
@@ -720,12 +699,12 @@ public class RequestActivity extends ActionBarActivity implements
 							DisplayProductActivity.class);
 					startActivity(intentActivity);
 					finish();
-				}/*else if (position == 8) {
+				}else if (position == 8) {
 					Intent intentActivity = new Intent(this,
-							ContactActivty.class);
+							SuperVisor.class);
 					startActivity(intentActivity);
 					finish();
-				}*/
+				}
 				else if (position == 9) {
 					Intent intentActivity = new Intent(this,
 							InventoryActivity.class);

@@ -306,40 +306,36 @@ public class StockSummayActivity extends FragmentActivity {
 						String id_product = oResponsealue.isNull("id_product") ? null
 								: oResponsealue.getString("id_product");
 						String nomer_request_load = oResponsealue
-								.isNull("nomer_request_load") ? null
-								: oResponsealue.getString("nomer_request_load");
+								.isNull("nomer_request_load") ? null: oResponsealue.getString("nomer_request_load");
 						saveAppDataNoRequestLoad(nomer_request_load);
 						String date_request_load = oResponsealue
-								.isNull("date_request_load") ? null
-								: oResponsealue.getString("date_request_load");
+								.isNull("date_request_load") ? null: oResponsealue.getString("date_request_load");
 						String jumlah_request = oResponsealue
-								.isNull("jumlah_request") ? null
-								: oResponsealue.getString("jumlah_request");
+								.isNull("jumlah_request") ? null: oResponsealue.getString("jumlah_request");
 						String jumlah_accept = oResponsealue
-								.isNull("jumlah_accept") ? null : oResponsealue
-								.getString("jumlah_accept");
+								.isNull("jumlah_accept") ? null : oResponsealue.getString("jumlah_accept");
+						String jumlah_sisa = oResponsealue
+								.isNull("jumlah_sisa") ? null : oResponsealue.getString("jumlah_sisa");
 
 						Log.d(LOG_TAG, "id_product:" + id_product);
-						Log.d(LOG_TAG, "nomer_request_load:"
-								+ nomer_request_load);
+						Log.d(LOG_TAG, "nomer_request_load:" + nomer_request_load);
 						Log.d(LOG_TAG, "jumlah_request:" + jumlah_request);
 						Log.d(LOG_TAG, "jumlah_accept:" + jumlah_accept);
 						Log.d(LOG_TAG, "date_request_load:" + date_request_load);
 						try {
-							Product tempProduct = databaseHandler
-									.getProduct(Integer.parseInt(id_product));
+							Product tempProduct = databaseHandler.getProduct(Integer.parseInt(id_product));
 							if (tempProduct != null)
 								databaseHandler.addStockVan(new StockVan(
 										tempProduct.getId_product(),
 										tempProduct.getNama_product(),
 										tempProduct.getKode_product(),
-										tempProduct.getHarga_jual(), Integer
-										.parseInt(jumlah_request),
-										Integer.parseInt(jumlah_accept),
-										Integer.parseInt(jumlah_accept),
-										tempProduct.getId_kemasan(), tempProduct
-										.getFoto(), tempProduct
-										.getDeskripsi()));
+										tempProduct.getHarga_jual(),
+										jumlah_request,
+										jumlah_accept,
+										jumlah_sisa,
+										tempProduct.getId_kemasan(),
+										tempProduct.getFoto(),
+										tempProduct.getDeskripsi()));
 
 						} catch (Exception ex) {
 							Log.d(LOG_TAG, "exception:" + ex.getMessage());
@@ -455,8 +451,8 @@ public class StockSummayActivity extends FragmentActivity {
 
 				row = inflater.inflate(layoutResourceId, parent, false);
 				holder = new UserHolder();
-				holder.tvKodeProduct = (TextView) row
-						.findViewById(R.id.stock_summary_textview_kode_product);
+				//holder.tvKodeProduct = (TextView) row
+				//		.findViewById(R.id.stock_summary_textview_kode_product);
 				holder.tvNamaProduct = (TextView) row
 						.findViewById(R.id.stock_summary_nama_product);
 				holder.tvStockGudang = (TextView) row
@@ -467,13 +463,11 @@ public class StockSummayActivity extends FragmentActivity {
 			} else {
 				holder = (UserHolder) row.getTag();
 			}
-			holder.tvKodeProduct.setText(data.get(position).getKode_product());
+			//holder.tvKodeProduct.setText(data.get(position).getKode_product());
 			holder.tvNamaProduct.setText(data.get(position).getNama_product());
-			holder.tvStockGudang.setText(String.valueOf(data.get(position)
-					.getStockGudang()));
-			holder.tvStockVan.setText(String.valueOf(data.get(position)
-					.getStockVan()));
-			holder.tvKodeProduct.setTypeface(typefaceSmall);
+			holder.tvStockGudang.setText(String.valueOf(data.get(position).getStockGudang()));
+			holder.tvStockVan.setText(data.get(position).getStockVan());
+			//holder.tvKodeProduct.setTypeface(typefaceSmall);
 			holder.tvNamaProduct.setTypeface(typefaceSmall);
 			holder.tvStockGudang.setTypeface(typefaceSmall);
 			holder.tvStockVan.setTypeface(typefaceSmall);
@@ -482,7 +476,7 @@ public class StockSummayActivity extends FragmentActivity {
 		}
 
 		class UserHolder {
-			TextView tvKodeProduct;
+			//TextView tvKodeProduct;
 			TextView tvNamaProduct;
 			TextView tvStockGudang;
 			TextView tvStockVan;

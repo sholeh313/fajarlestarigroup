@@ -48,25 +48,12 @@
         android:padding="15dip" >
 
         <TextView
-            android:id="@+id/inventory_stock_summary_textview_kode_product"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dip"
-            android:layout_marginRight="5dip"
-            android:layout_weight="1"
-            android:text="@string/app_inventory_stock_summary_textview_kode_product"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/inventory_stock_summary_textview_nama_product"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:lines="4"
             android:text="@string/app_inventory_stock_summary_textview_nama_product"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -80,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:layout_weight="0.5"
+            android:layout_weight="0.23"
             android:lines="4"
             android:text="@string/app_inventory_stock_summary_textview_stock_gudang"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -94,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
             android:layout_marginRight="5dip"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="@string/app_inventory_stock_summary_textview_stock_van"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"

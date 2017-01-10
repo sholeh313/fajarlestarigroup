@@ -325,13 +325,13 @@ public class LoadProductActivity extends FragmentActivity {
 										tempProduct.getId_product(),
 										tempProduct.getNama_product(),
 										tempProduct.getKode_product(),
-										tempProduct.getHarga_jual(), Integer
-												.parseInt(jumlah_request),
-										Integer.parseInt(jumlah_accept),
-										Integer.parseInt(jumlah_accept),
-										tempProduct.getId_kemasan(), tempProduct
-												.getFoto(), tempProduct
-												.getDeskripsi()));
+										tempProduct.getHarga_jual(),
+										jumlah_request,
+										jumlah_accept,
+										jumlah_accept,
+										tempProduct.getId_kemasan(),
+										tempProduct.getFoto(),
+										tempProduct.getDeskripsi()));
 
 						} catch (Exception ex) {
 							Log.d(LOG_TAG, "exception:" + ex.getMessage());
