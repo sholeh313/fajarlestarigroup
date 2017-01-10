@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\build\\intermediates\\res\\merged\\debug\\layout\\signup.xml",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\src\\main\\res\\layout\\signup.xml"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login.xml",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\AppMobile\\Login\\app\\src\\main\\res\\layout\\login.xml"
+    }
+]
